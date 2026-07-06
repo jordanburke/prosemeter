@@ -12,6 +12,7 @@
  * lookup that the DSL can't express — so errors are accumulated by hand into the same result type.
  */
 
+import type { FormValidation } from "functype"
 import { Either, List, TypedError } from "functype"
 
 import { DEFAULT_PROFILE, PROFILES } from "./profiles"
@@ -28,8 +29,11 @@ export type UserConfig = {
 
 export type ConfigError = TypedError<"VALIDATION_FAILED">
 
-/** An accumulating validation result, in functype's `FormValidation` shape. */
-export type ConfigResult = Either<List<ConfigError>, ResolvedConfig>
+/**
+ * An accumulating validation result — functype's `FormValidation<ResolvedConfig>`, i.e.
+ * `Either<List<TypedError<"VALIDATION_FAILED">>, ResolvedConfig>`. Aliased for intent.
+ */
+export type ConfigResult = FormValidation<ResolvedConfig>
 
 /** A fully-resolved profile: a built-in profile with the user config merged in. */
 export type ResolvedConfig = {
