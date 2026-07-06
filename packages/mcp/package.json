@@ -1,0 +1,81 @@
+{
+  "name": "@prosemeter/mcp",
+  "version": "0.1.0",
+  "description": "prosemeter MCP server — deterministic prose scoring and the agent revise/converge loop over MCP",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "prose",
+    "scoring",
+    "prosemeter",
+    "somamcp",
+    "fastmcp"
+  ],
+  "author": {
+    "name": "Jordan Burke",
+    "url": "https://github.com/jordanburke"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/jordanburke/prosemeter/tree/main/packages/mcp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordanburke/prosemeter.git",
+    "directory": "packages/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/jordanburke/prosemeter/issues"
+  },
+  "scripts": {
+    "validate": "ts-builds validate",
+    "format": "ts-builds format",
+    "format:check": "ts-builds format:check",
+    "lint": "ts-builds lint",
+    "lint:check": "ts-builds lint:check",
+    "typecheck": "ts-builds typecheck",
+    "test": "ts-builds test",
+    "test:watch": "ts-builds test:watch",
+    "test:coverage": "ts-builds test:coverage",
+    "build": "NODE_ENV=production ts-builds build",
+    "dev": "ts-builds dev",
+    "inspect": "pnpm build && npx @modelcontextprotocol/inspector node dist/bin.js",
+    "serve": "pnpm build && node dist/bin.js",
+    "prepublishOnly": "pnpm validate"
+  },
+  "bin": {
+    "prosemeter-mcp": "dist/bin.js"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "prettier": "ts-builds/prettier",
+  "dependencies": {
+    "prosemeter": "workspace:^",
+    "somamcp": "^1.1.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.2",
+    "ts-builds": "^3.2.1",
+    "tsdown": "^0.22.3",
+    "vitest": "^4.1.9"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">=20.20.0"
+  }
+}
