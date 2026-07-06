@@ -3,7 +3,7 @@
  * dimension and sorted by severity. Plain text (no color) so it pipes and diffs cleanly.
  */
 
-import type { Finding, ScoreResult } from "@prosemeter/core"
+import type { ConvergenceVerdict, DeltaReport, Finding, ScoreResult } from "@prosemeter/core"
 
 import { profiles } from "../index"
 
@@ -46,6 +46,20 @@ export const renderScore = (result: ScoreResult): string => {
 
   return [...lines, ...renderFindings(result)].join("\n")
 }
+
+const signed = (n: number): string => (n > 0 ? `+${n}` : `${n}`)
+
+export const renderDelta = (delta: DeltaReport): string => {
+  const lines: Array<string> = ["", `Baseline delta: ${signed(delta.scoreDelta)} (${delta.verdict})`]
+  for (const d of delta.dimensions) {
+    if (d.verdict !== "unchanged") lines.push(`  ${d.id.padEnd(22)} ${signed(Math.round(d.delta))}`)
+  }
+  lines.push(`  resolved ${delta.findingsResolved.length}, new ${delta.findingsNew.length} finding(s)`)
+  return lines.join("\n")
+}
+
+export const renderConvergence = (verdict: ConvergenceVerdict, history: ReadonlyArray<number>): string =>
+  `\nConvergence: ${verdict}   (history: ${history.join(" → ")})`
 
 export const renderProfiles = (): string => {
   const lines: Array<string> = ["Built-in profiles:", ""]

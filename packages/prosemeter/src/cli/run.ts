@@ -17,13 +17,20 @@ Usage:
   prosemeter --help | --version
 
 Options (score):
-  --profile <name>     plain | readme | api-docs | blog | marketing | academic  (default: plain)
-  --config <path>      prosemeter.config.json (default: ./prosemeter.config.json if present)
-  --json               machine-readable ScoreResult
-  --threshold <n>      exit 1 if the score (mean, for multiple files) is below n
-  --format <md|text>   force input format (default: infer from extension; stdin defaults to md)
+  --profile <name>       plain | readme | api-docs | blog | marketing | academic  (default: plain)
+  --config <path>        prosemeter.config.json (default: ./prosemeter.config.json if present)
+  --json                 machine-readable ScoreResult (+ delta/convergence when applicable)
+  --threshold <n>        exit 1 if the score (mean, for multiple files) is below n
+  --format <md|text>     force input format (default: infer from extension; stdin defaults to md)
+  --baseline             diff against the stored baseline and report the convergence verdict
+  --save-baseline        write/update the baseline (result + appended score history) after scoring
+  --baseline-file <path> baseline location for --baseline/--save-baseline (default: .prosemeter/baseline.json)
 
-Exit codes: 0 pass · 1 below threshold · 2 no/empty input or invalid config`
+Baseline options require a single target. Typical agent loop:
+  prosemeter score draft.md --profile readme --baseline --save-baseline --json
+  # revise using findings/hints, re-run, and stop when "convergence" is no longer "improving"
+
+Exit codes: 0 pass · 1 below threshold · 2 no/empty input or invalid config/baseline`
 
 export const runCli = async (argv: ReadonlyArray<string>): Promise<number> => {
   const [command, ...rest] = argv

@@ -1,10 +1,14 @@
 /**
- * Plain-JSON projection of a `ScoreResult`. The engine models absence with functype `Option`
- * (`skipped`, `loc`), which does not serialize to clean JSON — this is the stable machine-readable
- * contract agents consume, with Options flattened to `value | null`.
+ * Plain-JSON projection of engine values. The engine models absence with functype `Option`
+ * (`skipped`, `loc`), which does not serialize to clean JSON — these are the stable machine-readable
+ * contracts agents consume, with Options flattened to `value | null`. `fromScoreResultJSON` is the
+ * inverse, used to rehydrate a stored baseline for diffing.
  */
 
-import type { DimensionResult, DocumentStats, Finding, ScoreResult } from "@prosemeter/core"
+import type { DeltaReport, DimensionResult, DocumentStats, Finding, ScoreResult, Verdict } from "@prosemeter/core"
+import { None, Some } from "functype"
+
+export type Loc = { readonly line: number; readonly column: number; readonly offset: number; readonly length: number }
 
 export type FindingJSON = {
   readonly rule: string
@@ -12,12 +16,7 @@ export type FindingJSON = {
   readonly severity: string
   readonly message: string
   readonly hint: string
-  readonly loc: {
-    readonly line: number
-    readonly column: number
-    readonly offset: number
-    readonly length: number
-  } | null
+  readonly loc: Loc | null
   readonly excerpt: string
 }
 
@@ -37,6 +36,14 @@ export type ScoreResultJSON = {
   readonly stats: DocumentStats
   readonly dimensions: ReadonlyArray<DimensionResultJSON>
   readonly version: string
+}
+
+export type DeltaReportJSON = {
+  readonly scoreDelta: number
+  readonly verdict: Verdict
+  readonly dimensions: ReadonlyArray<{ readonly id: string; readonly delta: number; readonly verdict: Verdict }>
+  readonly findingsResolved: ReadonlyArray<FindingJSON>
+  readonly findingsNew: ReadonlyArray<FindingJSON>
 }
 
 const findingToJSON = (f: Finding): FindingJSON => ({
@@ -65,4 +72,39 @@ export const toScoreResultJSON = (result: ScoreResult): ScoreResultJSON => ({
   stats: result.stats,
   dimensions: result.dimensions.map(dimensionToJSON),
   version: result.version,
+})
+
+export const toDeltaReportJSON = (delta: DeltaReport): DeltaReportJSON => ({
+  scoreDelta: delta.scoreDelta,
+  verdict: delta.verdict,
+  dimensions: delta.dimensions.map((d) => ({ id: d.id, delta: d.delta, verdict: d.verdict })),
+  findingsResolved: delta.findingsResolved.map(findingToJSON),
+  findingsNew: delta.findingsNew.map(findingToJSON),
+})
+
+const findingFromJSON = (f: FindingJSON): Finding => ({
+  rule: f.rule,
+  dimension: f.dimension,
+  severity: f.severity === "info" || f.severity === "warn" || f.severity === "error" ? f.severity : "warn",
+  message: f.message,
+  hint: f.hint,
+  loc: f.loc === null ? None() : Some(f.loc),
+  excerpt: f.excerpt,
+})
+
+/** Rehydrate a stored baseline `ScoreResultJSON` into a `ScoreResult` for `compareBaseline`. */
+export const fromScoreResultJSON = (json: ScoreResultJSON): ScoreResult => ({
+  target: json.target,
+  profile: json.profile,
+  score: json.score,
+  stats: json.stats,
+  version: json.version,
+  dimensions: json.dimensions.map((d) => ({
+    id: d.id,
+    score: d.score,
+    weight: d.weight,
+    detail: d.detail,
+    skipped: d.skipped === null ? None() : Some(d.skipped),
+    findings: d.findings.map(findingFromJSON),
+  })),
 })

@@ -36,8 +36,10 @@ export const profiles = (): ReadonlyArray<ProfileSummary> =>
       : [{ name: p.name, description: p.description, gradeBand: p.gradeBand, thresholdDefault: p.thresholdDefault }]
   })
 
-export type { DimensionResultJSON, FindingJSON, ScoreResultJSON } from "./json"
-export { toScoreResultJSON } from "./json"
+export type { BaselineFile } from "./baseline"
+export { DEFAULT_BASELINE_PATH, loadBaseline, saveBaseline } from "./baseline"
+export type { DeltaReportJSON, DimensionResultJSON, FindingJSON, Loc, ScoreResultJSON } from "./json"
+export { fromScoreResultJSON, toDeltaReportJSON, toScoreResultJSON } from "./json"
 export { builtinProviders } from "./providers"
 export { VERSION } from "./version"
 
