@@ -1,26 +1,24 @@
 {
-  "name": "prosemeter",
+  "name": "@prosemeter/structure",
   "version": "0.1.0",
-  "description": "Deterministic scoring + feedback-loop layer for prose — batteries-included bundle and CLI",
+  "description": "prosemeter structure dimensions — heading hierarchy, section/paragraph length, document balance",
   "keywords": [
     "prose",
-    "readability",
-    "scoring",
-    "fitness",
-    "writing",
-    "cli",
-    "agents"
+    "structure",
+    "markdown",
+    "mdast",
+    "prosemeter"
   ],
   "author": {
     "name": "Jordan Burke",
     "url": "https://github.com/jordanburke"
   },
   "license": "MIT",
-  "homepage": "https://prosemeter.com",
+  "homepage": "https://github.com/jordanburke/prosemeter/tree/main/packages/structure#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jordanburke/prosemeter.git",
-    "directory": "packages/prosemeter"
+    "directory": "packages/structure"
   },
   "bugs": {
     "url": "https://github.com/jordanburke/prosemeter/issues"
@@ -39,9 +37,6 @@
     "dev": "ts-builds dev",
     "prepublishOnly": "pnpm validate"
   },
-  "bin": {
-    "prosemeter": "dist/cli/index.js"
-  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -58,15 +53,18 @@
     "README.md"
   ],
   "prettier": "ts-builds/prettier",
+  "peerDependencies": {
+    "@prosemeter/core": ">=0.1.0"
+  },
   "dependencies": {
-    "@prosemeter/core": "workspace:^",
-    "@prosemeter/readability": "workspace:^",
-    "@prosemeter/structure": "workspace:^",
-    "@prosemeter/style": "workspace:^",
-    "@prosemeter/vocabulary": "workspace:^",
-    "functype": "^1.6.1"
+    "functype": "^1.6.1",
+    "mdast-util-to-string": "^4.0.0",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
+    "@prosemeter/core": "workspace:^",
+    "@types/mdast": "^4.0.4",
+    "@types/nlcst": "^2.0.3",
     "@types/node": "^24.13.2",
     "ts-builds": "^3.2.1",
     "tsdown": "^0.22.3",

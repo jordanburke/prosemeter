@@ -37,5 +37,5 @@ jobs:
       - name: Run turbo validate
         run: pnpm turbo run validate
 
-      # Dogfood gate (enabled once the prosemeter bundle CLI ships in Phase 2):
-      # - run: pnpm --filter prosemeter exec prosemeter score README.md --profile readme --threshold 70
+      - name: Dogfood — score README against the readme profile
+        run: pnpm --filter prosemeter exec prosemeter score README.md --profile readme --threshold 70

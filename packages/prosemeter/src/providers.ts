@@ -5,5 +5,13 @@
 
 import type { DimensionProvider } from "@prosemeter/core"
 import { readabilityProviders } from "@prosemeter/readability"
+import { structureProviders } from "@prosemeter/structure"
+import { styleProviders } from "@prosemeter/style"
+import { vocabularyProviders } from "@prosemeter/vocabulary"
 
-export const builtinProviders: ReadonlyArray<DimensionProvider> = [...readabilityProviders]
+export const builtinProviders: ReadonlyArray<DimensionProvider> = [
+  ...readabilityProviders,
+  ...styleProviders,
+  ...structureProviders,
+  ...vocabularyProviders,
+]

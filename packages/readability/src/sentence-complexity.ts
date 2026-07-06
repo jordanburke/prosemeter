@@ -18,7 +18,8 @@ import { visit } from "unist-util-visit"
 import { gradeBreakdown } from "./formulas"
 
 const RULE = "sentence-length"
-const K = 0.6
+// Calibrated (Phase 4) so a doc with a few hard sentences per 1000 words stays high.
+const K = 0.08
 /** Short sentences skew per-sentence grade formulas, so only longer sentences are eligible. */
 const MIN_SENTENCE_WORDS = 8
 const MAX_EXCERPT = 120

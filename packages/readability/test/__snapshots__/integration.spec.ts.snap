@@ -6,7 +6,7 @@ exports[`golden corpus > scores choppy-simplistic.md against blog deterministica
     {
       "findings": [],
       "id": "grade-band",
-      "score": 0.023366,
+      "score": 0.045664,
       "skipped": false,
       "weight": 0.2,
     },
@@ -19,7 +19,7 @@ exports[`golden corpus > scores choppy-simplistic.md against blog deterministica
     },
   ],
   "profile": "blog",
-  "score": 35,
+  "score": 36,
   "words": 90,
 }
 `;
@@ -30,7 +30,7 @@ exports[`golden corpus > scores dense-academic.md against academic deterministic
     {
       "findings": [],
       "id": "grade-band",
-      "score": 0.007261,
+      "score": 0.014418,
       "skipped": false,
       "weight": 0.2,
     },
@@ -52,13 +52,13 @@ exports[`golden corpus > scores dense-academic.md against academic deterministic
         },
       ],
       "id": "sentence-complexity",
-      "score": 0.074074,
+      "score": 0.375,
       "skipped": false,
       "weight": 0.1,
     },
   ],
   "profile": "academic",
-  "score": 3,
+  "score": 13,
   "words": 96,
 }
 `;
@@ -69,7 +69,7 @@ exports[`golden corpus > scores good-readme.md against readme deterministically 
     {
       "findings": [],
       "id": "grade-band",
-      "score": 0.469482,
+      "score": 0.638976,
       "skipped": false,
       "weight": 0.2,
     },
@@ -82,7 +82,7 @@ exports[`golden corpus > scores good-readme.md against readme deterministically 
     },
   ],
   "profile": "readme",
-  "score": 65,
+  "score": 76,
   "words": 157,
 }
 `;
@@ -93,7 +93,7 @@ exports[`golden corpus > scores plaintext-sample.txt against plain deterministic
     {
       "findings": [],
       "id": "grade-band",
-      "score": 0.24095,
+      "score": 0.388332,
       "skipped": false,
       "weight": 0.2,
     },
@@ -106,7 +106,7 @@ exports[`golden corpus > scores plaintext-sample.txt against plain deterministic
     },
   ],
   "profile": "plain",
-  "score": 49,
+  "score": 59,
   "words": 133,
 }
 `;

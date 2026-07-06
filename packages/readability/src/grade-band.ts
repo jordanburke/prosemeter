@@ -13,6 +13,9 @@ import { None, Some, Try } from "functype"
 import { gradeBreakdown } from "./formulas"
 
 const MIN_WORDS = 30
+// Calibrated (Phase 4): softer than the default band so normal prose a grade or two off the target
+// band is not punished disproportionately.
+const KB = 0.25
 
 const fmt = (n: number): string => n.toFixed(1)
 
@@ -43,7 +46,7 @@ export const gradeBandProvider: DimensionProvider = {
 
       return {
         id: "grade-band",
-        score: band(g.median, lo, hi),
+        score: band(g.median, lo, hi, KB),
         weight: settings.weight,
         detail:
           `median grade ${fmt(g.median)} vs band ${lo}–${hi} ` +

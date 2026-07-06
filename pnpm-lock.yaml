@@ -81,6 +81,15 @@ importers:
       '@prosemeter/readability':
         specifier: workspace:^
         version: link:../readability
+      '@prosemeter/structure':
+        specifier: workspace:^
+        version: link:../structure
+      '@prosemeter/style':
+        specifier: workspace:^
+        version: link:../style
+      '@prosemeter/vocabulary':
+        specifier: workspace:^
+        version: link:../vocabulary
       functype:
         specifier: ^1.6.1
         version: 1.6.1
@@ -127,6 +136,123 @@ importers:
       syllable:
         specifier: ^5.0.1
         version: 5.0.1
+      unist-util-visit:
+        specifier: ^5.1.0
+        version: 5.1.0
+    devDependencies:
+      '@prosemeter/core':
+        specifier: workspace:^
+        version: link:../core
+      '@types/nlcst':
+        specifier: ^2.0.3
+        version: 2.0.3
+      '@types/node':
+        specifier: ^24.13.2
+        version: 24.13.2
+      ts-builds:
+        specifier: ^3.2.1
+        version: 3.2.1(@typescript-eslint/eslint-plugin@8.62.1(@typescript-eslint/parser@8.62.1(eslint@10.6.0)(typescript@6.0.3))(eslint@10.6.0)(typescript@6.0.3))(@typescript-eslint/parser@8.62.1(eslint@10.6.0)(typescript@6.0.3))(tsdown@0.22.3(typescript@6.0.3))(vite@8.0.11(@types/node@24.13.2))
+      tsdown:
+        specifier: ^0.22.3
+        version: 0.22.3(typescript@6.0.3)
+      vitest:
+        specifier: ^4.1.9
+        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(@vitest/ui@4.1.9)(vite@8.0.11(@types/node@24.13.2))
+
+  packages/structure:
+    dependencies:
+      functype:
+        specifier: ^1.6.1
+        version: 1.6.1
+      mdast-util-to-string:
+        specifier: ^4.0.0
+        version: 4.0.0
+      unist-util-visit:
+        specifier: ^5.1.0
+        version: 5.1.0
+    devDependencies:
+      '@prosemeter/core':
+        specifier: workspace:^
+        version: link:../core
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
+      '@types/nlcst':
+        specifier: ^2.0.3
+        version: 2.0.3
+      '@types/node':
+        specifier: ^24.13.2
+        version: 24.13.2
+      ts-builds:
+        specifier: ^3.2.1
+        version: 3.2.1(@typescript-eslint/eslint-plugin@8.62.1(@typescript-eslint/parser@8.62.1(eslint@10.6.0)(typescript@6.0.3))(eslint@10.6.0)(typescript@6.0.3))(@typescript-eslint/parser@8.62.1(eslint@10.6.0)(typescript@6.0.3))(tsdown@0.22.3(typescript@6.0.3))(vite@8.0.11(@types/node@24.13.2))
+      tsdown:
+        specifier: ^0.22.3
+        version: 0.22.3(typescript@6.0.3)
+      vitest:
+        specifier: ^4.1.9
+        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(@vitest/ui@4.1.9)(vite@8.0.11(@types/node@24.13.2))
+
+  packages/style:
+    dependencies:
+      functype:
+        specifier: ^1.6.1
+        version: 1.6.1
+      nlcst-to-string:
+        specifier: ^4.0.0
+        version: 4.0.0
+      retext-intensify:
+        specifier: ^7.0.0
+        version: 7.0.0
+      retext-passive:
+        specifier: ^5.0.0
+        version: 5.0.0
+      retext-redundant-acronyms:
+        specifier: ^5.0.0
+        version: 5.0.0
+      retext-repeated-words:
+        specifier: ^5.0.0
+        version: 5.0.0
+      retext-simplify:
+        specifier: ^8.0.0
+        version: 8.0.0
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
+      unist-util-visit:
+        specifier: ^5.1.0
+        version: 5.1.0
+      vfile:
+        specifier: ^6.0.3
+        version: 6.0.3
+    devDependencies:
+      '@prosemeter/core':
+        specifier: workspace:^
+        version: link:../core
+      '@types/nlcst':
+        specifier: ^2.0.3
+        version: 2.0.3
+      '@types/node':
+        specifier: ^24.13.2
+        version: 24.13.2
+      ts-builds:
+        specifier: ^3.2.1
+        version: 3.2.1(@typescript-eslint/eslint-plugin@8.62.1(@typescript-eslint/parser@8.62.1(eslint@10.6.0)(typescript@6.0.3))(eslint@10.6.0)(typescript@6.0.3))(@typescript-eslint/parser@8.62.1(eslint@10.6.0)(typescript@6.0.3))(tsdown@0.22.3(typescript@6.0.3))(vite@8.0.11(@types/node@24.13.2))
+      tsdown:
+        specifier: ^0.22.3
+        version: 0.22.3(typescript@6.0.3)
+      vitest:
+        specifier: ^4.1.9
+        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(@vitest/ui@4.1.9)(vite@8.0.11(@types/node@24.13.2))
+
+  packages/vocabulary:
+    dependencies:
+      functype:
+        specifier: ^1.6.1
+        version: 1.6.1
+      nlcst-to-string:
+        specifier: ^4.0.0
+        version: 4.0.0
       unist-util-visit:
         specifier: ^5.1.0
         version: 5.1.0
@@ -689,6 +815,9 @@ packages:
   '@types/pluralize@0.0.29':
     resolution: {integrity: sha512-BYOID+l2Aco2nBik+iYS4SZX0Lf20KPILP5RGmM1IgzdwNdTs0eebiFriOPcej1sX9mLnSoiNte5zcFxssgpGA==}
 
+  '@types/pluralize@0.0.30':
+    resolution: {integrity: sha512-kVww6xZrW/db5BR9OqiT71J9huRdQ+z/r+LbDuT7/EK50mCmj5FoaIARnVv0rvjUS/YpDox0cDU9lpQT011VBA==}
+
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
@@ -1141,6 +1270,9 @@ packages:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
     engines: {node: '>=8'}
 
+  fillers@2.0.1:
+    resolution: {integrity: sha512-VrPqzZILeo5U0vc32VlJl0cwseV/Vpe3uRFM2e9MQy2YlG0cSCnZeJ/wsR1TBJcQKTuOSrRb5GPqRiasyKP5OQ==}
+
   find-up@4.1.0:
     resolution: {integrity: sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==}
     engines: {node: '>=8'}
@@ -1226,6 +1358,9 @@ packages:
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
+
+  hedges@2.0.1:
+    resolution: {integrity: sha512-/TJb3QUphoIM/Vh2FcxR8GckKVzDRz816b5Afim5nQmZMizY6/n8/Q+8NI9XHrNgTFqDUsL6iyNk1008bGwS/g==}
 
   hookable@6.1.1:
     resolution: {integrity: sha512-U9LYDy1CwhMCnprUfeAZWZGByVbhd54hwepegYTK7Pi5NvqEj63ifz5z+xukznehT7i6NIZRu89Ay1AZmRsLEQ==}
@@ -1599,6 +1734,15 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
+  nlcst-is-literal@3.0.0:
+    resolution: {integrity: sha512-LRlEzrPojNGqS5J48J5spHwwhri2mPAdls8Tf1u3h6cx2XLmBKpW97gIYo+J/nPR3DyjgX3aKginSEK53OWTCA==}
+
+  nlcst-normalize@4.0.0:
+    resolution: {integrity: sha512-R7t5UaYyCB6vN/o9PKGM/kFf5exb8RDiS6cx5BC1r3wKSHFtUyAehEVwT5TXG19sAOrM6O2QxXdWM9/tPdQseA==}
+
+  nlcst-search@4.0.0:
+    resolution: {integrity: sha512-QYewpDKfNwWmIoX6NTMn75/V4KFLTI5y8Am8QfqHTLjI1yl//1WCOiTEycG6wO5qcsSQ7i13ULfOhmjVsKd7yA==}
+
   nlcst-to-string@4.0.0:
     resolution: {integrity: sha512-YKLBCcUYKAg0FNlOBT6aI91qFmSiFKiluk655WzPF+DDMA02qIyy8uiRqI8QXtcFpEvll12LpL5MXqEmAZ+dcA==}
 
@@ -1726,6 +1870,9 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  quotation@2.0.3:
+    resolution: {integrity: sha512-yEc24TEgCFLXx7D4JHJJkK4JFVtatO8fziwUxY4nB/Jbea9o9CVS3gt22mA0W7rPYAGW2fWzYDSOtD94PwOyqA==}
+
   read-yaml-file@1.1.0:
     resolution: {integrity: sha512-VIMnQi/Z4HT2Fxuwg5KrY174U1VdUIASQVWXXyqtNRtxSr9IYkn1rsI6Tb6HsrHCmB7gVpNwX6JxPTHcH6IoTA==}
     engines: {node: '>=6'}
@@ -1752,6 +1899,21 @@ packages:
 
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
+
+  retext-intensify@7.0.0:
+    resolution: {integrity: sha512-wzhhiuCXYViQbvR9AdNhCeeDf3C9ImTtjwIPCYc2EL37SfMQ94WARbKaUytJO+DWsRQLlpztwwR3JyOhGBnsag==}
+
+  retext-passive@5.0.0:
+    resolution: {integrity: sha512-N9PpBPvE37Z5h/hvgfSIFJNB4E/iYJ9EHr848t53hbKRJkD7hWJf4D+UOIj5fxjOOO/WQKX53xLypEQxHWuCtA==}
+
+  retext-redundant-acronyms@5.0.0:
+    resolution: {integrity: sha512-yOxwWyPmnf9FwUTN4tQkW3BUDdV6P+Q1oQ7x4QKlP9WfM5QWr1Vi0ceqisIo89reB3sa5OKzv8eNKrhtY0DDQA==}
+
+  retext-repeated-words@5.0.0:
+    resolution: {integrity: sha512-PY8Zt+4Akv78OgZdwSvbN6fl2Eg3UMVz/uppEEVNO/sGUi2N1t8YOPi+F2twvlVSjOFMIPIBueceRfteSOsAWw==}
+
+  retext-simplify@8.0.0:
+    resolution: {integrity: sha512-epr9GOhYAqyG34WRpt6irnlNpG7TKZhxzZR2VsdgpfqTafy/VUo0GlnZAC8qXJNgi7y3ZQGC3bTYAUoNnWQorA==}
 
   reusify@1.1.0:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
@@ -1999,6 +2161,12 @@ packages:
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
 
+  unist-util-find-after@5.0.0:
+    resolution: {integrity: sha512-amQa0Ep2m6hE2g72AugUItjbuM8X8cGQnFoHk0pGfrFeT9GZhzN5SW8nRsiGKK7Aif4CrACPENkA6P/Lw6fHGQ==}
+
+  unist-util-find-before@4.0.1:
+    resolution: {integrity: sha512-hfpCNqPbCOseOjHU8oBkRXM8gDQ++Ua3dN7sDYz7VJ+1alt+yd/I+ECZDhv1aqpJ1x47AHbzP/xA0jWf4omAIw==}
+
   unist-util-is@6.0.1:
     resolution: {integrity: sha512-LsiILbtBETkDz8I9p1dQ0uyRUWuaQzd/cuEeS1hoRSyW5E5XGmTzlwY1OrNzzakGowI9Dr/I8HVaw4hTtnxy8g==}
 
@@ -2122,6 +2290,9 @@ packages:
         optional: true
       jsdom:
         optional: true
+
+  weasels@2.0.1:
+    resolution: {integrity: sha512-gRFUOte0u784vpfASyx4dQYprkWFCGQYNVx0y7wMWH90UyNJ9eXyI+C/gPuBFSEPX3r4C3574ury0ICQCiPHEg==}
 
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
@@ -2688,6 +2859,8 @@ snapshots:
 
   '@types/pluralize@0.0.29': {}
 
+  '@types/pluralize@0.0.30': {}
+
   '@types/unist@3.0.3': {}
 
   '@typescript-eslint/eslint-plugin@8.62.1(@typescript-eslint/parser@8.62.1(eslint@10.6.0)(typescript@6.0.3))(eslint@10.6.0)(typescript@6.0.3)':
@@ -3148,6 +3321,8 @@ snapshots:
     dependencies:
       to-regex-range: 5.0.1
 
+  fillers@2.0.1: {}
+
   find-up@4.1.0:
     dependencies:
       locate-path: 5.0.0
@@ -3224,6 +3399,8 @@ snapshots:
   gunning-fog@2.0.1: {}
 
   has-flag@4.0.0: {}
+
+  hedges@2.0.1: {}
 
   hookable@6.1.1: {}
 
@@ -3736,6 +3913,24 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
+  nlcst-is-literal@3.0.0:
+    dependencies:
+      '@types/nlcst': 2.0.3
+      '@types/unist': 3.0.3
+      nlcst-to-string: 4.0.0
+
+  nlcst-normalize@4.0.0:
+    dependencies:
+      '@types/nlcst': 2.0.3
+      nlcst-to-string: 4.0.0
+
+  nlcst-search@4.0.0:
+    dependencies:
+      '@types/nlcst': 2.0.3
+      nlcst-is-literal: 3.0.0
+      nlcst-normalize: 4.0.0
+      unist-util-visit: 5.1.0
+
   nlcst-to-string@4.0.0:
     dependencies:
       '@types/nlcst': 2.0.3
@@ -3846,6 +4041,8 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
+  quotation@2.0.3: {}
+
   read-yaml-file@1.1.0:
     dependencies:
       graceful-fs: 4.2.11
@@ -3893,6 +4090,57 @@ snapshots:
   resolve-from@5.0.0: {}
 
   resolve-pkg-maps@1.0.0: {}
+
+  retext-intensify@7.0.0:
+    dependencies:
+      '@types/nlcst': 2.0.3
+      fillers: 2.0.1
+      hedges: 2.0.1
+      nlcst-search: 4.0.0
+      nlcst-to-string: 4.0.0
+      quotation: 2.0.3
+      unist-util-position: 5.0.0
+      vfile: 6.0.3
+      weasels: 2.0.1
+
+  retext-passive@5.0.0:
+    dependencies:
+      '@types/nlcst': 2.0.3
+      nlcst-search: 4.0.0
+      nlcst-to-string: 4.0.0
+      unist-util-find-before: 4.0.1
+      unist-util-position: 5.0.0
+      vfile: 6.0.3
+
+  retext-redundant-acronyms@5.0.0:
+    dependencies:
+      '@types/nlcst': 2.0.3
+      '@types/pluralize': 0.0.30
+      nlcst-normalize: 4.0.0
+      nlcst-search: 4.0.0
+      nlcst-to-string: 4.0.0
+      pluralize: 8.0.0
+      quotation: 2.0.3
+      unist-util-find-after: 5.0.0
+      unist-util-position: 5.0.0
+      vfile: 6.0.3
+
+  retext-repeated-words@5.0.0:
+    dependencies:
+      '@types/nlcst': 2.0.3
+      nlcst-to-string: 4.0.0
+      unist-util-position: 5.0.0
+      unist-util-visit: 5.1.0
+      vfile: 6.0.3
+
+  retext-simplify@8.0.0:
+    dependencies:
+      '@types/nlcst': 2.0.3
+      nlcst-search: 4.0.0
+      nlcst-to-string: 4.0.0
+      quotation: 2.0.3
+      unist-util-position: 5.0.0
+      vfile: 6.0.3
 
   reusify@1.1.0: {}
 
@@ -4177,6 +4425,16 @@ snapshots:
       trough: 2.2.0
       vfile: 6.0.3
 
+  unist-util-find-after@5.0.0:
+    dependencies:
+      '@types/unist': 3.0.3
+      unist-util-is: 6.0.1
+
+  unist-util-find-before@4.0.1:
+    dependencies:
+      '@types/unist': 3.0.3
+      unist-util-is: 6.0.1
+
   unist-util-is@6.0.1:
     dependencies:
       '@types/unist': 3.0.3
@@ -4300,6 +4558,8 @@ snapshots:
       '@vitest/ui': 4.1.9(vitest@4.1.9)
     transitivePeerDependencies:
       - msw
+
+  weasels@2.0.1: {}
 
   which@2.0.2:
     dependencies:

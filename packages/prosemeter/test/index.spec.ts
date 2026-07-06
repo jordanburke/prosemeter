@@ -14,7 +14,12 @@ describe("library API", () => {
       },
       (result) => {
         expect(result.profile).toBe("readme")
-        expect(result.dimensions.map((d) => d.id)).toEqual(["grade-band", "sentence-complexity"])
+        const ids = result.dimensions.map((d) => d.id)
+        expect(ids).toContain("grade-band")
+        expect(ids).toContain("passive-voice")
+        expect(ids).toContain("heading-hierarchy")
+        expect(ids).toContain("lexical-diversity")
+        expect(ids.length).toBe(15)
         expect(result.version).toBeTruthy()
       },
     )
