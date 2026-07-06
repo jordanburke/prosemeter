@@ -37,7 +37,7 @@ Carried over from functype-eval, plus loop-specific rules:
 2. **Don't reimplement rules.** Style rules come from retext plugins. If a needed rule doesn't exist, prefer contributing a retext plugin (or a small in-house rule module clearly marked as such) over forking rule logic into scorers.
 3. **Pure core.** `@prosemeter/core` knows nothing about NLP rules; scorer packages know nothing about aggregation, profiles, or output formats.
 4. **The loop contract is the API.** Score alone is insufficient; every release must keep findings actionable (location + hint), deltas computable, and convergence decidable.
-5. **Dogfood functype.** Core uses `Option` for absent values, `Either`/`Try` for fallible operations, `Validated` for accumulating config/parse errors. No `any`; strict TS everywhere.
+5. **Dogfood functype.** Core uses `Option` for absent values, `Either`/`Try` for fallible operations, and `FormValidation<T>` (= `Either<List<TypedError<"VALIDATION_FAILED">>, T>`) with `TypedError.validation(...)` for accumulating config/parse errors. No `any`; strict TS everywhere. (There is no type named `Validated` in functype — `FormValidation` is the accumulating-validation shape.)
 6. **Dogfood prosemeter.** CI scores this repo's own README against the `readme` profile with a threshold gate.
 
 ---
@@ -204,7 +204,7 @@ Built-in profiles (v1):
 | `marketing` | 6–9 | Brevity and simplicity harsh, hedging harsh, lexical-diversity relaxed |
 | `academic` | 12–16 | Passive voice tolerated, hedging tolerated, grade band high |
 
-User overrides via `prosemeter.config.json` (cwd or `--config`): `{ "extends": "readme", "gradeBand": {...}, "weights": {...}, "rules": {...} }`. Config validation accumulates all errors via `Validated` and reports them together.
+User overrides via `prosemeter.config.json` (cwd or `--config`): `{ "extends": "readme", "gradeBand": {...}, "weights": {...}, "rules": {...} }`. Config validation accumulates all errors into a `FormValidation<ResolvedConfig>` (= `Either<List<TypedError<"VALIDATION_FAILED">>, ResolvedConfig>`) and reports them together, building each error with `TypedError.validation(field, value, rule)`. Note: functype's `Validation.form` is flat/per-field, so cross-field checks (`lo < hi`) and dynamic-key records (`weights.*`, `rules.*`) hand-accumulate into the `List<TypedError>` and return the same `FormValidation` shape.
 
 ### 4.5 Score result (the JSON contract)
 
@@ -386,7 +386,7 @@ Each phase lands green (`turbo run validate`) before the next starts.
 - Verify npm package names/health before adding deps (`retext-*` plugin set, wooorm formula packages, `syllable`); the retext cliché plugin specifically needs verification — if unmaintained/absent, port write-good's cliché list in-house per doctrine rule 2.
 - Look up unfamiliar libs in context7 before use (unified/remark/retext APIs have shifted across majors; all are ESM-only — fine, this repo is ESM-only).
 - Reference implementations to read first: `/Users/jordanburke/IdeaProjects/functype/packages/functype-eval` (scoring engine patterns), `/Users/jordanburke/IdeaProjects/functype/turbo.json` + root `package.json` (monorepo shape), `/Users/jordanburke/IdeaProjects/functype/packages/mcp-server` (fastmcp usage).
-- functype (`Option`, `Either`, `Try`, `Validated`) is a regular published dependency of `@prosemeter/core` — not a workspace link.
+- functype (`Option`, `Either`, `Try`, `FormValidation`/`TypedError`) is a regular published dependency of `@prosemeter/core` — not a workspace link.
 
 ## 10. Non-goals (v1)
 
