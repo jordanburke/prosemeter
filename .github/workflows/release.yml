@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    branches: ["main"]
+
+concurrency: release-${{ github.ref }}
+
+# id-token: write enables npm OIDC trusted publishing + provenance (no NPM_TOKEN needed).
+# Requires a trusted publisher configured for each package on npmjs.com pointing at this
+# repo + workflow, and Node 24+ (npm 11.5.1+) — the .nvmrc pins that.
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release:
+    name: Version or publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # changesets/action opens (or updates) a "Version Packages" PR when changesets are
+      # present, and runs `pnpm release` to publish once that PR merges.
+      - name: Create release PR or publish
+        uses: changesets/action@v1
+        with:
+          version: pnpm version-packages
+          publish: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

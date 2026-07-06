@@ -37,5 +37,5 @@ jobs:
       - name: Run turbo validate
         run: pnpm turbo run validate
 
-      - name: Dogfood — score README against the readme profile
-        run: pnpm --filter prosemeter exec prosemeter score README.md --profile readme --threshold 70
+      - name: Dogfood — score the root README against the readme profile
+        run: node packages/prosemeter/dist/cli/index.js score README.md --profile readme --threshold 70

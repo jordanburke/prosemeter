@@ -55,6 +55,17 @@ export const ACRONYM_ALLOWLIST: ReadonlyArray<string> = [
   "ASAP",
   "AKA",
   "ETC",
+  "MIT",
+  "GPL",
+  "BSD",
+  "LTS",
+  "GNU",
+  // Common all-caps words that are not acronyms.
+  "README",
+  "TODO",
+  "FIXME",
+  "NOTE",
+  "WARNING",
 ]
 
 /** US/UK spelling pairs, `[usForm, ukForm]`, lower-cased. */
