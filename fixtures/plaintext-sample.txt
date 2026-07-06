@@ -1,0 +1,11 @@
+Prose meters measure writing the way a compiler measures code. You give the tool
+a document and it hands back a single number along with a short list of things to
+fix. The number is not the point. The list is the point.
+
+An agent that revises a draft needs to know two things. It needs to know whether
+the new draft is better than the old one. It also needs to know when to stop. A
+score answers the first question. A convergence check answers the second.
+
+Most writing tools stop at linting. They tell you a sentence is passive or a word
+is vague. That is useful, but it does not add up to a verdict. Prosemeter adds the
+verdict, and it keeps the linting underneath so the advice stays concrete.

@@ -1,3 +1,6 @@
+packages:
+  - "packages/*"
+
 # Hoist CLI tool binaries from peer dependencies.
 # pnpm 11 only reads auth/registry from .npmrc; all other settings live here.
 publicHoistPattern:
