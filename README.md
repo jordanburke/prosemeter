@@ -1,120 +1,122 @@
-# ts-builds-template
+# prosemeter
 
-[![Node.js CI](https://github.com/jordanburke/ts-builds-template/actions/workflows/node.js.yml/badge.svg)](https://github.com/jordanburke/ts-builds-template/actions/workflows/node.js.yml)
-[![npm version](https://img.shields.io/npm/v/ts-builds-template.svg)](https://www.npmjs.com/package/ts-builds-template)
-[![npm downloads](https://img.shields.io/npm/dm/ts-builds-template.svg)](https://www.npmjs.com/package/ts-builds-template)
-[![GitHub stars](https://img.shields.io/github/stars/jordanburke/ts-builds-template.svg?style=flat&logo=github)](https://github.com/jordanburke/ts-builds-template/stargazers)
+[![CI](https://github.com/jordanburke/prosemeter/actions/workflows/ci.yml/badge.svg)](https://github.com/jordanburke/prosemeter/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A modern TypeScript library template with standardized build scripts and tooling.
+A deterministic scoring and feedback-loop layer for prose.
 
-## Features
+Agents close the loop on code with ease. Compilers, linters, and tests hand back
+clear, machine-readable signals. Prose has no such signal. An agent that writes a
+README or a report gets no objective answer to three questions: is this draft
+better than the last one, what should I fix, and when should I stop.
 
-- **Modern Build System**: [ts-builds](https://github.com/jordanburke/ts-builds) + [tsdown](https://tsdown.dev/) for fast bundling
-- **Testing**: [Vitest](https://vitest.dev/) with coverage reporting
-- **Code Quality**: ESLint + Prettier with automatic formatting and fixing
-- **ESM Output**: ES module output with proper TypeScript declarations
-- **Standardized Scripts**: Consistent commands via ts-builds across all projects
+prosemeter answers all three. It scores a document from zero to one hundred
+against a named profile. It returns findings with locations and fix hints. It
+compares a draft to a baseline and reports a convergence verdict. That is
+everything an agent needs to revise, measure, and terminate.
 
-## Requirements
+The scoring path is deterministic. The same input always yields the same output.
+There are no model calls, no network, and no randomness. That is what makes it
+usable as a fitness function.
 
-- **Node.js 24+** (pinned in `.nvmrc`; npm 11.5.1+ also fixes OIDC trusted publishing)
-- **pnpm 11+** (pinned via the `packageManager` field — run `corepack enable` to use the exact version)
-
-## Quick Start
-
-1. **Use this template** to create a new repository
-2. **Clone your new repository**
-3. **Install dependencies**: `pnpm install`
-4. **Start developing**: `pnpm dev` (builds with watch mode)
-5. **Before committing**: `pnpm validate` (format + lint + test + build)
-
-## Development Commands
-
-### Pre-Checkin Command
+## Install
 
 ```bash
-pnpm validate  # Main command: format, lint, test, and build everything
+pnpm add prosemeter
 ```
 
-### Individual Commands
+The bundle ships a library and a command-line tool. An MCP server ships
+separately as `@prosemeter/mcp`.
+
+## Command line
+
+Score a file and print a report:
 
 ```bash
-# Formatting
-pnpm format        # Format code with Prettier
-pnpm format:check  # Check formatting without writing
-
-# Linting
-pnpm lint          # Fix ESLint issues
-pnpm lint:check    # Check ESLint issues without fixing
-
-# Testing
-pnpm test          # Run tests once
-pnpm test:watch    # Run tests in watch mode
-pnpm test:coverage # Run tests with coverage report
-
-# Building
-pnpm build         # Production build
-pnpm dev           # Development mode with watch
-
-# Type Checking
-pnpm typecheck     # Check TypeScript types
+prosemeter score README.md --profile readme
 ```
 
-## Publishing
-
-The template automatically runs `pnpm validate` before publishing via the `prepublishOnly` script.
+Read a draft from standard input, which is handy for agents:
 
 ```bash
-npm version patch|minor|major
-npm publish --access public
+cat draft.md | prosemeter score - --profile blog --json
 ```
 
-## Project Structure
+The tool exits zero on success, one when the score falls below `--threshold`,
+and two when the input is empty or the configuration is invalid. That contract
+makes it easy to gate a document in continuous integration.
 
+## Library
+
+```ts
+import { score, compareBaseline, checkConvergence } from "prosemeter"
+
+const result = score(draft, { profile: "readme" })
+
+result.map((current) => {
+  const delta = compareBaseline(current, previous)
+  const verdict = checkConvergence([62, 71, 74, 74.5], { threshold: 80 })
+  return { delta, verdict }
+})
 ```
-src/
-├── index.ts          # Main library entry point
-test/
-├── *.spec.ts         # Test files
-dist/                 # Built output (ES module + types)
-```
 
-## Tooling
+`score` returns an `Either` so parse and configuration errors stay explicit. A
+`ScoreResult` carries the composite score, per-dimension scores, and findings.
 
-- **Build**: [ts-builds](https://github.com/jordanburke/ts-builds) - Centralized TypeScript toolchain
-- **Bundler**: [tsdown](https://tsdown.dev/) - Fast TypeScript bundler (successor to tsup)
-- **Test**: [Vitest](https://vitest.dev/) - Fast unit test framework
-- **Lint**: [ESLint](https://eslint.org/) with TypeScript support
-- **Format**: [Prettier](https://prettier.io/) with ESLint integration
-- **Package Manager**: [pnpm](https://pnpm.io/) for fast, efficient installs
+## The loop
 
-## Claude Code Skill
+The loop is the point. A score alone is not enough, so the contract keeps every
+piece an agent needs to iterate:
 
-This repository includes a Claude Code skill for bootstrapping new TypeScript libraries from this template:
+1. Score the draft.
+2. Revise it using the findings and their hints.
+3. Score again, then compare against the previous result.
+4. Repeat while the convergence check returns `improving`. Stop on anything else.
 
-**Location**: `.claude/skills/ts-builds-template/`
+The convergence verdict is the stop condition. It reads a score history and
+returns `improving`, `plateaued`, `oscillating`, or `converged`. An agent revises
+while the trend climbs and stops once it flattens or the target is met.
 
-**Usage**: When using Claude Code, the skill provides guidance for:
+## MCP server
 
-- Cloning and customizing this template for a new library
-- Understanding the project structure and dev workflow
-- Publishing to npm
-
-**Installation** (for use in other projects):
+The MCP server exposes the same engine to any client that speaks the Model
+Context Protocol. It offers five tools: `score_text`, `score_file`,
+`compare_baseline`, `check_convergence`, and `list_profiles`. Each description
+teaches the loop, so an agent learns how to use the tools together.
 
 ```bash
-# Copy the skill to your Claude Code skills directory
-cp -r .claude/skills/ts-builds-template ~/.claude/skills/
+prosemeter-mcp
 ```
 
-**Related Skills**: For tooling configuration, migration guides, and standardizing existing projects, see the [ts-builds](https://github.com/jordanburke/ts-builds) skill.
+Point your client at that binary. The server runs over standard input and
+output.
 
-**References**:
+## Profiles
 
-- [CLAUDE.md](./CLAUDE.md) - Development guidance for this project
-- [.claude/skills/ts-builds-template/](./.claude/skills/ts-builds-template/) - Complete skill documentation
+A profile tunes the scoring for a kind of document. It sets a target reading
+grade, weights the dimensions, and adjusts individual rules. Six profiles ship
+built in: `plain`, `readme`, `api-docs`, `blog`, `marketing`, and `academic`.
+List them with `prosemeter profiles`. A `prosemeter.config.json` file can extend
+any profile with your own weights, bands, and terminology.
 
----
+## How scoring works
 
-_This template is based on the earlier work of https://github.com/orabazu/tsup-library-template but updated with modern tooling and standardized scripts._
+The engine parses each document once and shares the result with every check.
+Fifteen dimensions across four areas contribute to the score: readability,
+style, structure, and vocabulary. Each dimension maps its raw signal to a value
+between zero and one, and the composite is a weighted average. A skipped
+dimension redistributes its weight, so the score stays a proper average.
+
+Style rules come from the retext ecosystem rather than a private reimplementation.
+Readability uses the standard grade formulas. The design favors small, honest
+checks over clever ones.
+
+## Packages
+
+prosemeter is a small monorepo. The `prosemeter` bundle is the batteries-included
+entry point. `@prosemeter/core` holds the engine, and four scorer packages supply
+the dimensions. `@prosemeter/mcp` wraps the bundle for MCP clients.
+
+## License
+
+MIT

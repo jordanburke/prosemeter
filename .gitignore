@@ -2,6 +2,8 @@
 *.iml
 lib
 dist
+.turbo
+.prosemeter
 
 # Logs
 logs

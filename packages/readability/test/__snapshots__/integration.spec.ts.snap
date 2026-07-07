@@ -1,0 +1,112 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`golden corpus > scores choppy-simplistic.md against blog deterministically 1`] = `
+{
+  "dimensions": [
+    {
+      "findings": [],
+      "id": "grade-band",
+      "score": 0.045664,
+      "skipped": false,
+      "weight": 0.2,
+    },
+    {
+      "findings": [],
+      "id": "sentence-complexity",
+      "score": 1,
+      "skipped": false,
+      "weight": 0.1,
+    },
+  ],
+  "profile": "blog",
+  "score": 36,
+  "words": 90,
+}
+`;
+
+exports[`golden corpus > scores dense-academic.md against academic deterministically 1`] = `
+{
+  "dimensions": [
+    {
+      "findings": [],
+      "id": "grade-band",
+      "score": 0.014418,
+      "skipped": false,
+      "weight": 0.2,
+    },
+    {
+      "findings": [
+        {
+          "excerpt": "The epistemological ramifications of the aforementioned methodological framework necessitate a comprehensive reconsider…",
+          "hint": "51 words, grade ~40 — split or simplify.",
+          "line": 3,
+          "rule": "sentence-length",
+          "severity": "warn",
+        },
+        {
+          "excerpt": "Furthermore, the inextricable interconnectedness of these phenomenological considerations, when subjected to rigorous a…",
+          "hint": "41 words, grade ~36 — split or simplify.",
+          "line": 10,
+          "rule": "sentence-length",
+          "severity": "warn",
+        },
+      ],
+      "id": "sentence-complexity",
+      "score": 0.375,
+      "skipped": false,
+      "weight": 0.1,
+    },
+  ],
+  "profile": "academic",
+  "score": 13,
+  "words": 96,
+}
+`;
+
+exports[`golden corpus > scores good-readme.md against readme deterministically 1`] = `
+{
+  "dimensions": [
+    {
+      "findings": [],
+      "id": "grade-band",
+      "score": 0.638976,
+      "skipped": false,
+      "weight": 0.2,
+    },
+    {
+      "findings": [],
+      "id": "sentence-complexity",
+      "score": 1,
+      "skipped": false,
+      "weight": 0.1,
+    },
+  ],
+  "profile": "readme",
+  "score": 76,
+  "words": 157,
+}
+`;
+
+exports[`golden corpus > scores plaintext-sample.txt against plain deterministically 1`] = `
+{
+  "dimensions": [
+    {
+      "findings": [],
+      "id": "grade-band",
+      "score": 0.388332,
+      "skipped": false,
+      "weight": 0.2,
+    },
+    {
+      "findings": [],
+      "id": "sentence-complexity",
+      "score": 1,
+      "skipped": false,
+      "weight": 0.1,
+    },
+  ],
+  "profile": "plain",
+  "score": 59,
+  "words": 133,
+}
+`;
