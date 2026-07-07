@@ -14,6 +14,7 @@ publicHoistPattern:
 # Allow our freshly-published toolchain past the global minimumReleaseAge cooldown
 minimumReleaseAgeExclude:
   - ts-builds@3.0.1
+  - functype@1.6.2
 
 # tldjs ships with a bundled public-suffix list; its optional postinstall (a network refresh)
 # is unnecessary for prosemeter-mcp, which uses somamcp over stdio only (no gateway/URL features).

@@ -64,7 +64,7 @@
     "@prosemeter/structure": "workspace:^",
     "@prosemeter/style": "workspace:^",
     "@prosemeter/vocabulary": "workspace:^",
-    "functype": "^1.6.1"
+    "functype": "^1.6.2"
   },
   "devDependencies": {
     "@types/node": "^24.13.2",

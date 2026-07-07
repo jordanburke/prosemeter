@@ -57,7 +57,7 @@
     "@prosemeter/core": ">=0.1.0"
   },
   "dependencies": {
-    "functype": "^1.6.1",
+    "functype": "^1.6.2",
     "nlcst-to-string": "^4.0.0",
     "retext-intensify": "^7.0.0",
     "retext-passive": "^5.0.0",
