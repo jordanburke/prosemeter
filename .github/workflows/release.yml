@@ -1,8 +1,11 @@
 name: Release
 
+# Manual-only until the @prosemeter npm org and per-package trusted publishers exist
+# (see RELEASING.md). Before that, publishing 0.1.0 fails with E404 and reddens `main`
+# on every push. Once the org is registered and the first 0.1.0 is published, switch this
+# back to `on: push: branches: ["main"]` for automatic changesets releases.
 on:
-  push:
-    branches: ["main"]
+  workflow_dispatch:
 
 concurrency: release-${{ github.ref }}
 
