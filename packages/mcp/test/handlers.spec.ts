@@ -77,6 +77,30 @@ describe("checkConvergenceHandler", () => {
     const result = JSON.parse(checkConvergenceHandler({ history: [70, 82, 88], threshold: 85 })) as { verdict: string }
     expect(result.verdict).toBe("converged")
   })
+
+  it("reports regressing for a sustained decline", () => {
+    const result = JSON.parse(checkConvergenceHandler({ history: [80, 70, 60] })) as {
+      verdict: string
+      churning: string[]
+    }
+    expect(result.verdict).toBe("regressing")
+    expect(result.churning).toEqual([])
+  })
+
+  it("surfaces churning dimensions under a flat composite", () => {
+    const result = JSON.parse(
+      checkConvergenceHandler({
+        history: [70, 70.2, 69.9],
+        dimensions: [
+          { id: "readability", history: [0.3, 0.6, 0.9] },
+          { id: "style", history: [0.9, 0.6, 0.3] },
+        ],
+      }),
+    ) as { verdict: string; churning: string[]; detail: string }
+    expect(result.verdict).toBe("plateaued")
+    expect(result.churning).toEqual(["style"])
+    expect(result.detail).toContain("churning")
+  })
 })
 
 describe("listProfilesHandler", () => {

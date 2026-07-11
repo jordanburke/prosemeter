@@ -7,7 +7,7 @@
 export type { ConfigError, ConfigResult, ResolvedConfig, UserConfig } from "./config"
 export { resolveConfig } from "./config"
 export type { ConvergenceOptions } from "./loop"
-export { checkConvergence, compareBaseline } from "./loop"
+export { checkConvergence, checkConvergenceDetailed, compareBaseline } from "./loop"
 export { parse } from "./parse"
 export { DEFAULT_PROFILE, profileNames, PROFILES } from "./profiles"
 export type { RunScoreOptions, ScoreError } from "./registry"

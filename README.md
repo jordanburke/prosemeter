@@ -74,8 +74,34 @@ piece an agent needs to iterate:
 4. Repeat while the convergence check returns `improving`. Stop on anything else.
 
 The convergence verdict is the stop condition. It reads a score history and
-returns `improving`, `plateaued`, `oscillating`, or `converged`. An agent revises
-while the trend climbs and stops once it flattens or the target is met.
+returns `improving`, `plateaued`, `oscillating`, `regressing`, or `converged`. An
+agent revises while the trend climbs and stops on anything else. The distinct
+stop reasons let a harness attach policy: `regressing` (a sustained decline) is a
+cue to revert to the highest-scoring prior draft rather than continue from the
+latest. One caveat: when a `threshold` is supplied, meeting it reports
+`converged` even if the last few steps declined — above the floor is a stop
+signal regardless of trajectory.
+
+`checkConvergenceDetailed` adds a `churning` flag: given per-dimension score
+histories, it reports which dimensions oscillate or regress under a flat
+composite — the signature of an agent buying one dimension by selling another
+rather than converging on a better document.
+
+## What it is, and what it isn't
+
+A deterministic prose metric is a proxy, and any agent optimizing a proxy will
+find its seams — chopping every sentence to eight words to move a grade formula,
+say. prosemeter's profiles-and-bands design blunts the worst of this: targets are
+bands, not monotonic goals, so there is no single number to run away with. But
+the honest framing matters more than any guardrail. prosemeter is a floor and a
+loop terminator, not a quality oracle. It tells an agent whether a draft cleared
+the objective bar and when to stop iterating; it does not tell you the prose is
+good. Pair it with human or LLM review for the last mile.
+
+If you know [Vale](https://vale.sh), the obvious question is "isn't this just
+that?" Vale produces findings. prosemeter produces findings *plus* a composite
+score, a baseline delta, and a convergence verdict — the pieces an agent needs to
+revise, measure, and terminate. The score and the loop are the difference.
 
 ## MCP server
 

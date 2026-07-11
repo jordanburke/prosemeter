@@ -46,8 +46,10 @@ export { VERSION } from "./version"
 // Re-export the loop contract and the shared types so consumers need only depend on `prosemeter`.
 export type {
   ConvergenceOptions,
+  ConvergenceReport,
   ConvergenceVerdict,
   DeltaReport,
+  DimensionHistory,
   DimensionResult,
   DocumentStats,
   Finding,
@@ -57,4 +59,4 @@ export type {
   UserConfig,
   Verdict,
 } from "@prosemeter/core"
-export { checkConvergence, compareBaseline, resolveConfig } from "@prosemeter/core"
+export { checkConvergence, checkConvergenceDetailed, compareBaseline, resolveConfig } from "@prosemeter/core"
