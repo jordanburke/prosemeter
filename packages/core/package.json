@@ -1,6 +1,6 @@
 {
   "name": "@prosemeter/core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "prosemeter engine — parsing, dimension model, scoring math, profiles, and the loop contract",
   "keywords": [
     "prose",
