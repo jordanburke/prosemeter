@@ -7,9 +7,9 @@
 import { readFileSync } from "node:fs"
 import { extname } from "node:path"
 
-import type { ScoreError, ScoreResultJSON, UserConfig } from "prosemeter"
+import type { DimensionHistory, ScoreError, ScoreResultJSON, UserConfig } from "prosemeter"
 import {
-  checkConvergence,
+  checkConvergenceDetailed,
   compareBaseline,
   fromScoreResultJSON,
   profiles,
@@ -87,22 +87,25 @@ export const compareBaselineHandler = (args: CompareBaselineArgs): string =>
 
 export type CheckConvergenceArgs = {
   history: ReadonlyArray<number>
+  dimensions?: ReadonlyArray<DimensionHistory>
   threshold?: number
   window?: number
   epsilon?: number
 }
 
 export const checkConvergenceHandler = (args: CheckConvergenceArgs): string => {
-  const verdict = checkConvergence(args.history, {
+  const { verdict, churning } = checkConvergenceDetailed(args.history, args.dimensions ?? [], {
     threshold: args.threshold,
     window: args.window,
     epsilon: args.epsilon,
   })
   const detail =
-    args.history.length === 0
-      ? "no score history yet — score at least once before checking convergence"
-      : `history ${args.history.join(" → ")} → ${verdict}`
-  return pretty({ verdict, detail })
+    args.history.length <= 1
+      ? "not enough history yet — score at least twice before trusting a verdict (one score yields 'improving' by default)"
+      : churning.length > 0
+        ? `history ${args.history.join(" → ")} → ${verdict}; dimensions churning under a flat composite: ${churning.join(", ")}`
+        : `history ${args.history.join(" → ")} → ${verdict}`
+  return pretty({ verdict, churning, detail })
 }
 
 export const listProfilesHandler = (): string => pretty(profiles())

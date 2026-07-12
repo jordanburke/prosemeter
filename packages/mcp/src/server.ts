@@ -20,7 +20,7 @@ import { VERSION } from "./version"
 const PROFILE_DESC = "Target profile: plain | readme | api-docs | blog | marketing | academic (default: plain)."
 
 const LOOP =
-  "Typical agent loop: score_text → revise using the findings and hints → score_text again → compare_baseline → repeat while check_convergence returns 'improving'; stop on plateaued, oscillating, or converged."
+  "Typical agent loop: score_text → revise using the findings and hints → score_text again → compare_baseline → repeat while check_convergence returns 'improving'; stop on plateaued, oscillating, regressing, or converged. On 'regressing', prefer reverting to the highest-scoring prior draft over continuing from the latest."
 
 const locSchema = z.object({ line: z.number(), column: z.number(), offset: z.number(), length: z.number() }).nullable()
 
@@ -66,7 +66,7 @@ Tools:
 - score_text: score prose passed inline
 - score_file: score a file on disk
 - compare_baseline: diff a current ScoreResult against a previous one (resolved/new findings, per-dimension deltas)
-- check_convergence: classify a score history (improving | plateaued | oscillating | converged)
+- check_convergence: classify a score history (improving | plateaued | oscillating | regressing | converged), optionally flagging dimensions that churn under a flat composite
 - list_profiles: list the built-in profiles`,
   })
 
@@ -108,9 +108,18 @@ Tools:
 
   server.addTool({
     name: "check_convergence",
-    description: `Classify a score history to decide whether to keep revising. Returns 'improving' (keep going), 'plateaued', 'oscillating', or 'converged' (stop). ${LOOP}`,
+    description: `Classify a score history to decide whether to keep revising. Returns { verdict, churning }: verdict is 'improving' (keep going), 'plateaued', 'oscillating', 'regressing', or 'converged' (all stop). An empty or single-score history returns 'improving' by construction — a verdict on the first call is a default, not evidence; do not report it as a trend. Pass per-dimension histories to also flag dimensions churning against each other under a flat composite. ${LOOP}`,
     parameters: z.object({
-      history: z.array(z.number()).describe("Scores over time, oldest first."),
+      history: z.array(z.number()).describe("Composite scores over time (0–100), oldest first."),
+      dimensions: z
+        .array(
+          z.object({
+            id: z.string().describe("Dimension id (as in a ScoreResult's dimensions)."),
+            history: z.array(z.number()).describe("This dimension's scores (0–1), aligned with `history`."),
+          }),
+        )
+        .optional()
+        .describe("Optional per-dimension score histories; enables the `churning` flag when the composite is flat."),
       threshold: z.number().optional().describe("Target score; reaching it yields 'converged'."),
       window: z.number().optional().describe("How many recent deltas to consider (default 3)."),
       epsilon: z.number().optional().describe("Delta magnitude treated as 'no change' (default 1)."),

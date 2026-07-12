@@ -148,4 +148,20 @@ export type DeltaReport = {
   readonly findingsNew: ReadonlyArray<Finding>
 }
 
-export type ConvergenceVerdict = "improving" | "plateaued" | "oscillating" | "converged"
+export type ConvergenceVerdict = "improving" | "plateaued" | "oscillating" | "regressing" | "converged"
+
+/** One dimension's score trajectory (0–1 scores, oldest first), aligned with the composite history. */
+export type DimensionHistory = {
+  readonly id: DimensionId
+  readonly history: ReadonlyArray<number>
+}
+
+/**
+ * A convergence verdict plus which dimensions are churning under a flat composite. `churning` is
+ * informational — a flat composite is still a stop signal; the flag says *why* it stalled (dimensions
+ * trading against each other rather than converging). Empty for every non-`plateaued` verdict.
+ */
+export type ConvergenceReport = {
+  readonly verdict: ConvergenceVerdict
+  readonly churning: ReadonlyArray<DimensionId>
+}
