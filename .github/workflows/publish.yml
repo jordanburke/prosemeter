@@ -1,9 +1,9 @@
-name: Release
+name: Publish
 
 # Automatic changesets releases: a push to main with pending changesets opens a
 # "Version Packages" PR; merging that PR publishes to npm via OIDC trusted publishing.
 # workflow_dispatch is kept for manual re-runs. (Trusted publishers are configured
-# per package on npmjs.com — see RELEASING.md.)
+# per package on npmjs.com against this workflow's filename, publish.yml — see RELEASING.md.)
 on:
   push:
     branches: ["main"]
