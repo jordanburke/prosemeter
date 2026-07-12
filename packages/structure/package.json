@@ -1,6 +1,6 @@
 {
   "name": "@prosemeter/structure",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "prosemeter structure dimensions — heading hierarchy, section/paragraph length, document balance",
   "keywords": [
     "prose",

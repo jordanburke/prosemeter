@@ -1,6 +1,6 @@
 {
   "name": "@prosemeter/readability",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "prosemeter readability dimensions — grade-band and per-sentence complexity",
   "keywords": [
     "prose",
