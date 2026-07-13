@@ -71,7 +71,7 @@
   "devDependencies": {
     "@prosemeter/core": "workspace:^",
     "@types/nlcst": "^2.0.3",
-    "@types/node": "^24.13.2",
+    "@types/node": "^26.1.1",
     "ts-builds": "^3.2.1",
     "tsdown": "^0.22.3",
     "vitest": "^4.1.9"
