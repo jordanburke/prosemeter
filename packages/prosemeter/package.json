@@ -69,7 +69,7 @@
   "devDependencies": {
     "@types/node": "^24.13.2",
     "ts-builds": "^3.2.1",
-    "tsdown": "^0.22.3",
+    "tsdown": "^0.22.5",
     "vitest": "^4.1.9"
   },
   "publishConfig": {
