@@ -55,7 +55,7 @@
   ],
   "prettier": "ts-builds/prettier",
   "dependencies": {
-    "functype": "^1.6.2",
+    "functype": "^1.6.3",
     "mdast-util-to-nlcst": "^7.0.1",
     "mdast-util-to-string": "^4.0.0",
     "nlcst-to-string": "^4.0.0",

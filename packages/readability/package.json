@@ -61,7 +61,7 @@
     "coleman-liau": "^2.0.1",
     "flesch": "^2.0.1",
     "flesch-kincaid": "^2.0.1",
-    "functype": "^1.6.2",
+    "functype": "^1.6.3",
     "gunning-fog": "^2.0.1",
     "nlcst-to-string": "^4.0.0",
     "smog-formula": "^2.0.1",
