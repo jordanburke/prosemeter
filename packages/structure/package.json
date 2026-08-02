@@ -57,7 +57,7 @@
     "@prosemeter/core": ">=0.1.0"
   },
   "dependencies": {
-    "functype": "^1.6.2",
+    "functype": "^1.8.0",
     "mdast-util-to-string": "^4.0.0",
     "unist-util-visit": "^5.1.0"
   },
@@ -65,10 +65,10 @@
     "@prosemeter/core": "workspace:^",
     "@types/mdast": "^4.0.4",
     "@types/nlcst": "^2.0.3",
-    "@types/node": "^24.13.2",
-    "ts-builds": "^3.2.1",
-    "tsdown": "^0.22.3",
-    "vitest": "^4.1.9"
+    "@types/node": "^24.13.3",
+    "ts-builds": "^3.2.3",
+    "tsdown": "^0.22.14",
+    "vitest": "^4.1.10"
   },
   "publishConfig": {
     "access": "public",
