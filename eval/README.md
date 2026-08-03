@@ -110,7 +110,14 @@ These came out of the 2026-08-02 runs and are properties of the method, not of t
 spend agents re-deriving them:
 
 - Read per-dimension columns, never the composite. The composite averages the real effects away.
-- Clarity is an unresponsive dial. It sat at 51–61 across every variant including the control.
+- A dimension that does not move across variants may be broken rather than uninformative. This list
+  used to claim clarity was an unresponsive dial, on the evidence that it sat at 51–61 across every
+  variant including the control. It was instead counting domain nouns: `retext-simplify` flags
+  `effect`, `request`, `render`, `function`, and `component` as wordy, which tracks subject matter,
+  not writing. Over the run-2 corpus its mean varied 0.3 points across variants and 49.6 across
+  tasks. After `CLARITY_IGNORE_DEFAULT` (0.3.0) those become 1.9 and 12.9. Before concluding a
+  dimension is inert, split its variance by task as well as by variant — a topic-dominated dimension
+  is a bug report.
 - Instruction wording does not reach factual accuracy. Two runs, one targeted mechanism test,
   no effect.
 - Task difficulty dominates instruction wording for accuracy — broad-clean spanned 3/15 to 14/15

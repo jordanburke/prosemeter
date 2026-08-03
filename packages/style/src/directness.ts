@@ -3,6 +3,7 @@
 import retextIntensify from "retext-intensify"
 import { unified } from "unified"
 
+import { resolveIgnore } from "./ignore-options"
 import { retextDensityDimension } from "./retext-dimension"
 
 /**
@@ -74,19 +75,6 @@ export const HEDGE_IGNORE_DEFAULT: ReadonlyArray<string> = [
   "works",
 ]
 
-const asStringArray = (value: unknown): ReadonlyArray<string> =>
-  Array.isArray(value) ? value.filter((v): v is string => typeof v === "string") : []
-
-/**
- * Resolve the ignore list from a profile's `dimensionOptions.directness`:
- * `ignore` adds to the defaults, and `useDefaultIgnore: false` drops them.
- */
-export const resolveHedgeIgnore = (options: Readonly<Record<string, unknown>>): ReadonlyArray<string> => {
-  const extra = asStringArray(options.ignore)
-  const base = options.useDefaultIgnore === false ? [] : HEDGE_IGNORE_DEFAULT
-  return [...base, ...extra]
-}
-
 export const directnessProvider = retextDensityDimension({
   id: "directness",
   defaultWeight: 0.05,
@@ -94,5 +82,5 @@ export const directnessProvider = retextDensityDimension({
   k: 0.04,
   label: "weasel/hedge word(s)",
   fallbackHint: "Cut the hedge or replace it with a concrete claim.",
-  buildProcessor: (options) => unified().use(retextIntensify, { ignore: resolveHedgeIgnore(options) }),
+  buildProcessor: (options) => unified().use(retextIntensify, { ignore: resolveIgnore(options, HEDGE_IGNORE_DEFAULT) }),
 })

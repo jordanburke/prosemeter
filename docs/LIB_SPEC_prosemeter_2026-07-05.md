@@ -280,7 +280,7 @@ Skip guard: documents < 30 words → `grade-band` skipped ("too short for reliab
 | Dimension | Weight | Strategy | Rules (retext plugins) |
 |---|---|---|---|
 | `active-voice` | 0.08 | density, k=0.5 | `retext-passive` |
-| `clarity` | 0.08 | density, k=0.5 | `retext-simplify` (wordy phrases → simpler alternative in hint) |
+| `clarity` | 0.08 | density, k=0.5 | `retext-simplify` (wordy phrases → simpler alternative in hint), filtered by `CLARITY_IGNORE_DEFAULT` |
 | `directness` | 0.05 | density, k=0.4 | `retext-intensify` (weasels, hedges, intensifiers), filtered by `HEDGE_IGNORE_DEFAULT` |
 | `concision` | 0.04 | density, k=0.4 | `retext-repeated-words`, `retext-redundant-acronyms`; cliché list (use a maintained retext cliché plugin if one exists — verify — else port write-good's cliché word list as an in-house rule module) |
 | `sentence-variety` | 0.05 | band | Coefficient of variation of sentence lengths; band ~[0.4, 0.9]. Monotone same-length runs → finding. |

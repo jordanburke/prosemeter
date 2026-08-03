@@ -11,12 +11,12 @@
   "date": "2026-08-02",
   "source": "run 2 — 6 tasks x 5 replicates, n=30. See LIB_RPT_qualifier-carveout_2026-08-02.md",
   "taskSet": ["T1", "T2", "T3", "T4", "T5", "T6"],
-  "rescoredAt": "0.3.0 — the HEDGE_IGNORE_DEFAULT fix changed directness scores, which moved the composite from 83.6 to 83.3. No gated metric is affected: words, jargonPct, sentenceSimplicity and gradeBand are independent dimensions and are unchanged.",
+  "rescoredAt": "0.3.0 — the HEDGE_IGNORE_DEFAULT and CLARITY_IGNORE_DEFAULT fixes changed directness and clarity scores, moving the composite from 83.6 to 89.4 and clarity from 54.1 to 90.7. No gated metric is affected: words, jargonPct, sentenceSimplicity and gradeBand are independent dimensions and are unchanged.",
   "means": {
-    "composite": 83.3,
+    "composite": 89.4,
     "gradeBand": 98.5,
     "sentenceSimplicity": 69.2,
-    "clarity": 54.1,
+    "clarity": 90.7,
     "words": 290.1,
     "jargonPct": 8.7
   },
