@@ -68,6 +68,30 @@ than producing a comparison that means nothing.
   `baseline.json` is a six-task figure; this run's 41% is a ten-task figure. Neither is wrong and
   they are not interchangeable.
 
+## Addendum — how much of the instruction is load-bearing?
+
+A 3000-character org system prompt with 2600 already used leaves 400. The shipped rules are 315
+characters, so they fit — but a tightened one-line form is 176, and nobody had tested whether the
+compression preserves the effect. Measured on the same ten tasks, 3 replicates:
+
+| variant | chars | composite | sentence-simplicity | directness | words | jargon% |
+| --- | --- | --- | --- | --- | --- | --- |
+| A — no instruction | 0 | 84.7 | 48.7 | 44.5 | 475.3 | 11.2 |
+| Et — tightened | **176** | 88.8 | **70.6** | **56.1** | 358.8 | 8.7 |
+| E — as shipped | 315 | 88.5 | 65.7 | 53.8 | **278.7** | 8.5 |
+
+**The compression costs half the length win and nothing else.** Jargon is unchanged (8.7 against
+8.5). Sentence-simplicity and directness come out higher, by about five points on a single run —
+suggestive, not established. Length is the clear loss: 24% below control against E's 41%.
+
+The likely cause is `"Cut every phrase that does not change the meaning if removed"` shortening to
+`"Cut phrases that do not change the meaning"`. "Every" appears to be load-bearing.
+
+Note that by `sentence-simplicity` — the only metric stable across both task sets — the 176-character
+form is at least as good as the full one. Use the full rules where they fit, because only they buy
+the length reduction. The tightened form is the fallback when characters are scarce, and it gives up
+a known thing rather than an unknown one.
+
 ## What this does not establish
 
 One model. Three replicates, enough for the 2–3x effects here and not for small differences. The
