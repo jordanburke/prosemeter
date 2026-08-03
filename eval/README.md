@@ -110,14 +110,27 @@ These came out of the 2026-08-02 runs and are properties of the method, not of t
 spend agents re-deriving them:
 
 - Read per-dimension columns, never the composite. The composite averages the real effects away.
+- **Split every metric's variance by task as well as by variant.** The ratio is what tells you
+  whether a metric is an instruction dial at all. Measured over run 3's 90 answers:
+
+  | metric | by variant | by task | ratio |
+  | --- | --- | --- | --- |
+  | `words` | 140.2 | 99.8 | **0.7** |
+  | `sentence-simplicity` | 19.7 | 29.6 | 1.5 |
+  | `jargon%` | 2.1 | 6.8 | 3.3 |
+  | `clarity` | 2.3 | 12.0 | 5.2 |
+
+  Below 1 means the instruction moves it more than the subject matter does. Only `words` clears
+  that; `sentence-simplicity` is close enough to use. Read `jargon%` only across a fixed task set.
 - A dimension that does not move across variants may be broken rather than uninformative. This list
   used to claim clarity was an unresponsive dial, on the evidence that it sat at 51–61 across every
-  variant including the control. It was instead counting domain nouns: `retext-simplify` flags
-  `effect`, `request`, `render`, `function`, and `component` as wordy, which tracks subject matter,
-  not writing. Over the run-2 corpus its mean varied 0.3 points across variants and 49.6 across
-  tasks. After `CLARITY_IGNORE_DEFAULT` (0.3.0) those become 1.9 and 12.9. Before concluding a
-  dimension is inert, split its variance by task as well as by variant — a topic-dominated dimension
-  is a bug report.
+  variant including the control. It was instead counting domain nouns — `retext-simplify` flags
+  `effect`, `request`, `render`, `function`, and `component` as wordy. `CLARITY_IGNORE_DEFAULT`
+  (0.3.0) fixed the dimension: corpus mean 54.1 → ~89, topic:writing ratio 165:1 → 5:1.
+- **Clarity is a good document check and a bad instruction dial.** With the dimension fixed and a
+  control in hand, it scores 88.4 uninstructed and 89.1 under the shipped rules — 0.7 points apart,
+  against 12 points across tasks. Keep it in the profile, where it correctly flags padding. Do not
+  use it to choose between prompts.
 - Instruction wording does not reach factual accuracy. Two runs, one targeted mechanism test,
   no effect.
 - Task difficulty dominates instruction wording for accuracy — broad-clean spanned 3/15 to 14/15

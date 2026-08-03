@@ -46,3 +46,4 @@ node_modules/
 # eval run artifacts — generated answers, not fixtures (see eval/README.md)
 eval/out
 eval/out-run2
+eval/out-run3
