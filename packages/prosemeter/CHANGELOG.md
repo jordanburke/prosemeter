@@ -1,5 +1,16 @@
 # prosemeter
 
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies [8dc595d]
+  - @prosemeter/style@0.3.1
+  - @prosemeter/core@0.3.1
+  - @prosemeter/readability@0.3.1
+  - @prosemeter/structure@0.3.1
+  - @prosemeter/vocabulary@0.3.1
+
 ## 0.3.0
 
 ### Minor Changes
