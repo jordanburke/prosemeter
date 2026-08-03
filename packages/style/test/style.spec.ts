@@ -90,6 +90,12 @@ describe("directness (retext-intensify)", () => {
     expect(run(directnessProvider, raw).findings).toHaveLength(0)
   })
 
+  it("ignores modal verbs, which state capability and obligation rather than hedge", () => {
+    const raw =
+      "# T\n\nYou can drop the index. It will fail otherwise. The key must stay stable, so you should pin it.\n"
+    expect(run(directnessProvider, raw).findings).toHaveLength(0)
+  })
+
   it("still flags genuine hedges after filtering", () => {
     const raw = "# T\n\nThis probably seems relatively useful and might arguably be several things.\n"
     expect(run(directnessProvider, raw).findings.length).toBeGreaterThan(0)

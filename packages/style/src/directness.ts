@@ -73,6 +73,26 @@ export const HEDGE_IGNORE_DEFAULT: ReadonlyArray<string> = [
   "wished",
   "wondered",
   "works",
+  // Modal verbs. In technical advice these state capability, prediction, recommendation, and
+  // obligation precisely — "you can drop it", "it will fail", "you should retry", "the key must be
+  // stable". `may`, `might` and `could` stay flagged, because those do hedge a claim.
+  "can",
+  "will",
+  "should",
+  "must",
+  "would",
+  // Ordinary verbs, flagged by part-of-speech blindness.
+  "read",
+  "find",
+  // Precise in technical prose: "exactly one version", "the right index", "already hoisted",
+  // "too slow", "much faster", "about the lockfile" (the preposition, not the approximation).
+  "exactly",
+  "already",
+  "right",
+  "real",
+  "too",
+  "much",
+  "about",
 ]
 
 export const directnessProvider = retextDensityDimension({
