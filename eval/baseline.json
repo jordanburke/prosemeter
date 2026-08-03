@@ -10,7 +10,14 @@
   "model": "claude-opus-5",
   "date": "2026-08-02",
   "source": "run 2 — 6 tasks x 5 replicates, n=30. See LIB_RPT_qualifier-carveout_2026-08-02.md",
-  "taskSet": ["T1", "T2", "T3", "T4", "T5", "T6"],
+  "taskSet": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6"
+  ],
   "rescoredAt": "0.3.0 — the HEDGE_IGNORE_DEFAULT and CLARITY_IGNORE_DEFAULT fixes changed directness and clarity scores, moving the composite from 83.6 to 89.4 and clarity from 54.1 to 90.7. No gated metric is affected: words, jargonPct, sentenceSimplicity and gradeBand are independent dimensions and are unchanged.",
   "means": {
     "composite": 89.4,
@@ -22,10 +29,35 @@
   },
   "tolerances": {
     "note": "Judgment calls, not derived from a variance estimate. They are set to catch a register change, not to detect small drifts. Widen them rather than chase noise.",
-    "words": { "max": 360, "rationale": "24% above baseline. The no-instruction control ran 550 on the 4-task set, so anything approaching that means the instruction stopped landing." },
-    "jargonPct": { "max": 10.5, "rationale": "Control was 11.1 on the 4-task set. Crossing 10.5 means vocabulary is back at baseline." },
-    "sentenceSimplicity": { "min": 63, "rationale": "Sits between E's observed range (69.2 run 2, 72.2 run 1) and E', which scored 60.3 and was called a style regression in the report. Gives E about 6 points of headroom and catches E' by about 3. A judgment call — the gate should agree with the report, which is why it is not set below 60.3." },
-    "gradeBand": { "min": 90, "rationale": "Catches over-simplification. Variant C hit 57.6 by falling below the band floor." }
+    "words": {
+      "max": 360,
+      "rationale": "Baseline 290.1 against a within-run control of 437.9. 360 sits between them, nearer the baseline, so drifting most of the way back to uninstructed length trips it."
+    },
+    "jargonPct": {
+      "max": 10.5,
+      "rationale": "Baseline 8.7 against a within-run control of 10.7. 10.5 trips just before vocabulary returns to uninstructed levels."
+    },
+    "sentenceSimplicity": {
+      "min": 63,
+      "rationale": "Sits between E's observed range (69.2 run 2, 69.9 run 3) and E', which scored 60.3 and was called a style regression. The within-run control scored 50.2, so this also catches a full reversion. A judgment call — the gate should agree with the report."
+    },
+    "gradeBand": {
+      "min": 90,
+      "rationale": "Catches over-simplification. Variant C hit 57.6 by falling below the band floor."
+    }
   },
-  "knownGap": "There is no no-instruction control on the 6-task set. Run 1's control (550 words, 11.1% jargon) used the 4-task set, so the deltas above mix task sets. Any re-run should include a control arm so the comparison is within-run."
+  "reproduced": "run 3 (2026-08-03, same model) independently reproduced E on the same task set: words 297.8, jargonPct 8.7, sentenceSimplicity 69.9, gradeBand 99.3. Every gated metric within 3% of the recorded means, so the means below are left at run 2 and the tolerances are calibrated against them.",
+  "control": {
+    "description": "No style instruction at all, same six tasks, 5 replicates, n=30. Measured in run 3 so the comparison is within-run rather than across task sets.",
+    "source": "run 3 — LIB_RPT_control-arm_2026-08-03.md",
+    "means": {
+      "composite": 85.0,
+      "gradeBand": 100.0,
+      "sentenceSimplicity": 50.2,
+      "clarity": 88.4,
+      "words": 437.9,
+      "jargonPct": 10.7
+    },
+    "deltaFromControl": "E cuts length 32% (437.9 -> 297.8), cuts jargon 2.0 points (10.7 -> 8.7), and raises sentence-simplicity 19.7 points (50.2 -> 69.9). These supersede the earlier cross-task-set figures, which compared against a 4-task control of 550 words and so overstated the length effect as ~40%."
+  }
 }
