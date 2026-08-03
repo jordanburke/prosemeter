@@ -6,7 +6,7 @@ import type { DimensionHistory, Finding, ScoreResult } from "../src/types"
 
 const finding = (excerpt: string, line: number): Finding => ({
   rule: "sentence-length",
-  dimension: "sentence-complexity",
+  dimension: "sentence-simplicity",
   severity: "warn",
   message: "hard",
   hint: "split it",
@@ -30,7 +30,7 @@ const result = (score: number, findings: ReadonlyArray<Finding>, dimScore = scor
     links: 0,
     listItems: 0,
   },
-  dimensions: [{ id: "sentence-complexity", score: dimScore, weight: 0.1, detail: "", findings, skipped: None() }],
+  dimensions: [{ id: "sentence-simplicity", score: dimScore, weight: 0.1, detail: "", findings, skipped: None() }],
   version: "0.1.0",
 })
 

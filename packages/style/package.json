@@ -1,12 +1,12 @@
 {
   "name": "@prosemeter/style",
   "version": "0.2.0",
-  "description": "prosemeter style dimensions — passive voice, clarity, hedging, redundancy, sentence variety",
+  "description": "prosemeter style dimensions — active voice, clarity, directness, concision, sentence variety",
   "keywords": [
     "prose",
     "style",
     "retext",
-    "passive-voice",
+    "active-voice",
     "prosemeter"
   ],
   "author": {

@@ -106,6 +106,14 @@ describe("checkConvergenceHandler", () => {
 describe("listProfilesHandler", () => {
   it("lists the six built-in profiles", () => {
     const profiles = JSON.parse(listProfilesHandler()) as ReadonlyArray<{ name: string }>
-    expect(profiles.map((p) => p.name)).toEqual(["plain", "readme", "api-docs", "blog", "marketing", "academic"])
+    expect(profiles.map((p) => p.name)).toEqual([
+      "plain",
+      "readme",
+      "api-docs",
+      "blog",
+      "marketing",
+      "academic",
+      "chat",
+    ])
   })
 })

@@ -47,6 +47,27 @@ export type ResolvedConfig = {
 
 const invalid = (field: string, value: unknown, rule: string): ConfigError => TypedError.validation(field, value, rule)
 
+/**
+ * Dimension IDs renamed in 0.3.0, when every dimension was made virtue-named so that "100 is always
+ * best" holds by inspection. Configs are not silently migrated: an unknown weight key is a no-op, so
+ * a user on an old name would get a config that quietly stops applying. These error instead.
+ *
+ * Deliberately not a whitelist of all known IDs — `runScore` accepts arbitrary `DimensionProvider`s,
+ * so a caller may legitimately weight a custom dimension core has never heard of.
+ */
+export const RENAMED_DIMENSIONS: Readonly<Record<string, string>> = {
+  "sentence-complexity": "sentence-simplicity",
+  "passive-voice": "active-voice",
+  hedging: "directness",
+  redundancy: "concision",
+}
+
+const validateNotRenamed = (field: string, keys: ReadonlyArray<string>): ReadonlyArray<ConfigError> =>
+  keys.flatMap((key) => {
+    const renamed = RENAMED_DIMENSIONS[key]
+    return renamed === undefined ? [] : [invalid(`${field}.${key}`, key, `was renamed to "${renamed}" in 0.3.0`)]
+  })
+
 const isSeverity = (value: unknown): value is Severity | "off" =>
   value === "info" || value === "warn" || value === "error" || value === "off"
 
@@ -91,6 +112,8 @@ export const resolveConfig = (profileName: string = DEFAULT_PROFILE, userConfig:
 
   const weights = { ...(base?.weights ?? {}), ...(userConfig.weights ?? {}) } as Record<string, number>
   errors.push(...validateWeights(userConfig.weights ?? {}))
+  errors.push(...validateNotRenamed("weights", Object.keys(userConfig.weights ?? {})))
+  errors.push(...validateNotRenamed("dimensionOptions", Object.keys(userConfig.dimensionOptions ?? {})))
 
   const rules = { ...(base?.rules ?? {}), ...(userConfig.rules ?? {}) } as Record<string, Severity | "off">
   errors.push(...validateRules(userConfig.rules ?? {}))

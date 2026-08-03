@@ -17,7 +17,7 @@ Usage:
   prosemeter --help | --version
 
 Options (score):
-  --profile <name>       plain | readme | api-docs | blog | marketing | academic  (default: plain)
+  --profile <name>       plain | readme | api-docs | blog | marketing | academic | chat  (default: plain)
   --config <path>        prosemeter.config.json (default: ./prosemeter.config.json if present)
   --json                 machine-readable ScoreResult (+ delta/convergence when applicable)
   --threshold <n>        exit 1 if the score (mean, for multiple files) is below n

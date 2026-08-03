@@ -130,7 +130,7 @@ Parsing returns `Either<ParseError, ParsedDocument>`. Empty/whitespace-only inpu
 ### 4.2 Dimension model
 
 ```ts
-type DimensionId = string          // e.g. "passive-voice", "grade-band", "heading-hierarchy"
+type DimensionId = string          // e.g. "active-voice", "grade-band", "heading-hierarchy"
 
 type Severity = "info" | "warn" | "error"
 
@@ -201,8 +201,9 @@ Built-in profiles (v1):
 | `readme` | 8–12 | Structure weighted up (headings, section length, code-ratio expected), clichés harsh |
 | `api-docs` | 8–13 | Consistency/terminology weighted up, passive voice tolerated slightly, code-ratio expected high |
 | `blog` | 7–10 | Sentence-variety and clarity weighted up, structure relaxed |
-| `marketing` | 6–9 | Brevity and simplicity harsh, hedging harsh, lexical-diversity relaxed |
-| `academic` | 12–16 | Passive voice tolerated, hedging tolerated, grade band high |
+| `marketing` | 6–9 | Brevity and simplicity harsh, directness harsh, lexical-diversity relaxed |
+| `academic` | 12–16 | Passive voice and hedging tolerated (active-voice and directness weighted down), grade band high |
+| `chat` | 7–12 | Agent chat replies: jargon and wordiness harsh; heading-hierarchy, section-length, document-balance and acronym-definition disabled |
 
 User overrides via `prosemeter.config.json` (cwd or `--config`): `{ "extends": "readme", "gradeBand": {...}, "weights": {...}, "rules": {...} }`. Config validation accumulates all errors into a `FormValidation<ResolvedConfig>` (= `Either<List<TypedError<"VALIDATION_FAILED">>, ResolvedConfig>`) and reports them together, building each error with `TypedError.validation(field, value, rule)`. Note: functype's `Validation.form` is flat/per-field, so cross-field checks (`lo < hi`) and dynamic-key records (`weights.*`, `rules.*`) hand-accumulate into the `List<TypedError>` and return the same `FormValidation` shape.
 
@@ -268,7 +269,7 @@ Default weights sum to 1.0 across the four packages. `k` = density sensitivity; 
 | Dimension | Weight | Strategy | Detail |
 |---|---|---|---|
 | `grade-band` | 0.20 | band | Median of Flesch-Kincaid, Gunning Fog, SMOG, Coleman-Liau, ARI vs profile band. Findings: none doc-level; detail reports each formula. Also reports Flesch Reading Ease as info. |
-| `sentence-complexity` | 0.10 | density, k=0.6 | Per-sentence flagging via `retext-readability` (threshold 4/7 formulas). Each hard sentence → finding with excerpt + hint ("38 words, grade ~16 — split or simplify"). |
+| `sentence-simplicity` | 0.10 | density, k=0.6 | Per-sentence flagging via `retext-readability` (threshold 4/7 formulas). Each hard sentence → finding with excerpt + hint ("38 words, grade ~16 — split or simplify"). |
 
 Formula deps: prefer the wooorm micro-packages (`flesch`, `flesch-kincaid`, `gunning-fog`, `smog-formula`, `coleman-liau`, `automated-readability`, `syllable`) feeding counts from core's `DocumentStats`. Verify current package names/health on npm at implementation time.
 
@@ -278,10 +279,10 @@ Skip guard: documents < 30 words → `grade-band` skipped ("too short for reliab
 
 | Dimension | Weight | Strategy | Rules (retext plugins) |
 |---|---|---|---|
-| `passive-voice` | 0.08 | density, k=0.5 | `retext-passive` |
+| `active-voice` | 0.08 | density, k=0.5 | `retext-passive` |
 | `clarity` | 0.08 | density, k=0.5 | `retext-simplify` (wordy phrases → simpler alternative in hint) |
-| `hedging` | 0.05 | density, k=0.4 | `retext-intensify` (weasels, hedges, intensifiers) |
-| `redundancy` | 0.04 | density, k=0.4 | `retext-repeated-words`, `retext-redundant-acronyms`; cliché list (use a maintained retext cliché plugin if one exists — verify — else port write-good's cliché word list as an in-house rule module) |
+| `directness` | 0.05 | density, k=0.4 | `retext-intensify` (weasels, hedges, intensifiers), filtered by `HEDGE_IGNORE_DEFAULT` |
+| `concision` | 0.04 | density, k=0.4 | `retext-repeated-words`, `retext-redundant-acronyms`; cliché list (use a maintained retext cliché plugin if one exists — verify — else port write-good's cliché word list as an in-house rule module) |
 | `sentence-variety` | 0.05 | band | Coefficient of variation of sentence lengths; band ~[0.4, 0.9]. Monotone same-length runs → finding. |
 
 Every retext message maps to a `Finding` with the plugin's `expected` suggestion folded into `hint`.
@@ -322,7 +323,7 @@ CLI:
 
 ```
 prosemeter score <file|glob|-> [options]
-  --profile <name>          plain | readme | api-docs | blog | marketing | academic  (default: plain)
+  --profile <name>          plain | readme | api-docs | blog | marketing | academic | chat  (default: plain)
   --config <path>           prosemeter.config.json (default: ./prosemeter.config.json if present)
   --json                    machine-readable ScoreResult (+ delta/convergence when applicable)
   --threshold <n>           exit 1 if score < n

@@ -16,7 +16,7 @@ describe("library API", () => {
         expect(result.profile).toBe("readme")
         const ids = result.dimensions.map((d) => d.id)
         expect(ids).toContain("grade-band")
-        expect(ids).toContain("passive-voice")
+        expect(ids).toContain("active-voice")
         expect(ids).toContain("heading-hierarchy")
         expect(ids).toContain("lexical-diversity")
         expect(ids.length).toBe(15)
@@ -41,9 +41,9 @@ describe("library API", () => {
     expect(reparsed.dimensions.every((d) => d.skipped === null || typeof d.skipped === "string")).toBe(true)
   })
 
-  it("profiles returns the six built-in summaries", () => {
+  it("profiles returns the seven built-in summaries", () => {
     const names = profiles().map((p) => p.name)
-    expect(names).toEqual(["plain", "readme", "api-docs", "blog", "marketing", "academic"])
+    expect(names).toEqual(["plain", "readme", "api-docs", "blog", "marketing", "academic", "chat"])
   })
 
   it("re-exports the loop contract", () => {

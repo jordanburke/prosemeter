@@ -1,5 +1,5 @@
 /**
- * sentence-complexity — per-sentence flagging of hard-to-read sentences.
+ * sentence-simplicity — per-sentence flagging of hard-to-read sentences.
  *
  * In-house rule module (doctrine rule 2): for each sentence we compute the same five-formula median
  * grade used at the document level and flag any sentence whose grade sits above the profile band's
@@ -68,15 +68,15 @@ const sentenceGrade = (c: SentenceCounts): number =>
     characters: c.characters,
   }).median
 
-export const sentenceComplexityProvider: DimensionProvider = {
-  id: "sentence-complexity",
+export const sentenceSimplicityProvider: DimensionProvider = {
+  id: "sentence-simplicity",
   defaultWeight: 0.1,
   evaluate: (doc, settings) =>
     Try((): DimensionResult => {
       const severity = (settings.severities.get(RULE) ?? "warn") as Severity | "off"
       if (severity === "off") {
         return {
-          id: "sentence-complexity",
+          id: "sentence-simplicity",
           score: 0,
           weight: settings.weight,
           detail: `skipped: rule "${RULE}" disabled`,
@@ -97,7 +97,7 @@ export const sentenceComplexityProvider: DimensionProvider = {
         const rounded = Math.round(grade)
         findings.push({
           rule: RULE,
-          dimension: "sentence-complexity",
+          dimension: "sentence-simplicity",
           severity,
           message: `Sentence reads at ~grade ${rounded}, above the target band top of ${hi}.`,
           hint: `${counts.words} words, grade ~${rounded} — split or simplify.`,
@@ -107,7 +107,7 @@ export const sentenceComplexityProvider: DimensionProvider = {
       })
 
       return {
-        id: "sentence-complexity",
+        id: "sentence-simplicity",
         score: density(findings.length, doc.stats.words, K),
         weight: settings.weight,
         detail: `${findings.length} hard sentence${findings.length === 1 ? "" : "s"} / ${doc.stats.words} words`,

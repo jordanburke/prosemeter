@@ -1,5 +1,5 @@
 /**
- * Factory for a single-plugin, density-scored style dimension (passive-voice, clarity, hedging).
+ * Factory for a single-plugin, density-scored style dimension (active-voice, clarity, directness).
  * Each maps its plugin's messages to findings and scores by violation density; when the dimension's
  * rule is turned off in the profile, it is skipped so a disabled check never inflates the score.
  */
@@ -19,7 +19,8 @@ export type RetextDimensionConfig = {
   readonly k: number
   readonly label: string
   readonly fallbackHint: string
-  readonly buildProcessor: () => RetextProcessor
+  /** Receives the profile's `dimensionOptions` entry so a plugin can be configured per profile. */
+  readonly buildProcessor: (options: Readonly<Record<string, unknown>>) => RetextProcessor
 }
 
 export const retextDensityDimension = (config: RetextDimensionConfig): DimensionProvider => ({
@@ -39,7 +40,7 @@ export const retextDensityDimension = (config: RetextDimensionConfig): Dimension
         }
       }
 
-      const findings = collectMessages(doc, config.buildProcessor()).map((m) =>
+      const findings = collectMessages(doc, config.buildProcessor(settings.options)).map((m) =>
         messageToFinding(m, config.id, severity, config.fallbackHint),
       )
 

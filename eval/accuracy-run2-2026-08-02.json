@@ -1,0 +1,54 @@
+{
+  "run": "2026-08-02 run 2",
+  "question": "Did E's accuracy deficit come from the cut-every-phrase rule deleting load-bearing qualifiers? E' adds one sentence: 'A condition or exception that changes when a claim is true is meaning — never cut it.'",
+  "design": "3 variants x 6 tasks x 5 replicates = 90 answers. T5 and T6 are new trap tasks whose correct answer requires a load-bearing qualifier. All generation on claude-opus-5, no model override.",
+  "method": "Six reviewers, one per task, each reading all 15 answers to that task. RUBRIC.md pasted verbatim into every reviewer prompt. Each reviewer emitted both a STRICT and a BROAD count.",
+  "verdict": "E' FAILED on both arms of the success criterion. It did not hold E's style numbers (sentence-simplicity 60.3 vs E's 69.2, below the >=70 bar; words +8%) and it did not move accuracy (broad 21/30 vs E's 20/30; strict 29/30 vs 27/30 — one and two files out of thirty). G's run-1 accuracy lead did not replicate and inverted.",
+  "style": {
+    "E": { "composite": 83.6, "gradeBand": 98.5, "sentenceSimplicity": 69.2, "words": 290.1, "jargonPct": 8.7 },
+    "Ep": { "composite": 81.8, "gradeBand": 98.7, "sentenceSimplicity": 60.3, "words": 313.8, "jargonPct": 9.0 },
+    "G": { "composite": 83.5, "gradeBand": 94.9, "sentenceSimplicity": 74.6, "words": 356.4, "jargonPct": 7.1 }
+  },
+  "accuracy": {
+    "totals": { "strictClean": 84, "broadClean": 56, "of": 90 },
+    "byVariant": {
+      "E": { "strictClean": 27, "broadClean": 20, "of": 30 },
+      "Ep": { "strictClean": 29, "broadClean": 21, "of": 30 },
+      "G": { "strictClean": 28, "broadClean": 15, "of": 30 }
+    },
+    "byTask": {
+      "T1": { "strictClean": 14, "broadClean": 6, "of": 15 },
+      "T2": { "strictClean": 15, "broadClean": 12, "of": 15 },
+      "T3": { "strictClean": 12, "broadClean": 3, "of": 15 },
+      "T4": { "strictClean": 13, "broadClean": 10, "of": 15 },
+      "T5": { "strictClean": 15, "broadClean": 14, "of": 15 },
+      "T6": { "strictClean": 15, "broadClean": 11, "of": 15 }
+    }
+  },
+  "traps": {
+    "result": "No discrimination between variants. T5 and T6 passed 5/5 for all three variants — the new trap tasks were too easy. The T3 trap applied to only 4 of 15 answers and failed all 4, identically across variants.",
+    "lesson": "A trap task has to be one the model actually gets wrong. T5 and T6 were chosen because the qualifier is load-bearing, not because the model was observed to omit it. Pick trap tasks from observed failures, not from reasoning about what ought to be hard."
+  },
+  "findings": [
+    {
+      "name": "The qualifier-deletion hypothesis is not supported",
+      "detail": "E' was told explicitly never to cut a condition that changes when a claim is true, and still wrote 'do not retry on 4xx' without the 429 exception in 4 of 5 replicates (Ep-r1, Ep-r2, Ep-r3, Ep-r4 on T3). The instruction failed on the exact failure mode it was written to fix."
+    },
+    {
+      "name": "The 4xx error is generative, not compressive",
+      "detail": "If the qualifier were being cut during compression, an instruction to preserve qualifiers would recover it. It did not. The more likely mechanism is that '4xx means client error, do not retry' is a strong learned pattern produced wrong at generation time — the qualifier was never in hand to cut. A style instruction cannot fix a recall failure."
+    },
+    {
+      "name": "Run 1's variant-level accuracy differences were noise",
+      "detail": "G scored 7/8 clean in run 1 and 15/30 broad clean in run 2 — the worst of the three, a complete inversion at higher n. Any conclusion drawn from run 1's 8-answer cells was unsupported, including the one this experiment was built on."
+    },
+    {
+      "name": "Task difficulty dominates instruction wording",
+      "detail": "Broad-clean by task spans 3/15 (T3) to 14/15 (T5). Broad-clean by variant spans 15/30 to 21/30. Which topic you ask about predicts accuracy far more than how you instruct the writing."
+    },
+    {
+      "name": "The rubric choice is the largest single lever on the reported number",
+      "detail": "Strict 84/90 (93%) against broad 56/90 (62%) over identical answers. Emitting both counts rather than picking one was the right call; a single-threshold number is close to meaningless without the rubric attached."
+    }
+  ]
+}
