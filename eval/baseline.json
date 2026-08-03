@@ -59,5 +59,10 @@
       "jargonPct": 10.7
     },
     "deltaFromControl": "E cuts length 32% (437.9 -> 297.8), cuts jargon 2.0 points (10.7 -> 8.7), and raises sentence-simplicity 19.7 points (50.2 -> 69.9). These supersede the earlier cross-task-set figures, which compared against a 4-task control of 550 words and so overstated the length effect as ~40%."
+  },
+  "modelTransfer": {
+    "tested": "claude-sonnet-5, 2026-08-03, same ten tasks — see LIB_RPT_multi-model_2026-08-03.md",
+    "finding": "Ranking transfers, magnitude does not. Sonnet's uninstructed output is already 258.6 words against Opus's 475.3, so there is far less headroom: E moves it -12% on length against -41% on Opus, and +6.8 sentence-simplicity against +17.0.",
+    "deploymentNote": "The character budget is tier-dependent. On Sonnet the 176-char compression is indistinguishable from the full 315-char rules (230.4 vs 226.5 words, 10.5 vs 10.2 jargon); on Opus the full form buys 16 points of length reduction. Haiku untested."
   }
 }
