@@ -3,8 +3,11 @@ name: CI
 on:
   push:
     branches: ["main"]
+  # Deliberately unfiltered by base branch. Filtering on `branches: ["main"]` silently skips
+  # validation for a stacked pull request, since its base is the branch below it in the stack rather
+  # than main — the checks list shows only the third-party ones, which reads as "CI passed" at a
+  # glance. Push is still limited to main, so a branch with an open PR is validated once, not twice.
   pull_request:
-    branches: ["main"]
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
