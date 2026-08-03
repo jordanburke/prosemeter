@@ -3,7 +3,7 @@ import type { DimensionResult, DimensionSettings, ParsedDocument, Severity } fro
 import { describe, expect, it } from "vitest"
 
 import { gradeBandProvider } from "../src/grade-band"
-import { sentenceComplexityProvider } from "../src/sentence-complexity"
+import { sentenceSimplicityProvider } from "../src/sentence-simplicity"
 
 const parseDoc = (raw: string): ParsedDocument =>
   parse(raw).fold(
@@ -59,7 +59,7 @@ describe("grade-band", () => {
   })
 })
 
-describe("sentence-complexity", () => {
+describe("sentence-simplicity", () => {
   const hardDoc =
     "# Doc\n\nShort and clear.\n\n" +
     "The epistemological ramifications of the aforementioned methodological framework necessitate a " +
@@ -68,7 +68,7 @@ describe("sentence-complexity", () => {
 
   it("flags exactly the hard sentence, with an actionable hint and location", () => {
     const doc = parseDoc(hardDoc)
-    const result = run(sentenceComplexityProvider, doc, settings({ weight: 0.1 }))
+    const result = run(sentenceSimplicityProvider, doc, settings({ weight: 0.1 }))
     expect(result.findings).toHaveLength(1)
     const [f] = result.findings
     expect(f?.rule).toBe("sentence-length")
@@ -86,15 +86,15 @@ describe("sentence-complexity", () => {
   it("scores lower as more sentences are hard (density)", () => {
     const one = parseDoc(hardDoc)
     const two = parseDoc(hardDoc + "\n" + hardDoc.split("\n\n").slice(2).join("\n\n"))
-    const s1 = run(sentenceComplexityProvider, one, settings({ weight: 0.1 })).score
-    const s2 = run(sentenceComplexityProvider, two, settings({ weight: 0.1 })).score
+    const s1 = run(sentenceSimplicityProvider, one, settings({ weight: 0.1 })).score
+    const s2 = run(sentenceSimplicityProvider, two, settings({ weight: 0.1 })).score
     expect(s2).toBeLessThan(s1)
   })
 
   it("skips the dimension when its rule is turned off", () => {
     const doc = parseDoc(hardDoc)
     const off = settings({ weight: 0.1, severities: new Map<string, Severity | "off">([["sentence-length", "off"]]) })
-    const result = run(sentenceComplexityProvider, doc, off)
+    const result = run(sentenceSimplicityProvider, doc, off)
     expect(result.skipped.isSome()).toBe(true)
     expect(result.findings).toHaveLength(0)
   })

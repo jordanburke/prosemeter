@@ -1,12 +1,12 @@
-/** passive-voice — flags passive constructions via retext-passive. Density-scored (k=0.5). */
+/** active-voice — flags passive constructions via retext-passive. Density-scored (k=0.5). */
 
 import retextPassive from "retext-passive"
 import { unified } from "unified"
 
 import { retextDensityDimension } from "./retext-dimension"
 
-export const passiveVoiceProvider = retextDensityDimension({
-  id: "passive-voice",
+export const activeVoiceProvider = retextDensityDimension({
+  id: "active-voice",
   defaultWeight: 0.08,
   rule: "retext-passive",
   k: 0.06,

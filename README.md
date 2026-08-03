@@ -120,9 +120,17 @@ output.
 ## Profiles
 
 A profile tunes the scoring for a kind of document. It sets a target reading
-grade, weights the dimensions, and adjusts individual rules. Six profiles ship
-built in: `plain`, `readme`, `api-docs`, `blog`, `marketing`, and `academic`.
-List them with `prosemeter profiles`. A `prosemeter.config.json` file can extend
+grade, weights the dimensions, and adjusts individual rules. Seven profiles ship
+built in: `plain`, `readme`, `api-docs`, `blog`, `marketing`, `academic`, and
+`chat`. List them with `prosemeter profiles`.
+
+`chat` is the odd one out: it scores an agent's conversational reply rather than
+a document. It disables the four dimensions a chat turn cannot satisfy — headings,
+section length, document balance, and acronym definition — and weights reading
+grade, sentence complexity, and clarity up, which makes it a usable dependent
+variable when A/B-testing the instructions given to an agent. Note that it
+measures the prose of a reply, not its length relative to the question asked;
+`stats.words` is exposed for callers that want to hold that separately. A `prosemeter.config.json` file can extend
 any profile with your own weights, bands, and terminology.
 
 ## How scoring works

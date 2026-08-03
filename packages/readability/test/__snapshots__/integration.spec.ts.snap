@@ -12,7 +12,7 @@ exports[`golden corpus > scores choppy-simplistic.md against blog deterministica
     },
     {
       "findings": [],
-      "id": "sentence-complexity",
+      "id": "sentence-simplicity",
       "score": 1,
       "skipped": false,
       "weight": 0.1,
@@ -51,7 +51,7 @@ exports[`golden corpus > scores dense-academic.md against academic deterministic
           "severity": "warn",
         },
       ],
-      "id": "sentence-complexity",
+      "id": "sentence-simplicity",
       "score": 0.375,
       "skipped": false,
       "weight": 0.1,
@@ -75,7 +75,7 @@ exports[`golden corpus > scores good-readme.md against readme deterministically 
     },
     {
       "findings": [],
-      "id": "sentence-complexity",
+      "id": "sentence-simplicity",
       "score": 1,
       "skipped": false,
       "weight": 0.1,
@@ -99,7 +99,7 @@ exports[`golden corpus > scores plaintext-sample.txt against plain deterministic
     },
     {
       "findings": [],
-      "id": "sentence-complexity",
+      "id": "sentence-simplicity",
       "score": 1,
       "skipped": false,
       "weight": 0.1,

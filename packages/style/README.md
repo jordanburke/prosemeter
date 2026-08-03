@@ -1,6 +1,6 @@
 # @prosemeter/style
 
-prosemeter style dimensions — passive voice, clarity, hedging, redundancy, sentence variety
+prosemeter style dimensions — active voice, clarity, directness, concision, sentence variety
 
 Part of [prosemeter](https://github.com/jordanburke/prosemeter) — a deterministic
 scoring and feedback-loop layer for prose. See the

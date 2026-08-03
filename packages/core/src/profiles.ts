@@ -28,7 +28,7 @@ export const PROFILES: Readonly<Record<string, Profile>> = {
       "heading-hierarchy": 0.09,
       "section-length": 0.1,
       "document-balance": 0.08,
-      redundancy: 0.06,
+      concision: 0.06,
     },
     rules: {},
     thresholdDefault: 75,
@@ -44,7 +44,7 @@ export const PROFILES: Readonly<Record<string, Profile>> = {
     weights: {
       "terminology-consistency": 0.09,
       "acronym-definition": 0.05,
-      "passive-voice": 0.04,
+      "active-voice": 0.04,
     },
     rules: {
       "retext-passive": "warn",
@@ -70,12 +70,12 @@ export const PROFILES: Readonly<Record<string, Profile>> = {
   },
   marketing: {
     name: "marketing",
-    description: "Marketing copy: brevity and simplicity harsh, hedging harsh, lexical diversity relaxed.",
+    description: "Marketing copy: brevity and simplicity harsh, directness harsh, lexical diversity relaxed.",
     gradeBand: { lo: 6, hi: 9 },
     weights: {
       clarity: 0.1,
-      "sentence-complexity": 0.14,
-      hedging: 0.08,
+      "sentence-simplicity": 0.14,
+      directness: 0.08,
       "lexical-diversity": 0.02,
     },
     rules: {},
@@ -84,16 +84,48 @@ export const PROFILES: Readonly<Record<string, Profile>> = {
   },
   academic: {
     name: "academic",
-    description: "Academic writing: passive voice and hedging tolerated, grade band high.",
+    description:
+      "Academic writing: passive voice and hedging tolerated, grade band high. Both dimensions weighted down.",
     gradeBand: { lo: 12, hi: 16 },
     weights: {
-      "passive-voice": 0.03,
-      hedging: 0.02,
+      "active-voice": 0.03,
+      directness: 0.02,
     },
     rules: {
       "retext-passive": "off",
     },
     thresholdDefault: 68,
+    dimensionOptions: {},
+  },
+  chat: {
+    name: "chat",
+    description: "Agent chat replies: jargon and wordiness harsh, document structure disabled.",
+    // Floor 7 as much as ceiling 12: chopping every sentence to eight words to game the readability
+    // formulas lands *below* the band and is penalized, so the counterweight is in the band itself.
+    gradeBand: { lo: 7, hi: 12 },
+    weights: {
+      // Up — the three complaints. grade-band and sentence-simplicity are the jargon proxies (the
+      // syllable-counting formulas track polysyllabic vocabulary); clarity and concision carry
+      // wordiness.
+      "grade-band": 0.24,
+      "sentence-simplicity": 0.19,
+      clarity: 0.17,
+      concision: 0.07,
+      // Left at the default weight. This was held down to 0.03 while retext-intensify's
+      // context-blind weasel list made the dimension anti-signal; `HEDGE_IGNORE_DEFAULT` fixed
+      // that, and it now separates the calibration pair correctly (clear 80, jargon 41).
+      // Also up: the direct guard against buying grade-band with telegraphic monotone sentences.
+      "sentence-variety": 0.06,
+      // Off — document-shaped dimensions that a conversational turn cannot satisfy. Bold labels are
+      // correct in a terminal reply, replies have no sections or link budget, and acronym-definition
+      // over a 1–2 acronym denominator is a coin flip that swamps the real signal.
+      "heading-hierarchy": 0,
+      "section-length": 0,
+      "document-balance": 0,
+      "acronym-definition": 0,
+    },
+    rules: {},
+    thresholdDefault: 75,
     dimensionOptions: {},
   },
 }

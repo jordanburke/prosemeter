@@ -1,0 +1,31 @@
+{
+  "instruction": "E",
+  "instructionText": [
+    "Lead with the answer, then explain.",
+    "One idea per sentence.",
+    "Start sentences with the actor doing the thing, then the verb.",
+    "Prefer plain Anglo-Saxon words to Latinate ones: \"use\" over \"utilize\", \"start\" over \"initiate\", \"so\" over \"consequently\", \"because\" over \"insofar as\".",
+    "Cut every phrase that does not change the meaning if removed."
+  ],
+  "model": "claude-opus-5",
+  "date": "2026-08-02",
+  "source": "run 2 — 6 tasks x 5 replicates, n=30. See LIB_RPT_qualifier-carveout_2026-08-02.md",
+  "taskSet": ["T1", "T2", "T3", "T4", "T5", "T6"],
+  "rescoredAt": "0.3.0 — the HEDGE_IGNORE_DEFAULT fix changed directness scores, which moved the composite from 83.6 to 83.3. No gated metric is affected: words, jargonPct, sentenceSimplicity and gradeBand are independent dimensions and are unchanged.",
+  "means": {
+    "composite": 83.3,
+    "gradeBand": 98.5,
+    "sentenceSimplicity": 69.2,
+    "clarity": 54.1,
+    "words": 290.1,
+    "jargonPct": 8.7
+  },
+  "tolerances": {
+    "note": "Judgment calls, not derived from a variance estimate. They are set to catch a register change, not to detect small drifts. Widen them rather than chase noise.",
+    "words": { "max": 360, "rationale": "24% above baseline. The no-instruction control ran 550 on the 4-task set, so anything approaching that means the instruction stopped landing." },
+    "jargonPct": { "max": 10.5, "rationale": "Control was 11.1 on the 4-task set. Crossing 10.5 means vocabulary is back at baseline." },
+    "sentenceSimplicity": { "min": 63, "rationale": "Sits between E's observed range (69.2 run 2, 72.2 run 1) and E', which scored 60.3 and was called a style regression in the report. Gives E about 6 points of headroom and catches E' by about 3. A judgment call — the gate should agree with the report, which is why it is not set below 60.3." },
+    "gradeBand": { "min": 90, "rationale": "Catches over-simplification. Variant C hit 57.6 by falling below the band floor." }
+  },
+  "knownGap": "There is no no-instruction control on the 6-task set. Run 1's control (550 words, 11.1% jargon) used the 4-task set, so the deltas above mix task sets. Any re-run should include a control arm so the comparison is within-run."
+}

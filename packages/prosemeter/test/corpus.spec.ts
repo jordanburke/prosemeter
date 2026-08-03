@@ -47,3 +47,29 @@ describe("golden corpus calibration", () => {
     expect(wallOfText()).toBeLessThan(70)
   })
 })
+
+/**
+ * The `chat` profile exists to be a dependent variable: hold the task fixed, vary the instructions
+ * given to an agent, and read the score. That only works if the profile separates registers well and
+ * cannot be bought cheaply, so both properties are frozen here. The two chat fixtures are the same
+ * answer to the same question written two ways, so the spread is attributable to register alone.
+ */
+describe("chat profile calibration", () => {
+  const chatClear = () => scoreFixture("chat-clear.md", "chat", "markdown")
+  const chatJargon = () => scoreFixture("chat-jargon.md", "chat", "markdown")
+  const choppy = () => scoreFixture("choppy-simplistic.md", "chat", "markdown")
+
+  it("scores a clear reply above the profile threshold of 75", () => {
+    expect(chatClear()).toBeGreaterThanOrEqual(80)
+  })
+
+  it("separates the two registers by a wide margin", () => {
+    expect(chatClear() - chatJargon()).toBeGreaterThan(30)
+  })
+
+  it("does not let telegraphic prose buy a passing score", () => {
+    // The grade band floors at 7 as well as capping at 12, so chopping every sentence short lands
+    // below the band and is penalized. Without this, "be concise" instructions would score as wins.
+    expect(choppy()).toBeLessThan(75)
+  })
+})

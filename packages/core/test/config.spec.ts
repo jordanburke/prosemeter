@@ -58,6 +58,34 @@ describe("resolveConfig", () => {
     )
   })
 
+  /**
+   * An unknown weight key is a silent no-op, so a config still using a pre-0.3.0 dimension name
+   * would quietly stop applying. These must fail loudly instead.
+   */
+  it("rejects dimension names renamed in 0.3.0 and names the replacement", () => {
+    const result = resolveConfig("plain", {
+      weights: { hedging: 0.1, "passive-voice": 0.2 },
+      dimensionOptions: { redundancy: { foo: 1 } },
+    })
+    const fields = leftFields(result)
+    expect(fields).toContain("weights.hedging")
+    expect(fields).toContain("weights.passive-voice")
+    expect(fields).toContain("dimensionOptions.redundancy")
+    result.fold(
+      (errs) => {
+        expect(errs.toArray().some((e) => e.message.includes('"directness"'))).toBe(true)
+      },
+      () => {
+        throw new Error("expected Left")
+      },
+    )
+  })
+
+  it("still accepts weights for dimensions core does not know about", () => {
+    // runScore takes arbitrary providers, so a custom dimension must not be rejected.
+    expect(resolveConfig("plain", { weights: { "my-custom-dimension": 0.1 } }).isRight()).toBe(true)
+  })
+
   it("accumulates every validation error at once", () => {
     const fields = leftFields(
       resolveConfig("plain", {

@@ -17,7 +17,7 @@ import {
 } from "./handlers"
 import { VERSION } from "./version"
 
-const PROFILE_DESC = "Target profile: plain | readme | api-docs | blog | marketing | academic (default: plain)."
+const PROFILE_DESC = "Target profile: plain | readme | api-docs | blog | marketing | academic | chat (default: plain)."
 
 const LOOP =
   "Typical agent loop: score_text → revise using the findings and hints → score_text again → compare_baseline → repeat while check_convergence returns 'improving'; stop on plateaued, oscillating, regressing, or converged. On 'regressing', prefer reverting to the highest-scoring prior draft over continuing from the latest."

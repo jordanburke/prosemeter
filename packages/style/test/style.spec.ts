@@ -4,9 +4,9 @@ import { describe, expect, it } from "vitest"
 
 import { findCliches } from "../src/cliches"
 import { clarityProvider } from "../src/clarity"
-import { hedgingProvider } from "../src/hedging"
-import { passiveVoiceProvider } from "../src/passive-voice"
-import { redundancyProvider } from "../src/redundancy"
+import { directnessProvider } from "../src/directness"
+import { activeVoiceProvider } from "../src/active-voice"
+import { concisionProvider } from "../src/concision"
 import { sentenceVarietyProvider } from "../src/sentence-variety"
 
 const doc = (raw: string): ParsedDocument =>
@@ -42,28 +42,57 @@ describe("clarity (retext-simplify)", () => {
   })
 })
 
-describe("hedging (retext-intensify)", () => {
+describe("directness (retext-intensify)", () => {
   it("flags weasel words", () => {
-    const result = run(hedgingProvider, "# T\n\nThis is very clearly a great many things that some people believe.\n")
+    const result = run(
+      directnessProvider,
+      "# T\n\nThis is very clearly a great many things that some people believe.\n",
+    )
     expect(result.findings.length).toBeGreaterThan(0)
     expect(result.findings.every((f) => f.rule === "retext-intensify")).toBe(true)
   })
+
+  /**
+   * retext-intensify matches on the word alone, so its `weasels` list flags ordinary grammar and
+   * plain verbs. Left unfiltered the dimension ran backwards on the calibration fixtures — it
+   * scored chat-jargon above chat-clear. These lock in the filter and the signal it must keep.
+   */
+  it("ignores grammar and plain verbs that are not hedges in technical prose", () => {
+    const raw =
+      "# T\n\nThe resolver picks that version, so the other package still works. " +
+      "Back up your own copy and it helps.\n"
+    expect(run(directnessProvider, raw).findings).toHaveLength(0)
+  })
+
+  it("still flags genuine hedges after filtering", () => {
+    const raw = "# T\n\nThis probably seems relatively useful and might arguably be several things.\n"
+    expect(run(directnessProvider, raw).findings.length).toBeGreaterThan(0)
+  })
+
+  it("accepts extra ignores from dimensionOptions and can drop the defaults", () => {
+    const raw = "# T\n\nThe package still works and it probably helps.\n"
+    const withExtra = run(directnessProvider, raw, { ...settings(), options: { ignore: ["probably"] } })
+    expect(withExtra.findings).toHaveLength(0)
+
+    const withoutDefaults = run(directnessProvider, raw, { ...settings(), options: { useDefaultIgnore: false } })
+    expect(withoutDefaults.findings.length).toBeGreaterThan(0)
+  })
 })
 
-describe("passive-voice (retext-passive)", () => {
+describe("active-voice (retext-passive)", () => {
   it("scores a passive-free document at 1", () => {
     const result = run(
-      passiveVoiceProvider,
+      activeVoiceProvider,
       "# T\n\nThe team shipped the release. Everyone celebrated the win together.\n",
     )
     expect(result.score).toBe(1)
   })
 })
 
-describe("redundancy", () => {
+describe("concision", () => {
   it("catches repeated words, redundant acronyms, and clichés", () => {
     const result = run(
-      redundancyProvider,
+      concisionProvider,
       "# T\n\nThe the plan uses an ATM machine. At the end of the day we ship it.\n",
     )
     const rules = new Set(result.findings.map((f) => f.rule))
@@ -72,19 +101,19 @@ describe("redundancy", () => {
     expect(rules.has("cliches")).toBe(true)
   })
 
-  it("is skipped only when all three redundancy rules are off", () => {
+  it("is skipped only when all three concision rules are off", () => {
     const off = settings([
       ["retext-repeated-words", "off"],
       ["retext-redundant-acronyms", "off"],
       ["cliches", "off"],
     ])
-    expect(run(redundancyProvider, "The the plan.", off).skipped.isSome()).toBe(true)
+    expect(run(concisionProvider, "The the plan.", off).skipped.isSome()).toBe(true)
   })
 })
 
 describe("cliches (in-house)", () => {
   it("detects a cliché at its sentence location", () => {
-    const findings = findCliches(doc("# T\n\nAt the end of the day, we must move the needle.\n"), "redundancy", "warn")
+    const findings = findCliches(doc("# T\n\nAt the end of the day, we must move the needle.\n"), "concision", "warn")
     expect(findings.map((f) => f.excerpt).sort()).toEqual(["at the end of the day", "move the needle"])
     expect(findings[0]?.loc.isSome()).toBe(true)
   })

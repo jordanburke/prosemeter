@@ -16,8 +16,8 @@ import { collectMessages, messageToFinding } from "./retext-runner"
 
 const K = 0.06
 
-export const redundancyProvider: DimensionProvider = {
-  id: "redundancy",
+export const concisionProvider: DimensionProvider = {
+  id: "concision",
   defaultWeight: 0.04,
   evaluate: (doc, settings) =>
     Try((): DimensionResult => {
@@ -28,12 +28,12 @@ export const redundancyProvider: DimensionProvider = {
 
       if (repeated === "off" && redundant === "off" && cliche === "off") {
         return {
-          id: "redundancy",
+          id: "concision",
           score: 0,
           weight: settings.weight,
-          detail: "skipped: all redundancy rules disabled",
+          detail: "skipped: all concision rules disabled",
           findings: [],
-          skipped: Some("all redundancy rules disabled"),
+          skipped: Some("all concision rules disabled"),
         }
       }
 
@@ -41,26 +41,26 @@ export const redundancyProvider: DimensionProvider = {
       if (repeated !== "off") {
         findings.push(
           ...collectMessages(doc, unified().use(retextRepeatedWords)).map((m) =>
-            messageToFinding(m, "redundancy", repeated, "Remove the duplicated word."),
+            messageToFinding(m, "concision", repeated, "Remove the duplicated word."),
           ),
         )
       }
       if (redundant !== "off") {
         findings.push(
           ...collectMessages(doc, unified().use(retextRedundantAcronyms)).map((m) =>
-            messageToFinding(m, "redundancy", redundant, "Drop the redundant word next to the acronym."),
+            messageToFinding(m, "concision", redundant, "Drop the redundant word next to the acronym."),
           ),
         )
       }
       if (cliche !== "off") {
-        findings.push(...findCliches(doc, "redundancy", cliche))
+        findings.push(...findCliches(doc, "concision", cliche))
       }
 
       return {
-        id: "redundancy",
+        id: "concision",
         score: density(findings.length, doc.stats.words, K),
         weight: settings.weight,
-        detail: `${findings.length} redundancy issue${findings.length === 1 ? "" : "s"} / ${doc.stats.words} words`,
+        detail: `${findings.length} concision issue${findings.length === 1 ? "" : "s"} (repeats, redundant acronyms, clichés) / ${doc.stats.words} words`,
         findings,
         skipped: None(),
       }
