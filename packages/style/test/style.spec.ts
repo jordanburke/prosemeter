@@ -40,6 +40,32 @@ describe("clarity (retext-simplify)", () => {
     expect(result.skipped.isSome()).toBe(true)
     expect(result.findings).toHaveLength(0)
   })
+
+  /**
+   * retext-simplify targets bureaucratic English, where `effect` is a verb and `component` stands in
+   * for `part`. Unfiltered it made the dimension a topic detector: over the eval corpus its mean
+   * varied 0.3 points across writing styles and 49.6 points across subject matter.
+   */
+  it("ignores software terms of art whose replacement would change the meaning", () => {
+    const raw =
+      "# T\n\nThe effect re-runs and the component calls render again. " +
+      "Each request builds a type that the interface must satisfy.\n"
+    expect(run(clarityProvider, raw).findings).toHaveLength(0)
+  })
+
+  it("still flags padding that is wordy in any register", () => {
+    const raw = "# T\n\nIt is very clear that all of the work will subsequently be done.\n"
+    expect(run(clarityProvider, raw).findings.length).toBeGreaterThan(0)
+  })
+
+  it("accepts extra ignores from dimensionOptions and can drop the defaults", () => {
+    const raw = "# T\n\nThe render step is currently slow.\n"
+    expect(run(clarityProvider, raw, { ...settings(), options: { ignore: ["currently"] } }).findings).toHaveLength(0)
+
+    const raw2 = "# T\n\nThe render step ran.\n"
+    const rawPlugin = run(clarityProvider, raw2, { ...settings(), options: { useDefaultIgnore: false } })
+    expect(rawPlugin.findings.length).toBeGreaterThan(0)
+  })
 })
 
 describe("directness (retext-intensify)", () => {

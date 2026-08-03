@@ -52,7 +52,16 @@ entirely. Note that the metric flagged the right file for an adjacent reason. It
 reading grade; the actual defect was missing content.
 
 **Clarity never moved.** 51–61 across all seven variants including the control. No
-instruction touched it. It is not a responsive dial and should not be used as a target.
+instruction touched it.
+
+> **Superseded 0.3.0.** The conclusion drawn here — that clarity is not a responsive dial and
+> should not be used as a target — was wrong. The dimension was counting domain nouns:
+> `retext-simplify` flags `effect`, `request`, `render`, `function`, and `component` as wordy,
+> which tracks subject matter rather than writing. Splitting the variance showed it: 0.3 points
+> across variants against 49.6 across tasks. `CLARITY_IGNORE_DEFAULT` brings those to 1.9 and 12.9,
+> and the corpus mean from 54.1 to 90.7. Every clarity figure in this report predates that fix.
+> Topic still dominates writing here by about 7:1, so whether clarity is a *useful* dial needs a
+> fresh run to answer — it is no longer answered by this one.
 
 **The highest-scoring variants were among the least accurate.** E and F scored best on
 prosemeter and tied the control at 4/8 clean. G, dismissed on score alone as a bad trade,
