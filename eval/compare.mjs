@@ -54,6 +54,23 @@ if (rows.length === 0) {
   process.exit(2)
 }
 
+/**
+ * The baseline means are specific to the task set they were measured on, because natural length and
+ * register vary by task. Run 4 demonstrated the hazard: the same instruction scored words 278.7 on a
+ * ten-task set against a baseline of 290.1 taken on six, and the gate passed — comparing across task
+ * sets by accident. Sentence-simplicity cleared its floor by 2.7 points in that run purely on luck.
+ */
+const observedTasks = [...new Set(readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => f.split("-")[2]?.replace(".md", "")))]
+const expected = [...(baseline.taskSet ?? [])].sort()
+const actual = [...observedTasks].sort()
+if (expected.length > 0 && (expected.length !== actual.length || expected.some((t, i) => t !== actual[i]))) {
+  console.error(`task set mismatch — the baseline is not comparable to this run.`)
+  console.error(`  baseline: ${expected.join(", ")}`)
+  console.error(`  this run: ${actual.join(", ")}`)
+  console.error(`Re-baseline on this task set, or run the gate against the recorded one.`)
+  process.exit(2)
+}
+
 const mean = (k) => {
   const xs = rows.map((r) => r[k]).filter((x) => x !== null && !Number.isNaN(x))
   return xs.reduce((a, b) => a + b, 0) / xs.length

@@ -110,18 +110,27 @@ These came out of the 2026-08-02 runs and are properties of the method, not of t
 spend agents re-deriving them:
 
 - Read per-dimension columns, never the composite. The composite averages the real effects away.
-- **Split every metric's variance by task as well as by variant.** The ratio is what tells you
-  whether a metric is an instruction dial at all. Measured over run 3's 90 answers:
+- **Split every metric's variance by task as well as by variant**, and know that the ratio depends
+  on the task set. Measured twice:
 
-  | metric | by variant | by task | ratio |
-  | --- | --- | --- | --- |
-  | `words` | 140.2 | 99.8 | **0.7** |
-  | `sentence-simplicity` | 19.7 | 29.6 | 1.5 |
-  | `jargon%` | 2.1 | 6.8 | 3.3 |
-  | `clarity` | 2.3 | 12.0 | 5.2 |
+  | metric | 6 tasks, all explain-a-concept | 10 tasks, mixed registers |
+  | --- | --- | --- |
+  | `words` | **0.7** | 1.3 |
+  | `sentence-simplicity` | 1.5 | **1.5** |
+  | `directness` | 1.1 | 1.7 |
+  | `jargon%` | 3.3 | 2.0 |
+  | `clarity` | 5.2 | 15.4 |
 
-  Below 1 means the instruction moves it more than the subject matter does. Only `words` clears
-  that; `sentence-simplicity` is close enough to use. Read `jargon%` only across a fixed task set.
+  Below 1 means the instruction moves the metric more than the topic does. `words` looked like the
+  best dial on the homogeneous set and crossed the line on the mixed one — natural length varies far
+  more when the registers differ (control: 381 words explaining a dependency conflict, 675 planning
+  a read replica). **`sentence-simplicity` is the stable one**, unchanged across both, and the better
+  thing to lean on. A ratio above 1 does not mean the instruction stopped working; it means the
+  metric cannot be read across tasks without holding the task set fixed.
+- **Hold the task set fixed when gating.** `compare.mjs` enforces this — it exits 2 if the run's
+  tasks differ from `baseline.taskSet`. Before that check existed it silently compared a ten-task
+  run against a six-task baseline and passed. Any "cuts length N%" claim is scoped to a task set:
+  32% on six tasks, 41% on ten, both correct and not interchangeable.
 - A dimension that does not move across variants may be broken rather than uninformative. This list
   used to claim clarity was an unresponsive dial, on the evidence that it sat at 51–61 across every
   variant including the control. It was instead counting domain nouns — `retext-simplify` flags
