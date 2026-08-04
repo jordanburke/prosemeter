@@ -96,9 +96,28 @@ describe("directness (retext-intensify)", () => {
     expect(run(directnessProvider, raw).findings).toHaveLength(0)
   })
 
+  /**
+   * `diagnostic` is a technical noun with no hedging sense, but the upstream `hedges` list carries
+   * it. It fired three times on one calibration fixture. The rest are inflection gaps and one
+   * cross-dimension contradiction: retext-simplify tells you to replace "endeavor" with "try",
+   * which retext-intensify then flagged.
+   */
+  it("ignores technical nouns and plain verbs the upstream hedge list carries", () => {
+    const raw =
+      "# T\n\nRun the diagnostic first. The docs say to start there, and we found the cause. " +
+      "Try it and you understand why.\n"
+    expect(run(directnessProvider, raw).findings).toHaveLength(0)
+  })
+
   it("still flags genuine hedges after filtering", () => {
     const raw = "# T\n\nThis probably seems relatively useful and might arguably be several things.\n"
     expect(run(directnessProvider, raw).findings.length).toBeGreaterThan(0)
+  })
+
+  it("keeps flagging the hedges that sit beside the newly ignored words", () => {
+    const raw = "# T\n\nThe probable cause is substantially likely to appear somewhat various.\n"
+    const flagged = run(directnessProvider, raw).findings.map((f) => f.excerpt.toLowerCase())
+    expect(flagged).toEqual(expect.arrayContaining(["probable", "substantially", "likely"]))
   })
 
   it("accepts extra ignores from dimensionOptions and can drop the defaults", () => {

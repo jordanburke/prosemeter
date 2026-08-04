@@ -20,9 +20,17 @@ import { retextDensityDimension } from "./retext-dimension"
  * `chat-jargon.md` (35) *above* `chat-clear.md` (24), i.e. it ran backwards, on 13 "hedges" in 160
  * words of prose containing essentially none.
  *
+ * Entries are added from observed false positives, never from guesses about which words *ought* to
+ * misfire. A word qualifies only if the flag is wrong in every context, not merely in the one that
+ * surfaced it. A sweep over this repo's 22 markdown files produced 61 distinct flags; 9 met that
+ * bar. Three of those were inflection gaps — `started`, `understood`, and `noticed` were already
+ * ignored while `start`, `understand`, and `found` were not.
+ *
  * Deliberately kept flagged, because they do hedge in technical writing: `appears`, `seems`,
- * `believed`, `considered`, `supposed`, `thought`, `probably`, `might`, `could`, `arguably`,
- * `clearly`, `fairly`, `relatively`, `several`, `various`, and the intensifiers.
+ * `believed`, `considered`, `supposed`, `thought`, `probably`, `probable`, `might`, `could`,
+ * `arguably`, `clearly`, `fairly`, `relatively`, `several`, `various`, `likely`, `substantially`,
+ * `somewhat`, and the intensifiers. `some`, `most`, and `rather` stay too — they are the vague
+ * quantifiers the list exists to catch.
  */
 export const HEDGE_IGNORE_DEFAULT: ReadonlyArray<string> = [
   // Grammar and function words — flagged regardless of role.
@@ -84,6 +92,18 @@ export const HEDGE_IGNORE_DEFAULT: ReadonlyArray<string> = [
   // Ordinary verbs, flagged by part-of-speech blindness.
   "read",
   "find",
+  "found",
+  "say",
+  "says",
+  "start",
+  "understand",
+  "understands",
+  // `retext-simplify` recommends "try" as the replacement for "endeavor". Flagging it here made
+  // clarity and directness contradict each other on the same word.
+  "try",
+  // A technical noun and adjective with no hedging sense — "diagnostic procedure", "the resultant
+  // diagnostic". Sits in the upstream `hedges` list beside genuine hedges like `probable`.
+  "diagnostic",
   // Precise in technical prose: "exactly one version", "the right index", "already hoisted",
   // "too slow", "much faster", "about the lockfile" (the preposition, not the approximation).
   "exactly",
