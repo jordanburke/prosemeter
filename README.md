@@ -117,6 +117,20 @@ prosemeter-mcp
 Point your client at that binary. The server runs over standard input and
 output.
 
+## Claude Code plugin
+
+The plugin bundles the MCP server with the `prose-loop` skill, so a Claude Code
+session gets both the tools and the instructions for using them.
+
+```
+/plugin marketplace add jordanburke/prosemeter
+/plugin install prosemeter@prosemeter
+```
+
+The server alone gives an agent the ability to score. The skill is what tells it
+to read the per-dimension findings rather than the composite, and when to stop
+revising. See `.claude/skills/prose-loop/SKILL.md`.
+
 ## Profiles
 
 A profile tunes the scoring for a kind of document. It sets a target reading

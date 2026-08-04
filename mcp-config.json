@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "prosemeter": {
+      "command": "npx",
+      "args": ["-y", "@prosemeter/mcp@latest"]
+    }
+  }
+}
