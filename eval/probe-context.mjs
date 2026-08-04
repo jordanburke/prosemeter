@@ -11,6 +11,7 @@
  * Usage:
  *   node eval/probe-context.mjs <file>...            # score each file alone
  *   node eval/probe-context.mjs --pair <q> <a>       # score the answer alone, then with its question
+ *   node eval/probe-context.mjs --blocks <a> [q]     # per-block findings, which paragraph assumes what
  *
  * ## The signal
  *
@@ -90,6 +91,50 @@ const seedFrom = (prior) => {
   return introduced
 }
 
+/**
+ * Words that end a noun phrase. Anything at or after one of these is not part of the NP, so the
+ * head is whatever preceded it.
+ */
+const ENDS_NP = new Set([
+  // prepositions and conjunctions
+  "of", "in", "on", "at", "to", "for", "with", "from", "by", "as", "into", "over", "under", "after",
+  "before", "between", "through", "during", "without", "within", "and", "or", "but", "so", "than",
+  "because", "if", "when", "while", "that", "which", "who", "where",
+  // auxiliaries and very common verbs — a determiner phrase stops at the predicate
+  "is", "are", "was", "were", "be", "been", "being", "has", "have", "had", "does", "do", "did",
+  "will", "would", "can", "could", "should", "must", "may", "might",
+  "gives", "give", "picks", "pick", "holds", "hold", "sees", "see", "makes", "make", "gets", "get",
+  "goes", "go", "runs", "run", "calls", "call", "uses", "use", "takes", "take", "keeps", "keep",
+  "means", "mean", "needs", "need", "points", "point", "works", "work", "fails", "fail", "wins",
+  "win", "comes", "come", "lets", "let", "puts", "put", "shows", "show", "says", "say", "starts",
+  "start", "stops", "stop", "adds", "add", "returns", "return", "sets", "set", "hoists", "hoist",
+  "resolves", "resolve", "matches", "match", "wants", "want", "asks", "ask", "still", "then", "also",
+])
+
+/**
+ * The head of the noun phrase beginning at `i` (a determiner).
+ *
+ * English noun phrases are **head-final**: "the old version" is about a version, not about
+ * oldness. The first version of this took the first non-stopword after the determiner and so
+ * reported the adjective. Over 326 eval answers the three most-flagged "heads" were `old` (77),
+ * `new` (48), and `right` (29) — all adjectives, and all of them scaling with descriptive writing
+ * rather than with context dependence. `the` itself was flagged 15 times.
+ *
+ * Scans forward at most 4 tokens, stops at anything that ends a noun phrase, and returns the last
+ * word still inside it.
+ */
+const headOf = (tokens, i) => {
+  let head = null
+  for (let j = i + 1; j <= i + 4 && j < tokens.length; j++) {
+    const w = tokens[j][0].toLowerCase()
+    if (ENDS_NP.has(w) || DETERMINERS.has(w)) break
+    const l = lemma(tokens[j][0])
+    if (!l || l.length < 3) break
+    head = l
+  }
+  return head && !NOT_A_HEAD.has(head) ? head : null
+}
+
 export const probe = (raw, prior = "") => {
   const text = strip(raw)
   const tokens = [...text.matchAll(/\b([A-Za-z][A-Za-z-]*)\b/g)]
@@ -101,12 +146,8 @@ export const probe = (raw, prior = "") => {
   for (let i = 0; i < tokens.length; i++) {
     const word = tokens[i][0]
     if (DETERMINERS.has(word.toLowerCase())) {
-      for (let j = i + 1; j <= i + 2 && j < tokens.length; j++) {
-        const head = lemma(tokens[j][0])
-        if (!head || head.length < 3 || NOT_A_HEAD.has(head)) continue
-        if (!introduced.has(head)) unbound.push(`${word.toLowerCase()} ${head}`)
-        break
-      }
+      const head = headOf(tokens, i)
+      if (head && !introduced.has(head)) unbound.push(`${word.toLowerCase()} ${head}`)
     }
     const l = lemma(word)
     if (l.length >= 3) introduced.add(l)
@@ -124,6 +165,38 @@ export const probe = (raw, prior = "") => {
 }
 
 /**
+ * Split into the units a reader actually stops at: paragraphs, list blocks, headings. Blocks under
+ * `MIN_BLOCK_WORDS` are skipped — a 12-word paragraph with two unbound references scores 167 per
+ * 1000, which is noise, not a finding.
+ */
+const MIN_BLOCK_WORDS = 12
+
+export const blocks = (raw) =>
+  raw
+    .replace(/```[\s\S]*?```/g, " ")
+    .split(/\n\s*\n/)
+    .map((b) => b.trim())
+    .filter((b) => b.split(/\s+/).filter(Boolean).length >= MIN_BLOCK_WORDS)
+
+/**
+ * Score each block with the reader's real state at that point: the question plus every block they
+ * have already read. This is where the findings come from.
+ *
+ * The document rate stays the score. Aggregating blocks by the *worst* one was tested and rejected:
+ * against two labelled pairs it separated good from bad by 4 and 5 points, where the document rate
+ * separated them by 4 and 41. Short blocks make the maximum unstable, so it finds the shortest dense
+ * block in any document rather than the hardest one.
+ */
+export const perBlock = (raw, prior = "") => {
+  let seen = prior
+  return blocks(raw).map((b) => {
+    const r = probe(b, seen)
+    seen += "\n\n" + b
+    return { words: r.words, unbound: r.unbound, rate: r.per1k, refs: r.samples, excerpt: b.slice(0, 60).replace(/\s+/g, " ") }
+  })
+}
+
+/**
  * Entry-point guard. Without it, importing `probe` runs the CLI and exits — the same mistake
  * `traps.mjs` made.
  */
@@ -131,7 +204,7 @@ const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv
 
 const args = isMain ? process.argv.slice(2) : []
 if (isMain && args.length === 0) {
-  console.error("usage: node eval/probe-context.mjs <file>...   |   --pair <question-file> <answer-file>")
+  console.error("usage: probe-context.mjs <file>...  |  --pair <q> <a>  |  --blocks <a> [q]")
   process.exit(2)
 }
 
@@ -157,22 +230,33 @@ if (!isMain) {
   console.log(`  bound by the question: ${bound} of ${alone.unbound}  (${drop.toFixed(0)}%)`)
 
   /**
-   * Two axes, not one. A low residual means the text already stands alone and the drop is
-   * irrelevant. A high residual splits on whether the question accounts for it: if supplying the
-   * question binds a good share, pairing them fixes it; if it binds nothing, the text is leaning on
-   * something no reader can be handed.
+   * No verdict is printed, deliberately.
    *
-   * The first draft of this probe used the drop alone and flagged the one reply that had actually
-   * landed, because a self-contained answer has nothing for its question to bind.
+   * An earlier version classified into self-contained / needs-its-question / needs-a-conversation on
+   * two thresholds fitted to three documents. Both moved when the head-noun extraction was fixed —
+   * `chat-clear.md` went from 3 of 14 references bound to 1 of 10 — which is the tell that they were
+   * fitted to extraction noise rather than to anything about the prose.
+   *
+   * Calibrating them needs labelled documents, and none exist. Report the counts; let the reader
+   * judge.
    */
-  const SELF_CONTAINED = 40 // unbound/1k; below this the text introduces its own terms
-  const verdict =
-    withQ.per1k < SELF_CONTAINED
-      ? "Self-contained. It introduces its own terms and does not need the question."
-      : drop > 20
-        ? "Leans on its question. Pair them and it stands alone."
-        : "Leans on context that is neither in the text nor in the question — prior conversation, or nothing."
-  console.log(`\n  ${verdict}`)
+} else if (args[0] === "--blocks") {
+  const [, aPath, qPath] = args
+  const raw = readFileSync(aPath, "utf8")
+  const prior = qPath ? readFileSync(qPath, "utf8") : ""
+  const doc = probe(raw, prior)
+  console.log(`${name(aPath)}  —  document score ${doc.per1k.toFixed(1)} unbound/1k (${doc.unbound} in ${doc.words} words)\n`)
+  console.log("block   words   unbound   rate   excerpt")
+  perBlock(raw, prior).forEach((b, i) => {
+    console.log(
+      String(i + 1).padStart(5),
+      String(b.words).padStart(7),
+      String(b.unbound).padStart(9),
+      b.rate.toFixed(0).padStart(6),
+      "  " + b.excerpt + "...",
+    )
+    if (b.unbound > 0) console.log(" ".repeat(31) + "^ " + b.refs.join(" · "))
+  })
 } else {
   console.log("file".padEnd(34), "words".padStart(6), "unbound".padStart(8), "/1k".padStart(7), "external".padStart(9))
   for (const f of args) {
