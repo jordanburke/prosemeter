@@ -1,20 +1,18 @@
 {
-  "name": "ts-builds-template",
+  "name": "prosemeter",
   "owner": {
     "name": "Jordan Burke",
-    "email": "jordan.burke@gmail.com"
+    "email": "jordan.burke@gmail.com",
+    "url": "https://github.com/jordanburke"
   },
-  "metadata": {
-    "description": "Skills for bootstrapping new TypeScript libraries from the ts-builds-template",
-    "version": "1.0.0"
-  },
+  "description": "Deterministic prose scoring and the agent revise/converge loop.",
   "plugins": [
     {
-      "name": "ts-builds-template",
-      "description": "Guide for bootstrapping new TypeScript libraries from the ts-builds-template. Use when creating a new npm package from this template, customizing the template for a new project, or understanding the template's project structure and dev workflow.",
+      "name": "prosemeter",
       "source": "./",
-      "strict": false,
-      "skills": ["./.claude/skills/ts-builds-template"]
+      "description": "Score prose 0–100 against a named profile, revise from the findings, and stop when the score stops improving. Bundles the prosemeter MCP server with the prose-loop skill.",
+      "category": "writing",
+      "tags": ["prose", "writing", "readability", "docs", "editing"]
     }
   ]
 }

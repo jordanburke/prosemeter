@@ -1,0 +1,17 @@
+{
+  "name": "prosemeter",
+  "displayName": "prosemeter",
+  "version": "0.1.0",
+  "description": "Deterministic prose scoring plus the revise/converge loop. Bundles the prosemeter MCP server (score_text, score_file, compare_baseline, check_convergence, list_profiles) with the prose-loop skill that tells an agent how to use them and when to stop.",
+  "author": {
+    "name": "Jordan Burke",
+    "email": "jordan.burke@gmail.com",
+    "url": "https://github.com/jordanburke"
+  },
+  "homepage": "https://github.com/jordanburke/prosemeter#readme",
+  "repository": "https://github.com/jordanburke/prosemeter",
+  "license": "MIT",
+  "keywords": ["prose", "writing", "readability", "scoring", "linting", "docs", "editing"],
+  "skills": ["./.claude/skills/prose-loop"],
+  "mcpServers": "./mcp-config.json"
+}
