@@ -140,6 +140,26 @@ spend agents re-deriving them:
   control in hand, it scores 88.4 uninstructed and 89.1 under the shipped rules — 0.7 points apart,
   against 12 points across tasks. Keep it in the profile, where it correctly flags padding. Do not
   use it to choose between prompts.
+- **A dimension that sits at 100 for most documents is not thereby useless.** `grade-band` scores
+  exactly 100 on 87.5% of the 416 eval answers (sd 8.0, against `sentence-simplicity`'s 19.0) while
+  carrying the `chat` profile's largest weight, 0.24. That looks like a flat ~24-point giveaway that
+  compresses the composite — dropping it widens the corpus spread from sd 4.10 to 4.80.
+
+  It was swept anyway, `direction` × `weight`, against the three calibration assertions in
+  `packages/prosemeter/test/corpus.spec.ts`. **Every alternative failed:**
+
+  | config | clear | jargon | spread | choppy | verdict |
+  | --- | --- | --- | --- | --- | --- |
+  | both, 0.24 (shipped) | 92 | 48 | **44** | **71** | pass |
+  | both, 0.15 | 91 | 52 | 39 | 78 | choppy passes the threshold |
+  | floor-only, 0.24 | 92 | 70 | 21 | 71 | jargon scores 100 at grade 25.8 |
+  | floor-only, 0.10 | 91 | 66 | 25 | 82 | both failures at once |
+
+  The lesson generalizes past this dimension: **the eval corpus is 416 answers written by an agent
+  asked to write clearly, so it is not a sample of bad writing.** Only 2 of 416 read above grade 12.
+  The ceiling looked redundant because nothing in the population hit it. Do not conclude a guard rail
+  is dead weight from a corpus that never touches it — check the adversarial fixtures, which is what
+  they are for.
 - Instruction wording does not reach factual accuracy. Two runs, one targeted mechanism test,
   no effect.
 - Task difficulty dominates instruction wording for accuracy — broad-clean spanned 3/15 to 14/15

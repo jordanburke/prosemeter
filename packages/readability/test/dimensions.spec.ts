@@ -99,3 +99,53 @@ describe("sentence-simplicity", () => {
     expect(result.findings).toHaveLength(0)
   })
 })
+
+/**
+ * The two sides of the band are not equally useful. Over 416 eval answers the ceiling caught 2
+ * documents, both already deeply flagged by sentence-simplicity; the floor caught 26 that nothing
+ * else caught. `direction` lets a profile keep the useful half.
+ */
+describe("grade-band direction", () => {
+  const dense =
+    "The instantiation of a heterogeneous configuration necessitates comprehensive " +
+    "reconciliation of the underlying infrastructural dependencies, notwithstanding the " +
+    "considerable computational overhead such reconciliation invariably introduces across " +
+    "distributed deployment topologies of substantial architectural complexity indeed."
+  const trivial =
+    "The cat sat. The cat is big. The dog ran. It ate. They played. " +
+    "It was fun. The sun was out. They went home. They ate. They slept. It was late."
+
+  const at = (raw: string, options: Readonly<Record<string, unknown>> = {}) =>
+    gradeBandProvider
+      .evaluate(parseDoc(raw), {
+        weight: 0.1,
+        gradeBand: { lo: 7, hi: 12 },
+        severities: new Map<string, Severity | "off">(),
+        options,
+      })
+      .orThrow()
+
+  it("penalizes both sides by default", () => {
+    expect(at(dense).score).toBeLessThan(1)
+    expect(at(trivial).score).toBeLessThan(1)
+  })
+
+  it("floor ignores prose that reads too hard and still catches prose that reads too simply", () => {
+    expect(at(dense, { direction: "floor" }).score).toBe(1)
+    expect(at(trivial, { direction: "floor" }).score).toBeLessThan(1)
+  })
+
+  it("ceiling is the mirror image", () => {
+    expect(at(dense, { direction: "ceiling" }).score).toBeLessThan(1)
+    expect(at(trivial, { direction: "ceiling" }).score).toBe(1)
+  })
+
+  it("reports which side is enforced", () => {
+    expect(at(trivial, { direction: "floor" }).detail).toContain("floor 7")
+    expect(at(dense).detail).toContain("band 7–12")
+  })
+
+  it("falls back to both on an unrecognized direction", () => {
+    expect(at(dense, { direction: "sideways" }).score).toBeLessThan(1)
+  })
+})
