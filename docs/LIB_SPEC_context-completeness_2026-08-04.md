@@ -51,33 +51,55 @@ behave the same way — "this approach", "that run".
 This is countable. No language model required, which keeps it inside prosemeter's determinism
 constraint.
 
-### The raw count is the wrong number
+### The raw count needs the question subtracted from it
 
 Every answer leans on its question, and that is healthy. `fixtures/chat-clear.md` opens with "the
 bundler" having never introduced a bundler, and it is a good answer — the *question* introduced it.
 Scored alone it looks worse than the reply nobody could follow.
 
-**The residual is the number that matters**: what is still unbound after the question is supplied.
+So the question has to be in scope before the count means anything. What survives that is the
+**residual**.
 
 ### Measured
 
-`eval/probe-context.mjs`, rate is unbound references per 1,000 words:
+`eval/probe-context.mjs`. The count is unbound references; the rate is per 1,000 words. **Lower is
+better** — this counts problems, unlike every prosemeter dimension, where 100 is good.
 
-| document | alone | with its question | bound by the question | reading |
+| document | unbound, alone | rate | with the question in scope | bound |
 | --- | --- | --- | --- | --- |
-| `fixtures/chat-clear.md` | 87.0 | 61.9 | **29%** | leans on its question; pair them and it stands |
-| first reply (scored 85) | 69.9 | 69.2 | **1%** | leans on neither the text nor the question |
-| plain rewrite (scored 84) | 28.7 | 30.0 | −5% | already self-contained; nothing left to bind |
+| `fixtures/chat-clear.md` | 14 in 161 words | 87.0 | 11 | **3 of 14 (21%)** |
+| first reply (scored 85) | 32 in 458 words | **69.9** | 32 | **0 of 32** |
+| plain rewrite (scored 84) | 9 in 314 words | **28.7** | 9 | 0 of 9 |
 
-Two axes, not one:
+The load-bearing comparison is the last two rows: **32 unbound references against 9** — same author,
+same content, same hour, one comprehensible and one not. A 2.4x gap in a measure that reading grade,
+sentence length, jargon, and hedging all missed.
 
-- **Low residual** — the text introduces its own terms. The drop is irrelevant. (plain rewrite)
-- **High residual, large drop** — needs its question. Fine; pair them. (chat-clear)
-- **High residual, no drop** — needs something that is in neither. **This is the defect.** (first reply)
+**But the measure does not yet separate good from bad in general.** With its question in scope
+`chat-clear.md` sits at 68.3 per 1,000 words and the incomprehensible reply at 69.9 — indistinguishable,
+and `chat-clear.md` is a good answer. A short answer to a context-heavy question has a naturally high
+density of definites. So what the probe currently separates is *"introduces its own terms"* from
+*"does not"*, which is narrower than *"comprehensible"* and may only look like it on this one pair.
+Treat the 2.4x as a lead, not a result.
 
-The first version of the probe used the drop alone and flagged the reply that had actually landed,
-because a self-contained answer has nothing for its question to bind. That mistake is why the
-threshold logic uses both axes.
+Two axes decide the verdict:
+
+- **Few unbound to begin with** — the text introduces its own terms and needs nothing. (plain rewrite)
+- **Many, and the question binds a share** — needs its question. Fine; pair them. (chat-clear)
+- **Many, and the question binds none** — needs something in neither. **This is the defect.** (first reply)
+
+### Two method errors, both caught by running it
+
+**The verdict cannot use the bound percentage alone.** The first version did, and flagged the reply
+that had actually landed — a self-contained answer has nothing left for its question to bind, so it
+scores 0% exactly like the worst case does.
+
+**The question must seed the introduced set, not be concatenated onto the text.** Prepending it
+conflates three effects: references it genuinely binds, unbound references it contributes itself, and
+its own words inflating the denominator. That last one was **half** the originally reported effect —
+`chat-clear.md` appeared to improve 87.0 to 61.9, a "29% drop", when the honest figure is 3
+references of 14. Under concatenation the other two documents' raw counts went *up*. `probe()` now
+takes `prior` as a separate argument, counted for what it introduces and nothing else.
 
 ## What it would take to ship
 

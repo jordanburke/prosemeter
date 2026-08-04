@@ -71,12 +71,31 @@ const lemma = (w) =>
     .replace(/ies$/, "y")
     .replace(/s$/, "")
 
-export const probe = (raw) => {
+/**
+ * Seed the "already introduced" set from prior text — the question, or earlier turns — without
+ * counting it.
+ *
+ * This has to be separate from concatenation. Prepending the question and scoring the whole thing
+ * conflates three effects: references the question genuinely binds, unbound references the question
+ * itself contributes, and the question's words inflating the denominator. Measured on the first
+ * version of this probe, denominator inflation was **half** the headline effect — `chat-clear.md`
+ * bound only 2 of 14 references, while its rate appeared to fall 87.0 to 61.9.
+ */
+const seedFrom = (prior) => {
+  const introduced = new Set()
+  for (const m of strip(prior).matchAll(/\b([A-Za-z][A-Za-z-]*)\b/g)) {
+    const l = lemma(m[0])
+    if (l.length >= 3) introduced.add(l)
+  }
+  return introduced
+}
+
+export const probe = (raw, prior = "") => {
   const text = strip(raw)
   const tokens = [...text.matchAll(/\b([A-Za-z][A-Za-z-]*)\b/g)]
   const total = text.split(/\s+/).filter(Boolean).length
 
-  const introduced = new Set()
+  const introduced = seedFrom(prior)
   const unbound = []
 
   for (let i = 0; i < tokens.length; i++) {
@@ -128,13 +147,14 @@ if (!isMain) {
   }
   const answer = readFileSync(aPath, "utf8")
   const alone = probe(answer)
-  const withQ = probe(`${readFileSync(qPath, "utf8")}\n\n${answer}`)
-  const drop = ((alone.per1k - withQ.per1k) / alone.per1k) * 100
+  const withQ = probe(answer, readFileSync(qPath, "utf8"))
+  const bound = alone.unbound - withQ.unbound
+  const drop = alone.unbound === 0 ? 0 : (bound / alone.unbound) * 100
 
-  console.log(`${name(aPath)}\n`)
-  console.log(`  alone              ${alone.per1k.toFixed(1)} unbound/1k  (${alone.unbound} in ${alone.words} words)`)
-  console.log(`  with its question  ${withQ.per1k.toFixed(1)} unbound/1k  (${withQ.unbound} in ${withQ.words} words)`)
-  console.log(`  bound by the question: ${drop.toFixed(0)}%`)
+  console.log(`${name(aPath)}  —  ${alone.words} words, rate is unbound refs per 1000 words (lower is better)\n`)
+  console.log(`  answer alone           ${alone.unbound} unbound  (${alone.per1k.toFixed(1)}/1k)`)
+  console.log(`  question in scope      ${withQ.unbound} unbound  (${withQ.per1k.toFixed(1)}/1k)`)
+  console.log(`  bound by the question: ${bound} of ${alone.unbound}  (${drop.toFixed(0)}%)`)
 
   /**
    * Two axes, not one. A low residual means the text already stands alone and the drop is
