@@ -1,6 +1,6 @@
 {
   "name": "@prosemeter/vocabulary",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "prosemeter vocabulary dimensions — lexical diversity, terminology/spelling consistency, acronym definition",
   "keywords": [
     "prose",

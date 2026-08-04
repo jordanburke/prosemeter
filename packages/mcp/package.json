@@ -1,6 +1,6 @@
 {
   "name": "@prosemeter/mcp",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "prosemeter MCP server — deterministic prose scoring and the agent revise/converge loop over MCP",
   "keywords": [
     "mcp",

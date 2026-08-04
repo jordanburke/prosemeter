@@ -1,6 +1,6 @@
 {
   "name": "prosemeter",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Deterministic scoring + feedback-loop layer for prose — batteries-included bundle and CLI",
   "keywords": [
     "prose",
