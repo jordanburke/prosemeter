@@ -102,6 +102,14 @@ export const PROFILES: Readonly<Record<string, Profile>> = {
     description: "Agent chat replies: jargon and wordiness harsh, document structure disabled.",
     // Floor 7 as much as ceiling 12: chopping every sentence to eight words to game the readability
     // formulas lands *below* the band and is penalized, so the counterweight is in the band itself.
+    //
+    // Both the weight and the bidirectionality were challenged and re-measured (2026-08-04). Over
+    // 416 eval answers the dimension scores exactly 100 on 87.5% of them, which looks like a flat
+    // ~24-point giveaway. Swept `direction` x `weight` against the calibration assertions anyway:
+    // every alternative failed. Floor-only lets chat-jargon.md (median grade 25.8) score 100 here
+    // and collapses the register spread from 44 to 21. Any weight below 0.24 lets
+    // choppy-simplistic.md clear the 75 threshold. The saturation is a guard rail being satisfied,
+    // not a defect. See eval/README.md, "grade-band's weight and bidirectionality".
     gradeBand: { lo: 7, hi: 12 },
     weights: {
       // Up — the three complaints. grade-band and sentence-simplicity are the jargon proxies (the
