@@ -31,6 +31,9 @@ on:
       - "site/**"
       - "packages/*/src/**"
       - "fixtures/**"
+      # Include this file, so a change to the workflow is exercised before it reaches main. Without
+      # it a broken deploy guard merges unverified — which is how the inline-secrets check got in.
+      - ".github/workflows/deploy-site.yml"
   workflow_dispatch:
 
 concurrency:
