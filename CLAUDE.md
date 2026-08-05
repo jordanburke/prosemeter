@@ -121,7 +121,10 @@ The two findings most likely to be re-derived by accident:
 
 - `packages/core/src/scoring.ts` — normalization strategies and the composite
 - `packages/core/src/profiles.ts` — the built-in profiles
-- `packages/prosemeter/src/index.ts` — public entry point
+- `packages/prosemeter/src/index.ts` — public entry point. **Keep it free of Node built-ins.** A
+  value re-export from `./baseline` would drag `node:fs` into the module graph and make `score()`
+  unbundleable for a browser, which the site depends on. Baseline persistence is a separate tsdown
+  entry and a separate `prosemeter/baseline` subpath export for exactly that reason.
 - `packages/prosemeter/src/cli/` — the `prosemeter` CLI
 - `packages/mcp/src/server.ts` — the five MCP tools
 - `.claude/skills/prose-loop/SKILL.md` — the score/revise/stop loop, shipped as a skill

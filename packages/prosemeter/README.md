@@ -13,6 +13,20 @@ picture: the agent loop, profiles, the CLI, and the MCP server.
 pnpm add prosemeter
 ```
 
+## Exports
+
+The root export is free of Node built-ins, so `score` bundles for the browser:
+
+```ts
+import { score, compareBaseline, checkConvergence } from "prosemeter"
+```
+
+Baseline persistence reads and writes files, so it lives on its own subpath:
+
+```ts
+import { loadBaseline, saveBaseline } from "prosemeter/baseline"
+```
+
 ## License
 
 MIT

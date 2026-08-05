@@ -36,8 +36,12 @@ export const profiles = (): ReadonlyArray<ProfileSummary> =>
       : [{ name: p.name, description: p.description, gradeBand: p.gradeBand, thresholdDefault: p.thresholdDefault }]
   })
 
+/**
+ * Type-only, deliberately. A value re-export here would put `./baseline` — and with it `node:fs`
+ * and `node:path` — into this entry's module graph, which makes `score()` unbundleable for a
+ * browser. Baseline persistence lives at the `prosemeter/baseline` subpath instead.
+ */
 export type { BaselineFile } from "./baseline"
-export { DEFAULT_BASELINE_PATH, loadBaseline, saveBaseline } from "./baseline"
 export type { DeltaReportJSON, DimensionResultJSON, FindingJSON, Loc, ScoreResultJSON } from "./json"
 export { fromScoreResultJSON, toDeltaReportJSON, toScoreResultJSON } from "./json"
 export { builtinProviders } from "./providers"

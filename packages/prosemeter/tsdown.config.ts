@@ -9,7 +9,9 @@ const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf-8")) as { ve
 const isProduction = process.env.NODE_ENV === "production"
 
 export default defineConfig({
-  entry: { index: "src/index.ts", "cli/index": "src/cli/index.ts" },
+  // `baseline` is its own entry so its `node:fs` import lands in `dist/baseline.js` and never in
+  // the chunk that carries `score()`. See the note in src/index.ts.
+  entry: { index: "src/index.ts", baseline: "src/baseline.ts", "cli/index": "src/cli/index.ts" },
   format: ["esm"],
   dts: true,
   sourcemap: isProduction,
