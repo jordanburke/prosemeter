@@ -91,8 +91,13 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Run from site/, where wrangler is a devDependency. Left at the repo root the action
+          # finds no wrangler and tries `pnpm add wrangler` there, which pnpm refuses without -w
+          # ([ERR_PNPM_ADDING_TO_ROOT]). Declaring it also pins the version in the lockfile instead
+          # of letting the action install whichever one it defaults to.
+          workingDirectory: site
           command: >-
-            pages deploy site/dist
+            pages deploy dist
             --project-name=prosemeter
             --branch=${{ github.head_ref || github.ref_name }}
 
