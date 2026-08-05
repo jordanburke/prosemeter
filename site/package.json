@@ -1,0 +1,45 @@
+{
+  "name": "prosemeter-site",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "prosemeter.com — the landing site and live scorer. Not published.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "validate": "node scripts/assert-browser-safe.mjs && astro check && astro build"
+  },
+  "dependencies": {
+    "prosemeter": "workspace:*"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^7.1.6",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3"
+  },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "all",
+    "singleQuote": false,
+    "printWidth": 120,
+    "tabWidth": 2,
+    "endOfLine": "auto",
+    "plugins": [
+      "prettier-plugin-astro"
+    ],
+    "overrides": [
+      {
+        "files": "*.astro",
+        "options": {
+          "parser": "astro"
+        }
+      }
+    ]
+  }
+}

@@ -49,3 +49,7 @@ eval/out-run2
 eval/out-run3
 eval/out-run4
 eval/out-sonnet
+
+# Astro / Cloudflare (site/) — `dist` above is unanchored and already covers site/dist
+.astro/
+.wrangler/

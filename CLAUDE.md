@@ -144,3 +144,32 @@ pnpm changeset       # describe the change; one entry bumps every package
 Merge to `main`, then merge the "Version Packages" pull request the workflow opens. See
 `RELEASING.md` — in particular, the publish workflow filename must stay `publish.yml` and `.nvmrc`
 must stay at Node 24 or newer.
+
+## The site
+
+`site/` is the source for prosemeter.com — Astro, static, deployed to Cloudflare Pages by
+`.github/workflows/deploy-site.yml`. It is a workspace member (`pnpm-workspace.yaml`) but lives
+outside `packages/`, because everything in there is published to npm and this is not.
+
+It scores **in the browser**, which is why `packages/prosemeter/src/index.ts` must stay free of Node
+built-ins. `site/scripts/assert-browser-safe.mjs` walks the built module graph and fails the build if
+that regresses.
+
+Three things about the bundle, each of which cost an afternoon:
+
+- The scorer runs in a **Web Worker**. Not only for jank — `score()` returns a functype `Either` and
+  `Option`s, none of which survive structured clone, so the boundary forces `toScoreResultJSON`.
+  Never import a *value* from `scorer.worker.ts` into the page script; it pulls the whole engine into
+  the page chunk. Shared constants live in `src/lib/limits.ts` for exactly this reason.
+- `astro.config.mjs` puts the `worker` export condition ahead of `browser`, because
+  `decode-named-character-reference` ships a DOM-based entity decoder under `browser` that dies in a
+  worker.
+- A small Vite plugin rewrites `pluralize`'s UMD guard. It is registered **twice** — under
+  `vite.plugins` and `vite.worker.plugins` — because worker bundles get their own plugin pipeline.
+
+The first result is rendered at build time in `Scorer.astro`'s frontmatter, so the demo works with
+JavaScript disabled and the heavy chunk never blocks first paint. **No score is ever typed by hand**;
+copy that quotes a number computes it from `fixtures/`.
+
+The site does not use `ts-builds` and has no `lint` or `test` task — `astro check` covers it. That is
+a deliberate break from the uniformity every package under `packages/` follows.

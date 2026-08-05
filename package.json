@@ -20,6 +20,8 @@
     "typecheck": "turbo run typecheck",
     "validate": "turbo run validate",
     "dev": "turbo run dev",
+    "site:dev": "turbo run dev --filter=prosemeter-site",
+    "site:build": "turbo run build --filter=prosemeter-site",
     "clean": "pnpm -r clean && rm -rf .turbo",
     "changeset": "changeset",
     "version-packages": "changeset version",
