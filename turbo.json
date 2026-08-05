@@ -1,5 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  // Repo-root files that packages read at runtime. Four test suites already load fixtures/ via
+  // import.meta.url, and the site reads it at build time; without this, editing a fixture produces
+  // a cache hit on a stale result.
+  "globalDependencies": ["fixtures/**", "docs/**", "eval/*.md"],
   "ui": "stream",
   "tasks": {
     "build": {

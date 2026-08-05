@@ -1,0 +1,83 @@
+# Deploys site/ to Cloudflare Pages.
+#
+# Deliberately NOT named publish.yml, and it must not be merged into that file: npm's trusted
+# publisher configuration is bound to that exact filename, and a rename breaks every release with an
+# obfuscated E404. See RELEASING.md.
+#
+# Built here rather than by Cloudflare's Git integration, so the toolchain is the one CI already
+# proves — pnpm from packageManager, Node from .nvmrc — instead of a second one configured in a web
+# UI, invisible to review, and untested until it drifts.
+#
+# One-time setup before this can work:
+#   1. Create a Cloudflare Pages project named `prosemeter` using **Direct Upload**, not Git.
+#   2. Add prosemeter.com as a custom domain on it. DNS is already on Cloudflare.
+#   3. Add repo secrets CLOUDFLARE_API_TOKEN (scoped: Cloudflare Pages — Edit) and
+#      CLOUDFLARE_ACCOUNT_ID.
+# Until those exist the deploy step skips rather than failing the run.
+
+name: Deploy site
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "site/**"
+      - "packages/*/src/**"
+      - "fixtures/**"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/deploy-site.yml"
+  pull_request:
+    paths:
+      - "site/**"
+      - "packages/*/src/**"
+      - "fixtures/**"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-site-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Builds prosemeter first via turbo's `dependsOn: ["^build"]`, then asserts the root export is
+      # still free of Node built-ins before bundling it for a browser.
+      - run: pnpm turbo run build --filter=prosemeter-site
+
+      - name: Check for Cloudflare credentials
+        id: creds
+        run: echo "ok=${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}" >> "$GITHUB_OUTPUT"
+
+      # Fork pull requests cannot see secrets, so the step would fail confusingly rather than
+      # informatively. Skip instead; the build above still ran and still gates the PR.
+      - name: Deploy to Cloudflare Pages
+        if: steps.creds.outputs.ok == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >-
+            pages deploy site/dist
+            --project-name=prosemeter
+            --branch=${{ github.head_ref || github.ref_name }}
+
+      - name: Note missing credentials
+        if: steps.creds.outputs.ok != 'true'
+        run: |
+          echo "::notice::Built site/dist but skipped the deploy — CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are not set. See the header of this workflow for setup."

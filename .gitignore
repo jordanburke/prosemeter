@@ -1,7 +1,11 @@
 .idea
 *.iml
-lib
-dist
+# Anchored to where ts-builds actually writes dev/prod output. Bare `lib` and `dist` match at any
+# depth, which silently swallowed site/src/lib/ — the site built locally and failed in CI with
+# "Cannot find module '../lib/view'".
+packages/*/lib
+packages/*/dist
+site/dist
 .turbo
 .prosemeter
 
@@ -49,3 +53,7 @@ eval/out-run2
 eval/out-run3
 eval/out-run4
 eval/out-sonnet
+
+# Astro / Cloudflare (site/) — `dist` above is unanchored and already covers site/dist
+.astro/
+.wrangler/

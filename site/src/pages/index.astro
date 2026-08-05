@@ -1,0 +1,197 @@
+---
+/**
+ * The landing page.
+ *
+ * Every number below is computed at build time from `fixtures/` — see `computed` — because
+ * hand-written scores go stale the moment a dimension's defaults move, and that has already
+ * happened twice.
+ */
+import { score, toScoreResultJSON, profiles, VERSION } from "prosemeter"
+
+import Base from "../layouts/Base.astro"
+import Scorer from "../components/Scorer.astro"
+import { fixtures } from "../lib/fixtures"
+import { pct } from "../lib/view"
+
+const thresholds = Object.fromEntries(profiles().map((p) => [p.name, p.thresholdDefault]))
+
+/** Score a fixture at build time and pull out the few figures the copy refers to. */
+const measure = (id: string) => {
+  const f = fixtures.find((x) => x.id === id)!
+  return score(f.text, { profile: f.profile, format: f.format, target: `${id}.md` }).fold(
+    () => null,
+    (r) => {
+      const json = toScoreResultJSON(r)
+      const dim = (d: string) => pct(json.dimensions.find((x) => x.id === d)?.score ?? 0)
+      return {
+        score: json.score,
+        threshold: thresholds[f.profile] ?? 70,
+        profile: f.profile,
+        dim,
+        grade: /median grade (-?[\d.]+)/.exec(json.dimensions.find((x) => x.id === "grade-band")?.detail ?? "")?.[1],
+      }
+    },
+  )
+}
+
+const gamed = measure("choppy-simplistic")!
+const jargon = measure("chat-jargon")!
+const clear = measure("chat-clear")!
+---
+
+<Base
+  title="prosemeter — deterministic scoring for prose"
+  description="A 0–100 score, 15 per-dimension scores, and findings with line numbers and fix hints. Deterministic: same input, same output, no model calls."
+>
+  <section class="hero">
+    <h1>Deterministic scoring for prose.</h1>
+    <p class="lede">Agents close the loop on code with compilers, linters, and tests. Prose has no such signal.</p>
+    <p>
+      prosemeter is one. Give it a document and a named profile. It returns a 0–100 score, 15 per-dimension scores, and
+      findings with line numbers and fix hints — enough for an agent to revise, measure, and know when to stop.
+    </p>
+    <p>
+      The scoring path is deterministic. Same input, same output. No model calls, no network, no randomness. That is
+      what makes it usable as a fitness function.
+    </p>
+    <p class="cta">
+      <code>pnpm add prosemeter</code>
+      <a class="button" href="#demo">Score a document ↓</a>
+      <a class="button" href="https://github.com/jordanburke/prosemeter">GitHub</a>
+    </p>
+  </section>
+
+  <h2>The same answer, two registers</h2>
+  <p>
+    Both documents below answer the same question with the same fix. One scores {clear.score} on the <code>chat</code>
+    profile. The other scores {jargon.score}. Toggle between them and watch which dimensions move.
+  </p>
+
+  <Scorer />
+
+  <h2>A score is not enough</h2>
+  <p>
+    A linter tells an agent what is wrong. It does not tell it whether the rewrite helped, or when to stop rewriting.
+    Those are the two questions that make a revision loop terminate.
+  </p>
+  <p>
+    prosemeter answers both. <code>compareBaseline</code> diffs a result against the previous one and reports which findings
+    resolved and which are new. <code>checkConvergence</code> reads a score history and returns one of five verdicts. An agent
+    revises while the trend climbs and stops on anything else.
+  </p>
+  <pre><code>{`const result  = score(draft, { profile: "readme" })
+const delta   = compareBaseline(current, previous)
+const verdict = checkConvergence([62, 71, 74, 74.5], { threshold: 80 })
+// "improving" | "plateaued" | "oscillating" | "regressing" | "converged"`}</code></pre>
+  <p>
+    The distinct stop reasons let a harness attach policy. <code>regressing</code> means revert to the highest-scoring earlier
+    draft rather than push the latest one further.
+  </p>
+
+  <h2>You cannot buy the score by shortening sentences</h2>
+  <p>Here is a document that games every obvious lever:</p>
+  <blockquote><p>The cat sat. The cat is big. The cat is red. It ran. It ran fast.</p></blockquote>
+  <p>
+    It scores <b
+      >{gamed.dim("sentence-simplicity")} on sentence-simplicity, {gamed.dim("clarity")} on clarity, and {
+        gamed.dim("concision")
+      } on concision</b
+    >. It scores <b>{gamed.score} overall and fails</b> the <code>chat</code> profile's threshold of {gamed.threshold}.
+  </p>
+  <p>
+    <code>grade-band</code> is the reason. It is a band, not a goal — 1.0 inside the target range, falling off on
+    <em>either</em> side. This document reads at grade {gamed.grade} against a floor of 7, so the dimension carrying the profile's
+    largest weight scores {gamed.dim("grade-band")}.
+  </p>
+  <p>
+    The design generalizes. Targets are ranges, so there is no single number to run away with, and every dimension that
+    could be gamed by chopping sentences is counterweighted by one that punishes it.
+  </p>
+
+  <h2>Measured, not asserted</h2>
+  <div class="claims">
+    <div class="claim">
+      <b>32% shorter.</b>
+      <p>
+        A style instruction against a no-instruction control on the same six tasks: 438 → 298 words, jargon 10.7% →
+        8.7%, sentence-simplicity 50.2 → 69.9.
+      </p>
+      <p class="src">n=90 · claude-opus-5 · 2026-08-03</p>
+    </div>
+    <div class="claim">
+      <b>Naming the swap is what works.</b>
+      <p>
+        “Be concise. Avoid jargon. Write clearly.” reaches 350 words and 10.3% jargon — most of the length win, almost
+        none of the vocabulary win. Telling a model <em>which words to prefer</em> moved jargon; telling it to avoid jargon
+        did not.
+      </p>
+    </div>
+    <div class="claim">
+      <b>Instruction wording does not reach factual accuracy.</b>
+      <p>
+        Two runs and one targeted mechanism test. No effect. The instruction written specifically to fix an observed
+        error failed on that exact error in 4 of 5 replicates.
+      </p>
+    </div>
+    <div class="claim">
+      <b>Read dimensions, not the composite.</b>
+      <p>
+        Across seven instruction variants the composite spanned 79.5–86.6 while the spread <em>within</em> a single variant
+        was about 15 points. Over the same data the dimensions moved 2–3x.
+      </p>
+    </div>
+  </div>
+  <p>
+    236 scored answers across three runs, plus a Sonnet transfer check. <a
+      href="https://github.com/jordanburke/prosemeter/blob/main/eval/README.md">The method and the caveats →</a
+    >
+  </p>
+
+  <h2>One engine, four ways in</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Library</h3>
+      <p>ESM, typed, returns an <code>Either</code>.</p>
+      <pre><code>pnpm add prosemeter</code></pre>
+    </div>
+    <div class="card">
+      <h3>CLI</h3>
+      <p>Exits non-zero below a threshold.</p>
+      <pre><code>prosemeter score README.md</code></pre>
+    </div>
+    <div class="card">
+      <h3>MCP server</h3>
+      <p>Five tools over stdio.</p>
+      <pre><code>npx @prosemeter/mcp</code></pre>
+    </div>
+    <div class="card">
+      <h3>Claude Code plugin</h3>
+      <p>Server plus the revise/stop skill.</p>
+      <pre><code>/plugin install prosemeter@prosemeter</code></pre>
+    </div>
+  </div>
+  <p><a href="/use">All four, with the details →</a></p>
+
+  <h2>What it is not</h2>
+  <p>
+    A deterministic prose metric is a proxy, and any agent optimizing a proxy will find its seams. The bands blunt the
+    worst of that. The honest framing matters more than the guardrail.
+  </p>
+  <p>
+    prosemeter is a floor and a loop terminator, not a quality oracle. It tells an agent whether a draft cleared the
+    objective bar and when to stop iterating. It does not tell you the prose is good.
+  </p>
+  <p>
+    It also cannot check facts. Two eval runs and one targeted mechanism test found that style instructions move length
+    and vocabulary by 2–3x and move factual accuracy not at all. A high score is not a correctness signal. Verify
+    separately.
+  </p>
+  <p>
+    It measures how a document reads, not whether it makes sense to a particular reader — <a
+      href="https://github.com/jordanburke/prosemeter/blob/main/docs/LIB_SPEC_context-completeness_2026-08-04.md"
+      >a gap we have measured and not yet closed →</a
+    >
+  </p>
+
+  <p class="src" style="margin-top:3rem">prosemeter {VERSION}. Every score on this page was computed at build time.</p>
+</Base>

@@ -1,0 +1,205 @@
+---
+/**
+ * The live scorer.
+ *
+ * The first result is computed here, at build time, and shipped as static HTML. That means the page
+ * arrives with a real, correct score before a single byte of JavaScript runs — the demo works with
+ * JS disabled, and the heavy scorer chunk never blocks first paint. The worker takes over on the
+ * first interaction and re-renders into the same DOM using the same `panelHtml`.
+ *
+ * Every number here is computed. Nothing is typed by hand.
+ */
+import { score, toScoreResultJSON, profiles } from "prosemeter"
+
+import { fixtures, DEFAULT_FIXTURE, REGISTER_PAIR } from "../lib/fixtures"
+import { panelHtml } from "../lib/view"
+
+const allProfiles = profiles()
+const thresholds = Object.fromEntries(allProfiles.map((p) => [p.name, p.thresholdDefault]))
+
+const initial = fixtures.find((f) => f.id === DEFAULT_FIXTURE) ?? fixtures[0]!
+
+const initialPanel = score(initial.text, {
+  profile: initial.profile,
+  format: initial.format,
+  target: `${initial.id}.md`,
+}).fold(
+  (error) => `<p class="error">Could not score the default fixture: ${error.kind}</p>`,
+  (result) => panelHtml(toScoreResultJSON(result), thresholds[initial.profile] ?? 70),
+)
+
+const [jargonId, clearId] = REGISTER_PAIR
+---
+
+<section class="scorer" id="demo">
+  <div class="controls">
+    <div class="register" role="group" aria-label="Register">
+      <button type="button" data-fixture={jargonId} class="reg active">Jargon</button>
+      <button type="button" data-fixture={clearId} class="reg">Plain</button>
+      <button type="button" data-fixture="choppy-simplistic" class="reg gamed">The gamed rewrite</button>
+    </div>
+    <label class="profile">
+      profile
+      <select id="profile">
+        {
+          allProfiles.map((p) => (
+            <option value={p.name} selected={p.name === initial.profile} title={p.description}>
+              {p.name}
+            </option>
+          ))
+        }
+      </select>
+    </label>
+  </div>
+
+  <p class="blurb" id="blurb">{initial.blurb}</p>
+
+  <div class="split">
+    <div class="pane doc">
+      <label class="sr-only" for="text">Document to score</label>
+      <textarea id="text" spellcheck="false" autocomplete="off">{initial.text}</textarea>
+    </div>
+    <div class="pane out">
+      <div id="panel">
+        <Fragment set:html={initialPanel} />
+      </div>
+    </div>
+  </div>
+
+  <details class="more">
+    <summary>Try another document</summary>
+    <div class="chips">
+      {
+        fixtures.map((f) => (
+          <button type="button" data-fixture={f.id} class="chip">
+            {f.label}
+          </button>
+        ))
+      }
+    </div>
+  </details>
+
+  <p class="note">Scored in your browser. Nothing was uploaded, and there is no model in the loop.</p>
+</section>
+
+<script>
+  import { fixtures, DEFAULT_FIXTURE } from "../lib/fixtures"
+  import { panelHtml } from "../lib/view"
+  // Type-only. A value import here would pull the worker module — and all of prosemeter — into
+  // this page chunk, which is exactly what the worker exists to avoid.
+  import type { ScoreRequest, ScoreResponse } from "../lib/scorer.worker"
+  import { MAX_CHARS, DEBOUNCE_MS } from "../lib/limits"
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector(sel) as T
+
+  const textarea = $<HTMLTextAreaElement>("#text")
+  const profileSelect = $<HTMLSelectElement>("#profile")
+  const panel = $<HTMLDivElement>("#panel")
+  const blurb = $<HTMLParagraphElement>("#blurb")
+
+  const thresholds: Record<string, number> = JSON.parse(document.getElementById("thresholds")!.textContent!)
+
+  let current = DEFAULT_FIXTURE
+  let format: "markdown" | "plaintext" = "markdown"
+
+  /**
+   * Lazy, and only once. The worker chunk carries the whole markdown + retext graph, so it is not
+   * fetched until the visitor shows intent — or until the browser is idle, whichever comes first.
+   */
+  let worker: Worker | undefined
+  const getWorker = () => {
+    if (worker) return worker
+    worker = new Worker(new URL("../lib/scorer.worker.ts", import.meta.url), { type: "module" })
+    worker.onmessage = (event: MessageEvent<ScoreResponse>) => {
+      const msg = event.data
+      if (msg.seq !== seq) return // a newer request is already in flight
+      panel.innerHTML = msg.ok
+        ? panelHtml(msg.result, thresholds[profileSelect.value] ?? 70, msg.ms)
+        : `<p class="error">${msg.error}</p>`
+      panel.classList.remove("busy")
+    }
+    worker.onerror = () => {
+      panel.classList.remove("busy")
+      panel.innerHTML = `<p class="error">The scorer failed to load. The CLI does the same thing: <code>npx prosemeter score file.md</code></p>`
+    }
+    return worker
+  }
+
+  let seq = 0
+  const rescore = () => {
+    const text = textarea.value
+    seq += 1
+    panel.classList.add("busy")
+    const request: ScoreRequest = {
+      seq,
+      text,
+      profile: profileSelect.value,
+      format,
+      target: `${current}.md`,
+    }
+    getWorker().postMessage(request)
+    overLimit.hidden = text.length <= MAX_CHARS
+  }
+
+  const overLimit = Object.assign(document.createElement("p"), {
+    className: "over-limit",
+    hidden: true,
+    textContent: `Scoring the first ${MAX_CHARS.toLocaleString()} characters.`,
+  })
+  panel.before(overLimit)
+
+  let timer: number | undefined
+  textarea.addEventListener("input", () => {
+    window.clearTimeout(timer)
+    timer = window.setTimeout(rescore, DEBOUNCE_MS)
+  })
+
+  // Discrete intents re-score immediately; only typing is debounced.
+  profileSelect.addEventListener("change", rescore)
+
+  const loadFixture = (id: string) => {
+    const f = fixtures.find((x) => x.id === id)
+    if (!f) return
+    current = f.id
+    format = f.format
+    textarea.value = f.text
+    profileSelect.value = f.profile
+    blurb.textContent = f.blurb
+    document.querySelectorAll<HTMLButtonElement>(".reg").forEach((b) => {
+      b.classList.toggle("active", b.dataset.fixture === id)
+    })
+    rescore()
+  }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-fixture]").forEach((button) => {
+    button.addEventListener("click", () => loadFixture(button.dataset.fixture!))
+  })
+
+  /**
+   * Click a finding, select the span it points at. `Loc` already carries `offset` and `length`, so
+   * this is the cheapest interaction on the page and the one that proves findings are locatable
+   * rather than advisory.
+   */
+  panel.addEventListener("click", (event) => {
+    const target = (event.target as HTMLElement).closest<HTMLButtonElement>(".finding")
+    if (!target?.dataset.offset) return
+    const offset = Number(target.dataset.offset)
+    const length = Number(target.dataset.length)
+    textarea.focus()
+    textarea.setSelectionRange(offset, offset + length)
+    // Put the selection roughly in view; textareas do not scrollIntoView a range.
+    const ratio = offset / Math.max(textarea.value.length, 1)
+    textarea.scrollTop = ratio * textarea.scrollHeight - textarea.clientHeight / 2
+  })
+
+  // Warm the worker before it is needed, without competing with first paint.
+  const warm = () => {
+    getWorker()
+  }
+  textarea.addEventListener("focus", warm, { once: true })
+  const idle = window.requestIdleCallback as typeof window.requestIdleCallback | undefined
+  if (idle) idle(warm, { timeout: 4000 })
+  else window.setTimeout(warm, 2000)
+</script>
+
+<script id="thresholds" type="application/json" is:inline set:html={JSON.stringify(thresholds)} />
