@@ -63,6 +63,13 @@ result.map((current) => {
 `score` returns an `Either` so parse and configuration errors stay explicit. A
 `ScoreResult` carries the composite score, per-dimension scores, and findings.
 
+The root export is free of Node built-ins, so `score` bundles for the browser.
+Baseline persistence reads and writes files, so it lives on its own subpath:
+
+```ts
+import { loadBaseline, saveBaseline } from "prosemeter/baseline"
+```
+
 ## The loop
 
 The loop is the point. A score alone is not enough, so the contract keeps every

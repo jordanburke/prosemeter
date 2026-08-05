@@ -51,8 +51,15 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
-    }
+    },
+    "./baseline": {
+      "types": "./dist/baseline.d.ts",
+      "import": "./dist/baseline.js",
+      "default": "./dist/baseline.js"
+    },
+    "./package.json": "./package.json"
   },
+  "sideEffects": false,
   "files": [
     "dist/",
     "README.md"
