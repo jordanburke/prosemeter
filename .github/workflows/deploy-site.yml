@@ -31,6 +31,9 @@ on:
       - "site/**"
       - "packages/*/src/**"
       - "fixtures/**"
+      # Include this file, so a change to the workflow is exercised before it reaches main. Without
+      # it a broken deploy guard merges unverified — which is how the inline-secrets check got in.
+      - ".github/workflows/deploy-site.yml"
   workflow_dispatch:
 
 concurrency:
@@ -60,9 +63,25 @@ jobs:
       # still free of Node built-ins before bundling it for a browser.
       - run: pnpm turbo run build --filter=prosemeter-site
 
+      # Read through `env`, not by interpolating `${{ secrets.* }}` into the expression. The inline
+      # form evaluated to false with both secrets present — the context is not populated for that
+      # comparison — and silently skipped the deploy on a green run. Testing an env var in bash also
+      # keeps the value out of the command line, where it would land in the step log.
       - name: Check for Cloudflare credentials
         id: creds
-        run: echo "ok=${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}" >> "$GITHUB_OUTPUT"
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          missing=""
+          [ -n "$CF_TOKEN" ]   || missing="$missing CLOUDFLARE_API_TOKEN"
+          [ -n "$CF_ACCOUNT" ] || missing="$missing CLOUDFLARE_ACCOUNT_ID"
+          if [ -z "$missing" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "missing=$missing" >> "$GITHUB_OUTPUT"
+          fi
 
       # Fork pull requests cannot see secrets, so the step would fail confusingly rather than
       # informatively. Skip instead; the build above still ran and still gates the PR.
@@ -77,7 +96,11 @@ jobs:
             --project-name=prosemeter
             --branch=${{ github.head_ref || github.ref_name }}
 
+      # Name the offender. "not set" sent us looking for a missing secret when the real state was a
+      # secret that existed with an empty value — `gh secret set` with no --body and no stdin.
       - name: Note missing credentials
         if: steps.creds.outputs.ok != 'true'
+        env:
+          MISSING: ${{ steps.creds.outputs.missing }}
         run: |
-          echo "::notice::Built site/dist but skipped the deploy — CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are not set. See the header of this workflow for setup."
+          echo "::notice::Built site/dist but skipped the deploy. Empty or unset:${MISSING}. Note that a secret can exist and still be empty — check the value, not just the name. See the header of this workflow."
