@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "prosemeter.com — the landing site and live scorer. Not published.",
+  "description": "prosemeter.com \u2014 the landing site and live scorer. Not published.",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -21,7 +21,8 @@
     "astro": "^7.1.6",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.119.0"
   },
   "prettier": {
     "semi": false,
