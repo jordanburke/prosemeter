@@ -73,10 +73,14 @@ jobs:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          if [ -n "$CF_TOKEN" ] && [ -n "$CF_ACCOUNT" ]; then
+          missing=""
+          [ -n "$CF_TOKEN" ]   || missing="$missing CLOUDFLARE_API_TOKEN"
+          [ -n "$CF_ACCOUNT" ] || missing="$missing CLOUDFLARE_ACCOUNT_ID"
+          if [ -z "$missing" ]; then
             echo "ok=true" >> "$GITHUB_OUTPUT"
           else
             echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "missing=$missing" >> "$GITHUB_OUTPUT"
           fi
 
       # Fork pull requests cannot see secrets, so the step would fail confusingly rather than
@@ -92,7 +96,11 @@ jobs:
             --project-name=prosemeter
             --branch=${{ github.head_ref || github.ref_name }}
 
+      # Name the offender. "not set" sent us looking for a missing secret when the real state was a
+      # secret that existed with an empty value — `gh secret set` with no --body and no stdin.
       - name: Note missing credentials
         if: steps.creds.outputs.ok != 'true'
+        env:
+          MISSING: ${{ steps.creds.outputs.missing }}
         run: |
-          echo "::notice::Built site/dist but skipped the deploy — CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are not set. See the header of this workflow for setup."
+          echo "::notice::Built site/dist but skipped the deploy. Empty or unset:${MISSING}. Note that a secret can exist and still be empty — check the value, not just the name. See the header of this workflow."
