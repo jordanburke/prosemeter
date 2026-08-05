@@ -60,9 +60,21 @@ jobs:
       # still free of Node built-ins before bundling it for a browser.
       - run: pnpm turbo run build --filter=prosemeter-site
 
+      # Read through `env`, not by interpolating `${{ secrets.* }}` into the expression. The inline
+      # form evaluated to false with both secrets present — the context is not populated for that
+      # comparison — and silently skipped the deploy on a green run. Testing an env var in bash also
+      # keeps the value out of the command line, where it would land in the step log.
       - name: Check for Cloudflare credentials
         id: creds
-        run: echo "ok=${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}" >> "$GITHUB_OUTPUT"
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -n "$CF_TOKEN" ] && [ -n "$CF_ACCOUNT" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
 
       # Fork pull requests cannot see secrets, so the step would fail confusingly rather than
       # informatively. Skip instead; the build above still ran and still gates the PR.
