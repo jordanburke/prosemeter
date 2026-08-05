@@ -1,0 +1,45 @@
+---
+import "../styles/site.css"
+
+type Props = { readonly title: string; readonly description: string }
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='14'>▮</text></svg>"
+    />
+  </head>
+  <body>
+    <header class="top">
+      <a class="wordmark" href="/">prosemeter</a>
+      <nav>
+        <a href="/#demo">Demo</a>
+        <a href="/use">Use it</a>
+        <a href="https://github.com/jordanburke/prosemeter">GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="bottom">
+      <p>
+        MIT · <a href="https://github.com/jordanburke/prosemeter">GitHub</a> ·
+        <a href="https://www.npmjs.com/package/prosemeter">npm</a>
+      </p>
+    </footer>
+  </body>
+</html>

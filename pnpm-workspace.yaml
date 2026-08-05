@@ -1,5 +1,7 @@
 packages:
   - "packages/*"
+  # The landing site. Lives outside packages/ because everything in there is published to npm.
+  - "site"
 
 # Hoist CLI tool binaries from peer dependencies.
 # pnpm 11 only reads auth/registry from .npmrc; all other settings live here.
@@ -19,4 +21,7 @@ minimumReleaseAgeExclude:
 # tldjs ships with a bundled public-suffix list; its optional postinstall (a network refresh)
 # is unnecessary for prosemeter-mcp, which uses somamcp over stdio only (no gateway/URL features).
 allowBuilds:
+  # esbuild ships prebuilt binaries per platform; its postinstall just links the right one.
+  # Needed by Astro (site/), which is not published.
+  esbuild: true
   tldjs: false

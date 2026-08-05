@@ -1,0 +1,104 @@
+---
+/** The four surfaces, one page. Profile names and thresholds come from the engine, never typed. */
+import { profiles, VERSION } from "prosemeter"
+
+import Base from "../layouts/Base.astro"
+
+const all = profiles()
+---
+
+<Base
+  title="Use prosemeter — library, CLI, MCP server, Claude Code plugin"
+  description="One engine, four ways in: an ESM library, a CLI that exits non-zero below a threshold, an MCP server, and a Claude Code plugin."
+>
+  <h1>Use it</h1>
+  <p>
+    One engine, four ways in. The library is the whole thing; the other three are thin wrappers that exist so an agent
+    or a CI job does not have to be one.
+  </p>
+
+  <h2 id="library">Library</h2>
+  <pre><code>{`pnpm add prosemeter`}</code></pre>
+  <pre><code>{`import { score, compareBaseline, checkConvergence } from "prosemeter"
+
+const result = score(draft, { profile: "readme" })
+
+result.map((current) => {
+  const delta = compareBaseline(current, previous)
+  const verdict = checkConvergence([62, 71, 74, 74.5], { threshold: 80 })
+  return { delta, verdict }
+})`}</code></pre>
+  <p>
+    <code>score</code> returns an <code>Either</code>, so parse and configuration errors stay explicit rather than
+    throwing. A <code>ScoreResult</code> carries the composite, the per-dimension scores, and the findings.
+  </p>
+  <p>
+    The root export is free of Node built-ins — it is what this page's demo runs. Baseline persistence touches the
+    filesystem, so it lives on its own subpath:
+  </p>
+  <pre><code>{`import { loadBaseline, saveBaseline } from "prosemeter/baseline"`}</code></pre>
+
+  <h2 id="cli">Command line</h2>
+  <pre><code>{`npx prosemeter score README.md --profile readme
+npx prosemeter score "docs/**/*.md" --threshold 75   # exits 1 below the threshold
+npx prosemeter score draft.md --json                 # machine-readable ScoreResult
+npx prosemeter profiles`}</code></pre>
+  <p>The agent loop in one command — score, store, and report the convergence verdict against the previous run:</p>
+  <pre><code>{`npx prosemeter score draft.md --profile readme --baseline --save-baseline`}</code></pre>
+  <p>Exit codes: <code>0</code> pass · <code>1</code> below threshold · <code>2</code> bad input or config.</p>
+
+  <h2 id="mcp">MCP server</h2>
+  <p>
+    Five tools over stdio: <code>score_text</code>, <code>score_file</code>, <code>compare_baseline</code>,
+    <code>check_convergence</code>, and <code>list_profiles</code>. Every tool description teaches the loop, so an agent
+    learns how they fit together rather than calling one in isolation.
+  </p>
+  <pre><code>{`npx @prosemeter/mcp`}</code></pre>
+  <p>Point any MCP client at that binary.</p>
+
+  <h2 id="plugin">Claude Code plugin</h2>
+  <p>
+    The server bundled with a skill. The server gives an agent the ability to score; the skill is what tells it to read
+    per-dimension findings rather than the composite, and when to stop revising.
+  </p>
+  <pre><code>{`/plugin marketplace add jordanburke/prosemeter
+/plugin install prosemeter@prosemeter`}</code></pre>
+
+  <h2 id="profiles">Profiles</h2>
+  <p>
+    A profile tunes scoring for a kind of document: a target reading grade, per-dimension weights, and rule severities.
+    Seven ship built in.
+  </p>
+  <table class="dims">
+    <thead>
+      <tr
+        ><th scope="col">profile</th><th scope="col">grade band</th><th scope="col">threshold</th><th scope="col"
+        ></th></tr
+      >
+    </thead>
+    <tbody>
+      {
+        all.map((p) => (
+          <tr>
+            <th scope="row">{p.name}</th>
+            <td class="num">
+              {p.gradeBand.lo}–{p.gradeBand.hi}
+            </td>
+            <td class="num">{p.thresholdDefault}</td>
+            <td class="detail">{p.description}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  <p>
+    Override any of it with a <code>prosemeter.config.json</code>, or pass <code>dimensionOptions</code> through the library.
+    <a href="/#demo">The demo</a> switches profiles live. Load the passive-voice document and move it from
+    <code>readme</code> to <code>api-docs</code>: the dimension score does not budge, but the weight does, and the
+    composite rises. That is what a profile changes.
+  </p>
+
+  <p class="src" style="margin-top:3rem">
+    prosemeter {VERSION} · this table is generated from the engine's own profile definitions.
+  </p>
+</Base>
