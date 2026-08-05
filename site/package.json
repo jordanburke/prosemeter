@@ -1,9 +1,9 @@
 {
   "name": "prosemeter-site",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "prosemeter.com \u2014 the landing site and live scorer. Not published.",
+  "description": "prosemeter.com — the landing site and live scorer. Not published.",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
