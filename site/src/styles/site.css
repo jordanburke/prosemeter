@@ -497,3 +497,249 @@ table.nested {
   font: 0.78rem var(--mono);
   color: color-mix(in srgb, var(--dim) 80%, transparent);
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Layout: bands, hero split, stats, terminal.
+
+   The first pass laid every section out identically — an h2 followed by
+   paragraphs at one measure — so nothing told the eye where one idea ended
+   and the next began. These are the pieces that give the page a rhythm.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --band: color-mix(in srgb, var(--panel) 60%, var(--bg));
+  --shell: 68rem;
+}
+
+/* Full-bleed alternating background. `main` no longer constrains width; each
+   band constrains its own inner column, so a band's colour reaches both edges. */
+main {
+  max-width: none;
+  padding: 0 0 4rem;
+}
+
+.band {
+  padding: 3.5rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+.band.tint {
+  background: var(--band);
+}
+.band > * {
+  max-width: var(--shell);
+  margin-inline: auto;
+}
+.band h2 {
+  margin-top: 0;
+}
+
+/* Centred section header with a subtitle — a deliberate break from the
+   left-aligned body text, so a new section reads as one at a glance. */
+.section-head {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.section-head h2 {
+  margin-bottom: 0.4rem;
+}
+.section-head p {
+  max-width: 42rem;
+  margin-inline: auto;
+  color: var(--dim);
+}
+
+.prose {
+  max-width: var(--measure);
+}
+.prose.center {
+  margin-inline: auto;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: 3.5rem 1.25rem 3rem;
+}
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 3rem;
+  align-items: center;
+  max-width: var(--shell);
+  margin-inline: auto;
+}
+/* Stack at 72rem, not 60rem. Between the two the terminal column is under ~470px, which is
+   narrower than the CLI output it renders — it scrolled sideways instead of reading as a terminal.
+   Full width below the breakpoint gives it room. */
+@media (max-width: 72rem) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+  margin-bottom: 0.7rem;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.hero .lede {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.pill {
+  display: inline-block;
+  font: 0.85rem var(--mono);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1.5rem;
+  color: var(--dim);
+}
+.button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+/* ---------- stat row ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 1.5rem 1rem;
+  max-width: var(--shell);
+  margin: 2.5rem auto 0;
+  padding: 0 1.25rem;
+}
+.stat b {
+  display: block;
+  font: 600 1.5rem/1.1 var(--sans);
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+.stat span {
+  font-size: 0.82rem;
+  color: var(--dim);
+}
+
+/* ---------- terminal ---------- */
+
+.term {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0b0e13;
+  box-shadow: 0 12px 32px -18px rgb(0 0 0 / 0.6);
+}
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  background: #161b22;
+  border-bottom: 1px solid #21262d;
+}
+.term-bar span {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 50%;
+  background: #3a424d;
+}
+.term-bar span:first-child {
+  background: #e0645a;
+}
+.term-bar span:nth-child(2) {
+  background: #e0b25a;
+}
+.term-bar span:nth-child(3) {
+  background: #5ac073;
+}
+.term-bar b {
+  margin-left: 0.5rem;
+  font: 0.75rem var(--mono);
+  color: #7d8590;
+  font-weight: 400;
+}
+.term pre {
+  overflow-x: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #c9d1d9;
+  font-size: 0.76rem;
+  line-height: 1.6;
+  padding: 0.9rem 1rem 1.1rem;
+}
+.term .c-dim {
+  color: #6e7681;
+}
+.term .c-hi {
+  color: #e0b25a;
+}
+.term .c-ok {
+  color: #5ac073;
+}
+.term .c-bad {
+  color: #e0645a;
+}
+
+/* ---------- cards, claims ---------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+.card .tag {
+  font: 0.7rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.card pre {
+  margin-top: auto;
+}
+
+.claims {
+  /* Four claims. auto-fit gave three across and a lone fourth; two columns pair them. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+@media (max-width: 46rem) {
+  .claims {
+    grid-template-columns: 1fr;
+  }
+}
+.claim {
+  border-left: 0;
+  border-top: 2px solid var(--accent);
+  padding: 1rem 0 0;
+}
+.claim b {
+  font-size: 1.02rem;
+  margin-bottom: 0.3rem;
+}
+
+/* The scorer sits inside a band now, so it needs no outer margin. */
+.scorer {
+  margin: 0;
+  max-width: var(--shell);
+}
+blockquote {
+  margin: 1.25rem 0;
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--panel);
+  border-radius: 0 8px 8px 0;
+}
+blockquote p {
+  margin: 0;
+  font: 0.9rem var(--mono);
+  color: var(--dim);
+}

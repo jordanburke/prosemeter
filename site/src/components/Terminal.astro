@@ -1,0 +1,88 @@
+---
+/**
+ * A terminal window rendering real CLI output, computed at build time.
+ *
+ * Mirrors `packages/prosemeter/src/cli/format.ts` line for line. Nothing here is mocked up — the
+ * numbers come from scoring an actual fixture during the build, so the hero cannot show a score the
+ * engine would not produce.
+ *
+ * The body is assembled as a string rather than as JSX. Inside a `<pre>`, a multi-line `.map()`
+ * confuses Astro's parser, and whitespace in a terminal is load-bearing — a string keeps both
+ * problems away.
+ */
+import { score, toScoreResultJSON } from "prosemeter"
+
+import { fixtures } from "../lib/fixtures"
+import { pct } from "../lib/view"
+
+type Props = {
+  readonly fixture: string
+  /** Dimensions to show, in order. The CLI prints all fifteen; a hero cannot. */
+  readonly show: ReadonlyArray<string>
+  readonly findings?: number
+}
+
+const { fixture, show, findings = 1 } = Astro.props
+
+const f = fixtures.find((x) => x.id === fixture)!
+const result = score(f.text, { profile: f.profile, format: f.format, target: `${f.id}.md` }).fold(
+  () => null,
+  (r) => toScoreResultJSON(r),
+)
+
+/**
+ * Characters that fit at the rendered font, measured in a browser, with a little slack.
+ *
+ * Every line subtracts its own prefix rather than sharing one constant. The prefix length varies
+ * with the filename, which is why a single limit fit `chat-jargon.md` and clipped
+ * `choppy-simplistic.md`.
+ */
+const WIDTH = 66
+
+const trim = (s: string, max: number) => {
+  const head = s.split(";")[0]!
+  return head.length <= max ? head : head.slice(0, max - 1).trimEnd() + "…"
+}
+
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+const dim = (s: string) => `<span class="c-dim">${esc(s)}</span>`
+
+const target = `${f.id}.md`
+const dims = result?.dimensions ?? []
+const rows = dims.filter((d) => show.includes(d.id)).sort((a, b) => show.indexOf(a.id) - show.indexOf(b.id))
+const shown = dims.flatMap((d) => d.findings).slice(0, findings)
+const totalFindings = dims.reduce((n, d) => n + d.findings.length, 0)
+
+const lines: Array<string> = [
+  `${dim("$")} prosemeter score ${esc(target)} --profile ${esc(f.profile)}`,
+  "",
+  `${esc(target)}  <span class="c-hi">${result?.score}/100</span>  (profile: ${esc(f.profile)})`,
+  "",
+  "Dimensions",
+]
+
+for (const d of rows) {
+  const n = pct(d.score)
+  const cls = n < 50 ? "c-bad" : n === 100 ? "c-ok" : ""
+  lines.push(
+    `  ${esc(d.id.padEnd(21))}<span class="${cls}">${String(n).padStart(3)}</span>  ` + dim(trim(d.detail, WIDTH - 28)),
+  )
+}
+if (dims.length > rows.length) lines.push(dim(`  … ${dims.length - rows.length} more dimensions`))
+
+lines.push("", "Findings")
+for (const x of shown) {
+  const at = `${target}:${x.loc?.line}:${x.loc?.column}`
+  const budget = WIDTH - (4 + at.length + 2 + x.severity.length + 2)
+  lines.push(`    ${dim(at)}  ${esc(x.severity)}  ${esc(trim(x.message, budget))}`)
+  lines.push(`      <span class="c-ok">→ ${esc(trim(x.hint, WIDTH - 8))}</span>`)
+}
+if (totalFindings > shown.length) lines.push(dim(`    … ${totalFindings - shown.length} more`))
+
+const body = lines.join("\n")
+---
+
+<div class="term">
+  <div class="term-bar"><span></span><span></span><span></span><b>{target}</b></div>
+  <pre><code set:html={body} /></pre>
+</div>
