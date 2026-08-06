@@ -1,0 +1,82 @@
+---
+/**
+ * A terminal window rendering real CLI output, computed at build time.
+ *
+ * Mirrors `packages/prosemeter/src/cli/format.ts` line for line. Nothing here is mocked up — the
+ * numbers come from scoring an actual fixture during the build, so the hero cannot show a score the
+ * engine would not produce.
+ */
+import { score, toScoreResultJSON } from "prosemeter"
+
+import { fixtures } from "../lib/fixtures"
+import { pct } from "../lib/view"
+
+type Props = {
+  readonly fixture: string
+  /** Dimensions to show, in order. The CLI prints all fifteen; a hero cannot. */
+  readonly show: ReadonlyArray<string>
+  readonly findings?: number
+}
+
+const { fixture, show, findings = 1 } = Astro.props
+
+const f = fixtures.find((x) => x.id === fixture)!
+const result = score(f.text, { profile: f.profile, format: f.format, target: `${f.id}.md` }).fold(
+  () => null,
+  (r) => toScoreResultJSON(r),
+)
+
+/**
+ * Keep every line inside the terminal column. The CLI wraps to the width of a real terminal; a
+ * fixed box cannot, and an overflowing line reads as a rendering bug rather than as elision.
+ *
+ * Measured at the rendered font: 68 characters fit. Budgets below leave a couple of characters of
+ * slack and account for each line's own prefix — 28 characters for a dimension row, 30 for a
+ * finding, 8 for a hint.
+ */
+const trim = (s: string, max: number) => {
+  const head = s.split(";")[0]!
+  return head.length <= max ? head : head.slice(0, max - 1).trimEnd() + "…"
+}
+/** Characters that fit, measured at the rendered font with a little slack. */
+const WIDTH = 66
+
+const rows = (result?.dimensions ?? [])
+  .filter((d) => show.includes(d.id))
+  .sort((a, b) => show.indexOf(a.id) - show.indexOf(b.id))
+
+/**
+ * Build finding lines here rather than inline, so each budget can subtract its own prefix. The
+ * prefix length varies with the filename, which is why a single constant clipped `choppy-simplistic`
+ * while `chat-jargon` fit.
+ */
+const shown = (result?.dimensions ?? [])
+  .flatMap((d) => d.findings)
+  .slice(0, findings)
+  .map((x) => {
+    const at = `${f.id}.md:${x.loc?.line}:${x.loc?.column}`
+    return {
+      at,
+      severity: x.severity,
+      message: trim(x.message, WIDTH - (4 + at.length + 2 + x.severity.length + 2)),
+      hint: trim(x.hint, WIDTH - 8),
+    }
+  })
+const totalFindings = (result?.dimensions ?? []).reduce((n, d) => n + d.findings.length, 0)
+const hiddenDims = (result?.dimensions ?? []).length - rows.length
+---
+
+<div class="term">
+  <div class="term-bar"><span></span><span></span><span></span><b>{f.id}.md</b></div>
+  <pre><code><span class="c-dim">$</span> prosemeter score {f.id}.md --profile {f.profile}
+
+{f.id}.md  <span class="c-hi">{result?.score}/100</span>  (profile: {f.profile})
+
+Dimensions
+{rows.map((d) => (
+  <Fragment>{"  "}{d.id.padEnd(21)}<span class={pct(d.score) < 50 ? "c-bad" : pct(d.score) === 100 ? "c-ok" : ""}>{String(pct(d.score)).padStart(3)}</span>{"  "}<span class="c-dim">{trim(d.detail, WIDTH - 28)}</span>{"\n"}</Fragment>
+))}{hiddenDims > 0 && <span class="c-dim">{"  … " + hiddenDims + " more dimensions\n"}</span>}
+Findings{shown.map((x) => (
+  <Fragment>{"\n"}{"    "}<span class="c-dim">{x.at}</span>{"  "}{x.severity}{"  "}{x.message}{"\n"}{"      "}<span class="c-ok">→ {x.hint}</span>{"\n"}</Fragment>
+))}<span class="c-dim">{"    … " + (totalFindings - shown.length) + " more"}</span></code></pre>
+</div>
