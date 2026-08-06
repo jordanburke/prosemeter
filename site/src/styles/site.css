@@ -726,9 +726,13 @@ main {
   margin-bottom: 0.3rem;
 }
 
-/* The scorer sits inside a band now, so it needs no outer margin. */
+/* The scorer sits inside a band now, so it needs no *vertical* margin — but it still needs the
+   horizontal auto that `.band > *` gives every other child. The `margin: 0` shorthand that used to
+   be here silently overrode that, leaving the panel flush left with ~330px of dead space beside it
+   on a wide screen while the section header above it centred correctly. */
 .scorer {
-  margin: 0;
+  margin-block: 0;
+  margin-inline: auto;
   max-width: var(--shell);
 }
 blockquote {
