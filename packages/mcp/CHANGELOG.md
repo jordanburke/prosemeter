@@ -1,5 +1,12 @@
 # @prosemeter/mcp
 
+## 0.4.0
+
+### Patch Changes
+
+- Updated dependencies [e630112]
+  - prosemeter@0.4.0
+
 ## 0.3.2
 
 ### Patch Changes
