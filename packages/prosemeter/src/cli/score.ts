@@ -214,7 +214,7 @@ export const scoreCommand = async (argv: ReadonlyArray<string>): Promise<number>
   } else {
     const single = results.length === 1 && current !== undefined
     const body = single
-      ? `${renderScore(current)}${delta !== undefined ? renderDelta(delta) : ""}${convergence !== undefined ? renderConvergence(convergence.verdict, convergence.history) : ""}`
+      ? `${renderScore(current)}${delta !== undefined ? renderDelta(delta) : ""}${convergence !== undefined ? renderConvergence(convergence.verdict, convergence.history, convergence.threshold) : ""}`
       : results.map(renderScore).join("\n\n")
     process.stdout.write(`${body}\n`)
     if (results.length > 1) process.stdout.write(`\nMean: ${mean}/100 across ${results.length} files\n`)

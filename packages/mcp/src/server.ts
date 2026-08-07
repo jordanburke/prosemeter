@@ -120,7 +120,14 @@ Tools:
         )
         .optional()
         .describe("Optional per-dimension score histories; enables the `churning` flag when the composite is flat."),
-      threshold: z.number().optional().describe("Target score; reaching it yields 'converged'."),
+      threshold: z
+        .number()
+        .optional()
+        .describe(
+          "Quality floor. Reaching it yields 'converged' regardless of trajectory — so treat it as " +
+            "'not catastrophic', not 'done'. No single dimension can fail a profile's default floor; " +
+            "only several failing together will.",
+        ),
       window: z.number().optional().describe("How many recent deltas to consider (default 3)."),
       epsilon: z.number().optional().describe("Delta magnitude treated as 'no change' (default 1)."),
     }),

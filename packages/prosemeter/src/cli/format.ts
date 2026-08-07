@@ -58,15 +58,31 @@ export const renderDelta = (delta: DeltaReport): string => {
   return lines.join("\n")
 }
 
-export const renderConvergence = (verdict: ConvergenceVerdict, history: ReadonlyArray<number>): string =>
-  `\nConvergence: ${verdict}   (history: ${history.join(" → ")})`
+/**
+ * Say *why* it converged when a threshold is what stopped it.
+ *
+ * `checkConvergence` treats clearing the threshold as a stop regardless of trajectory, and the CLI
+ * supplies the profile's threshold when the caller passes none — so a first pass on a competent
+ * draft reports `converged` with a one-entry history. Printing the verdict alone made that look
+ * like a bug rather than a floor being cleared.
+ */
+export const renderConvergence = (
+  verdict: ConvergenceVerdict,
+  history: ReadonlyArray<number>,
+  threshold?: number,
+): string => {
+  const latest = history[history.length - 1]
+  const cleared = verdict === "converged" && threshold !== undefined && latest !== undefined && latest >= threshold
+  const why = cleared ? `  — ${latest} ≥ floor ${threshold}; pass --threshold to change` : ""
+  return `\nConvergence: ${verdict}   (history: ${history.join(" → ")})${why}`
+}
 
 export const renderProfiles = (): string => {
   const lines: Array<string> = ["Built-in profiles:", ""]
+  // "floor", not "target": a threshold is only failed when several dimensions fail together.
+  // See docs/LIB_ANLY_threshold-semantics_2026-08-07.md.
   for (const p of profiles()) {
-    lines.push(
-      `  ${p.name.padEnd(11)} grade ${p.gradeBand.lo}–${p.gradeBand.hi}  (suggested threshold ${p.thresholdDefault})`,
-    )
+    lines.push(`  ${p.name.padEnd(11)} grade ${p.gradeBand.lo}–${p.gradeBand.hi}  (floor ${p.thresholdDefault})`)
     lines.push(`              ${p.description}`)
   }
   return lines.join("\n")

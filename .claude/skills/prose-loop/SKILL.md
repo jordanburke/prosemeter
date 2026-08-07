@@ -17,7 +17,9 @@ and fix hints. This skill is the loop around it: score, revise from the findings
 2. **Read the per-dimension scores and findings.** Not the composite — see below.
 3. **Revise** the specific spans the findings point at. Each finding carries a `hint`.
 4. **Re-score**, then `compare_baseline` (current vs. previous result) to see which findings
-   resolved and which are new.
+   resolved and which are new. Also look at what it *doesn't* report: findings in the current result
+   that are absent from `findingsNew` persisted from last pass. Those are the ones the revision
+   walked past — attend to them before polishing anything else.
 5. **Stop** when `check_convergence` returns anything but `improving` — `plateaued`,
    `oscillating`, `regressing`, or `converged` all mean stop. On `regressing`, go back to the best
    earlier draft instead of pushing the latest one further.
@@ -25,8 +27,21 @@ and fix hints. This skill is the loop around it: score, revise from the findings
 Two or three passes is normal. Do not grind: past the plateau the score moves on noise and
 the prose gets worse in ways the score cannot see.
 
-`check_convergence` always returns `improving` on the first call, because one score is not a
-trend. Treat that verdict as a default, not as evidence.
+**`converged` does not mean "done".** It means the score cleared a floor, and the floor is low by
+construction: no single dimension can fail a profile's default threshold, so it detects catastrophic
+prose and nothing finer. Measured — five of nine calibration fixtures clear `plain`'s 70, including
+one built to be bad.
+
+Where the verdict comes from differs by surface, and this trips people up:
+
+- **MCP `check_convergence`** takes `threshold` as an optional argument. Omit it and a first call
+  returns `improving`, because one score is not a trend.
+- **The CLI** supplies the active profile's floor when you pass no `--threshold`, so
+  `prosemeter score draft.md --baseline --save-baseline` can report `converged` on the *first* pass
+  for a competent draft. It now prints the reason when that happens.
+
+Either way, treat a first-call verdict as a default rather than as evidence, and read the dimensions.
+See `docs/LIB_ANLY_threshold-semantics_2026-08-07.md`.
 
 CLI equivalent, which keeps the history for you:
 
