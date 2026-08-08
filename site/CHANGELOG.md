@@ -1,5 +1,12 @@
 # prosemeter-site
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [71e8d8d]
+  - prosemeter@0.4.3
+
 ## 0.0.3
 
 ### Patch Changes
