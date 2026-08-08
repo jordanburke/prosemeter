@@ -3,7 +3,7 @@ slug: "control-arm"
 run: "3"
 date: "2026-08-03"
 title: "What the instruction is actually worth, against no instruction at all"
-finding: "Measured within one run: the rules cut length 32%, cut jargon 2.0 points, and raise sentence-simplicity 19.7 points."
+finding: "The first within-run measurement of what the shipped instruction is actually worth, against writing with no instruction at all."
 order: 3
 ---
 
