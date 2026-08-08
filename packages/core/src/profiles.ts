@@ -1,11 +1,22 @@
 /**
- * The six built-in profiles — pure data. A profile carries a grade band, relative weight overrides,
- * per-rule severity overrides, a suggested threshold, and free-form per-dimension options. Weight
- * overrides are *relative*: the composite renormalizes by the active-weight sum, so a profile only
- * needs to nudge the dimensions it cares about, not restate a full 1.0 distribution.
+ * The seven built-in profiles — pure data. A profile carries a grade band, relative weight
+ * overrides, per-rule severity overrides, a suggested threshold, and free-form per-dimension
+ * options. Weight overrides are *relative*: the composite renormalizes by the active-weight sum, so
+ * a profile only needs to nudge the dimensions it cares about, not restate a full 1.0 distribution.
+ *
+ * **`thresholdDefault` is a floor, not a target.** Measured 2026-08-07: no single dimension can fail
+ * a threshold on any profile — zeroing the heaviest-weighted one on an otherwise perfect document
+ * leaves 76.9–81.8, above every threshold here. A threshold is only failed when several dimensions
+ * fail together, so it detects catastrophic prose and nothing finer. `fixtures/passive-heavy.md`,
+ * built to demonstrate one flaw, scores 95 on `plain` and 98 on `api-docs`.
+ *
+ * What makes a threshold bite is profile tuning, not the number: `choppy-simplistic.md` fails only
+ * `chat`, whose grade-band weight of 0.24 is the anti-gaming counterweight, and that extra 0.04 is
+ * the entire margin. See docs/LIB_ANLY_threshold-semantics_2026-08-07.md.
  *
  * Weights and bands here are the design's starting points; calibrate against the golden corpus and
- * then freeze (see spec §8).
+ * then freeze (see spec §8). Do not calibrate against `fixtures/` — they are handcrafted to isolate
+ * single dimensions, which is exactly what makes them useless as a calibration set.
  */
 
 import type { Profile } from "./types"
