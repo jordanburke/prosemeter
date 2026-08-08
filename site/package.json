@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "private": true,
   "type": "module",
-  "description": "prosemeter.com — the landing site and live scorer. Not published.",
+  "description": "prosemeter.com \u2014 the landing site and live scorer. Not published.",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -11,13 +11,15 @@
     "typecheck": "astro check",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate": "node scripts/assert-browser-safe.mjs && node scripts/assert-band-variants.mjs && astro check && astro build"
+    "validate": "node scripts/assert-browser-safe.mjs && node scripts/assert-band-variants.mjs && astro check && astro build && playwright test",
+    "test:layout": "astro build && playwright test"
   },
   "dependencies": {
     "prosemeter": "workspace:*"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@playwright/test": "^1.62.1",
     "astro": "^7.1.6",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",

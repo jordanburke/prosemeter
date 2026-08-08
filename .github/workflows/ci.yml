@@ -37,8 +37,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # The site's validate ends in a Playwright layout suite, which needs a browser. Chromium only,
+      # and `--with-deps` because the runner has none of the shared libraries it links against.
+      - name: Install Playwright chromium
+        run: pnpm --filter prosemeter-site exec playwright install --with-deps chromium
+
       - name: Run turbo validate
         run: pnpm turbo run validate
+
+      - name: Upload layout failure traces
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: site/test-results/
+          retention-days: 7
 
       - name: Dogfood — score the root README against the readme profile
         run: node packages/prosemeter/dist/cli/index.js score README.md --profile readme --threshold 70
