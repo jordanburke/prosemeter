@@ -96,6 +96,41 @@ test.describe("every page", () => {
   }
 })
 
+/**
+ * No direct child of a band may be wider than the column the band defines.
+ *
+ * The centring check cannot catch this: it skips any child as wide as its container, on the
+ * reasoning that a full-width child has no room to be off-centre. A child that *escapes* the column
+ * is exactly that case, so it was skipped — and three report tables shipped 1400px wide in a 1088px
+ * column, sitting against the left padding edge while the prose around them stayed centred.
+ *
+ * `.band > *` sets `max-width: var(--shell)`. Anything wider has overridden it, which on this site
+ * has never once been deliberate.
+ */
+test.describe("nothing escapes the band column", () => {
+  for (const path of PAGES) {
+    test(path, async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 })
+      const response = await page.goto(path)
+      expect(response?.ok(), `${path} should return 2xx, not ${response?.status()}`).toBe(true)
+
+      const wide = await page.evaluate(() => {
+        const shell = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--shell")) * 16
+        const out: Array<{ tag: string; width: number; shell: number }> = []
+        for (const child of document.querySelectorAll(".band > *")) {
+          const box = child.getBoundingClientRect()
+          if (box.width > shell + 2) {
+            out.push({ tag: child.tagName.toLowerCase(), width: Math.round(box.width), shell: Math.round(shell) })
+          }
+        }
+        return out
+      })
+
+      expect(wide, `${path}: these overflow the --shell column, usually by overriding max-width`).toEqual([])
+    })
+  }
+})
+
 test.describe("no horizontal overflow", () => {
   for (const path of PAGES) {
     for (const vp of VIEWPORTS) {
