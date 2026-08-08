@@ -116,6 +116,9 @@ export const panelHtml = (result: ScoreResultJSON, threshold: number, ms?: numbe
     `<span class="verdict ${passes ? "pass" : "fail"}">${passes ? "passes" : "below"}</span>` +
     `<span class="sep">·</span>${words} words` +
     (ms === undefined ? "" : `<span class="sep">·</span>scored in ${Math.max(1, Math.round(ms))} ms`) +
+    // Which engine produced the number. Dimension defaults move between releases and the scores move
+    // with them, so a screenshot without a version cannot be compared to a later one.
+    `<span class="sep">·</span><span class="ver">v${escape(result.version)}</span>` +
     `</p>`
 
   const table =

@@ -34,6 +34,7 @@ const rows = readdirSync(DIR)
         variant,
         rep,
         task,
+        version: r.version,
         total: r.score,
         grade: dimScore(r, "grade-band"),
         cplx: dimScore(r, "sentence-simplicity"),
@@ -52,7 +53,18 @@ const defined = (rs, k) => rs.map((r) => r[k]).filter((x) => x !== null && !Numb
 const variants = [...new Set(rows.map((r) => r.variant))].sort()
 const tasks = [...new Set(rows.map((r) => r.task))].sort()
 
-console.log(`${rows.length} answers, ${variants.length} variants, ${tasks.length} tasks\n`)
+/**
+ * Every number below is produced by one scoring algorithm, so the version belongs on the run.
+ * `LIB_RPT_*` reports get pasted from this output and read months later, and dimension defaults
+ * move between releases — 0.3.0's `CLARITY_IGNORE_DEFAULT` moved the corpus clarity mean by 35
+ * points. A table with no version beside it cannot be compared to a later one.
+ */
+const versions = [...new Set(rows.map((r) => r.version))].sort()
+const stamp = versions.length === 1 ? versions[0] : `MIXED (${versions.join(", ")})`
+
+console.log(
+  `${rows.length} answers, ${variants.length} variants, ${tasks.length} tasks — scored by prosemeter ${stamp}\n`,
+)
 console.log("variant   n  total  grade   cplx   clar variety  words  cplxW  jargon%")
 for (const v of variants) {
   const rs = rows.filter((r) => r.variant === v)
