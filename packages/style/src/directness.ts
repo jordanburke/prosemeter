@@ -142,11 +142,24 @@ export const HEDGE_IGNORE_DEFAULT: ReadonlyArray<string> = [
  * shipped because the flag is wrong in every context the guard matches, not because the pattern is
  * common here — see the sweep note in the commit.
  */
+/**
+ * Characters to read after the match. The regex is anchored, so this bounds only the whitespace run
+ * before the digit — it cannot over-match into unrelated text. Eight covers a hard wrap plus indent.
+ */
+const DIGIT_WINDOW = 8
+
 const isMonthName = (finding: Finding, doc: ParsedDocument): boolean =>
   finding.excerpt === "May" &&
   finding.loc.fold(
     () => false,
-    (l) => /^\s*\d/.test(doc.raw.slice(l.offset + l.length, l.offset + l.length + 8)),
+    (l) =>
+      // Verify the offset points at what the finding says it does before trusting the window.
+      // `loc.offset` indexes `doc.raw` today — positions survive mdast-util-to-nlcst intact, front
+      // matter and all — but nothing in the type system says so. If that ever changed, an unchecked
+      // guard would read arbitrary source, and a digit landing in that window would drop a genuine
+      // modal. This turns any such drift into a safe no-drop.
+      doc.raw.slice(l.offset, l.offset + l.length) === finding.excerpt &&
+      /^\s*\d/.test(doc.raw.slice(l.offset + l.length, l.offset + l.length + DIGIT_WINDOW)),
   )
 
 export const directnessProvider = retextDensityDimension({

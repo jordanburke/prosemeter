@@ -55,7 +55,9 @@ export const retextDensityDimension = (config: RetextDimensionConfig): Dimension
       const raised = collectMessages(doc, config.buildProcessor(settings.options)).map((m) =>
         messageToFinding(m, config.id, severity, config.fallbackHint),
       )
-      const findings = config.dropFinding === undefined ? raised : raised.filter((f) => !config.dropFinding!(f, doc))
+      // Bind before narrowing so the call site needs no non-null assertion.
+      const drop = config.dropFinding
+      const findings = drop === undefined ? raised : raised.filter((f) => !drop(f, doc))
 
       return {
         id: config.id,
