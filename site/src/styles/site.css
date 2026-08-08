@@ -300,6 +300,10 @@ textarea:focus {
   margin: 0 0.5rem;
   opacity: 0.5;
 }
+/* The engine version. Present so a quoted number can be checked later; not something to read first. */
+.headline .ver {
+  opacity: 0.7;
+}
 .verdict {
   margin-left: 0.5rem;
   padding: 0.1rem 0.4rem;

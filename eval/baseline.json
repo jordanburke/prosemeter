@@ -18,7 +18,13 @@
     "T5",
     "T6"
   ],
+  "prosemeterVersion": "0.3.0",
   "rescoredAt": "0.3.0 — the HEDGE_IGNORE_DEFAULT and CLARITY_IGNORE_DEFAULT fixes changed directness and clarity scores, moving the composite from 83.6 to 89.4 and clarity from 54.1 to 90.7. No gated metric is affected: words, jargonPct, sentenceSimplicity and gradeBand are independent dimensions and are unchanged.",
+  "versionDrift": {
+    "note": "The means below were taken on 0.3.0. `compare.mjs` prints the scoring version and flags a difference without failing on one — see its comment for why.",
+    "checked": "0.4.2, 2026-08-08. Re-scored run 2's E arm (eval/out-run2, n=30) at HEAD: words 290.1, jargonPct 8.7, sentenceSimplicity 69.2, gradeBand 98.5 — every gated metric identical to the recorded means. The ungated composite moved 89.4 -> 90.2, from the 0.4.x directness changes.",
+    "implication": "Gated metrics have been stable across five releases because they live in `readability` and in `stats`, and every release since has changed `style`. Do not read that as a guarantee: re-run this check when a release touches readability or the parser, and record the result here."
+  },
   "means": {
     "composite": 89.4,
     "gradeBand": 98.5,

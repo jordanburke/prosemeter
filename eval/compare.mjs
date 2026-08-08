@@ -40,6 +40,7 @@ const rows = readdirSync(dir)
         throw new Error(`score failed for ${file}: ${JSON.stringify(e)}`)
       },
       (r) => ({
+        version: r.version,
         composite: r.score,
         gradeBand: dimScore(r, "grade-band"),
         sentenceSimplicity: dimScore(r, "sentence-simplicity"),
@@ -84,7 +85,29 @@ const observed = {
   jargonPct: mean("jargonPct"),
 }
 
-console.log(`variant ${variant}, n=${rows.length}, vs baseline (${baseline.instruction} on ${baseline.model}, ${baseline.date})\n`)
+/**
+ * Report the scoring version, and say so loudly when it is not the one the baseline was taken on.
+ *
+ * This is a note, not a gate. The gated metrics come from `readability` and from `stats`, and the
+ * releases since 0.3.0 changed `style` — so re-scoring run 2's E arm at 0.4.2 reproduced words,
+ * jargonPct, sentenceSimplicity and gradeBand to the decimal, while the ungated composite moved
+ * 89.4 → 90.2. Failing on a version difference would block every run after any patch release for a
+ * drift the gate cannot see anyway.
+ *
+ * What it buys is the diagnosis. When a metric does move, the first question is whether the
+ * instruction stopped landing or the scoring algorithm changed underneath it, and those have
+ * opposite remedies. Without the version printed here that question needs archaeology.
+ */
+const versions = [...new Set(rows.map((r) => r.version))].sort()
+const scoredBy = versions.length === 1 ? versions[0] : `MIXED (${versions.join(", ")})`
+const takenOn = baseline.prosemeterVersion
+
+console.log(`variant ${variant}, n=${rows.length}, vs baseline (${baseline.instruction} on ${baseline.model}, ${baseline.date})`)
+console.log(`scored by prosemeter ${scoredBy}; baseline means taken on ${takenOn ?? "an unrecorded version"}`)
+if (takenOn !== undefined && scoredBy !== takenOn) {
+  console.log(`  note: scoring version differs. A moved metric may be the engine, not the instruction.`)
+}
+console.log()
 console.log("metric                 baseline  observed     delta  verdict")
 
 const failures = []

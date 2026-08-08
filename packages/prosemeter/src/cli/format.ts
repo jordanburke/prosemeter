@@ -33,8 +33,22 @@ const renderFindings = (result: ScoreResult): ReadonlyArray<string> => {
   return lines
 }
 
+/**
+ * The header carries the engine version, because a score is only comparable to another score
+ * produced by the same scoring algorithm.
+ *
+ * Dimension defaults move between releases and the numbers move with them — `CLARITY_IGNORE_DEFAULT`
+ * shifted the eval corpus mean from 54.1 to ~89 in 0.3.0, and `HEDGE_IGNORE_DEFAULT` moved
+ * directness enough to restate a whole baseline. A pasted number with no version beside it cannot
+ * be checked against anything later. The JSON output has carried `version` since the type existed;
+ * this puts it on the human path too.
+ */
 export const renderScore = (result: ScoreResult): string => {
-  const lines: Array<string> = [`${result.target}  ${result.score}/100  (profile: ${result.profile})`, "", "Dimensions"]
+  const lines: Array<string> = [
+    `${result.target}  ${result.score}/100  (profile: ${result.profile}, prosemeter ${result.version})`,
+    "",
+    "Dimensions",
+  ]
 
   for (const d of result.dimensions) {
     const cell = d.skipped.fold(
