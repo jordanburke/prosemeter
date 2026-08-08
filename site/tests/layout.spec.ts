@@ -33,7 +33,11 @@ const VIEWPORTS = [
 test.describe("every page", () => {
   for (const path of PAGES) {
     test(`${path} has exactly one h1`, async ({ page }) => {
-      await page.goto(path)
+      // A 404 page has one h1 and no overflow, so every check below passes on a page that no longer
+      // exists. Rename a route and the suite would have stayed green. Verified: /research/nope 404s
+      // and satisfies the h1, overflow and centring assertions.
+      const response = await page.goto(path)
+      expect(response?.ok(), `${path} should return 2xx, not ${response?.status()}`).toBe(true)
       // Counts rendered headings, including any a markdown body contributes. A visually-hidden
       // duplicate still counts — hiding it is not the fix, removing it from the outline is.
       const visible = await page.locator("h1:visible").count()
@@ -42,10 +46,12 @@ test.describe("every page", () => {
 
     test(`${path} keeps its content inside the band column`, async ({ page }) => {
       await page.setViewportSize({ width: 1440, height: 900 })
-      await page.goto(path)
+      const response = await page.goto(path)
+      expect(response?.ok(), `${path} should return 2xx, not ${response?.status()}`).toBe(true)
 
-      const offenders = await page.evaluate(() => {
+      const { offenders, measured } = await page.evaluate(() => {
         const bad: Array<{ tag: string; cls: string; left: number; right: number }> = []
+        let seen = 0
         for (const band of document.querySelectorAll(".band")) {
           const bandBox = band.getBoundingClientRect()
           const style = getComputedStyle(band)
@@ -60,6 +66,7 @@ test.describe("every page", () => {
             // Only meaningful for a child narrower than the column it sits in; a full-width child
             // has no room to be off-centre.
             if (box.width >= innerRight - innerLeft - 1) continue
+            seen++
             const gapLeft = box.left - innerLeft
             const gapRight = innerRight - box.right
             if (Math.abs(gapLeft - gapRight) > 2) {
@@ -72,8 +79,13 @@ test.describe("every page", () => {
             }
           }
         }
-        return bad
+        return { offenders: bad, measured: seen }
       })
+
+      // Without this the check can go vacuous in silence. Every guard above is a `continue`, so if
+      // `--shell` ever grows past the test viewport each child counts as full-width, nothing is
+      // measured, and the assertion below passes forever on every page.
+      expect(measured, `${path}: no band children were measured — the check has gone vacuous`).toBeGreaterThan(0)
 
       expect(
         offenders,
@@ -89,9 +101,15 @@ test.describe("no horizontal overflow", () => {
     for (const vp of VIEWPORTS) {
       test(`${path} at ${vp.name} (${vp.width}px)`, async ({ page }) => {
         await page.setViewportSize({ width: vp.width, height: vp.height })
-        await page.goto(path)
+        const response = await page.goto(path)
+        expect(response?.ok(), `${path} should return 2xx, not ${response?.status()}`).toBe(true)
 
-        const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
+        // `clientWidth`, not `window.innerWidth`: innerWidth includes space a classic scrollbar
+        // reserves, which would hide up to ~15px of real overflow anywhere overlay scrollbars are
+        // not in use. Identical under the headless shell CI runs; correct everywhere else too.
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        )
         expect(overflow, "the page body must never scroll horizontally").toBeLessThanOrEqual(1)
       })
     }
@@ -104,7 +122,8 @@ test.describe("no horizontal overflow", () => {
  */
 test("report tables are styled and scroll inside themselves", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
-  await page.goto("/research/bluf-as-a-label")
+  const response = await page.goto("/research/bluf-as-a-label")
+  expect(response?.ok(), "the study page should return 2xx").toBe(true)
 
   const tables = page.locator(".report table")
   const count = await tables.count()
@@ -137,12 +156,31 @@ test("report tables are styled and scroll inside themselves", async ({ page }) =
 /**
  * The demo is the page's reason to exist, and it depends on a worker that has broken twice — once on
  * an export condition, once on a UMD guard. Neither showed up in a build.
+ *
+ * **So this test has to interact.** The first result is rendered at build time into static HTML, by
+ * design, so the page works with JavaScript disabled. An earlier version asserted only that a score
+ * was on the page — which passes with JavaScript off entirely, and would go green while the worker
+ * chunk 404s. Clicking a register forces a real round trip through the worker.
  */
-test("the scorer demo renders a score", async ({ page }: { page: Page }) => {
-  await page.goto("/")
+test("the scorer demo scores through the worker, not just at build time", async ({ page }) => {
+  const response = await page.goto("/")
+  expect(response?.ok(), "/ should return 2xx").toBe(true)
+
   const headline = page.locator(".headline").first()
   await expect(headline).toBeVisible()
+  // The build-time render. Carries the engine version, which is how a quoted score stays checkable.
   await expect(headline).toContainText(/\/100/)
-  // Build-time render includes the engine version; it is how a quoted score stays checkable.
   await expect(headline).toContainText(/v\d+\.\d+\.\d+/)
+
+  const before = (await headline.textContent()) ?? ""
+
+  // Switching register replaces the textarea and re-scores. The two register fixtures are far apart
+  // by construction — one deliberately jargon-heavy, one deliberately plain — so the headline must
+  // change. If the worker never answers, this times out rather than passing quietly.
+  await page.locator("[data-fixture].reg").nth(1).click()
+  await expect(headline).not.toHaveText(before, { timeout: 15_000 })
+
+  // A worker that errored could still blank the panel. Assert a real score came back.
+  await expect(headline).toContainText(/\/100/)
+  await expect(headline).toContainText(/\d+ words/)
 })

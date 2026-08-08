@@ -16,15 +16,22 @@ export default defineConfig({
   retries: 0,
   reporter: process.env.CI !== undefined ? "github" : "list",
   use: {
-    baseURL: "http://localhost:4321",
+    baseURL: "http://localhost:4325",
     trace: "retain-on-failure",
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
     // `validate` and `test:layout` both build first, so the server only serves.
-    command: "pnpm preview --port 4321",
-    url: "http://localhost:4321",
-    reuseExistingServer: process.env.CI === undefined,
+    //
+    // Port 4325, not Astro's default 4321, and never reuse an existing server. Both guard the same
+    // false green: with 4321 and `reuseExistingServer`, a developer running `pnpm dev` gets a fresh
+    // build from validate and then a suite run against the *dev server* — the opposite of this
+    // config's stated purpose, since every bug it catches was in production output. A stale server
+    // already produced one false result during development. Build is 1.5s and the suite 4s, so
+    // there is nothing worth reusing.
+    command: "pnpm preview --port 4325",
+    url: "http://localhost:4325",
+    reuseExistingServer: false,
     timeout: 180_000,
   },
 })

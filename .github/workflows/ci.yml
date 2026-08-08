@@ -37,10 +37,31 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # The site's validate ends in a Playwright layout suite, which needs a browser. Chromium only,
-      # and `--with-deps` because the runner has none of the shared libraries it links against.
+      # The site's validate ends in a Playwright layout suite, which needs a browser. Chromium only.
+      #
+      # Cached on the resolved @playwright/test version, because the download is ~170MB plus an apt
+      # install and it ran on every job — including ones touching only packages/core, before turbo
+      # could decide anything. It also made a transient CDN or apt-mirror failure red the whole
+      # pipeline. On a hit only the system libraries are installed, which apt resolves from its own
+      # cache in seconds.
+      - name: Resolve Playwright version
+        id: pw
+        run: echo "version=$(pnpm --filter prosemeter-site exec playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}
+
       - name: Install Playwright chromium
-        run: pnpm --filter prosemeter-site exec playwright install --with-deps chromium
+        run: |
+          if [ "${{ steps.pw-cache.outputs.cache-hit }}" = "true" ]; then
+            pnpm --filter prosemeter-site exec playwright install-deps chromium
+          else
+            pnpm --filter prosemeter-site exec playwright install --with-deps chromium
+          fi
 
       - name: Run turbo validate
         run: pnpm turbo run validate
