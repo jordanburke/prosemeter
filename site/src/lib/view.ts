@@ -111,7 +111,8 @@ export const panelHtml = (result: ScoreResultJSON, threshold: number, ms?: numbe
 
   const head =
     `<p class="headline"><b>${result.score}</b><span class="of">/100</span>` +
-    `<span class="sep">·</span>threshold ${threshold}` +
+    // "floor", matching the CLI and the MCP tool. Measured: no single dimension can fail one.
+    `<span class="sep">·</span>floor ${threshold}` +
     `<span class="verdict ${passes ? "pass" : "fail"}">${passes ? "passes" : "below"}</span>` +
     `<span class="sep">·</span>${words} words` +
     (ms === undefined ? "" : `<span class="sep">·</span>scored in ${Math.max(1, Math.round(ms))} ms`) +
