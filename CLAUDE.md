@@ -171,5 +171,22 @@ The first result is rendered at build time in `Scorer.astro`'s frontmatter, so t
 JavaScript disabled and the heavy chunk never blocks first paint. **No score is ever typed by hand**;
 copy that quotes a number computes it from `fixtures/`.
 
-The site does not use `ts-builds` and has no `lint` or `test` task — `astro check` covers it. That is
-a deliberate break from the uniformity every package under `packages/` follows.
+The site does not use `ts-builds` and has no `lint` task, a deliberate break from the uniformity
+every package under `packages/` follows. It does have tests, in a way nothing under `packages/` does:
+`site/tests/layout.spec.ts` drives a real browser over the built pages and asserts layout invariants
+— one h1 per page, band children centred in their column, report tables actually styled, no
+horizontal page overflow at three widths.
+
+**Not a pixel-diff suite, on purpose.** Screenshot baselines fail on font hinting between a dev
+machine and a runner, so they get re-baselined until nobody reads the diff. These assert properties
+in the browser's computed values, so a failure names what broke.
+
+Every check exists because that exact thing shipped broken and a human found it, not `astro check`: a
+`margin` shorthand resetting `.band > *`'s `margin-inline: auto` (twice), `class="band alt"` matching
+no rule, markdown tables reaching no stylesheet because `site.css` scopes tables to `.dims`, two h1s
+on every study page, and a fourth nav link overflowing 375px on every page. **Before adding a check,
+break the thing and watch it fail** — several of these were written against bugs still in the tree,
+which is why they are known to work.
+
+`scripts/assert-band-variants.mjs` covers the one failure a browser cannot see: a class name that
+resolves to nothing renders fine, it just does nothing.
