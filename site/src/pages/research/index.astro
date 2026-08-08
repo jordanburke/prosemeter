@@ -1,0 +1,228 @@
+---
+/**
+ * The findings page. Conclusions first, each linking to the study that established it.
+ *
+ * Every number is computed from `eval/results/*.json` at build time — see `src/lib/research.ts`.
+ * A page that argues for measuring prose cannot quote a figure it typed by hand.
+ */
+import { getCollection } from "astro:content"
+
+import Base from "../../layouts/Base.astro"
+import { corpusTotals, run, variantRows } from "../../lib/research"
+
+const studies = (await getCollection("research")).sort((a, b) => a.data.order - b.data.order)
+const totals = corpusTotals()
+
+const byId = (id: string) => studies.find((s) => s.data.slug === id)
+
+// The three headline effects, from the within-run control in run 3.
+const r3 = run("3")!
+const r3rows = variantRows(r3)
+const ctrl = r3rows.find((v) => v.variant === "A")!
+const rules = r3rows.find((v) => v.variant === "E")!
+
+// The label result, from run 5.
+const r5 = variantRows(run("5")!)
+const r5ctrl = r5.find((v) => v.variant === "A")!
+const r5e = r5.find((v) => v.variant === "E")!
+const r5l = r5.find((v) => v.variant === "L")!
+
+const cut = (arm: { words: number }, control: { words: number }) =>
+  Math.round(100 * (1 - arm.words / control.words))
+
+const pct1 = (n: number) => n.toFixed(1)
+---
+
+<Base
+  title="Research — what actually changes how a model writes"
+  description={`Measured findings from ${totals.answers} scored answers across ${totals.runs} runs: what instruction wording moves, what it does not, and what is closed.`}
+>
+  <div class="band">
+    <h1>Research</h1>
+    <p class="standfirst">
+      prosemeter was built to answer one question — does a writing instruction actually change how a model writes? —
+      and then used to answer it. {totals.answers} generated answers across {totals.runs} runs, every score committed,
+      every answer kept.
+    </p>
+    <p>
+      These are the conclusions. Each links to the study that established it. Where a study found the opposite of what
+      it set out to show, it says so; three of the six did.
+    </p>
+  </div>
+
+  <div class="band alt">
+    <h2>What instruction wording moves</h2>
+
+    <div class="claim">
+      <h3>Concrete rewrite rules cut length by about a third</h3>
+      <p>
+        Measured within a single run against a no-instruction control on the same tasks: {Math.round(ctrl.words)} words
+        down to {Math.round(rules.words)}, a {cut(rules, ctrl)}% cut. Jargon fell {
+          pct1(ctrl.jargonPct - rules.jargonPct)
+        } points and sentence-simplicity rose {pct1(rules.sentenceSimplicity - ctrl.sentenceSimplicity)} points.
+      </p>
+      <a href={`/research/${byId("control-arm")!.data.slug}`}>{byId("control-arm")!.data.title} →</a>
+    </div>
+
+    <div class="claim">
+      <h3>Naming a technique beats spelling it out</h3>
+      <p>
+        Replacing one rule with its label — <code>Use BLUF: bottom line up front</code> — and holding the other four
+        fixed cut {cut(r5l, r5ctrl)}% off the control against the spelled-out sentence's {cut(r5e, r5ctrl)}%, while tying
+        it on jargon, sentence-simplicity, grade band and clarity.
+      </p>
+      <a href={`/research/${byId("bluf-as-a-label")!.data.slug}`}>{byId("bluf-as-a-label")!.data.title} →</a>
+    </div>
+
+    <div class="claim">
+      <h3>Naming the better word works; asking for fewer does not</h3>
+      <p>
+        “Avoid jargon” does not reduce jargon. Naming the swap — use over utilize, start over initiate — does. The vague
+        instruction lands most of the length win and almost none of the vocabulary win.
+      </p>
+      <a href={`/research/${byId("instruction-register")!.data.slug}`}>{byId("instruction-register")!.data.title} →</a>
+    </div>
+  </div>
+
+  <div class="band">
+    <h2>What it does not move</h2>
+
+    <div class="claim">
+      <h3>Factual accuracy, at all</h3>
+      <p>
+        Two runs and one targeted mechanism test found the same thing: wording moves length and vocabulary two to three
+        times over, and moves correctness not at all. The two highest-scoring instructions tied the control for worst
+        accuracy. Task difficulty dominated — accuracy spanned 3/15 to 14/15 by task against 15/30 to 21/30 by
+        instruction.
+      </p>
+      <p><strong>A high score is not a correctness signal. Verify facts separately.</strong></p>
+      <a href={`/research/${byId("qualifier-carveout")!.data.slug}`}>{byId("qualifier-carveout")!.data.title} →</a>
+    </div>
+
+    <div class="claim">
+      <h3>Whether an explanation is legible</h3>
+      <p>
+        A reply scoring 85 drew “I have no idea what you're saying”; the rewrite that landed scored 84. An arm built to
+        fix that failure moved the composite by half a point. The instrument cannot see the thing, so it cannot score
+        the fix — it can only price it.
+      </p>
+      <a href={`/research/${byId("bluf-as-a-label")!.data.slug}`}>{byId("bluf-as-a-label")!.data.title} →</a>
+    </div>
+  </div>
+
+  <div class="band alt">
+    <h2>What the method taught us</h2>
+
+    <div class="claim">
+      <h3>Read the dimensions, not the composite</h3>
+      <p>
+        The composite is a weighted average, so it averages the real effects away. Run 1 spanned 79.5–86.6 across seven
+        instructions while the spread <em>inside</em> a single instruction was about 15 points — so no composite gap in
+        it meant anything. The dimensions moved two to three times over the same answers.
+      </p>
+      <a href={`/research/${byId("instruction-register")!.data.slug}`}>{byId("instruction-register")!.data.title} →</a>
+    </div>
+
+    <div class="claim">
+      <h3>A metric that works can be an artifact of your task set</h3>
+      <p>
+        Word count was the sharpest instruction dial on six tasks that were all the same shape, and stopped working on
+        ten mixed ones — natural length varies far more when the registers differ. Sentence-simplicity held across both
+        and is the one to lean on.
+      </p>
+      <a href={`/research/${byId("task-heterogeneity")!.data.slug}`}>{byId("task-heterogeneity")!.data.title} →</a>
+    </div>
+
+    <div class="claim">
+      <h3>Findings are model-specific, and the ranking travels further than the size</h3>
+      <p>
+        Re-run on Sonnet 5, the winning instruction still won, but moved length 12% where it moved Opus 41% — its
+        uninstructed output was already a third shorter, so there was less to win.
+      </p>
+      <a href={`/research/${byId("multi-model")!.data.slug}`}>{byId("multi-model")!.data.title} →</a>
+    </div>
+
+    <div class="claim">
+      <h3>A dimension that never fires is not thereby useless</h3>
+      <p>
+        Grade band scores a perfect 100 on 87 of every 100 answers in this corpus, which looked like dead weight. It is
+        not: the corpus is answers written by a model asked to be clear, so it contains almost nothing for a ceiling to
+        catch. Removing the ceiling let a deliberately-jargon-heavy fixture score 100 at reading grade 25.8.
+      </p>
+    </div>
+  </div>
+
+  <div class="band">
+    <h2>The studies</h2>
+    <ul class="studies">
+      {
+        studies.map((s) => (
+          <li>
+            <a href={`/research/${s.data.slug}`}>{s.data.title}</a>
+            <p class="finding">{s.data.finding}</p>
+            <p class="meta">
+              run {s.data.run} · {s.data.date}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2>The data</h2>
+    <p>
+      Every answer and every score is in the repository. {totals.answers} answers across {totals.runs} runs, on {
+        totals.models.join(" and ")
+      }, with {totals.reviewed} carrying a reviewer's finding of a specific technical error.
+    </p>
+    <p>
+      <strong>Those errors are the point, not a defect.</strong> The finding that wording does not reach accuracy can
+      only be shown by keeping the wrong answers beside the right ones, with the instruction that produced each. Every
+      file says in its own front matter that it is experiment output and was never fact-checked as documentation.
+    </p>
+    <ul>
+      <li>
+        <a href="https://github.com/jordanburke/prosemeter/tree/main/eval/corpus">eval/corpus/</a> — the answers,
+        marked
+      </li>
+      <li>
+        <a href="https://github.com/jordanburke/prosemeter/tree/main/eval/results">eval/results/</a> — every dimension
+        score, stamped with the engine version that produced it
+      </li>
+      <li>
+        <a href="https://github.com/jordanburke/prosemeter/blob/main/eval/README.md">eval/README.md</a> — the method,
+        and the list of things that do not need re-deriving
+      </li>
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .standfirst {
+    font-size: 1.15rem;
+  }
+  .claim {
+    margin: 2rem 0;
+  }
+  .claim h3 {
+    margin-bottom: 0.4rem;
+  }
+  .claim > a {
+    font-size: 0.9rem;
+  }
+  ul.studies {
+    list-style: none;
+    padding: 0;
+  }
+  ul.studies li {
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  ul.studies .finding {
+    margin: 0.3rem 0 0.2rem;
+  }
+  ul.studies .meta {
+    margin: 0;
+    font: 0.85rem var(--mono);
+    color: var(--dim);
+  }
+</style>

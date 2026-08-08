@@ -1,3 +1,12 @@
+---
+slug: "multi-model"
+run: "sonnet"
+date: "2026-08-03"
+title: "Does the winning instruction survive a change of model?"
+finding: "The ranking transfers to Sonnet 5; the effect size does not. Its uninstructed output is already a third shorter, so there is less to win."
+order: 5
+---
+
 # Multi-model check (Sonnet) — 2026-08-03
 
 Every figure in `baseline.json` was measured on `claude-opus-5`. This tests whether the shipped

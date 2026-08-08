@@ -1,3 +1,12 @@
+---
+slug: "bluf-as-a-label"
+run: "5"
+date: "2026-08-08"
+title: "Naming a technique instructs better than spelling it out"
+finding: "Swapping one rule for the label BLUF cut 38% off the control against the sentence's 31%, and tied it on every other dimension."
+order: 6
+---
+
 # BLUF as a label, and four rules for explanations — run 5, 2026-08-08
 
 **Two findings. Naming a technique instructs at least as well as spelling it out, and compresses

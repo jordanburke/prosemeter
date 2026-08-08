@@ -180,12 +180,36 @@ exception, Square's idempotency key being a body field, the dependency-hoisting 
 are recall failures, not style failures. If they matter, put the fact in context or add a check.
 No preamble will fix them.
 
-## Why outputs are not committed
+## The corpus is committed, and marked
 
-The answers are evidence about what an instruction produced. Editing them to fix errors
-destroys exactly the property that makes them evidence, so they cannot be cleaned up and
-kept. Committing them unedited would instead park 19 known-wrong technical explanations in
-the repo where they read as reference material.
+`eval/corpus/` holds all 536 answers across six runs. `eval/results/run-*.json` holds every
+score for them, stamped with the engine version that produced it.
 
-Accuracy findings live in `accuracy-<date>.json` — the claims, why they are wrong, and which
-files they came from — which preserves the result without preserving the errors.
+**This reverses an earlier policy, and the reason is worth keeping.** The answers used to be
+gitignored, on the argument that committing them would park known-wrong technical explanations
+in the repo where they read as reference material. That argument was sound about the risk and
+wrong about the tradeoff:
+
+- **Scores freeze at the version that produced them; answers do not.** On 2026-08-08 the
+  question "did the engine change, or did the instruction stop landing?" was settled by
+  re-scoring run 2 at 0.4.2 against means recorded on 0.3.0. All four gated metrics reproduced
+  to the decimal. That check was only possible because run 2's prose happened to still exist on
+  one machine, where it existed nowhere else.
+- **The corpus is 1.28 MB.** Storage was never the constraint.
+- **The errors were already labelled.** `accuracy-2026-08-02.json` records file, severity, and
+  the specific wrong claim for 20 answers. Committing the prose turns that into an annotated
+  dataset rather than unmarked reference material — the opposite of what the policy feared.
+
+So the marking is the whole safeguard, and it is per-file rather than per-directory. Every
+answer's front matter names its run, variant, replicate, task and model, and says in its own text
+that it is experiment output that was never fact-checked. The 20 reviewed-and-wrong answers carry
+the finding inline.
+
+**Front matter does not change a score** — verified across 15 answers on every dimension before
+the migration, and the corpus reproduces the published per-variant means exactly. If that ever
+stops being true, the annotations become a confound and this decision has to be revisited.
+
+Answers are still never edited. Fixing an error would destroy the property that makes the answer
+evidence.
+
+See `eval/corpus/README.md`. `eval/migrate-corpus.mjs` is the one-time migration that produced it.

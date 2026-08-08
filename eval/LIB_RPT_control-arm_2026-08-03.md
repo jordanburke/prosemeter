@@ -1,3 +1,12 @@
+---
+slug: "control-arm"
+run: "3"
+date: "2026-08-03"
+title: "What the instruction is actually worth, against no instruction at all"
+finding: "Measured within one run: the rules cut length 32%, cut jargon 2.0 points, and raise sentence-simplicity 19.7 points."
+order: 3
+---
+
 # Control-arm eval (run 3) — 2026-08-03
 
 Closes the gap left by runs 1 and 2: a no-instruction control measured on the same six tasks,

@@ -47,7 +47,9 @@ node_modules/
 
 # Claude Code
 .claude/settings.local.json
-# eval run artifacts — generated answers, not fixtures (see eval/README.md)
+# eval scratch directories. The committed corpus is eval/corpus/ — see eval/corpus/README.md for
+# why the answers are kept rather than discarded, and how they are marked. These are the unmarked
+# working copies the migration read from.
 eval/out
 eval/out-run2
 eval/out-run3

@@ -1,0 +1,6324 @@
+{
+  "run": "5",
+  "generated": "2026-08-08",
+  "model": "claude-opus-5",
+  "note": "BLUF label + explanation rules",
+  "profile": "chat",
+  "prosemeterVersion": "0.4.3",
+  "corpus": "eval/corpus/run-5",
+  "n": 120,
+  "variants": [
+    "A",
+    "E",
+    "F",
+    "L"
+  ],
+  "tasks": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6"
+  ],
+  "answers": [
+    {
+      "file": "A-r1-T1.md",
+      "variant": "A",
+      "replicate": "r1",
+      "task": "T1",
+      "composite": 82,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 50,
+        "active-voice": 100,
+        "clarity": 60.8,
+        "directness": 58.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 559,
+        "sentences": 39,
+        "paragraphs": 18,
+        "characters": 2502,
+        "syllables": 829,
+        "complexWords": 64,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the build broke",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How to see which one you have",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "Preventing the next one",
+            "line": 61
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r1-T2.md",
+      "variant": "A",
+      "replicate": "r1",
+      "task": "T2",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 50.8,
+        "active-voice": 100,
+        "clarity": 84.6,
+        "directness": 45.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 660,
+        "sentences": 49,
+        "paragraphs": 23,
+        "characters": 2972,
+        "syllables": 1000,
+        "complexWords": 58,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What an index actually is",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What each write now costs",
+            "line": 20
+          },
+          {
+            "depth": 2,
+            "text": "Why the slowdown may be worse than you expect",
+            "line": 32
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 40
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 59
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r1-T3.md",
+      "variant": "A",
+      "replicate": "r1",
+      "task": "T3",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 54.3,
+        "active-voice": 92.7,
+        "clarity": 76,
+        "directness": 76,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 759,
+        "sentences": 59,
+        "paragraphs": 21,
+        "characters": 3483,
+        "syllables": 1151,
+        "complexWords": 80,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What went wrong",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "How to implement it",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "Two things to check next",
+            "line": 46
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r1-T4.md",
+      "variant": "A",
+      "replicate": "r1",
+      "task": "T4",
+      "composite": 84,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 47,
+        "active-voice": 90.4,
+        "clarity": 75.9,
+        "directness": 61.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 568,
+        "sentences": 40,
+        "paragraphs": 21,
+        "characters": 2684,
+        "syllables": 884,
+        "complexWords": 68,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The two shapes this takes",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Why the dependency array is usually the trigger",
+            "line": 39
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 50
+          },
+          {
+            "depth": 2,
+            "text": "Confirming it before you change anything",
+            "line": 77
+          },
+          {
+            "depth": 2,
+            "text": "The general rule",
+            "line": 92
+          }
+        ],
+        "codeBlocks": 5,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r1-T5.md",
+      "variant": "A",
+      "replicate": "r1",
+      "task": "T5",
+      "composite": 83,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 38,
+        "active-voice": 100,
+        "clarity": 79.2,
+        "directness": 53.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 685,
+        "sentences": 53,
+        "paragraphs": 28,
+        "characters": 3270,
+        "syllables": 1078,
+        "complexWords": 91,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why a stable function is not enough",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The second thing that breaks it",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "When it does earn its place",
+            "line": 50
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 59
+          },
+          {
+            "depth": 2,
+            "text": "Summary",
+            "line": 71
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r1-T6.md",
+      "variant": "A",
+      "replicate": "r1",
+      "task": "T6",
+      "composite": 83,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 54.4,
+        "active-voice": 100,
+        "clarity": 67.9,
+        "directness": 52.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 71.8,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 762,
+        "sentences": 56,
+        "paragraphs": 28,
+        "characters": 3481,
+        "syllables": 1131,
+        "complexWords": 85,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure that matters",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Why GET is not the right test",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "Other things that break",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 46
+          },
+          {
+            "depth": 2,
+            "text": "The recommendation",
+            "line": 64
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r2-T1.md",
+      "variant": "A",
+      "replicate": "r2",
+      "task": "T1",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 47.5,
+        "active-voice": 100,
+        "clarity": 82.8,
+        "directness": 59.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 579,
+        "sentences": 48,
+        "paragraphs": 26,
+        "characters": 2698,
+        "syllables": 887,
+        "complexWords": 70,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is actually happening",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How to see it",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "Preventing the next one",
+            "line": 61
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r2-T2.md",
+      "variant": "A",
+      "replicate": "r2",
+      "task": "T2",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 69.3,
+        "active-voice": 100,
+        "clarity": 80,
+        "directness": 40.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 59.1,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 722,
+        "sentences": 58,
+        "paragraphs": 27,
+        "characters": 3227,
+        "syllables": 1070,
+        "complexWords": 63,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why a write costs more now",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The part that surprises people",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "How to think about it",
+            "line": 40
+          },
+          {
+            "depth": 2,
+            "text": "What to do about yours",
+            "line": 48
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 11
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r2-T3.md",
+      "variant": "A",
+      "replicate": "r2",
+      "task": "T3",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 53.9,
+        "active-voice": 100,
+        "clarity": 86.2,
+        "directness": 55.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 749,
+        "sentences": 58,
+        "paragraphs": 32,
+        "characters": 3424,
+        "syllables": 1141,
+        "complexWords": 77,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The core problem",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 28
+          },
+          {
+            "depth": 2,
+            "text": "The idempotency key",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "Details that matter",
+            "line": 56
+          },
+          {
+            "depth": 2,
+            "text": "The other half: reconciliation",
+            "line": 70
+          },
+          {
+            "depth": 2,
+            "text": "What to do now",
+            "line": 74
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r2-T4.md",
+      "variant": "A",
+      "replicate": "r2",
+      "task": "T4",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 48.3,
+        "active-voice": 100,
+        "clarity": 81.3,
+        "directness": 52.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 99.8,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 523,
+        "sentences": 45,
+        "paragraphs": 25,
+        "characters": 2482,
+        "syllables": 793,
+        "complexWords": 48,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the page degrades over time",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The three likely causes",
+            "line": 33
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 46
+          },
+          {
+            "depth": 2,
+            "text": "Stabilizing the dependencies",
+            "line": 79
+          },
+          {
+            "depth": 2,
+            "text": "Two more things worth checking",
+            "line": 97
+          },
+          {
+            "depth": 2,
+            "text": "How to confirm it",
+            "line": 103
+          }
+        ],
+        "codeBlocks": 5,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r2-T5.md",
+      "variant": "A",
+      "replicate": "r2",
+      "task": "T5",
+      "composite": 82,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 43.5,
+        "active-voice": 92.5,
+        "clarity": 71.1,
+        "directness": 55.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 739,
+        "sentences": 59,
+        "paragraphs": 35,
+        "characters": 3464,
+        "syllables": 1141,
+        "complexWords": 98,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What useCallback actually does",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The other half breaks easily",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "Dependencies leak",
+            "line": 47
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 58
+          },
+          {
+            "depth": 2,
+            "text": "When it is genuinely worth it",
+            "line": 68
+          },
+          {
+            "depth": 2,
+            "text": "Better first moves",
+            "line": 78
+          },
+          {
+            "depth": 2,
+            "text": "And measure",
+            "line": 86
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 9
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r2-T6.md",
+      "variant": "A",
+      "replicate": "r2",
+      "task": "T6",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 47.8,
+        "active-voice": 100,
+        "clarity": 85.9,
+        "directness": 49.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 99.8,
+        "terminology-consistency": 88,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 732,
+        "sentences": 56,
+        "paragraphs": 24,
+        "characters": 3415,
+        "syllables": 1112,
+        "complexWords": 79,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why GET is not the right test",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The three-way split",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "Things that bite even on genuinely public data",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "Whether it will even be fast",
+            "line": 54
+          },
+          {
+            "depth": 2,
+            "text": "A safer default to propose",
+            "line": 60
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r3-T1.md",
+      "variant": "A",
+      "replicate": "r3",
+      "task": "T1",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 61.4,
+        "active-voice": 91.4,
+        "clarity": 84.1,
+        "directness": 69.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 636,
+        "sentences": 45,
+        "paragraphs": 21,
+        "characters": 2808,
+        "syllables": 922,
+        "complexWords": 76,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is actually happening",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How to see which one you have",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "What not to do",
+            "line": 56
+          },
+          {
+            "depth": 2,
+            "text": "Preventing the next one",
+            "line": 62
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r3-T2.md",
+      "variant": "A",
+      "replicate": "r3",
+      "task": "T2",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 68.8,
+        "active-voice": 100,
+        "clarity": 85.5,
+        "directness": 50.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 706,
+        "sentences": 58,
+        "paragraphs": 27,
+        "characters": 3063,
+        "syllables": 1021,
+        "complexWords": 60,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The part that is not just \"more writes\"",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "Whether the trade is worth it",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "What to do now",
+            "line": 45
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 61
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 8
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r3-T3.md",
+      "variant": "A",
+      "replicate": "r3",
+      "task": "T3",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 51.2,
+        "active-voice": 86.3,
+        "clarity": 86.3,
+        "directness": 70.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 754,
+        "sentences": 64,
+        "paragraphs": 28,
+        "characters": 3504,
+        "syllables": 1136,
+        "complexWords": 76,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "How the duplicate happened",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency does about it",
+            "line": 28
+          },
+          {
+            "depth": 2,
+            "text": "The rules that make it actually work",
+            "line": 45
+          },
+          {
+            "depth": 2,
+            "text": "What you have to fix on your side too",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "Cleaning up the ones you already made",
+            "line": 65
+          },
+          {
+            "depth": 2,
+            "text": "The short version",
+            "line": 69
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r3-T4.md",
+      "variant": "A",
+      "replicate": "r3",
+      "task": "T4",
+      "composite": 82,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 48.7,
+        "active-voice": 100,
+        "clarity": 59.6,
+        "directness": 62.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 532,
+        "sentences": 47,
+        "paragraphs": 24,
+        "characters": 2582,
+        "syllables": 837,
+        "complexWords": 49,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The shape of the bug",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 31
+          },
+          {
+            "depth": 2,
+            "text": "If the slowdown continues after that",
+            "line": 56
+          },
+          {
+            "depth": 2,
+            "text": "How to confirm it before you ship",
+            "line": 81
+          },
+          {
+            "depth": 2,
+            "text": "The rule underneath",
+            "line": 87
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r3-T5.md",
+      "variant": "A",
+      "replicate": "r3",
+      "task": "T5",
+      "composite": 83,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 49.1,
+        "active-voice": 91.1,
+        "clarity": 72,
+        "directness": 42.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 617,
+        "sentences": 47,
+        "paragraphs": 26,
+        "characters": 2899,
+        "syllables": 953,
+        "complexWords": 88,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why it does nothing",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Why it costs something",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "Why it often breaks even when the memo is there",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "When it is genuinely worth it",
+            "line": 54
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 64
+          },
+          {
+            "depth": 2,
+            "text": "One more thing worth knowing",
+            "line": 70
+          },
+          {
+            "depth": 2,
+            "text": "The summary to give them",
+            "line": 74
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r3-T6.md",
+      "variant": "A",
+      "replicate": "r3",
+      "task": "T6",
+      "composite": 84,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 54.9,
+        "active-voice": 100,
+        "clarity": 65.4,
+        "directness": 60.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 681,
+        "sentences": 55,
+        "paragraphs": 30,
+        "characters": 3088,
+        "syllables": 1015,
+        "complexWords": 73,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The problem in one sentence",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Why \"GET is safe to cache\" is only half the rule",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "The other things that break",
+            "line": 54
+          },
+          {
+            "depth": 2,
+            "text": "The counter-proposal",
+            "line": 66
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r4-T1.md",
+      "variant": "A",
+      "replicate": "r4",
+      "task": "T1",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 64.1,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 67.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 572,
+        "sentences": 50,
+        "paragraphs": 24,
+        "characters": 2580,
+        "syllables": 833,
+        "complexWords": 50,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How to find it",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 38
+          },
+          {
+            "depth": 2,
+            "text": "In a monorepo",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "What to tell the other team",
+            "line": 61
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 2
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r4-T2.md",
+      "variant": "A",
+      "replicate": "r4",
+      "task": "T2",
+      "composite": 83,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 68.2,
+        "active-voice": 91.9,
+        "clarity": 62,
+        "directness": 40.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 77.4,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 685,
+        "sentences": 64,
+        "paragraphs": 24,
+        "characters": 2996,
+        "syllables": 1008,
+        "complexWords": 62,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The part that surprises people",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "Write amplification, and the log",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 40
+          },
+          {
+            "depth": 2,
+            "text": "The honest summary",
+            "line": 52
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r4-T3.md",
+      "variant": "A",
+      "replicate": "r4",
+      "task": "T3",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 61,
+        "active-voice": 86.2,
+        "clarity": 75.8,
+        "directness": 61,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 751,
+        "sentences": 58,
+        "paragraphs": 29,
+        "characters": 3374,
+        "syllables": 1106,
+        "complexWords": 70,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What happened",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Why this is unavoidable without help",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "How it works in practice",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "The details that decide whether it actually works",
+            "line": 56
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 68
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r4-T4.md",
+      "variant": "A",
+      "replicate": "r4",
+      "task": "T4",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 49.7,
+        "active-voice": 100,
+        "clarity": 84,
+        "directness": 54.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 632,
+        "sentences": 56,
+        "paragraphs": 31,
+        "characters": 2973,
+        "syllables": 964,
+        "complexWords": 62,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why this shows up as gradual slowness",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The two ways it usually happens",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "Fixing the dependency side",
+            "line": 66
+          },
+          {
+            "depth": 2,
+            "text": "Confirming the diagnosis before you fix it",
+            "line": 76
+          },
+          {
+            "depth": 2,
+            "text": "One thing that is not the bug",
+            "line": 96
+          },
+          {
+            "depth": 2,
+            "text": "Extracting it",
+            "line": 100
+          }
+        ],
+        "codeBlocks": 5,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r4-T5.md",
+      "variant": "A",
+      "replicate": "r4",
+      "task": "T5",
+      "composite": 82,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 39.3,
+        "active-voice": 92.8,
+        "clarity": 76.4,
+        "directness": 56.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 776,
+        "sentences": 68,
+        "paragraphs": 42,
+        "characters": 3699,
+        "syllables": 1188,
+        "complexWords": 101,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the child still re-renders",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What it takes to actually skip the child",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "The other half that breaks it silently",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 58
+          },
+          {
+            "depth": 2,
+            "text": "When it is genuinely worth it",
+            "line": 68
+          },
+          {
+            "depth": 2,
+            "text": "Cheaper things to try first",
+            "line": 79
+          },
+          {
+            "depth": 2,
+            "text": "The right order of operations",
+            "line": 96
+          },
+          {
+            "depth": 2,
+            "text": "Worth mentioning",
+            "line": 104
+          },
+          {
+            "depth": 2,
+            "text": "Summary for the teammate",
+            "line": 108
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 10
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r4-T6.md",
+      "variant": "A",
+      "replicate": "r4",
+      "task": "T6",
+      "composite": 84,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 54.8,
+        "active-voice": 92.8,
+        "clarity": 72.1,
+        "directness": 49.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 88.6,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 775,
+        "sentences": 69,
+        "paragraphs": 43,
+        "characters": 3564,
+        "syllables": 1164,
+        "complexWords": 74,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure, concretely",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Why the cache is not to blame",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "The sort that is actually safe",
+            "line": 33
+          },
+          {
+            "depth": 2,
+            "text": "The sort that is not",
+            "line": 44
+          },
+          {
+            "depth": 2,
+            "text": "If you must cache per-user responses",
+            "line": 51
+          },
+          {
+            "depth": 2,
+            "text": "Invalidation, the second problem",
+            "line": 61
+          },
+          {
+            "depth": 2,
+            "text": "What to actually do",
+            "line": 71
+          },
+          {
+            "depth": 2,
+            "text": "The version worth proposing back",
+            "line": 81
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 16
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r5-T1.md",
+      "variant": "A",
+      "replicate": "r5",
+      "task": "T1",
+      "composite": 84,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 48.4,
+        "active-voice": 100,
+        "clarity": 71.4,
+        "directness": 62.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 600,
+        "sentences": 48,
+        "paragraphs": 19,
+        "characters": 2739,
+        "syllables": 907,
+        "complexWords": 77,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is actually happening",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How to find the duplicate",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it, in the order to try",
+            "line": 32
+          },
+          {
+            "depth": 2,
+            "text": "The part worth internalizing",
+            "line": 48
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r5-T2.md",
+      "variant": "A",
+      "replicate": "r5",
+      "task": "T2",
+      "composite": 81,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 46.9,
+        "active-voice": 91.4,
+        "clarity": 67.9,
+        "directness": 38.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 635,
+        "sentences": 49,
+        "paragraphs": 22,
+        "characters": 2846,
+        "syllables": 959,
+        "complexWords": 63,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The part that surprises people most",
+            "line": 28
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 38
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 50
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r5-T3.md",
+      "variant": "A",
+      "replicate": "r5",
+      "task": "T3",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 56,
+        "active-voice": 91,
+        "clarity": 100,
+        "directness": 58.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 610,
+        "sentences": 46,
+        "paragraphs": 17,
+        "characters": 2756,
+        "syllables": 922,
+        "complexWords": 71,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure in detail",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "Getting it right",
+            "line": 43
+          },
+          {
+            "depth": 2,
+            "text": "The general lesson",
+            "line": 55
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r5-T4.md",
+      "variant": "A",
+      "replicate": "r5",
+      "task": "T4",
+      "composite": 83,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 43.3,
+        "active-voice": 89.1,
+        "clarity": 73.1,
+        "directness": 60.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 489,
+        "sentences": 36,
+        "paragraphs": 25,
+        "characters": 2257,
+        "syllables": 729,
+        "complexWords": 40,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the effect re-runs",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The fix: return a cleanup function",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "Fixing the deps that caused it",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "Confirming it is really this",
+            "line": 82
+          },
+          {
+            "depth": 2,
+            "text": "Two related leaks in the same shape",
+            "line": 88
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r5-T5.md",
+      "variant": "A",
+      "replicate": "r5",
+      "task": "T5",
+      "composite": 82,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 51.2,
+        "active-voice": 100,
+        "clarity": 58.3,
+        "directness": 53.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 588,
+        "sentences": 49,
+        "paragraphs": 25,
+        "characters": 2827,
+        "syllables": 922,
+        "complexWords": 78,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the stable function alone does nothing",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Why it still often fails after adding memo",
+            "line": 28
+          },
+          {
+            "depth": 2,
+            "text": "Why \"every function\" is the wrong scope",
+            "line": 45
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 53
+          },
+          {
+            "depth": 2,
+            "text": "The short version to give your teammate",
+            "line": 67
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "A-r5-T6.md",
+      "variant": "A",
+      "replicate": "r5",
+      "task": "T6",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 59.5,
+        "active-voice": 100,
+        "clarity": 71,
+        "directness": 46.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 588,
+        "sentences": 50,
+        "paragraphs": 22,
+        "characters": 2717,
+        "syllables": 899,
+        "complexWords": 61,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure mode to picture",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The split that actually matters",
+            "line": 28
+          },
+          {
+            "depth": 2,
+            "text": "Things that will bite you even in the \"public\" bucket",
+            "line": 54
+          },
+          {
+            "depth": 2,
+            "text": "How to roll it out safely",
+            "line": 64
+          },
+          {
+            "depth": 2,
+            "text": "The answer to give your teammate",
+            "line": 70
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r1-T1.md",
+      "variant": "E",
+      "replicate": "r1",
+      "task": "T1",
+      "composite": 96,
+      "dimensions": {
+        "grade-band": 99.9,
+        "sentence-simplicity": 85.1,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 69.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 456,
+        "sentences": 46,
+        "paragraphs": 20,
+        "characters": 2009,
+        "syllables": 651,
+        "complexWords": 34,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "How to see it",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "Which one to pick",
+            "line": 61
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r1-T2.md",
+      "variant": "E",
+      "replicate": "r1",
+      "task": "T2",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 86.5,
+        "active-voice": 100,
+        "clarity": 81,
+        "directness": 49.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 83.7,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 512,
+        "sentences": 52,
+        "paragraphs": 22,
+        "characters": 2307,
+        "syllables": 748,
+        "complexWords": 40,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write costs more",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The parts that surprise people",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 47
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r1-T3.md",
+      "variant": "E",
+      "replicate": "r1",
+      "task": "T3",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 79.6,
+        "active-voice": 91.2,
+        "clarity": 91.2,
+        "directness": 60.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 624,
+        "sentences": 57,
+        "paragraphs": 29,
+        "characters": 2871,
+        "syllables": 932,
+        "complexWords": 62,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What actually happened",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "Getting the key right",
+            "line": 43
+          },
+          {
+            "depth": 2,
+            "text": "The rest of the job",
+            "line": 53
+          },
+          {
+            "depth": 2,
+            "text": "The short version",
+            "line": 65
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 9
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r1-T4.md",
+      "variant": "E",
+      "replicate": "r1",
+      "task": "T4",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 58.6,
+        "active-voice": 100,
+        "clarity": 71.6,
+        "directness": 50.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 96.4,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 453,
+        "sentences": 40,
+        "paragraphs": 22,
+        "characters": 2168,
+        "syllables": 674,
+        "complexWords": 38,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The shape of the bug",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 33
+          },
+          {
+            "depth": 2,
+            "text": "The near misses",
+            "line": 61
+          },
+          {
+            "depth": 2,
+            "text": "How to confirm it",
+            "line": 86
+          },
+          {
+            "depth": 2,
+            "text": "The rule",
+            "line": 90
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 2
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r1-T5.md",
+      "variant": "E",
+      "replicate": "r1",
+      "task": "T5",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 40.8,
+        "active-voice": 100,
+        "clarity": 89.2,
+        "directness": 47,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 497,
+        "sentences": 51,
+        "paragraphs": 24,
+        "characters": 2375,
+        "syllables": 777,
+        "complexWords": 70,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the prop identity does not matter by itself",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "When it is actually worth it",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "What usually helps more",
+            "line": 49
+          },
+          {
+            "depth": 2,
+            "text": "A note on the React Compiler",
+            "line": 65
+          },
+          {
+            "depth": 2,
+            "text": "What to tell them",
+            "line": 69
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r1-T6.md",
+      "variant": "E",
+      "replicate": "r1",
+      "task": "T6",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 79.2,
+        "active-voice": 100,
+        "clarity": 83.5,
+        "directness": 53.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 99.3,
+        "terminology-consistency": 67,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 608,
+        "sentences": 56,
+        "paragraphs": 28,
+        "characters": 2710,
+        "syllables": 866,
+        "complexWords": 50,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure that matters",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The line to draw",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "Vary is not the escape hatch",
+            "line": 44
+          },
+          {
+            "depth": 2,
+            "text": "The rest of the problems",
+            "line": 53
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 63
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 5
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r2-T1.md",
+      "variant": "E",
+      "replicate": "r2",
+      "task": "T1",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 48.8,
+        "active-voice": 100,
+        "clarity": 86.4,
+        "directness": 70.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 382,
+        "sentences": 27,
+        "paragraphs": 11,
+        "characters": 1728,
+        "syllables": 546,
+        "complexWords": 32,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r2-T2.md",
+      "variant": "E",
+      "replicate": "r2",
+      "task": "T2",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 84.8,
+        "sentence-simplicity": 71.1,
+        "active-voice": 100,
+        "clarity": 86.8,
+        "directness": 52.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 394,
+        "sentences": 30,
+        "paragraphs": 11,
+        "characters": 1622,
+        "syllables": 533,
+        "complexWords": 20,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r2-T3.md",
+      "variant": "E",
+      "replicate": "r2",
+      "task": "T3",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 75.6,
+        "active-voice": 89.2,
+        "clarity": 89.2,
+        "directness": 48.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 496,
+        "sentences": 40,
+        "paragraphs": 12,
+        "characters": 2180,
+        "syllables": 717,
+        "complexWords": 41,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r2-T4.md",
+      "variant": "E",
+      "replicate": "r2",
+      "task": "T4",
+      "composite": 93,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 70.5,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 70.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 383,
+        "sentences": 25,
+        "paragraphs": 9,
+        "characters": 1781,
+        "syllables": 564,
+        "complexWords": 33,
+        "headings": [],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r2-T5.md",
+      "variant": "E",
+      "replicate": "r2",
+      "task": "T5",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 60.8,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 50.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 372,
+        "sentences": 29,
+        "paragraphs": 12,
+        "characters": 1737,
+        "syllables": 558,
+        "complexWords": 39,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r2-T6.md",
+      "variant": "E",
+      "replicate": "r2",
+      "task": "T6",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 61.2,
+        "active-voice": 100,
+        "clarity": 80.8,
+        "directness": 49.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 83.5,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 505,
+        "sentences": 32,
+        "paragraphs": 15,
+        "characters": 2273,
+        "syllables": 712,
+        "complexWords": 39,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r3-T1.md",
+      "variant": "E",
+      "replicate": "r3",
+      "task": "T1",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 63.9,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 57,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 424,
+        "sentences": 37,
+        "paragraphs": 12,
+        "characters": 1878,
+        "syllables": 614,
+        "complexWords": 42,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r3-T2.md",
+      "variant": "E",
+      "replicate": "r3",
+      "task": "T2",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 99,
+        "sentence-simplicity": 73.6,
+        "active-voice": 65.1,
+        "clarity": 71.3,
+        "directness": 46.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 447,
+        "sentences": 38,
+        "paragraphs": 13,
+        "characters": 1909,
+        "syllables": 632,
+        "complexWords": 32,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r3-T3.md",
+      "variant": "E",
+      "replicate": "r3",
+      "task": "T3",
+      "composite": 96,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 85.9,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 75.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 99.4,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 488,
+        "sentences": 42,
+        "paragraphs": 13,
+        "characters": 2208,
+        "syllables": 712,
+        "complexWords": 37,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r3-T4.md",
+      "variant": "E",
+      "replicate": "r3",
+      "task": "T4",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 72.6,
+        "active-voice": 87.6,
+        "clarity": 100,
+        "directness": 51.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 425,
+        "sentences": 34,
+        "paragraphs": 15,
+        "characters": 1986,
+        "syllables": 646,
+        "complexWords": 43,
+        "headings": [],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r3-T5.md",
+      "variant": "E",
+      "replicate": "r3",
+      "task": "T5",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 53.3,
+        "active-voice": 100,
+        "clarity": 88.4,
+        "directness": 55.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 456,
+        "sentences": 36,
+        "paragraphs": 13,
+        "characters": 2151,
+        "syllables": 692,
+        "complexWords": 50,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r3-T6.md",
+      "variant": "E",
+      "replicate": "r3",
+      "task": "T6",
+      "composite": 95,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 86,
+        "active-voice": 89.2,
+        "clarity": 100,
+        "directness": 75.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 83.1,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 493,
+        "sentences": 37,
+        "paragraphs": 13,
+        "characters": 2145,
+        "syllables": 698,
+        "complexWords": 38,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r4-T1.md",
+      "variant": "E",
+      "replicate": "r4",
+      "task": "T1",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 49.4,
+        "active-voice": 100,
+        "clarity": 86.7,
+        "directness": 83,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 391,
+        "sentences": 32,
+        "paragraphs": 15,
+        "characters": 1711,
+        "syllables": 547,
+        "complexWords": 34,
+        "headings": [],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r4-T2.md",
+      "variant": "E",
+      "replicate": "r4",
+      "task": "T2",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 72.8,
+        "active-voice": 87.7,
+        "clarity": 87.7,
+        "directness": 45.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 429,
+        "sentences": 36,
+        "paragraphs": 17,
+        "characters": 1889,
+        "syllables": 612,
+        "complexWords": 28,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r4-T3.md",
+      "variant": "E",
+      "replicate": "r4",
+      "task": "T3",
+      "composite": 93,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 85.6,
+        "active-voice": 100,
+        "clarity": 88.8,
+        "directness": 47.8,
+        "concision": 100,
+        "sentence-variety": 99.3,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 477,
+        "sentences": 40,
+        "paragraphs": 19,
+        "characters": 2171,
+        "syllables": 713,
+        "complexWords": 38,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r4-T4.md",
+      "variant": "E",
+      "replicate": "r4",
+      "task": "T4",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 60,
+        "active-voice": 100,
+        "clarity": 66.7,
+        "directness": 52.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 360,
+        "sentences": 32,
+        "paragraphs": 12,
+        "characters": 1670,
+        "syllables": 533,
+        "complexWords": 29,
+        "headings": [],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r4-T5.md",
+      "variant": "E",
+      "replicate": "r4",
+      "task": "T5",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 61.7,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 49.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 387,
+        "sentences": 30,
+        "paragraphs": 12,
+        "characters": 1829,
+        "syllables": 593,
+        "complexWords": 46,
+        "headings": [],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r4-T6.md",
+      "variant": "E",
+      "replicate": "r4",
+      "task": "T6",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 98.1,
+        "sentence-simplicity": 56,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 53.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 57.6,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 407,
+        "sentences": 40,
+        "paragraphs": 15,
+        "characters": 1860,
+        "syllables": 588,
+        "complexWords": 27,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r5-T1.md",
+      "variant": "E",
+      "replicate": "r5",
+      "task": "T1",
+      "composite": 93,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 84.1,
+        "active-voice": 87.6,
+        "clarity": 87.6,
+        "directness": 77.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 423,
+        "sentences": 37,
+        "paragraphs": 17,
+        "characters": 1872,
+        "syllables": 616,
+        "complexWords": 41,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How to find out which case you have",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 32
+          },
+          {
+            "depth": 2,
+            "text": "What to avoid",
+            "line": 44
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r5-T2.md",
+      "variant": "E",
+      "replicate": "r5",
+      "task": "T2",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 95.6,
+        "sentence-simplicity": 84.8,
+        "active-voice": 78.9,
+        "clarity": 100,
+        "directness": 55.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 448,
+        "sentences": 44,
+        "paragraphs": 24,
+        "characters": 1941,
+        "syllables": 633,
+        "complexWords": 28,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The parts that make it worse than it sounds",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "When the trade is worth it",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "What to do now",
+            "line": 44
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r5-T3.md",
+      "variant": "E",
+      "replicate": "r5",
+      "task": "T3",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 62.7,
+        "active-voice": 100,
+        "clarity": 89.9,
+        "directness": 81.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 537,
+        "sentences": 42,
+        "paragraphs": 23,
+        "characters": 2379,
+        "syllables": 774,
+        "complexWords": 47,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What happened",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Why retrying is still right",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "Getting the key right",
+            "line": 39
+          },
+          {
+            "depth": 2,
+            "text": "The same rule applies to your own database",
+            "line": 47
+          },
+          {
+            "depth": 2,
+            "text": "What to do now",
+            "line": 53
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 2
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r5-T4.md",
+      "variant": "E",
+      "replicate": "r5",
+      "task": "T4",
+      "composite": 93,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 73.5,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 52.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 444,
+        "sentences": 41,
+        "paragraphs": 21,
+        "characters": 2076,
+        "syllables": 667,
+        "complexWords": 47,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why it happens",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "Check the dependency array too",
+            "line": 47
+          },
+          {
+            "depth": 2,
+            "text": "How to confirm it before you change anything",
+            "line": 59
+          },
+          {
+            "depth": 2,
+            "text": "After the fix",
+            "line": 65
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r5-T5.md",
+      "variant": "E",
+      "replicate": "r5",
+      "task": "T5",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 52.9,
+        "active-voice": 100,
+        "clarity": 88.2,
+        "directness": 50.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 450,
+        "sentences": 37,
+        "paragraphs": 21,
+        "characters": 2146,
+        "syllables": 708,
+        "complexWords": 61,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why it does nothing on its own",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What actually stops the re-render",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "The pair breaks easily",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "When memoizing is worth it",
+            "line": 44
+          },
+          {
+            "depth": 2,
+            "text": "What to suggest instead",
+            "line": 52
+          },
+          {
+            "depth": 2,
+            "text": "The near future",
+            "line": 58
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "E-r5-T6.md",
+      "variant": "E",
+      "replicate": "r5",
+      "task": "T6",
+      "composite": 81,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 49.3,
+        "active-voice": 100,
+        "clarity": 56.4,
+        "directness": 59.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 82.3,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 466,
+        "sentences": 46,
+        "paragraphs": 29,
+        "characters": 2082,
+        "syllables": 676,
+        "complexWords": 47,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure that matters",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Why \"GET is safe to cache\" is not the rule",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "What is actually safe to cache",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "What to do with everything else",
+            "line": 48
+          },
+          {
+            "depth": 2,
+            "text": "If you want the speed anyway",
+            "line": 58
+          },
+          {
+            "depth": 2,
+            "text": "Before rolling anything out",
+            "line": 70
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r1-T1.md",
+      "variant": "F",
+      "replicate": "r1",
+      "task": "T1",
+      "composite": 95,
+      "dimensions": {
+        "grade-band": 98.6,
+        "sentence-simplicity": 87.9,
+        "active-voice": 90.7,
+        "clarity": 100,
+        "directness": 67.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 582,
+        "sentences": 54,
+        "paragraphs": 24,
+        "characters": 2505,
+        "syllables": 821,
+        "complexWords": 51,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening?",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How do I see which case I am in?",
+            "line": 28
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 40
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r1-T2.md",
+      "variant": "F",
+      "replicate": "r1",
+      "task": "T2",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 71.8,
+        "active-voice": 100,
+        "clarity": 71.8,
+        "directness": 47.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 612,
+        "sentences": 53,
+        "paragraphs": 21,
+        "characters": 2656,
+        "syllables": 883,
+        "complexWords": 49,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why does an index slow writes down?",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How much slower should I expect?",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "What should I do about it?",
+            "line": 38
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r1-T3.md",
+      "variant": "F",
+      "replicate": "r1",
+      "task": "T3",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 59.6,
+        "active-voice": 85.5,
+        "clarity": 85.5,
+        "directness": 52.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 707,
+        "sentences": 55,
+        "paragraphs": 24,
+        "characters": 3070,
+        "syllables": 1023,
+        "complexWords": 67,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did the retry charge twice?",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What is idempotency?",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "What about the rest of the system?",
+            "line": 50
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r1-T4.md",
+      "variant": "F",
+      "replicate": "r1",
+      "task": "T4",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 63.4,
+        "active-voice": 90.2,
+        "clarity": 75.5,
+        "directness": 66.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 555,
+        "sentences": 47,
+        "paragraphs": 21,
+        "characters": 2596,
+        "syllables": 831,
+        "complexWords": 61,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is likely wrong?",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How do I confirm it?",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 44
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r1-T5.md",
+      "variant": "F",
+      "replicate": "r1",
+      "task": "T5",
+      "composite": 83,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 47.9,
+        "active-voice": 90.7,
+        "clarity": 71,
+        "directness": 55.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 588,
+        "sentences": 48,
+        "paragraphs": 20,
+        "characters": 2783,
+        "syllables": 898,
+        "complexWords": 55,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why does useCallback alone not stop re-renders?",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What breaks it even when memo is there?",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "What does it actually cost?",
+            "line": 38
+          },
+          {
+            "depth": 2,
+            "text": "What should we do instead?",
+            "line": 44
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r1-T6.md",
+      "variant": "F",
+      "replicate": "r1",
+      "task": "T6",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 61.3,
+        "active-voice": 100,
+        "clarity": 91.4,
+        "directness": 59,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 76,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 634,
+        "sentences": 49,
+        "paragraphs": 25,
+        "characters": 2841,
+        "syllables": 931,
+        "complexWords": 57,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What goes wrong?",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Which GETs are actually safe to cache?",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "How do I set this up safely?",
+            "line": 40
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r2-T1.md",
+      "variant": "F",
+      "replicate": "r2",
+      "task": "T1",
+      "composite": 94,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 81.8,
+        "active-voice": 85.7,
+        "clarity": 100,
+        "directness": 60,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 360,
+        "sentences": 28,
+        "paragraphs": 14,
+        "characters": 1553,
+        "syllables": 512,
+        "complexWords": 27,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 22
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r2-T2.md",
+      "variant": "F",
+      "replicate": "r2",
+      "task": "T2",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 84.1,
+        "sentence-simplicity": 72.5,
+        "active-voice": 100,
+        "clarity": 87.6,
+        "directness": 51.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 422,
+        "sentences": 32,
+        "paragraphs": 13,
+        "characters": 1735,
+        "syllables": 582,
+        "complexWords": 21,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did the index make writes slower?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What should I do about it?",
+            "line": 26
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r2-T3.md",
+      "variant": "F",
+      "replicate": "r2",
+      "task": "T3",
+      "composite": 94,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 74.4,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 62.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 466,
+        "sentences": 33,
+        "paragraphs": 16,
+        "characters": 2083,
+        "syllables": 683,
+        "complexWords": 38,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did my retries create duplicate charges?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What does idempotency have to do with it?",
+            "line": 20
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix this?",
+            "line": 28
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 2
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r2-T4.md",
+      "variant": "F",
+      "replicate": "r2",
+      "task": "T4",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 62.1,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 58.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 394,
+        "sentences": 30,
+        "paragraphs": 15,
+        "characters": 1770,
+        "syllables": 581,
+        "complexWords": 29,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is likely wrong?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 24
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r2-T5.md",
+      "variant": "F",
+      "replicate": "r2",
+      "task": "T5",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 58.1,
+        "active-voice": 100,
+        "clarity": 71.1,
+        "directness": 52.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 443,
+        "sentences": 34,
+        "paragraphs": 17,
+        "characters": 2089,
+        "syllables": 675,
+        "complexWords": 49,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Will wrapping every prop function in useCallback stop the re-renders?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What is the cost of doing it anyway?",
+            "line": 26
+          },
+          {
+            "depth": 2,
+            "text": "What should we do instead?",
+            "line": 32
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r2-T6.md",
+      "variant": "F",
+      "replicate": "r2",
+      "task": "T6",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 73,
+        "active-voice": 100,
+        "clarity": 70.6,
+        "directness": 52,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 81.2,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 433,
+        "sentences": 37,
+        "paragraphs": 19,
+        "characters": 1938,
+        "syllables": 613,
+        "complexWords": 28,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Will caching every GET in a shared CDN cache work?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What breaks?",
+            "line": 20
+          },
+          {
+            "depth": 2,
+            "text": "What should we do instead?",
+            "line": 31
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r3-T1.md",
+      "variant": "F",
+      "replicate": "r3",
+      "task": "T1",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 54.2,
+        "active-voice": 91.7,
+        "clarity": 91.7,
+        "directness": 76.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 662,
+        "sentences": 49,
+        "paragraphs": 18,
+        "characters": 2876,
+        "syllables": 927,
+        "complexWords": 57,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "How do I find out which case I have?",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 41
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 2
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r3-T2.md",
+      "variant": "F",
+      "replicate": "r3",
+      "task": "T2",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 99.6,
+        "sentence-simplicity": 67.3,
+        "active-voice": 78.5,
+        "clarity": 91.7,
+        "directness": 52.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 659,
+        "sentences": 50,
+        "paragraphs": 18,
+        "characters": 2792,
+        "syllables": 908,
+        "complexWords": 29,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did adding an index make writes slower?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "Why is the slowdown bigger than \"one extra write\"?",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "Was adding the index a mistake?",
+            "line": 32
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r3-T3.md",
+      "variant": "F",
+      "replicate": "r3",
+      "task": "T3",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 70.1,
+        "active-voice": 86.2,
+        "clarity": 92.6,
+        "directness": 63,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 750,
+        "sentences": 62,
+        "paragraphs": 26,
+        "characters": 3317,
+        "syllables": 1090,
+        "complexWords": 70,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did retrying cause duplicate charges?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What does idempotency have to do with it?",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How do I generate the key correctly?",
+            "line": 47
+          },
+          {
+            "depth": 2,
+            "text": "What else should I change?",
+            "line": 57
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 2
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r3-T4.md",
+      "variant": "F",
+      "replicate": "r3",
+      "task": "T4",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 57.9,
+        "active-voice": 100,
+        "clarity": 69.6,
+        "directness": 57.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 550,
+        "sentences": 45,
+        "paragraphs": 22,
+        "characters": 2576,
+        "syllables": 827,
+        "complexWords": 52,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is likely wrong?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "Why does the effect re-run so often?",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 38
+          },
+          {
+            "depth": 2,
+            "text": "How do I confirm it is fixed?",
+            "line": 58
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r3-T5.md",
+      "variant": "F",
+      "replicate": "r3",
+      "task": "T5",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 66,
+        "active-voice": 100,
+        "clarity": 83.8,
+        "directness": 63.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 620,
+        "sentences": 50,
+        "paragraphs": 26,
+        "characters": 2807,
+        "syllables": 891,
+        "complexWords": 51,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Will wrapping every callback prop in useCallback stop child re-renders?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What makes the memo actually work?",
+            "line": 20
+          },
+          {
+            "depth": 2,
+            "text": "Is it worth doing everywhere?",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "What should we do instead?",
+            "line": 56
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 5
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r3-T6.md",
+      "variant": "F",
+      "replicate": "r3",
+      "task": "T6",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 59.8,
+        "active-voice": 100,
+        "clarity": 74.8,
+        "directness": 59.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 70.4,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 714,
+        "sentences": 59,
+        "paragraphs": 28,
+        "characters": 3109,
+        "syllables": 996,
+        "complexWords": 49,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Will caching every GET in a shared CDN cache work?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "How does the cache know which is which?",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "What else varies besides the user?",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "What breaks after you turn it on?",
+            "line": 46
+          },
+          {
+            "depth": 2,
+            "text": "Is the speedup worth it?",
+            "line": 57
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 5
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r4-T1.md",
+      "variant": "F",
+      "replicate": "r4",
+      "task": "T1",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 67.5,
+        "active-voice": 73.5,
+        "clarity": 100,
+        "directness": 67.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 498,
+        "sentences": 37,
+        "paragraphs": 16,
+        "characters": 2133,
+        "syllables": 676,
+        "complexWords": 41,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did the build break?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "How do I see which versions are installed?",
+            "line": 20
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "What stops this next time?",
+            "line": 48
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r4-T2.md",
+      "variant": "F",
+      "replicate": "r4",
+      "task": "T2",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 97.6,
+        "sentence-simplicity": 77.6,
+        "active-voice": 82.2,
+        "clarity": 100,
+        "directness": 60.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 554,
+        "sentences": 45,
+        "paragraphs": 21,
+        "characters": 2345,
+        "syllables": 761,
+        "complexWords": 25,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did the index make writes slower?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What exactly does the extra work cost?",
+            "line": 18
+          },
+          {
+            "depth": 2,
+            "text": "How bad should it be?",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "What should I do about it?",
+            "line": 40
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r4-T3.md",
+      "variant": "F",
+      "replicate": "r4",
+      "task": "T3",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 78.8,
+        "active-voice": 90.8,
+        "clarity": 90.8,
+        "directness": 65,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 594,
+        "sentences": 46,
+        "paragraphs": 22,
+        "characters": 2584,
+        "syllables": 853,
+        "complexWords": 49,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did retrying charge the customer twice?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What does idempotency have to do with it?",
+            "line": 18
+          },
+          {
+            "depth": 2,
+            "text": "How do I make a charge idempotent?",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "What do I have to get right on my side?",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "What about everything else that retries?",
+            "line": 51
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r4-T4.md",
+      "variant": "F",
+      "replicate": "r4",
+      "task": "T4",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 53.6,
+        "active-voice": 100,
+        "clarity": 79.4,
+        "directness": 79.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 462,
+        "sentences": 39,
+        "paragraphs": 19,
+        "characters": 2159,
+        "syllables": 683,
+        "complexWords": 42,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is likely wrong?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "Why does the effect rerun at all?",
+            "line": 28
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 43
+          },
+          {
+            "depth": 2,
+            "text": "How do I confirm this is the problem?",
+            "line": 61
+          },
+          {
+            "depth": 2,
+            "text": "One thing that will confuse you in development",
+            "line": 67
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r4-T5.md",
+      "variant": "F",
+      "replicate": "r4",
+      "task": "T5",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 57.7,
+        "active-voice": 100,
+        "clarity": 82,
+        "directness": 46,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 545,
+        "sentences": 40,
+        "paragraphs": 21,
+        "characters": 2499,
+        "syllables": 803,
+        "complexWords": 54,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Will wrapping every prop function in useCallback stop the re-renders?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "Why does the stable function matter at all, then?",
+            "line": 18
+          },
+          {
+            "depth": 2,
+            "text": "Does a re-render actually cost anything?",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "What does the \"wrap everything\" version cost?",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "What should they do instead?",
+            "line": 51
+          },
+          {
+            "depth": 2,
+            "text": "The one-line version to send them",
+            "line": 61
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r4-T6.md",
+      "variant": "F",
+      "replicate": "r4",
+      "task": "T6",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 72.9,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 57.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 86.6,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 646,
+        "sentences": 48,
+        "paragraphs": 27,
+        "characters": 2772,
+        "syllables": 901,
+        "complexWords": 38,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Will caching every GET in a shared CDN cache work?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "Why is \"it's a GET\" not enough?",
+            "line": 18
+          },
+          {
+            "depth": 2,
+            "text": "Which endpoints are actually safe?",
+            "line": 32
+          },
+          {
+            "depth": 2,
+            "text": "How do I say this to the CDN?",
+            "line": 38
+          },
+          {
+            "depth": 2,
+            "text": "How should we roll it out?",
+            "line": 66
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r5-T1.md",
+      "variant": "F",
+      "replicate": "r5",
+      "task": "T1",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 64.8,
+        "active-voice": 100,
+        "clarity": 88,
+        "directness": 40.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 441,
+        "sentences": 38,
+        "paragraphs": 14,
+        "characters": 1950,
+        "syllables": 627,
+        "complexWords": 42,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did the build break when another team added a package?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 26
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r5-T2.md",
+      "variant": "F",
+      "replicate": "r5",
+      "task": "T2",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 85.4,
+        "active-voice": 88.6,
+        "clarity": 79.6,
+        "directness": 45.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 468,
+        "sentences": 37,
+        "paragraphs": 14,
+        "characters": 2063,
+        "syllables": 659,
+        "complexWords": 23,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did adding an index slow down my writes?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "So when is an index still worth it?",
+            "line": 28
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r5-T3.md",
+      "variant": "F",
+      "replicate": "r5",
+      "task": "T3",
+      "composite": 93,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 85.9,
+        "active-voice": 89,
+        "clarity": 89,
+        "directness": 52.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 487,
+        "sentences": 43,
+        "paragraphs": 15,
+        "characters": 2134,
+        "syllables": 697,
+        "complexWords": 38,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why did my retry logic cause duplicate charges?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What does idempotency have to do with it?",
+            "line": 20
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 30
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r5-T4.md",
+      "variant": "F",
+      "replicate": "r5",
+      "task": "T4",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 49,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 61.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 385,
+        "sentences": 30,
+        "paragraphs": 13,
+        "characters": 1719,
+        "syllables": 570,
+        "complexWords": 34,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is likely wrong with my page?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "How do I confirm it?",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "How do I fix it?",
+            "line": 35
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r5-T5.md",
+      "variant": "F",
+      "replicate": "r5",
+      "task": "T5",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 58.8,
+        "active-voice": 100,
+        "clarity": 88.4,
+        "directness": 62,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 456,
+        "sentences": 38,
+        "paragraphs": 19,
+        "characters": 2085,
+        "syllables": 666,
+        "complexWords": 40,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Will wrapping every prop function in useCallback stop child re-renders?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "What actually stops the re-render?",
+            "line": 20
+          },
+          {
+            "depth": 2,
+            "text": "What does it cost to do it everywhere?",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "So what should I tell them?",
+            "line": 40
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "F-r5-T6.md",
+      "variant": "F",
+      "replicate": "r5",
+      "task": "T6",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 76.2,
+        "active-voice": 100,
+        "clarity": 74,
+        "directness": 51.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 71.9,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 512,
+        "sentences": 39,
+        "paragraphs": 18,
+        "characters": 2194,
+        "syllables": 709,
+        "complexWords": 32,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Will caching every GET endpoint in a shared CDN cache speed the app up?",
+            "line": 12
+          },
+          {
+            "depth": 2,
+            "text": "Which GETs are actually safe?",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "What else breaks?",
+            "line": 32
+          },
+          {
+            "depth": 2,
+            "text": "What should we do instead?",
+            "line": 40
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r1-T1.md",
+      "variant": "L",
+      "replicate": "r1",
+      "task": "T1",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 60.3,
+        "active-voice": 85.9,
+        "clarity": 100,
+        "directness": 82,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 365,
+        "sentences": 29,
+        "paragraphs": 11,
+        "characters": 1630,
+        "syllables": 522,
+        "complexWords": 36,
+        "headings": [],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r1-T2.md",
+      "variant": "L",
+      "replicate": "r1",
+      "task": "T2",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 82.4,
+        "sentence-simplicity": 100,
+        "active-voice": 87.3,
+        "clarity": 100,
+        "directness": 59.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 80.5,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 413,
+        "sentences": 39,
+        "paragraphs": 16,
+        "characters": 1769,
+        "syllables": 571,
+        "complexWords": 19,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r1-T3.md",
+      "variant": "L",
+      "replicate": "r1",
+      "task": "T3",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 57.6,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 68.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 99.3,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 435,
+        "sentences": 39,
+        "paragraphs": 13,
+        "characters": 1996,
+        "syllables": 664,
+        "complexWords": 42,
+        "headings": [],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r1-T4.md",
+      "variant": "L",
+      "replicate": "r1",
+      "task": "T4",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 71.2,
+        "active-voice": 86.8,
+        "clarity": 86.8,
+        "directness": 55.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 395,
+        "sentences": 31,
+        "paragraphs": 11,
+        "characters": 1829,
+        "syllables": 583,
+        "complexWords": 38,
+        "headings": [],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r1-T5.md",
+      "variant": "L",
+      "replicate": "r1",
+      "task": "T5",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 49.5,
+        "active-voice": 100,
+        "clarity": 86.7,
+        "directness": 52.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 392,
+        "sentences": 32,
+        "paragraphs": 13,
+        "characters": 1804,
+        "syllables": 587,
+        "complexWords": 41,
+        "headings": [],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r1-T6.md",
+      "variant": "L",
+      "replicate": "r1",
+      "task": "T6",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 70.5,
+        "active-voice": 100,
+        "clarity": 76.1,
+        "directness": 46.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 79.3,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 383,
+        "sentences": 31,
+        "paragraphs": 12,
+        "characters": 1692,
+        "syllables": 548,
+        "complexWords": 31,
+        "headings": [],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r2-T1.md",
+      "variant": "L",
+      "replicate": "r2",
+      "task": "T1",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 65.4,
+        "active-voice": 83.4,
+        "clarity": 100,
+        "directness": 100,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 302,
+        "sentences": 27,
+        "paragraphs": 12,
+        "characters": 1354,
+        "syllables": 433,
+        "complexWords": 31,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r2-T2.md",
+      "variant": "L",
+      "replicate": "r2",
+      "task": "T2",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 93.5,
+        "sentence-simplicity": 81.4,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 44.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 349,
+        "sentences": 31,
+        "paragraphs": 13,
+        "characters": 1478,
+        "syllables": 478,
+        "complexWords": 26,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r2-T3.md",
+      "variant": "L",
+      "replicate": "r2",
+      "task": "T3",
+      "composite": 93,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 72.7,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 64,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 426,
+        "sentences": 33,
+        "paragraphs": 11,
+        "characters": 1868,
+        "syllables": 616,
+        "complexWords": 38,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r2-T4.md",
+      "variant": "L",
+      "replicate": "r2",
+      "task": "T4",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 65,
+        "active-voice": 83.2,
+        "clarity": 100,
+        "directness": 65,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 297,
+        "sentences": 28,
+        "paragraphs": 11,
+        "characters": 1379,
+        "syllables": 446,
+        "complexWords": 25,
+        "headings": [],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r2-T5.md",
+      "variant": "L",
+      "replicate": "r2",
+      "task": "T5",
+      "composite": 81,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 54.4,
+        "active-voice": 100,
+        "clarity": 51.4,
+        "directness": 51.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 381,
+        "sentences": 30,
+        "paragraphs": 12,
+        "characters": 1686,
+        "syllables": 546,
+        "complexWords": 28,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r2-T6.md",
+      "variant": "L",
+      "replicate": "r2",
+      "task": "T6",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 71.5,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 47.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 66.8,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 402,
+        "sentences": 31,
+        "paragraphs": 13,
+        "characters": 1746,
+        "syllables": 546,
+        "complexWords": 19,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r3-T1.md",
+      "variant": "L",
+      "replicate": "r3",
+      "task": "T1",
+      "composite": 95,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 73.4,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 100,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 442,
+        "sentences": 40,
+        "paragraphs": 12,
+        "characters": 1961,
+        "syllables": 649,
+        "complexWords": 44,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r3-T2.md",
+      "variant": "L",
+      "replicate": "r3",
+      "task": "T2",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 98.9,
+        "sentence-simplicity": 74.7,
+        "active-voice": 100,
+        "clarity": 88.7,
+        "directness": 49.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 472,
+        "sentences": 39,
+        "paragraphs": 13,
+        "characters": 2049,
+        "syllables": 656,
+        "complexWords": 23,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r3-T3.md",
+      "variant": "L",
+      "replicate": "r3",
+      "task": "T3",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 57.8,
+        "active-voice": 90.1,
+        "clarity": 82,
+        "directness": 57.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 547,
+        "sentences": 45,
+        "paragraphs": 13,
+        "characters": 2478,
+        "syllables": 826,
+        "complexWords": 58,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r3-T4.md",
+      "variant": "L",
+      "replicate": "r3",
+      "task": "T4",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 53.4,
+        "active-voice": 100,
+        "clarity": 79.2,
+        "directness": 58.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 458,
+        "sentences": 35,
+        "paragraphs": 15,
+        "characters": 2153,
+        "syllables": 698,
+        "complexWords": 49,
+        "headings": [],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r3-T5.md",
+      "variant": "L",
+      "replicate": "r3",
+      "task": "T5",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 48.8,
+        "active-voice": 100,
+        "clarity": 79.2,
+        "directness": 48.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 458,
+        "sentences": 30,
+        "paragraphs": 10,
+        "characters": 2139,
+        "syllables": 692,
+        "complexWords": 54,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r3-T6.md",
+      "variant": "L",
+      "replicate": "r3",
+      "task": "T6",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 66.2,
+        "active-voice": 100,
+        "clarity": 88.7,
+        "directness": 51.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 470,
+        "sentences": 36,
+        "paragraphs": 13,
+        "characters": 2093,
+        "syllables": 675,
+        "complexWords": 36,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r4-T1.md",
+      "variant": "L",
+      "replicate": "r4",
+      "task": "T1",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 97.2,
+        "sentence-simplicity": 48.3,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 71.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 299,
+        "sentences": 27,
+        "paragraphs": 9,
+        "characters": 1278,
+        "syllables": 419,
+        "complexWords": 26,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r4-T2.md",
+      "variant": "L",
+      "replicate": "r4",
+      "task": "T2",
+      "composite": 94,
+      "dimensions": {
+        "grade-band": 93.7,
+        "sentence-simplicity": 100,
+        "active-voice": 100,
+        "clarity": 82.9,
+        "directness": 54.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 290,
+        "sentences": 29,
+        "paragraphs": 9,
+        "characters": 1247,
+        "syllables": 408,
+        "complexWords": 18,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r4-T3.md",
+      "variant": "L",
+      "replicate": "r4",
+      "task": "T3",
+      "composite": 97,
+      "dimensions": {
+        "grade-band": 92.2,
+        "sentence-simplicity": 100,
+        "active-voice": 85.3,
+        "clarity": 100,
+        "directness": 89.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 349,
+        "sentences": 35,
+        "paragraphs": 11,
+        "characters": 1495,
+        "syllables": 497,
+        "complexWords": 27,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r4-T4.md",
+      "variant": "L",
+      "replicate": "r4",
+      "task": "T4",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 52.8,
+        "active-voice": 100,
+        "clarity": 81.7,
+        "directness": 100,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 268,
+        "sentences": 24,
+        "paragraphs": 9,
+        "characters": 1251,
+        "syllables": 407,
+        "complexWords": 26,
+        "headings": [],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r4-T5.md",
+      "variant": "L",
+      "replicate": "r4",
+      "task": "T5",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 49.2,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 52.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 310,
+        "sentences": 27,
+        "paragraphs": 9,
+        "characters": 1470,
+        "syllables": 466,
+        "complexWords": 32,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r4-T6.md",
+      "variant": "L",
+      "replicate": "r4",
+      "task": "T6",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 99.7,
+        "sentence-simplicity": 80.1,
+        "active-voice": 100,
+        "clarity": 84.3,
+        "directness": 61.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 76.3,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 322,
+        "sentences": 31,
+        "paragraphs": 12,
+        "characters": 1414,
+        "syllables": 451,
+        "complexWords": 22,
+        "headings": [],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r5-T1.md",
+      "variant": "L",
+      "replicate": "r5",
+      "task": "T1",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 63.7,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 77.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 421,
+        "sentences": 38,
+        "paragraphs": 19,
+        "characters": 1839,
+        "syllables": 598,
+        "complexWords": 44,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "How to find it",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "What decides which fix",
+            "line": 63
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r5-T2.md",
+      "variant": "L",
+      "replicate": "r5",
+      "task": "T2",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 88.9,
+        "sentence-simplicity": 74.5,
+        "active-voice": 88.6,
+        "clarity": 79.6,
+        "directness": 45.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 468,
+        "sentences": 48,
+        "paragraphs": 19,
+        "characters": 2043,
+        "syllables": 654,
+        "complexWords": 28,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "Three things make it worse than you would guess",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 32
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 54
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r5-T3.md",
+      "variant": "L",
+      "replicate": "r5",
+      "task": "T3",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 71,
+        "active-voice": 90.7,
+        "clarity": 76.5,
+        "directness": 67.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 587,
+        "sentences": 58,
+        "paragraphs": 26,
+        "characters": 2668,
+        "syllables": 874,
+        "complexWords": 49,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What went wrong",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means",
+            "line": 28
+          },
+          {
+            "depth": 2,
+            "text": "How the key works",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "The rules that make it actually work",
+            "line": 47
+          },
+          {
+            "depth": 2,
+            "text": "Two things to add alongside",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "The general lesson",
+            "line": 63
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r5-T4.md",
+      "variant": "L",
+      "replicate": "r5",
+      "task": "T4",
+      "composite": 93,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 65,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 78.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 446,
+        "sentences": 44,
+        "paragraphs": 22,
+        "characters": 2032,
+        "syllables": 663,
+        "complexWords": 42,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 24
+          },
+          {
+            "depth": 2,
+            "text": "Get the dependency array right",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "Do not reconnect on every state change",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "About Strict Mode",
+            "line": 76
+          },
+          {
+            "depth": 2,
+            "text": "How to confirm it",
+            "line": 80
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r5-T5.md",
+      "variant": "L",
+      "replicate": "r5",
+      "task": "T5",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 62.1,
+        "active-voice": 100,
+        "clarity": 89.7,
+        "directness": 56.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 524,
+        "sentences": 47,
+        "paragraphs": 24,
+        "characters": 2439,
+        "syllables": 795,
+        "complexWords": 58,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the callback alone does nothing",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "What actually skips the render",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "The other props break it too",
+            "line": 39
+          },
+          {
+            "depth": 2,
+            "text": "Why wrapping everything is worse than doing nothing",
+            "line": 49
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "One thing that may make this moot",
+            "line": 73
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "L-r5-T6.md",
+      "variant": "L",
+      "replicate": "r5",
+      "task": "T6",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 99.8,
+        "sentence-simplicity": 62.3,
+        "active-voice": 100,
+        "clarity": 89.8,
+        "directness": 59.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 56.9,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 529,
+        "sentences": 48,
+        "paragraphs": 24,
+        "characters": 2383,
+        "syllables": 751,
+        "complexWords": 33,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The core problem",
+            "line": 14
+          },
+          {
+            "depth": 2,
+            "text": "GET does not mean cacheable",
+            "line": 22
+          },
+          {
+            "depth": 2,
+            "text": "The headers that enforce it",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "Two failure modes beyond the leak",
+            "line": 60
+          },
+          {
+            "depth": 2,
+            "text": "What I would do",
+            "line": 66
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    }
+  ]
+}
