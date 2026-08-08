@@ -50,10 +50,10 @@ const pct1 = (n: number) => n.toFixed(1)
     </p>
   </div>
 
-  <div class="band alt">
+  <div class="band tint">
     <h2>What instruction wording moves</h2>
 
-    <div class="claim">
+    <div class="result">
       <h3>Concrete rewrite rules cut length by about a third</h3>
       <p>
         Measured within a single run against a no-instruction control on the same tasks: {Math.round(ctrl.words)} words
@@ -64,7 +64,7 @@ const pct1 = (n: number) => n.toFixed(1)
       <a href={`/research/${byId("control-arm")!.data.slug}`}>{byId("control-arm")!.data.title} →</a>
     </div>
 
-    <div class="claim">
+    <div class="result">
       <h3>Naming a technique beats spelling it out</h3>
       <p>
         Replacing one rule with its label — <code>Use BLUF: bottom line up front</code> — and holding the other four
@@ -74,7 +74,7 @@ const pct1 = (n: number) => n.toFixed(1)
       <a href={`/research/${byId("bluf-as-a-label")!.data.slug}`}>{byId("bluf-as-a-label")!.data.title} →</a>
     </div>
 
-    <div class="claim">
+    <div class="result">
       <h3>Naming the better word works; asking for fewer does not</h3>
       <p>
         “Avoid jargon” does not reduce jargon. Naming the swap — use over utilize, start over initiate — does. The vague
@@ -87,7 +87,7 @@ const pct1 = (n: number) => n.toFixed(1)
   <div class="band">
     <h2>What it does not move</h2>
 
-    <div class="claim">
+    <div class="result">
       <h3>Factual accuracy, at all</h3>
       <p>
         Two runs and one targeted mechanism test found the same thing: wording moves length and vocabulary two to three
@@ -99,7 +99,7 @@ const pct1 = (n: number) => n.toFixed(1)
       <a href={`/research/${byId("qualifier-carveout")!.data.slug}`}>{byId("qualifier-carveout")!.data.title} →</a>
     </div>
 
-    <div class="claim">
+    <div class="result">
       <h3>Whether an explanation is legible</h3>
       <p>
         A reply scoring 85 drew “I have no idea what you're saying”; the rewrite that landed scored 84. An arm built to
@@ -110,10 +110,10 @@ const pct1 = (n: number) => n.toFixed(1)
     </div>
   </div>
 
-  <div class="band alt">
+  <div class="band tint">
     <h2>What the method taught us</h2>
 
-    <div class="claim">
+    <div class="result">
       <h3>Read the dimensions, not the composite</h3>
       <p>
         The composite is a weighted average, so it averages the real effects away. Run 1 spanned 79.5–86.6 across seven
@@ -123,7 +123,7 @@ const pct1 = (n: number) => n.toFixed(1)
       <a href={`/research/${byId("instruction-register")!.data.slug}`}>{byId("instruction-register")!.data.title} →</a>
     </div>
 
-    <div class="claim">
+    <div class="result">
       <h3>A metric that works can be an artifact of your task set</h3>
       <p>
         Word count was the sharpest instruction dial on six tasks that were all the same shape, and stopped working on
@@ -133,7 +133,7 @@ const pct1 = (n: number) => n.toFixed(1)
       <a href={`/research/${byId("task-heterogeneity")!.data.slug}`}>{byId("task-heterogeneity")!.data.title} →</a>
     </div>
 
-    <div class="claim">
+    <div class="result">
       <h3>Findings are model-specific, and the ranking travels further than the size</h3>
       <p>
         Re-run on Sonnet 5, the winning instruction still won, but moved length 12% where it moved Opus 41% — its
@@ -142,7 +142,7 @@ const pct1 = (n: number) => n.toFixed(1)
       <a href={`/research/${byId("multi-model")!.data.slug}`}>{byId("multi-model")!.data.title} →</a>
     </div>
 
-    <div class="claim">
+    <div class="result">
       <h3>A dimension that never fires is not thereby useless</h3>
       <p>
         Grade band scores a perfect 100 on 87 of every 100 answers in this corpus, which looked like dead weight. It is
@@ -200,13 +200,16 @@ const pct1 = (n: number) => n.toFixed(1)
   .standfirst {
     font-size: 1.15rem;
   }
-  .claim {
-    margin: 2rem 0;
+  /* margin-block, never the `margin` shorthand: `.band > *` supplies `margin-inline: auto`, and a
+     shorthand with a `0` in the inline slot silently resets it and pins the box to the left edge.
+     Cost an afternoon once already on the scorer panel. */
+  .result {
+    margin-block: 2rem;
   }
-  .claim h3 {
+  .result h3 {
     margin-bottom: 0.4rem;
   }
-  .claim > a {
+  .result > a {
     font-size: 0.9rem;
   }
   ul.studies {
