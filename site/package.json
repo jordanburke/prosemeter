@@ -11,7 +11,7 @@
     "typecheck": "astro check",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate": "node scripts/assert-browser-safe.mjs && astro check && astro build"
+    "validate": "node scripts/assert-browser-safe.mjs && node scripts/assert-band-variants.mjs && astro check && astro build"
   },
   "dependencies": {
     "prosemeter": "workspace:*"
