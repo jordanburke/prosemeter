@@ -114,6 +114,39 @@ describe("directness (retext-intensify)", () => {
     expect(run(directnessProvider, raw).findings.length).toBeGreaterThan(0)
   })
 
+  /**
+   * `May` before a number is the month. The upstream `hedges` list carries lowercase `may` and the
+   * plugin matches case-insensitively, so every date in a changelog was flagged as a hedge. An
+   * ignore entry cannot express this — lowercase `may` genuinely hedges and stays flagged — so the
+   * guard reads the source after the match.
+   */
+  it("does not flag May the month", () => {
+    const raw = "# T\n\nWe shipped it in May 2025. The follow-up landed May 6, and again on May 1st.\n"
+    expect(run(directnessProvider, raw).findings).toHaveLength(0)
+  })
+
+  it("still flags may the modal, in every form the guard must not catch", () => {
+    const cases = [
+      "# T\n\nThis may fail under load.\n",
+      "# T\n\nResults may vary between runs.\n",
+      // Capitalised but with no digit following: sentence-initial modal, correctly still a hedge.
+      "# T\n\nMay we suggest pinning the version instead.\n",
+      // A month with no digit reads as a hedge to the plugin. Under-filtering is the safer error.
+      "# T\n\nIn May we shipped the whole thing.\n",
+    ]
+    for (const raw of cases) {
+      expect(run(directnessProvider, raw).findings.length, raw).toBeGreaterThan(0)
+    }
+  })
+
+  it("counts the dropped finding nowhere — score and detail follow the filter", () => {
+    const raw = "# T\n\nWe shipped it in May 2025 and the rollout completed without any incident.\n"
+    const result = run(directnessProvider, raw)
+    expect(result.findings).toHaveLength(0)
+    expect(result.score).toBe(1)
+    expect(result.detail).toContain("0 weasel/hedge word(s)")
+  })
+
   it("keeps flagging the hedges that sit beside the newly ignored words", () => {
     const raw = "# T\n\nThe probable cause is substantially likely to appear somewhat various.\n"
     const flagged = run(directnessProvider, raw).findings.map((f) => f.excerpt.toLowerCase())
