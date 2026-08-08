@@ -122,6 +122,15 @@ pre code {
   gap: 1.25rem;
   font-size: 0.9rem;
 }
+/* Four links do not fit beside the wordmark at 375px -- the nav ran 8px past the viewport on every
+   page, which is a body-level horizontal scroll. Tighten before wrapping: a wrapped nav pushes the
+   whole page down on the narrowest screens for no gain. */
+@media (max-width: 30rem) {
+  .top nav {
+    gap: 0.85rem;
+    font-size: 0.82rem;
+  }
+}
 .bottom {
   border-top: 1px solid var(--line);
   padding: 1.5rem 1.25rem;

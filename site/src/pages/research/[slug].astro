@@ -157,6 +157,20 @@ const n1 = (n: number) => n.toFixed(1)
     white-space: nowrap;
   }
 
+  /* The report opens with its own `# ` title, which made two h1s on one page -- this one and the
+     page header above it, which already carries the title, run, date and finding.
+
+     `display: none`, not a visually-hidden clip-path: visually-hidden is *designed* to keep an
+     element in the accessibility tree, so it left the duplicate in the document outline and only
+     stopped sighted readers seeing it. This removes it from the tree. The full report, heading and
+     all, is linked at the foot of the page and read directly on GitHub.
+
+     Scoped to `:first-of-type` so only the leading title goes. A bare `h1` selector would silently
+     swallow an h1 appearing mid-report, which is a heading someone deliberately wrote. */
+  .report :global(h1:first-of-type) {
+    display: none;
+  }
+
   /* Markdown tables get no styling at all otherwise — site.css styles `table.dims`, and these have
      no class. Mirrors that rule set so a rendered report reads like the measured table above it.
 
