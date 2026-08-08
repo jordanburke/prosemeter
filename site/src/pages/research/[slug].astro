@@ -142,13 +142,57 @@ const n1 = (n: number) => n.toFixed(1)
   .note {
     font-size: 0.95rem;
   }
-  /* The report is authored markdown; give its headings room without restyling the prose. */
+  /* The report is authored markdown, rendered from eval/. Its elements carry no classes, so
+     anything site.css scopes to a class (`table.dims`) does not reach them. */
+
+  /* The report opens with its own `# ` title, which made two h1s on one page — this one and the
+     page header above it. The header already carries the title, run, date and finding, and the
+     full report is linked at the foot, so the duplicate is removed rather than restyled. */
   .report :global(h1) {
-    font-size: 1.5rem;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
+
+  /* Markdown tables get no styling at all otherwise — site.css styles `table.dims`, and these have
+     no class. Mirrors that rule set so a rendered report reads like the measured table above it.
+
+     `width: max-content` with `min-width: 100%` fills the column when the table is narrow and
+     scrolls inside itself when it is not, which plain `display: block` does not do — that collapses
+     the table to its content width and pins it left. */
   .report :global(table) {
     display: block;
     overflow-x: auto;
+    width: max-content;
+    min-width: 100%;
     max-width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    /* margin-block, not the shorthand: a `0` in the inline slot resets `.band > *`'s auto centring. */
+    margin-block: 1.5rem;
+  }
+  .report :global(th),
+  .report :global(td) {
+    text-align: left;
+    font-weight: 400;
+    padding: 0.35rem 1rem 0.35rem 0;
+    vertical-align: top;
+    border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+  }
+  .report :global(thead th) {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--dim);
+    white-space: nowrap;
+  }
+  /* Leading column is a label, the rest are figures. Keeps columns from wrapping mid-number. */
+  .report :global(tbody td) {
+    white-space: nowrap;
+  }
+  .report :global(tbody td:first-child) {
+    white-space: normal;
   }
 </style>
