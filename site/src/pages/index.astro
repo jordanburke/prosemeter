@@ -115,7 +115,9 @@ const verdict = checkConvergence([62, 71, 74, 74.5], { threshold: 80 })
         <p>
           Perfect on {gamed.dim("sentence-simplicity")} for sentence-simplicity, {gamed.dim("clarity")} for clarity, and {
             gamed.dim("concision")
-          } for concision. It still scores <b>{gamed.score}</b> and fails the threshold of {gamed.threshold}.
+          } for concision. It still scores <b>{gamed.score}</b> and falls below the <code>chat</code> floor of {
+            gamed.threshold
+          }.
         </p>
         <p>
           <code>grade-band</code> is the reason. It is a band, not a goal — full marks inside the target range, falling
