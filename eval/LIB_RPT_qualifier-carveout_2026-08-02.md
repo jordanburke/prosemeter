@@ -3,7 +3,7 @@ slug: "qualifier-carveout"
 run: "2"
 date: "2026-08-02"
 title: "Does cutting words cut the qualifiers that carry meaning?"
-finding: "No. Adding a rule that protects load-bearing exceptions did not improve accuracy, and cost 9 points of sentence-simplicity."
+finding: "No. Adding a rule that protects load-bearing exceptions did not improve accuracy, and cost sentence-simplicity."
 order: 2
 ---
 

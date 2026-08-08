@@ -3,7 +3,7 @@ slug: "bluf-as-a-label"
 run: "5"
 date: "2026-08-08"
 title: "Naming a technique instructs better than spelling it out"
-finding: "Swapping one rule for the label BLUF cut 38% off the control against the sentence's 31%, and tied it on every other dimension."
+finding: "Swapping one rule for the label BLUF compressed the output further than the spelled-out sentence did, and tied it on every other dimension."
 order: 6
 ---
 
