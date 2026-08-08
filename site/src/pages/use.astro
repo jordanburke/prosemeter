@@ -70,10 +70,15 @@ npx prosemeter profiles`}</code></pre>
     A profile tunes scoring for a kind of document: a target reading grade, per-dimension weights, and rule severities.
     Seven ship built in.
   </p>
+  <p>
+    The <strong>floor</strong> is a floor, not a target. No single dimension can fail one — zeroing the heaviest-weighted
+    dimension on an otherwise perfect document still lands above every floor here. Only several dimensions failing
+    together will trip it, so it catches catastrophic prose and nothing finer.
+  </p>
   <table class="dims">
     <thead>
       <tr
-        ><th scope="col">profile</th><th scope="col">grade band</th><th scope="col">threshold</th><th scope="col"
+        ><th scope="col">profile</th><th scope="col">grade band</th><th scope="col">floor</th><th scope="col"
         ></th></tr
       >
     </thead>
