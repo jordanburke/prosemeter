@@ -1,5 +1,6 @@
 /** directness — flags weasel words, hedges, and intensifiers via retext-intensify. Density-scored. */
 
+import type { Finding, ParsedDocument } from "@prosemeter/core"
 import retextIntensify from "retext-intensify"
 import { unified } from "unified"
 
@@ -115,6 +116,52 @@ export const HEDGE_IGNORE_DEFAULT: ReadonlyArray<string> = [
   "about",
 ]
 
+/**
+ * `May` before a number is the month, not the modal.
+ *
+ * The `hedges` list carries lowercase `may`, and the plugin matches case-insensitively, so every
+ * date in a changelog or a timeline is flagged with "Cut the hedge or replace it with a concrete
+ * claim." Observed twice in one document: "May 6, 2026" and "May 2025".
+ *
+ * `HEDGE_IGNORE_DEFAULT` cannot express this. Lowercase `may` genuinely hedges — "this may fail" —
+ * and is deliberately kept flagged above. The word is a violation in one role and not in another,
+ * which is a decision about the surrounding source rather than about the word.
+ *
+ * Deliberately narrow:
+ *
+ * - **Case-sensitive.** Only capitalised `May` qualifies. A sentence-initial modal ("May we
+ *   suggest…") is also capitalised, which is why the digit is required — nobody writes "May we 6".
+ * - **A digit must follow.** "May 6", "May 2025", "May 1st". Bare "In May we shipped it" stays
+ *   flagged, which is the conservative outcome: it reads as a month to a human and as a hedge to the
+ *   plugin, and under-filtering is the safer error.
+ * - **`May` only.** No other month name appears in the `fillers`/`hedges`/`weasels` union, so
+ *   generalising would be speculative.
+ *
+ * Scope, honestly: `May` + digit occurs zero times across the 416 eval answers, `fixtures/`, and
+ * every markdown file in this repo. The corpus that surfaced it was pasted from outside. This is
+ * shipped because the flag is wrong in every context the guard matches, not because the pattern is
+ * common here — see the sweep note in the commit.
+ */
+/**
+ * Characters to read after the match. The regex is anchored, so this bounds only the whitespace run
+ * before the digit — it cannot over-match into unrelated text. Eight covers a hard wrap plus indent.
+ */
+const DIGIT_WINDOW = 8
+
+const isMonthName = (finding: Finding, doc: ParsedDocument): boolean =>
+  finding.excerpt === "May" &&
+  finding.loc.fold(
+    () => false,
+    (l) =>
+      // Verify the offset points at what the finding says it does before trusting the window.
+      // `loc.offset` indexes `doc.raw` today — positions survive mdast-util-to-nlcst intact, front
+      // matter and all — but nothing in the type system says so. If that ever changed, an unchecked
+      // guard would read arbitrary source, and a digit landing in that window would drop a genuine
+      // modal. This turns any such drift into a safe no-drop.
+      doc.raw.slice(l.offset, l.offset + l.length) === finding.excerpt &&
+      /^\s*\d/.test(doc.raw.slice(l.offset + l.length, l.offset + l.length + DIGIT_WINDOW)),
+  )
+
 export const directnessProvider = retextDensityDimension({
   id: "directness",
   defaultWeight: 0.05,
@@ -123,4 +170,5 @@ export const directnessProvider = retextDensityDimension({
   label: "weasel/hedge word(s)",
   fallbackHint: "Cut the hedge or replace it with a concrete claim.",
   buildProcessor: (options) => unified().use(retextIntensify, { ignore: resolveIgnore(options, HEDGE_IGNORE_DEFAULT) }),
+  dropFinding: isMonthName,
 })

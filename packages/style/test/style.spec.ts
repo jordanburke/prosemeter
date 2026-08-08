@@ -114,6 +114,70 @@ describe("directness (retext-intensify)", () => {
     expect(run(directnessProvider, raw).findings.length).toBeGreaterThan(0)
   })
 
+  /**
+   * `May` before a number is the month. The upstream `hedges` list carries lowercase `may` and the
+   * plugin matches case-insensitively, so every date in a changelog was flagged as a hedge. An
+   * ignore entry cannot express this — lowercase `may` genuinely hedges and stays flagged — so the
+   * guard reads the source after the match.
+   */
+  const mays = (raw: string) => run(directnessProvider, raw).findings.filter((f) => f.excerpt.toLowerCase() === "may")
+
+  it("does not flag May the month", () => {
+    const raw = "# T\n\nWe shipped it in May 2025. The follow-up landed May 6, and again on May 1st.\n"
+    expect(mays(raw)).toHaveLength(0)
+  })
+
+  /**
+   * The only test that would catch an offset-base regression. The guard reads `doc.raw` at the
+   * finding's offset, and positions survive `mdast-util-to-nlcst` mapped to the original source —
+   * front matter included. If a future parse change re-based them onto stripped text, every other
+   * test here would still pass while the guard silently read the wrong window.
+   */
+  it("reads the right source offset even with front matter above it", () => {
+    const raw =
+      "---\ntitle: Release notes\ndate: 2026-01-01\n---\n\n# T\n\nWe shipped it in May 2025 without incident.\n"
+    expect(mays(raw)).toHaveLength(0)
+  })
+
+  it("crosses a hard wrap, because the newline is still a month before a year", () => {
+    expect(mays("# T\n\nWe shipped it in May\n2025 and onward from there.\n")).toHaveLength(0)
+  })
+
+  /**
+   * Two known under-filters, pinned so a future widening of the window shows up as a test diff
+   * rather than as a silent behaviour change. Both keep the flag, which is the safe direction.
+   */
+  it("keeps the flag when a marker sits between the word and the digit", () => {
+    expect(mays("# T\n\nWe shipped in *May* 2025 and all went well enough.\n").length).toBeGreaterThan(0)
+  })
+
+  it("keeps the flag when May ends the document, with nothing after it to read", () => {
+    expect(mays("# T\n\nWe shipped it in May").length).toBeGreaterThan(0)
+  })
+
+  it("still flags may the modal, in every form the guard must not catch", () => {
+    const cases = [
+      "# T\n\nThis may fail under load.\n",
+      "# T\n\nResults may vary between runs.\n",
+      // Capitalised but with no digit following: sentence-initial modal, correctly still a hedge.
+      "# T\n\nMay we suggest pinning the version instead.\n",
+      // A month with no digit reads as a hedge to the plugin. Under-filtering is the safer error.
+      "# T\n\nIn May we shipped the whole thing.\n",
+    ]
+    for (const raw of cases) {
+      expect(mays(raw).length, raw).toBeGreaterThan(0)
+    }
+  })
+
+  it("counts the dropped finding nowhere — score and detail follow the filter", () => {
+    const raw = "# T\n\nWe shipped it in May 2025 and the rollout completed without any incident.\n"
+    const result = run(directnessProvider, raw)
+    expect(result.findings).toHaveLength(0)
+    expect(result.score).toBe(1)
+    // score and detail both read findings.length, so the filter must run before either
+    expect(result.detail).toContain("0 weasel/hedge word(s)")
+  })
+
   it("keeps flagging the hedges that sit beside the newly ignored words", () => {
     const raw = "# T\n\nThe probable cause is substantially likely to appear somewhat various.\n"
     const flagged = run(directnessProvider, raw).findings.map((f) => f.excerpt.toLowerCase())

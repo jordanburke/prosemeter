@@ -4,7 +4,7 @@
  * rule is turned off in the profile, it is skipped so a disabled check never inflates the score.
  */
 
-import type { DimensionId, DimensionProvider, DimensionResult } from "@prosemeter/core"
+import type { DimensionId, DimensionProvider, DimensionResult, Finding, ParsedDocument } from "@prosemeter/core"
 import { density } from "@prosemeter/core"
 import { None, Some, Try } from "functype"
 
@@ -21,6 +21,18 @@ export type RetextDimensionConfig = {
   readonly fallbackHint: string
   /** Receives the profile's `dimensionOptions` entry so a plugin can be configured per profile. */
   readonly buildProcessor: (options: Readonly<Record<string, unknown>>) => RetextProcessor
+  /**
+   * Drop a finding the plugin should not have raised, before it is counted.
+   *
+   * These plugins match on the word alone. Most of the resulting false positives are fixed with an
+   * ignore list, which is the right tool when a word is never a violation. This is for the case an
+   * ignore list cannot express: a word that *is* a violation in one syntactic role and not in
+   * another, so the decision needs the surrounding source rather than the word.
+   *
+   * Must run before `density` and before `detail`, both of which read `findings.length`. A filter
+   * applied downstream would ship a result whose score counts findings it no longer reports.
+   */
+  readonly dropFinding?: (finding: Finding, doc: ParsedDocument) => boolean
 }
 
 export const retextDensityDimension = (config: RetextDimensionConfig): DimensionProvider => ({
@@ -40,9 +52,12 @@ export const retextDensityDimension = (config: RetextDimensionConfig): Dimension
         }
       }
 
-      const findings = collectMessages(doc, config.buildProcessor(settings.options)).map((m) =>
+      const raised = collectMessages(doc, config.buildProcessor(settings.options)).map((m) =>
         messageToFinding(m, config.id, severity, config.fallbackHint),
       )
+      // Bind before narrowing so the call site needs no non-null assertion.
+      const drop = config.dropFinding
+      const findings = drop === undefined ? raised : raised.filter((f) => !drop(f, doc))
 
       return {
         id: config.id,
