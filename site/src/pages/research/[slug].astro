@@ -1,0 +1,154 @@
+---
+/**
+ * One study. The report's own markdown, with the run's measured table rendered above it.
+ *
+ * The table is computed from `eval/results/*.json` rather than lifted out of the prose, so the
+ * figures on the page cannot drift from the data the repository holds. The report body is rendered
+ * from `eval/` in place — the site does not keep a second copy.
+ */
+import type { GetStaticPaths } from "astro"
+import { getCollection, render } from "astro:content"
+
+import Base from "../../layouts/Base.astro"
+import { compositeSpread, run, variantRows } from "../../lib/research"
+
+export const getStaticPaths = (async () => {
+  const studies = await getCollection("research")
+  return studies.map((study) => ({ params: { slug: study.data.slug }, props: { study } }))
+}) satisfies GetStaticPaths
+
+const { study } = Astro.props
+const { Content } = await render(study)
+
+const data = run(study.data.run)
+const rows = data === undefined ? [] : variantRows(data)
+const n0 = (n: number) => Math.round(n)
+const n1 = (n: number) => n.toFixed(1)
+---
+
+<Base title={`${study.data.title} — prosemeter research`} description={study.data.finding}>
+  <div class="band">
+    <p class="crumb"><a href="/research">← Research</a></p>
+    <h1>{study.data.title}</h1>
+    <p class="standfirst">{study.data.finding}</p>
+    <p class="meta">
+      run {study.data.run} · {study.data.date}{data?.model === undefined ? "" : ` · ${data.model}`}
+    </p>
+  </div>
+
+  {
+    data !== undefined && (
+      <div class="band alt">
+        <h2>The measured result</h2>
+        <p>
+          {data.n} answers, {data.variants.length} instruction{data.variants.length === 1 ? "" : "s"}, {data.tasks.length}{" "}
+          tasks. Scored against the <code>chat</code> profile by prosemeter {data.prosemeterVersion}.
+        </p>
+        <div class="scroll">
+          <table class="dims">
+            <thead>
+              <tr>
+                <th scope="col">arm</th>
+                <th scope="col">n</th>
+                <th scope="col">words</th>
+                <th scope="col">jargon %</th>
+                <th scope="col">sentence-simplicity</th>
+                <th scope="col">grade band</th>
+                <th scope="col">clarity</th>
+                <th scope="col">composite (spread)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((v) => {
+                const [lo, hi] = compositeSpread(data, v.variant)
+                return (
+                  <tr>
+                    <th scope="row">{v.variant}</th>
+                    <td class="num">{v.n}</td>
+                    <td class="num">{n0(v.words)}</td>
+                    <td class="num">{n1(v.jargonPct)}</td>
+                    <td class="num">{n1(v.sentenceSimplicity)}</td>
+                    <td class="num">{n1(v.gradeBand)}</td>
+                    <td class="num">{n1(v.clarity)}</td>
+                    <td class="num">
+                      {n1(v.composite)} <span class="dim">({n0(lo)}–{n0(hi)})</span>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p class="note">
+          <strong>Read the columns, not the composite.</strong> The bracketed range is the spread of composites{" "}
+          <em>within</em> that one arm. Where it is wider than the gap between two arms — which is usually — the gap
+          between them is not a result.
+        </p>
+      </div>
+    )
+  }
+
+  <div class="band report">
+    <Content />
+  </div>
+
+  <div class="band alt">
+    <h2>The data behind this</h2>
+    <ul>
+      <li>
+        <a
+          href={`https://github.com/jordanburke/prosemeter/blob/main/eval/results/run-${study.data.run}.json`}
+          >eval/results/run-{study.data.run}.json</a
+        > — every dimension score for every answer
+      </li>
+      <li>
+        <a href={`https://github.com/jordanburke/prosemeter/tree/main/eval/corpus/run-${study.data.run}`}
+          >eval/corpus/run-{study.data.run}/</a
+        > — the answers themselves, marked as experiment output
+      </li>
+      <li>
+        <a href={`https://github.com/jordanburke/prosemeter/blob/main/eval/${study.id}`}>the full report</a> — this page
+        renders it
+      </li>
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .crumb {
+    font: 0.9rem var(--mono);
+    margin-bottom: 1rem;
+  }
+  .standfirst {
+    font-size: 1.15rem;
+  }
+  .meta {
+    font: 0.85rem var(--mono);
+    color: var(--dim);
+  }
+  .scroll {
+    overflow-x: auto;
+  }
+  .scroll table {
+    min-width: 44rem;
+  }
+  .num {
+    text-align: right;
+    font: 0.9rem var(--mono);
+  }
+  .dim {
+    color: var(--dim);
+  }
+  .note {
+    font-size: 0.95rem;
+  }
+  /* The report is authored markdown; give its headings room without restyling the prose. */
+  .report :global(h1) {
+    font-size: 1.5rem;
+  }
+  .report :global(table) {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+</style>

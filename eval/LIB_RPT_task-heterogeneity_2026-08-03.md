@@ -1,3 +1,12 @@
+---
+slug: "task-heterogeneity"
+run: "4"
+date: "2026-08-03"
+title: "The best metric was an artifact of the task set"
+finding: "Word count looked like the sharpest dial on six same-shaped tasks and stopped working on ten mixed ones. Sentence-simplicity held."
+order: 4
+---
+
 # Task-heterogeneity eval (run 4) — 2026-08-03
 
 Tests whether `words` — the harness's best instruction dial — survives a task set that is not all

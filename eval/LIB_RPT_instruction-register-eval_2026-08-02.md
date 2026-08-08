@@ -1,3 +1,12 @@
+---
+slug: "instruction-register"
+run: "1"
+date: "2026-08-02"
+title: "Seven instructions, four tasks, and the one that won"
+finding: "Concrete rewrite rules beat every vaguer instruction, and the two highest-scoring arms tied the control for worst factual accuracy."
+order: 1
+---
+
 # Instruction register eval — 2026-08-02
 
 Seven style instructions, four tasks, two replicates: 56 generated answers, scored with the

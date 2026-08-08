@@ -1,3 +1,12 @@
+---
+slug: "qualifier-carveout"
+run: "2"
+date: "2026-08-02"
+title: "Does cutting words cut the qualifiers that carry meaning?"
+finding: "No. Adding a rule that protects load-bearing exceptions did not improve accuracy, and cost 9 points of sentence-simplicity."
+order: 2
+---
+
 # Qualifier carve-out eval (run 2) — 2026-08-02
 
 Tests whether E's accuracy deficit in run 1 came from its "cut every phrase that does not
