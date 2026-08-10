@@ -168,7 +168,24 @@ export const directnessProvider = retextDensityDimension({
   rule: "retext-intensify",
   k: 0.04,
   label: "weasel/hedge word(s)",
-  fallbackHint: "Cut the hedge or replace it with a concrete claim.",
+  /**
+   * Leads with the check, not the cut, and that ordering is a measured correction.
+   *
+   * This hint used to read "Cut the hedge or replace it with a concrete claim." Run 6 showed a
+   * reviser handed these marks does the first half and skips the second: `directness` was its
+   * largest movement by a factor of two and a half, and on the trap tasks — where the hedge *is*
+   * the correctness — "usually beats memoization" became "beats memoization outright" and "almost
+   * certainly missing" became "the other half is missing". A judge asked to look found the
+   * revision overconfident on 9 of 10 trap pairs.
+   *
+   * The dimension is not wrong to flag these. A hedge is often padding. But the hint is the only
+   * instruction attached to the finding, and leading with "cut" makes deletion the default on a
+   * word that half the time is load-bearing. Naming the condition satisfies the dimension too — a
+   * stated condition is a concrete claim — so this costs nothing and removes the trap.
+   *
+   * See `eval/LIB_RPT_revision-loop_2026-08-10.md`.
+   */
+  fallbackHint: "If the claim holds only under a condition, name the condition. If it does not, cut the hedge.",
   buildProcessor: (options) => unified().use(retextIntensify, { ignore: resolveIgnore(options, HEDGE_IGNORE_DEFAULT) }),
   dropFinding: isMonthName,
 })
