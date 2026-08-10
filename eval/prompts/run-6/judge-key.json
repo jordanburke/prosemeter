@@ -1,6 +1,7 @@
 {
   "run": "6",
   "blinding": "FNV-1a of pair key",
+  "flipped": false,
   "key": [
     {
       "pair": "r1-T1",

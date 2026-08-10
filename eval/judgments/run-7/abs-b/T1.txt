@@ -1,0 +1,10 @@
+answer 1: score=9 | why=Names the three failure shapes with their distinct error signatures, gives a diagnosis command, and orders the fixes with an honest warning about overrides.
+answer 2: score=9 | why=Clear mechanism, ordered fixes, and it uniquely handles the social half of the question by telling the reader what to send the other team.
+answer 3: score=9 | why=Maps each error message to its cause so the reader can self-diagnose, and closes with the stateful-vs-pure split that tells them how hard to fight the duplicate.
+answer 4: score=10 | why=Complete and reread-free: concrete ranges, both resolution outcomes, ordered fixes, an explicit "what not to do" that heads off the lockfile-delete reflex, and prevention.
+answer 5: score=8 | why=Same correct content and structure as the strongest answers, but flatter, more repetitive sentences slow the reader through the fix list.
+answer 6: score=7 | why=Correct and thorough, but fix #2 is garbled ("Both packages declare it as a peer. So install one version yourself") and the opening model of resolution is imprecise.
+answer 7: score=8 | why=Accurate and well ordered, but the mechanism section is an unbroken wall of prose where the parallel answers use labeled cases, so the two outcomes are harder to separate.
+answer 8: score=7 | why=Tight lead and good symptom list, but the "move to a shared direct dependency" step is stated too compressed to act on and the resolution model is loose.
+answer 9: score=10 | why=Leads with the answer, explains both outcomes with the tell for each, ranks fixes honestly, and adds the anti-patterns and prevention nothing else needs to be looked up.
+answer 10: score=9 | why=Strong mechanism and fix ordering, plus a monorepo section and a concrete way to hand the conflict back to the other team without it reading as a complaint.

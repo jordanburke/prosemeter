@@ -1,0 +1,10 @@
+answer 1: score=7 | why=Correct and complete, but nine sections for a yes/no question, with costs, when-worth-it, cheaper-fixes, and order-of-operations overlapping enough that the reader wades.
+answer 2: score=8 | why=Leads with the answer and names both halves of the mechanism cleanly, though the instead-do-this section repeats points already made under cost.
+answer 3: score=8 | why=Adds the unstable-dependency trap that most answers skip and hedges its claims accurately, but runs long enough that the payoff sections blur together.
+answer 4: score=6 | why=Same solid content as its neighbours, undercut by two overstatements a reader would act on — a memo'd component taking children "never" bails out, and effect deps being "the one reason" useCallback is ever necessary.
+answer 5: score=8 | why=Clear lead, honest two-condition rule, and a genuinely useful context/store note, slightly slowed by a redundant closing summary.
+answer 6: score=7 | why=Thorough and accurate, but the same nine-section sprawl as answer 1 means the reader rereads the cost argument three times in different words.
+answer 7: score=9 | why=Tightest full treatment — states the core answer explicitly, gives four concrete cases where the hook earns its place, and closes with something the reader can actually say to the teammate.
+answer 8: score=8 | why=Clear and well-sequenced, but "makes hand-written useCallback obsolete in most files" is firmer than the compiler's real adoption story warrants.
+answer 9: score=9 | why=Opens with "No", shows the failing code before explaining it, and is the only answer to demonstrate the unstable-dependency failure inside the memo case where it bites hardest.
+answer 10: score=9 | why=Same strengths as answer 9 with slightly leaner prose, and the reader finishes knowing the mechanism, the cost, and the profile-first next step without rereading anything.

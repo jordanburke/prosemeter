@@ -46,7 +46,18 @@
  * The swap is applied to the same deterministic assignment rather than re-hashed, so a flipped pair
  * is exactly the inverse of its normal-order twin and the two are directly comparable.
  *
- * Usage: node eval/judge-prompts.mjs [plain] [flip]
+ * ## The `reason` variant, for run 7 phase 1b
+ *
+ * Phase 1 found judges pick whichever answer they read first, 92–100% of the time against 43–69%
+ * when the same answer came second. One candidate mitigation is cheap: the current prompt asks for
+ * the verdict and the justification on one line, **verdict first**, so the model commits before it
+ * has compared anything and the justification rationalises a choice already made.
+ *
+ * `reason` inverts that — compare in prose first, name the winner last. Everything else is held
+ * fixed. Whether it helps is measured by the order-consistency rate against the same pairs shown
+ * inverted, which for the verdict-first prompt runs about 69% of decided pairs.
+ *
+ * Usage: node eval/judge-prompts.mjs [plain] [flip] [reason]
  */
 
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs"
@@ -56,7 +67,8 @@ const HERE = fileURLToPath(new URL(".", import.meta.url))
 const CORPUS = `${HERE}corpus/run-6`
 const PLAIN = process.argv.includes("plain")
 const FLIP = process.argv.includes("flip")
-const OUT = `${HERE}prompts/run-6/${PLAIN ? "judge-plain" : "judge"}${FLIP ? "-flip" : ""}`
+const REASON = process.argv.includes("reason")
+const OUT = `${HERE}prompts/run-6/${REASON ? "judge-reason" : PLAIN ? "judge-plain" : "judge"}${FLIP ? "-flip" : ""}`
 
 const body = (raw) => raw.replace(/^---\n[\s\S]*?\n---\n/, "").trim()
 
@@ -116,7 +128,16 @@ for (const [task, items] of byTask) {
     `person who asked.\n\n` +
     `The question, for all ${items.length} pairs below:\n\n${TASKS[task]}\n\n`
 
-  const ask = PLAIN
+  const ask = REASON
+    ? `Better means the reader understands the answer and can act on it. Do not reward length in ` +
+      `either direction — a longer answer is not more thorough and a shorter one is not clearer. ` +
+      `Judge whether the explanation lands.\n\n` +
+      `**Compare before you decide.** For each pair, first write one sentence on what X does well, ` +
+      `then one sentence on what Y does well, and only then name the winner. Do not name a winner ` +
+      `in the first two sentences.\n\n` +
+      `Answer for every pair in exactly this format, one line each, nothing else:\n\n` +
+      `pair <n>: X=<one sentence> | Y=<one sentence> | better=<X|Y|tie> | overconfident=neither\n\n`
+    : PLAIN
     ? `Better means the reader understands the answer and can act on it. Do not reward length in ` +
       `either direction — a longer answer is not more thorough and a shorter one is not clearer. ` +
       `Judge whether the explanation lands.\n\n` +

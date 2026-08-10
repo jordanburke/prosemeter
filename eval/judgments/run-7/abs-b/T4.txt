@@ -1,0 +1,10 @@
+answer 1: score=9 | why=Names the leak in the first line, explains why the slowdown accelerates, gives a correct fix, a ranked list of remaining causes including unbounded message state, and a way to verify in DevTools.
+answer 2: score=9 | why=Correct diagnosis with both the CPU and memory mechanism, a solid fix, the updater-form explanation, verification steps, and a reusable hook; the closing extraction section is more than the asker needs but nothing misleads.
+answer 3: score=9 | why=Covers the three real mechanisms including handler accumulation on a shared client, warns about the `off("message")` footgun, and flags unbounded state as an independent cause of the same symptom.
+answer 4: score=8 | why=Clear and correct end to end, but it omits the one alternative cause that produces the same "slower the longer it is open" curve after cleanup is fixed — an ever-growing message array.
+answer 5: score=9 | why=Reads cleanly from symptom to mechanism to fix, gets the `Object.is` and updater-form details right, and separates StrictMode's doubling from the actual bug so the reader does not chase it.
+answer 6: score=9 | why=Three distinct causes, a correct fix for both owned and shared sockets, the ref pattern for unstable callbacks, and a one-minute verification — complete without padding.
+answer 7: score=8 | why=Strong on the sneaky case where cleanup exists but passes a fresh arrow to `off`, though it never mentions that an unbounded message array alone can reproduce the symptom.
+answer 8: score=9 | why=Tight lead, the feedback-loop explanation for why the curve steepens, a correct fix, and a well-ordered "if it is still slow" list that includes the non-leak causes.
+answer 9: score=8 | why=Accurate and well organized, especially the silently-failing-cleanup variant, but it stops at leaks and skips the growing-state explanation the symptom also fits.
+answer 10: score=8 | why=Correct, compact, and good on deps and the ref pattern, yet it never tells the reader that fixing cleanup may not end the slowdown if state keeps growing.

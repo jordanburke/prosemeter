@@ -1,0 +1,10 @@
+answer 1: score=8 | why=Complete and well-organized, but the "one copy got hoisted, and it is the wrong one" case is explained with a contradiction — if the ranges overlap, the shared version satisfies both — which the reader has to work around.
+answer 2: score=9 | why=Names the cause first, separates the two resolver outcomes cleanly, orders the fixes by durability, and adds the monorepo and talk-to-the-other-team angles the asker actually needs.
+answer 3: score=9 | why=Ties each fix to the error message that identifies it, includes dedupe as a distinct case, and closes with the stateful-versus-pure split that tells the reader how hard to fight the duplicate.
+answer 4: score=9 | why=Concrete ranges make the overlap failure legible, the diagnosis step maps output to case, and the "what not to do" section heads off the two things a stuck reader would otherwise try.
+answer 5: score=8 | why=Thorough and correctly ordered, but carries the same muddled "ranges overlap so one package breaks" claim and reads a touch more clipped than it needs to.
+answer 6: score=7 | why=Correct and thorough, but fix 2 states that both packages declare the library as a peer rather than treating it as a condition, and five ranked options past a five-part symptom list is more than the reader can hold.
+answer 7: score=8 | why=Accurate and well-sequenced, though the opening section drops the bold labels the rest of the answer uses, so the two resolver outcomes blur into one paragraph block.
+answer 8: score=8 | why=Tight and correct with a good symptom list, but the five-item fix ladder buries the one fix that matters under four fallbacks the reader mostly will not use.
+answer 9: score=9 | why=Leads with the actual cause, uses concrete version ranges throughout, distinguishes the two failure modes by their tells, and warns off the lockfile-delete reflex before the reader reaches for it.
+answer 10: score=8 | why=Solid and practical with a useful monorepo section, but "version conflicts start as one package being behind" overstates a tendency as a rule, and the type-identity explanation loses the bold signposting that would make it scannable.
