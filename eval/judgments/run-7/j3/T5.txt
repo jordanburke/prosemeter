@@ -1,0 +1,5 @@
+pair 1: better=X | overconfident=neither | why=Near-identical, but X bolds the lead of each "what to do instead" move, so the reader can scan straight to the action.
+pair 2: better=Y | overconfident=neither | why=Y keeps the qualifiers X drops ("almost never bails out", "often the only reason"), so its claims stay true where X's absolutes do not.
+pair 3: better=X | overconfident=neither | why=X keeps "in most cases" on the closure-cost claim and describes the trade as "slightly less cheap", which is both accurate and the right magnitude; Y flattens it to a costlier allocation.
+pair 4: better=Y | overconfident=neither | why=Y groups the last two cases and says why they matter ("about correctness and effects rather than render count"), while X points at "that last pair" with a muddier referent.
+pair 5: better=X | overconfident=neither | why=X hedges what it cannot know ("the other half is almost certainly missing", structural fixes "usually" beat memoization), where Y states both as flat fact.

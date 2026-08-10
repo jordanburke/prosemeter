@@ -1,0 +1,5 @@
+pair 1: better=X | overconfident=neither | why=Near-identical content, but X states the same three failure shapes and fixes in tighter sentences, so the diagnostic path is easier to hold.
+pair 2: better=Y | overconfident=neither | why=Y's opening already names both outcomes (nest two copies or refuse) before explaining, so the reader knows what to look for while reading the rest.
+pair 3: better=X | overconfident=neither | why=X reads the diagnostic output in the reader's own terms ("two version numbers mean two copies") instead of Y's back-reference to "case two".
+pair 4: better=Y | overconfident=neither | why=Y bolds the two break shapes as labeled paragraphs, matching the bolded fix list, so the structure of the answer is scannable where X buries them in plain prose.
+pair 5: better=X | overconfident=neither | why=X marks the two resolver outcomes as bold labels and keeps the override caveat compact, so the choose-your-symptom step lands faster than Y's undifferentiated paragraphs.

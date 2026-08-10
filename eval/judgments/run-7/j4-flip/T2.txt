@@ -1,0 +1,5 @@
+pair 1: better=Y | overconfident=neither | why=Y breaks the page-split and update mechanics into shorter one-idea sentences and spells out where random versus sequential inserts land, which a junior can follow without rereading.
+pair 2: better=Y | overconfident=neither | why=Y is the same explanation with consistent INSERT/UPDATE/DELETE labels and a cleaner p99 sentence, so the surprising nonlinear costs read more clearly.
+pair 3: better=X | overconfident=neither | why=X bolds the "when it stops being a good deal" conditions so they scan, and hedges the UUID cost as "several times" rather than inventing a precise five, which is the more honest claim.
+pair 4: better=Y | overconfident=neither | why=Y adds the bridge sentence "The column decides which world you are in" before the monotonic-versus-random contrast, which is exactly the connection a junior needs to diagnose their own index.
+pair 5: better=X | overconfident=neither | why=X keeps the same mechanism and cliff explanation while dropping the engine-name asides and HOT jargon that a junior cannot use yet, so the actionable steps land unobstructed.

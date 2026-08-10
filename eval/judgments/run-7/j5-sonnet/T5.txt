@@ -1,0 +1,5 @@
+pair 1: better=tie | overconfident=neither | why=X and Y present identical structure, examples, and conclusions, differing only in wording, so neither serves the reader better.
+pair 2: better=tie | overconfident=neither | why=X and Y cover the same mechanism, code examples, costs, and structural fixes with only phrasing changed, so they land equally well.
+pair 3: better=tie | overconfident=neither | why=X and Y make the same points in the same order with the same examples, and the wording differences do not change what the reader understands or can act on.
+pair 4: better=tie | overconfident=neither | why=X and Y walk through the same three-step re-render sequence, the same memo/useCallback pairing, and the same fixes, so the explanations are equally actionable.
+pair 5: better=tie | overconfident=neither | why=X and Y give the same two-condition rule, the same code culprits, and the same recommended order of operations, differing only in sentence-level wording.

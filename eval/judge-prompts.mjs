@@ -36,7 +36,17 @@
  * overconfidence question and every word about conditions removed. If the preference survives a
  * prompt that never mentions hedging, it is not an artifact of the question.
  *
- * Usage: node eval/judge-prompts.mjs [plain]
+ * ## The `flip` variant, for run 7
+ *
+ * `node eval/judge-prompts.mjs plain flip` emits the same 30 pairs with X and Y swapped. Run 7
+ * phase 1 needs it to separate two things run 6 could not: whether judges agree with *each other*,
+ * and whether they are partly agreeing with the slot an answer sat in. A judge that prefers
+ * whatever is shown first will look like a judge with an opinion until you show it the other order.
+ *
+ * The swap is applied to the same deterministic assignment rather than re-hashed, so a flipped pair
+ * is exactly the inverse of its normal-order twin and the two are directly comparable.
+ *
+ * Usage: node eval/judge-prompts.mjs [plain] [flip]
  */
 
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs"
@@ -44,8 +54,9 @@ import { fileURLToPath } from "node:url"
 
 const HERE = fileURLToPath(new URL(".", import.meta.url))
 const CORPUS = `${HERE}corpus/run-6`
-const PLAIN = process.argv[2] === "plain"
-const OUT = `${HERE}prompts/run-6/${PLAIN ? "judge-plain" : "judge"}`
+const PLAIN = process.argv.includes("plain")
+const FLIP = process.argv.includes("flip")
+const OUT = `${HERE}prompts/run-6/${PLAIN ? "judge-plain" : "judge"}${FLIP ? "-flip" : ""}`
 
 const body = (raw) => raw.replace(/^---\n[\s\S]*?\n---\n/, "").trim()
 
@@ -82,8 +93,9 @@ const byTask = new Map()
 
 for (const k of pairs) {
   const [rep, task] = k.split("-")
-  // Even hash → P is X. Odd → R is X. Roughly balanced, and fixed.
-  const pIsX = hash(k) % 2 === 0
+  // Even hash → P is X. Odd → R is X. Roughly balanced, and fixed. `flip` inverts the same
+  // assignment rather than re-hashing, so a flipped pair is the exact inverse of its twin.
+  const pIsX = FLIP ? hash(k) % 2 !== 0 : hash(k) % 2 === 0
   const p = body(readFileSync(`${CORPUS}/P-${k}.md`, "utf8"))
   const r = body(readFileSync(`${CORPUS}/R-${k}.md`, "utf8"))
   key.push({ pair: k, replicate: rep, task, X: pIsX ? "P" : "R", Y: pIsX ? "R" : "P" })
@@ -126,7 +138,10 @@ for (const [task, items] of byTask) {
   writeFileSync(`${OUT}/${task}.txt`, `${head}${ask}---\n\n${blocks}`)
 }
 
-writeFileSync(`${HERE}prompts/run-6/judge-key.json`, JSON.stringify({ run: "6", blinding: "FNV-1a of pair key", key }, null, 2) + "\n")
+writeFileSync(
+  `${HERE}prompts/run-6/judge-key${FLIP ? "-flip" : ""}.json`,
+  JSON.stringify({ run: "6", blinding: `FNV-1a of pair key${FLIP ? ", inverted" : ""}`, flipped: FLIP, key }, null, 2) + "\n",
+)
 
 const xIsP = key.filter((k) => k.X === "P").length
 console.log(`${byTask.size} judge prompts in ${OUT}  —  ${pairs.length} pairs`)

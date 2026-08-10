@@ -1,0 +1,5 @@
+pair 1: better=Y | overconfident=neither | why=Y bolds the four "what to do instead" moves so the actionable part is scannable, while the two answers are otherwise the same explanation.
+pair 2: better=X | overconfident=neither | why=X keeps the qualifiers that make the claims true ("almost never bails out", "often the only reason"), where Y flattens them into absolutes that contradict its own list of three valid cases.
+pair 3: better=Y | overconfident=neither | why=Y hedges the two claims that need it — closures are cheaper "in most cases", memo "often" breaks anyway — so the reader is not surprised when the exception bites.
+pair 4: better=tie | overconfident=neither | why=The two run the same structure, examples, and conclusion, and each has one small edge (X states the correctness cases once, Y enumerates the three requirements in the summary) that cancels the other.
+pair 5: better=X | overconfident=neither | why=X gives the reader a concrete stopping test — "if the flame graph is a wall of sub-millisecond renders, you are optimizing the wrong thing" — and describes the children trick in terms of what React does rather than what happens.

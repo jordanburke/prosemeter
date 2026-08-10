@@ -1,0 +1,5 @@
+pair 1: better=tie | overconfident=neither | why=The two are the same explanation with the same diagnosis, code, and confirmation steps, differing only in sentence phrasing that changes nothing a reader would act on.
+pair 2: better=tie | overconfident=neither | why=Identical structure, causes, and fixes; X states the `off` reference rule as a directive while Y states it as a note, which is too small a difference to separate them.
+pair 3: better=Y | overconfident=neither | why=Y's closing rule pairs *observe* with *disconnect*, whereas X pairs *watch* with *disconnect*, so Y's one-line mnemonic actually maps the verbs a reader would grep for.
+pair 4: better=X | overconfident=neither | why=X opens by marking the diagnosis as likely rather than certain, which fits an answer that later tells the reader to confirm it, and it avoids Y's arbitrary "three or more sockets" threshold.
+pair 5: better=X | overconfident=neither | why=X labels the two re-run causes explicitly as "the first" and "the second", so the reader can match their own code against a numbered list instead of two unmarked paragraphs.

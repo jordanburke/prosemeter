@@ -1,0 +1,5 @@
+pair 1: better=tie | overconfident=neither | why=X and Y are near-identical in structure, evidence, and fix ordering, with only cosmetic wording differences that do not change what the reader understands or can do.
+pair 2: better=tie | overconfident=neither | why=Both answers cover the same failure modes, diagnosis command, and five-step fix list in the same order with only paraphrased sentences, so neither serves the reader better.
+pair 3: better=tie | overconfident=neither | why=X and Y give identical diagnosis logic, the same fix ordering, and the same "what not to do" warnings, differing only in phrasing that does not affect comprehension or action.
+pair 4: better=tie | overconfident=neither | why=Both explain the same resolver behavior, the same fix order, and the same monorepo and communication advice, with no substantive difference in clarity or completeness.
+pair 5: better=tie | overconfident=neither | why=X and Y present the same two resolution outcomes, the same diagnostic command, and the same fix list and closing distinction, differing only in sentence-level wording.
