@@ -8,7 +8,7 @@
 import { getCollection } from "astro:content"
 
 import Base from "../../layouts/Base.astro"
-import { corpusTotals, run, variantRows } from "../../lib/research"
+import { corpusTotals, revisionLoop, run, variantRows } from "../../lib/research"
 
 const studies = (await getCollection("research")).sort((a, b) => a.data.order - b.data.order)
 const totals = corpusTotals()
@@ -31,6 +31,9 @@ const cut = (arm: { words: number }, control: { words: number }) =>
   Math.round(100 * (1 - arm.words / control.words))
 
 const pct1 = (n: number) => n.toFixed(1)
+
+// Run 6 — the revision loop, measured against itself.
+const loop = revisionLoop()
 ---
 
 <Base
@@ -98,6 +101,28 @@ const pct1 = (n: number) => n.toFixed(1)
       <p><strong>A high score is not a correctness signal. Verify facts separately.</strong></p>
       <a href={`/research/${byId("qualifier-carveout")!.data.slug}`}>{byId("qualifier-carveout")!.data.title} →</a>
     </div>
+
+    {
+      loop && (
+        <div class="result">
+          <h3>The writing, when you revise toward the score</h3>
+          <p>
+            Showing a reviser prosemeter's own findings beat a blind “just revise it” pass on {
+              loop.guidedHigher
+            } of {loop.n} drafts, worth {pct1(loop.guidedOverBlind)} composite points. Then a blind reader picked the
+            blind revision {loop.judge.blindWins} times to {loop.judge.guidedWins}, and {
+              loop.judge.explainBlindWins
+            } to {loop.judge.explainGuidedWins} on the explain-a-concept tasks.
+          </p>
+          <p>
+            The gain never left the dimensions the findings came from. Across the five dimensions no finding pointed
+            at, the two arms differ by at most {pct1(loop.largestUnmarkedGain)} points in either direction.{" "}
+            <strong>The loop moves what it measures.</strong>
+          </p>
+          <a href={`/research/${byId("revision-loop")!.data.slug}`}>{byId("revision-loop")!.data.title} →</a>
+        </div>
+      )
+    }
 
     <div class="result">
       <h3>Whether an explanation is legible</h3>

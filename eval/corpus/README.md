@@ -4,7 +4,7 @@
 instruction. None of it was written to be correct, and none of it was fact-checked as documentation.
 Some of it is wrong. Do not read it as a guide to anything.**
 
-536 answers across six runs. Each file's front matter says which run, variant, replicate, task, and
+596 answers across seven runs. Each file's front matter says which run, variant, replicate, task, and
 model produced it, and repeats the warning above.
 
 ## Why the errors are still here
