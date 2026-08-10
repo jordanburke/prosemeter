@@ -174,15 +174,24 @@ const n1 = (n: number) => n.toFixed(1)
   /* Markdown tables get no styling at all otherwise — site.css styles `table.dims`, and these have
      no class. Mirrors that rule set so a rendered report reads like the measured table above it.
 
-     `width: max-content` with `min-width: 100%` fills the column when the table is narrow and
-     scrolls inside itself when it is not, which plain `display: block` does not do — that collapses
-     the table to its content width and pins it left. */
+     Sets `width` and nothing else about sizing, deliberately. `.band > *` already supplies
+     `max-width: var(--shell)` and `margin-inline: auto`, and an earlier version overrode both:
+     `max-width: 100%` resolves against the band's full width rather than the shell, and `min-width`
+     beats `max-width` in the cascade, so the tables rendered 1400px wide in a 1088px column and sat
+     against the left padding edge while every paragraph around them stayed centred.
+
+     `width: max-content` gives a narrow table its natural width and lets a wide one hit the shell
+     cap and scroll inside itself. */
   .report :global(table) {
     display: block;
     overflow-x: auto;
     width: max-content;
-    min-width: 100%;
-    max-width: 100%;
+    /* Both bounds, and neither alone is enough. `100%` alone resolves against the band's full width,
+       which is wider than the column — that is the 1400px-in-1088px bleed. `var(--shell)` alone is
+       1088px, which does not constrain anything on a 375px phone, so the table pushed the page into
+       a horizontal scroll. `min()` of the two caps at the column on a desktop and at the viewport on
+       a phone, scrolling inside itself in both cases. */
+    max-width: min(100%, var(--shell));
     border-collapse: collapse;
     font-size: 0.82rem;
     /* margin-block, not the shorthand: a `0` in the inline slot resets `.band > *`'s auto centring. */
