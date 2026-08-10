@@ -58,10 +58,19 @@ const findResults = (): string => {
 
 const DIR = findResults()
 
+/**
+ * Every scored run in `eval/results`.
+ *
+ * Filtered on the presence of `answers` rather than on the filename. `eval/results` also holds
+ * `run-6-judgments.json`, which is a tally of blind human-style verdicts and has no per-answer
+ * scores — folding it in made `corpusTotals().answers` NaN, and a NaN renders as "NaN answers" on
+ * the page rather than failing the build.
+ */
 export const runs = (): ReadonlyArray<RunResult> =>
   readdirSync(DIR)
     .filter((f) => f.endsWith(".json"))
-    .map((f) => JSON.parse(readFileSync(resolve(DIR, f), "utf8")) as RunResult)
+    .map((f) => JSON.parse(readFileSync(resolve(DIR, f), "utf8")) as Partial<RunResult>)
+    .filter((r): r is RunResult => Array.isArray(r.answers))
 
 export const run = (id: string): RunResult | undefined => runs().find((r) => r.run === id)
 
@@ -125,5 +134,91 @@ export const corpusTotals = () => {
     runs: all.length,
     reviewed: all.reduce((n, r) => n + r.answers.filter((a) => a.reviewerFinding !== null).length, 0),
     models: [...new Set(all.map((r) => r.model).filter((m): m is string => m !== null))].sort(),
+  }
+}
+
+/**
+ * Run 6: the paired revision experiment.
+ *
+ * Different shape from every other run, so it gets its own reader. Runs 1–5 compare arm means over
+ * separate answers; run 6 compares each revision to the exact run-5 draft it was made from, and the
+ * two arms to each other within that origin. A mean over arm P and a mean over arm R would throw
+ * away the pairing and could not see the effect at all — run 5's control arm spans 11 composite
+ * points on six tasks under one instruction.
+ */
+export type RevisionLoop = {
+  readonly n: number
+  /** Mean composite gain of the findings-guided arm over the blind arm, same origin draft. */
+  readonly guidedOverBlind: number
+  /** Drafts where the guided arm scored higher. */
+  readonly guidedHigher: number
+  /** Mean composite gain of each arm over the draft it revised. */
+  readonly blindOverOrigin: number
+  readonly guidedOverOrigin: number
+  /**
+   * Largest |R−P| among dimensions no finding ever pointed at — the generalization test.
+   *
+   * A magnitude, not a gain: the largest of the five is `grade-band` at −0.4, where the guided arm
+   * is *worse*. Reported as a bound on movement in either direction so it cannot be read as a win.
+   */
+  readonly largestUnmarkedGain: number
+  /** Blind pairwise preference, from the preference-only judging pass. */
+  readonly judge: {
+    readonly blindWins: number
+    readonly guidedWins: number
+    readonly ties: number
+    readonly explainBlindWins: number
+    readonly explainGuidedWins: number
+  }
+}
+
+const NEVER_MARKED = ["concision", "grade-band", "lexical-diversity", "paragraph-length", "spelling-consistency"]
+
+export const revisionLoop = (): RevisionLoop | null => {
+  const six = run("6")
+  const five = run("5")
+  if (six === undefined || five === undefined) return null
+
+  const origin = new Map(five.answers.filter((a) => a.variant === "A").map((a) => [`${a.replicate}-${a.task}`, a]))
+  const at = (variant: string, key: string) =>
+    six.answers.find((a) => a.variant === variant && `${a.replicate}-${a.task}` === key)
+
+  const keys = [...new Set(six.answers.map((a) => `${a.replicate}-${a.task}`))]
+  const pairs = keys
+    .map((k) => ({ k, p: at("P", k), r: at("R", k), o: origin.get(k) }))
+    .filter((x): x is { k: string; p: Answer; r: Answer; o: Answer } => !!x.p && !!x.r && !!x.o)
+
+  const meanOf = (xs: ReadonlyArray<number>) => (xs.length === 0 ? Number.NaN : xs.reduce((a, b) => a + b, 0) / xs.length)
+
+  const unmarked = NEVER_MARKED.map((d) =>
+    meanOf(
+      pairs
+        .map(({ p, r }) => {
+          const a = r.dimensions[d]
+          const b = p.dimensions[d]
+          return a === null || a === undefined || b === null || b === undefined ? null : a - b
+        })
+        .filter((x): x is number => x !== null),
+    ),
+  ).filter((x) => !Number.isNaN(x))
+
+  const j = JSON.parse(readFileSync(resolve(DIR, "run-6-judgments.json"), "utf8")) as {
+    passes: { plain: { all: { betterP: number; betterR: number; tie: number }; explain: { betterP: number; betterR: number } } }
+  }
+
+  return {
+    n: pairs.length,
+    guidedOverBlind: meanOf(pairs.map(({ p, r }) => r.composite - p.composite)),
+    guidedHigher: pairs.filter(({ p, r }) => r.composite > p.composite).length,
+    blindOverOrigin: meanOf(pairs.map(({ p, o }) => p.composite - o.composite)),
+    guidedOverOrigin: meanOf(pairs.map(({ r, o }) => r.composite - o.composite)),
+    largestUnmarkedGain: Math.max(...unmarked.map(Math.abs)),
+    judge: {
+      blindWins: j.passes.plain.all.betterP,
+      guidedWins: j.passes.plain.all.betterR,
+      ties: j.passes.plain.all.tie,
+      explainBlindWins: j.passes.plain.explain.betterP,
+      explainGuidedWins: j.passes.plain.explain.betterR,
+    },
   }
 }

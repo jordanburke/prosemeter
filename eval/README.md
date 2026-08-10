@@ -162,11 +162,55 @@ spend agents re-deriving them:
   they are for.
 - Instruction wording does not reach factual accuracy. Two runs, one targeted mechanism test,
   no effect.
+- **A composite rise after a revision is not evidence the document improved.** Run 6 showed a
+  reviser the findings and gained 4.3 composite points on a blind revision of the same draft, 29 of
+  30 — and lost the blind reader preference. The entire gain sat in the dimensions the findings
+  came from; the five never-marked dimensions moved by at most 0.1. The loop moves what it measures.
+  See `LIB_RPT_revision-loop_2026-08-10.md`.
+- **Ask a judge one question at a time.** Run 6's first judging prompt asked "which is better" and
+  "is either overconfident" together, and the second primed the first: preference for the blind arm
+  went 24–1. The same 30 pairs, same blinding, preference-only, came out 18–9 at p = 0.12. A
+  two-question judging prompt measures the second question twice.
 - Task difficulty dominates instruction wording for accuracy — broad-clean spanned 3/15 to 14/15
   by task against 15/30 to 21/30 by variant.
 - Trap tasks must come from observed failures. Tasks picked by reasoning about which qualifiers
   *ought* to be load-bearing passed 5/5 for every variant and discriminated nothing.
 - Never tell the generating agent it is being scored.
+
+## Run 6 measures the revision loop, and needs a different design
+
+Runs 1–5 all vary the instruction and score the first draft. That answers "which prompt should I
+use" and cannot answer "does the score/revise/stop loop in `.claude/skills/prose-loop/` improve a
+document". Run 6 does the second one.
+
+**Two things make it a different experiment, not another arm.**
+
+*It has to be paired.* An unpaired arm comparison works in runs 1–5 because each arm has 30 answers
+and draft-to-draft noise averages out. A revision moves one document, and one document's composite
+moves less than two answers to the same task differ — run 5's control arm spanned 81–92. So every
+comparison in `paired.mjs` is a difference against the exact draft it came from, sign-tested over
+30 drafts rather than t-tested over means.
+
+*It needs a placebo.* A second draft beats a first draft because the model re-reads its own output.
+Arm P revises with no findings shown; arm R revises with them. Only R−P attributes anything to the
+tool.
+
+**And it knowingly bends the never-tell-the-agent rule above.** Arm R is shown the scorer's own
+complaints, so movement in a marked dimension is close to tautological. Three mitigations, all
+decided before any answer existed: the prompt shows no score, dimension, rule id or threshold —
+only line, observation, suggestion; `prompts/run-6/targets.json` records which dimensions each
+draft was marked on, so marked and never-marked dimensions are reported separately; and the report
+carries a blind pairwise judgment, which is the only readout prosemeter cannot influence.
+
+Five of the eleven active dimensions were marked on none of the 30 drafts. Those are the
+generalization test — see `variants.md` for the predictions and the kill criteria.
+
+```bash
+pnpm build
+node eval/revise-prompts.mjs               # 60 prompts + the pre-registration
+# generate: one agent per (arm, replicate), six tasks each, as in runs 1–5
+node eval/paired.mjs eval/corpus/run-6
+```
 
 ## Accuracy has a separate trigger
 
@@ -182,7 +226,7 @@ No preamble will fix them.
 
 ## The corpus is committed, and marked
 
-`eval/corpus/` holds all 536 answers across six runs. `eval/results/run-*.json` holds every
+`eval/corpus/` holds all 596 answers across seven runs. `eval/results/run-*.json` holds every
 score for them, stamped with the engine version that produced it.
 
 **This reverses an earlier policy, and the reason is worth keeping.** The answers used to be

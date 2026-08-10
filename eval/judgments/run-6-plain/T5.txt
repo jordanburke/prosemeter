@@ -1,0 +1,5 @@
+pair 1: better=X | overconfident=neither | why=X bolds the lead-in of each structural fix so the "what to do instead" list scans as four named moves rather than four paragraphs, and its "largely obsolete" reads truer than Y's "obsolete in most files".
+pair 2: better=Y | overconfident=neither | why=Y's opening sentence states the verdict, the condition, and the cost in one breath, and its "almost never bails out" on children corrects the absolute "never" X asserts.
+pair 3: better=Y | overconfident=neither | why=Y trims the same argument without dropping a condition, and closes on the sharper instruction to memoize the one component the profiler names.
+pair 4: better=X | overconfident=neither | why=X flags the effect-dependency case as "correctness, not render count, and the strongest reason" instead of folding it into a vague "those last two", so the reader knows which item to act on.
+pair 5: better=X | overconfident=neither | why=X keeps the hedge that structural fixes "usually" beat memoization where Y states it flatly, and its two-condition rule is phrased as one memorable line the reader can repeat.

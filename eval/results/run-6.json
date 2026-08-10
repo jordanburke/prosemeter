@@ -1,0 +1,3914 @@
+{
+  "run": "6",
+  "generated": "2026-08-10",
+  "model": "claude-opus-5",
+  "note": "revision arms — blind vs findings-guided",
+  "profile": "chat",
+  "prosemeterVersion": "0.4.3",
+  "corpus": "eval/corpus/run-6",
+  "n": 60,
+  "variants": [
+    "P",
+    "R"
+  ],
+  "tasks": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6"
+  ],
+  "answers": [
+    {
+      "file": "P-r1-T1.md",
+      "variant": "P",
+      "replicate": "r1",
+      "task": "T1",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 56,
+        "active-voice": 100,
+        "clarity": 68,
+        "directness": 56,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 509,
+        "sentences": 38,
+        "paragraphs": 18,
+        "characters": 2273,
+        "syllables": 739,
+        "complexWords": 53,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the build broke",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Find out which one you have",
+            "line": 25
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 37
+          },
+          {
+            "depth": 2,
+            "text": "Preventing the next one",
+            "line": 62
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r1-T2.md",
+      "variant": "P",
+      "replicate": "r1",
+      "task": "T2",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 65.6,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 55.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 609,
+        "sentences": 50,
+        "paragraphs": 23,
+        "characters": 2718,
+        "syllables": 906,
+        "complexWords": 45,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What an index is",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What each write costs now",
+            "line": 21
+          },
+          {
+            "depth": 2,
+            "text": "Why it can be worse than you expect",
+            "line": 33
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 60
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r1-T3.md",
+      "variant": "P",
+      "replicate": "r1",
+      "task": "T3",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 52.6,
+        "active-voice": 85.5,
+        "clarity": 100,
+        "directness": 71.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 709,
+        "sentences": 58,
+        "paragraphs": 21,
+        "characters": 3245,
+        "syllables": 1059,
+        "complexWords": 68,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What went wrong",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How to implement it",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "Two things to check next",
+            "line": 47
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r1-T4.md",
+      "variant": "P",
+      "replicate": "r1",
+      "task": "T4",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 52.8,
+        "active-voice": 89.9,
+        "clarity": 74.9,
+        "directness": 62.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 537,
+        "sentences": 40,
+        "paragraphs": 21,
+        "characters": 2522,
+        "syllables": 830,
+        "complexWords": 58,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The two shapes this takes",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why the dependency array is usually the trigger",
+            "line": 40
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 51
+          },
+          {
+            "depth": 2,
+            "text": "Confirm it before you change anything",
+            "line": 78
+          },
+          {
+            "depth": 2,
+            "text": "The general rule",
+            "line": 93
+          }
+        ],
+        "codeBlocks": 5,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r1-T5.md",
+      "variant": "P",
+      "replicate": "r1",
+      "task": "T5",
+      "composite": 84,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 44.4,
+        "active-voice": 100,
+        "clarity": 78,
+        "directness": 57.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 639,
+        "sentences": 54,
+        "paragraphs": 28,
+        "characters": 3067,
+        "syllables": 1000,
+        "complexWords": 84,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why a stable function is not enough",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The second thing that breaks it",
+            "line": 31
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 43
+          },
+          {
+            "depth": 2,
+            "text": "When it earns its place",
+            "line": 51
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 60
+          },
+          {
+            "depth": 2,
+            "text": "Summary",
+            "line": 72
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r1-T6.md",
+      "variant": "P",
+      "replicate": "r1",
+      "task": "T6",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 60.1,
+        "active-voice": 100,
+        "clarity": 75.1,
+        "directness": 54.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 87.8,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 723,
+        "sentences": 57,
+        "paragraphs": 28,
+        "characters": 3321,
+        "syllables": 1080,
+        "complexWords": 79,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure that matters",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why GET is not the right test",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "Other things that break",
+            "line": 37
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 47
+          },
+          {
+            "depth": 2,
+            "text": "The recommendation",
+            "line": 65
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r2-T1.md",
+      "variant": "P",
+      "replicate": "r2",
+      "task": "T1",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 62.4,
+        "active-voice": 100,
+        "clarity": 89.9,
+        "directness": 62.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 99,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 532,
+        "sentences": 53,
+        "paragraphs": 26,
+        "characters": 2472,
+        "syllables": 814,
+        "complexWords": 63,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is actually happening",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "How to see it",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "Preventing the next one",
+            "line": 62
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r2-T2.md",
+      "variant": "P",
+      "replicate": "r2",
+      "task": "T2",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 89.6,
+        "active-voice": 100,
+        "clarity": 79.3,
+        "directness": 45.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 63.3,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 690,
+        "sentences": 59,
+        "paragraphs": 27,
+        "characters": 3066,
+        "syllables": 1004,
+        "complexWords": 54,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why a write costs more now",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The part that surprises people",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How to think about it",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "What to do about yours",
+            "line": 49
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 11
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r2-T3.md",
+      "variant": "P",
+      "replicate": "r2",
+      "task": "T3",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 69.2,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 54.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 719,
+        "sentences": 60,
+        "paragraphs": 32,
+        "characters": 3299,
+        "syllables": 1089,
+        "complexWords": 70,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The core problem",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "The idempotency key",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "Details that matter",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "The other half: reconciliation",
+            "line": 71
+          },
+          {
+            "depth": 2,
+            "text": "What to do now",
+            "line": 75
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r2-T4.md",
+      "variant": "P",
+      "replicate": "r2",
+      "task": "T4",
+      "composite": 94,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 75.6,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 60.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 497,
+        "sentences": 48,
+        "paragraphs": 25,
+        "characters": 2383,
+        "syllables": 755,
+        "complexWords": 44,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the page degrades over time",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The three likely causes",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 47
+          },
+          {
+            "depth": 2,
+            "text": "Stabilizing the dependencies",
+            "line": 80
+          },
+          {
+            "depth": 2,
+            "text": "Two more things worth checking",
+            "line": 98
+          },
+          {
+            "depth": 2,
+            "text": "How to confirm it",
+            "line": 104
+          }
+        ],
+        "codeBlocks": 5,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r2-T5.md",
+      "variant": "P",
+      "replicate": "r2",
+      "task": "T5",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 52.2,
+        "active-voice": 100,
+        "clarity": 74.5,
+        "directness": 59.3,
+        "concision": 92.1,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 700,
+        "sentences": 60,
+        "paragraphs": 35,
+        "characters": 3345,
+        "syllables": 1096,
+        "complexWords": 99,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What useCallback actually does",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The other half breaks easily",
+            "line": 31
+          },
+          {
+            "depth": 2,
+            "text": "Dependencies leak",
+            "line": 48
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 59
+          },
+          {
+            "depth": 2,
+            "text": "When it is genuinely worth it",
+            "line": 69
+          },
+          {
+            "depth": 2,
+            "text": "Better first moves",
+            "line": 79
+          },
+          {
+            "depth": 2,
+            "text": "And measure",
+            "line": 87
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 9
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r2-T6.md",
+      "variant": "P",
+      "replicate": "r2",
+      "task": "T6",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 51.7,
+        "active-voice": 100,
+        "clarity": 79.2,
+        "directness": 55.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 97.2,
+        "terminology-consistency": 87.3,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 686,
+        "sentences": 60,
+        "paragraphs": 24,
+        "characters": 3197,
+        "syllables": 1036,
+        "complexWords": 64,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why GET is not the right test",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The three-way split",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "Things that bite even on genuinely public data",
+            "line": 43
+          },
+          {
+            "depth": 2,
+            "text": "Whether it will even be fast",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "A safer default to propose",
+            "line": 61
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r3-T1.md",
+      "variant": "P",
+      "replicate": "r3",
+      "task": "T1",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 59.8,
+        "active-voice": 100,
+        "clarity": 83.2,
+        "directness": 65,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 595,
+        "sentences": 50,
+        "paragraphs": 21,
+        "characters": 2675,
+        "syllables": 872,
+        "complexWords": 65,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "How to tell which one you have",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "What not to do",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "Preventing the next one",
+            "line": 63
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r3-T2.md",
+      "variant": "P",
+      "replicate": "r3",
+      "task": "T2",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 73.8,
+        "active-voice": 100,
+        "clarity": 84.9,
+        "directness": 54.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 675,
+        "sentences": 60,
+        "paragraphs": 27,
+        "characters": 2919,
+        "syllables": 968,
+        "complexWords": 50,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The part that is not just \"more writes\"",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "Whether the trade is worth it",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "What to do now",
+            "line": 46
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 62
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 8
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r3-T3.md",
+      "variant": "P",
+      "replicate": "r3",
+      "task": "T3",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 53.7,
+        "active-voice": 86.1,
+        "clarity": 86.1,
+        "directness": 72.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 743,
+        "sentences": 64,
+        "paragraphs": 28,
+        "characters": 3461,
+        "syllables": 1114,
+        "complexWords": 67,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "How the duplicate happened",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency does about it",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "The rules that make it work",
+            "line": 46
+          },
+          {
+            "depth": 2,
+            "text": "What you have to fix on your side",
+            "line": 58
+          },
+          {
+            "depth": 2,
+            "text": "Cleaning up the duplicates you already made",
+            "line": 66
+          },
+          {
+            "depth": 2,
+            "text": "The short version",
+            "line": 70
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r3-T4.md",
+      "variant": "P",
+      "replicate": "r3",
+      "task": "T4",
+      "composite": 83,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 56.3,
+        "active-voice": 100,
+        "clarity": 55.1,
+        "directness": 72.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 516,
+        "sentences": 48,
+        "paragraphs": 24,
+        "characters": 2469,
+        "syllables": 795,
+        "complexWords": 42,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The shape of the bug",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 32
+          },
+          {
+            "depth": 2,
+            "text": "If it is still slow after that",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "How to confirm it before you ship",
+            "line": 82
+          },
+          {
+            "depth": 2,
+            "text": "The rule underneath",
+            "line": 88
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r3-T5.md",
+      "variant": "P",
+      "replicate": "r3",
+      "task": "T5",
+      "composite": 83,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 48.6,
+        "active-voice": 91,
+        "clarity": 71.6,
+        "directness": 43.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 606,
+        "sentences": 49,
+        "paragraphs": 26,
+        "characters": 2864,
+        "syllables": 938,
+        "complexWords": 90,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why it does nothing",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why it costs something",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "Why it often breaks even when the memo is there",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "When it is genuinely worth it",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 65
+          },
+          {
+            "depth": 2,
+            "text": "One more thing worth knowing",
+            "line": 71
+          },
+          {
+            "depth": 2,
+            "text": "The summary to give them",
+            "line": 75
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r3-T6.md",
+      "variant": "P",
+      "replicate": "r3",
+      "task": "T6",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 62.5,
+        "active-voice": 100,
+        "clarity": 68.9,
+        "directness": 60.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 666,
+        "sentences": 57,
+        "paragraphs": 30,
+        "characters": 3029,
+        "syllables": 990,
+        "complexWords": 68,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The problem in one sentence",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why \"GET is safe to cache\" is half a rule",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "The other things that break",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "The counter-proposal",
+            "line": 67
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r4-T1.md",
+      "variant": "P",
+      "replicate": "r4",
+      "task": "T1",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 63.8,
+        "active-voice": 90.4,
+        "clarity": 100,
+        "directness": 66.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 563,
+        "sentences": 50,
+        "paragraphs": 24,
+        "characters": 2524,
+        "syllables": 809,
+        "complexWords": 48,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "How to find it",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 39
+          },
+          {
+            "depth": 2,
+            "text": "In a monorepo",
+            "line": 56
+          },
+          {
+            "depth": 2,
+            "text": "What to tell the other team",
+            "line": 62
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 2
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r4-T2.md",
+      "variant": "P",
+      "replicate": "r4",
+      "task": "T2",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 99.4,
+        "sentence-simplicity": 73.8,
+        "active-voice": 100,
+        "clarity": 65.3,
+        "directness": 43.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 77.2,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 676,
+        "sentences": 63,
+        "paragraphs": 24,
+        "characters": 2920,
+        "syllables": 974,
+        "complexWords": 56,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The part that surprises people",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "Write amplification, and the log",
+            "line": 37
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "The honest summary",
+            "line": 53
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r4-T3.md",
+      "variant": "P",
+      "replicate": "r4",
+      "task": "T3",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 63.6,
+        "active-voice": 85.3,
+        "clarity": 85.3,
+        "directness": 61.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 699,
+        "sentences": 59,
+        "paragraphs": 29,
+        "characters": 3141,
+        "syllables": 1022,
+        "complexWords": 59,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What happened",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why you cannot fix this with better retries",
+            "line": 25
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 31
+          },
+          {
+            "depth": 2,
+            "text": "How it works in practice",
+            "line": 37
+          },
+          {
+            "depth": 2,
+            "text": "The details that decide whether it works",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 69
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r4-T4.md",
+      "variant": "P",
+      "replicate": "r4",
+      "task": "T4",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 48.9,
+        "active-voice": 100,
+        "clarity": 83.6,
+        "directness": 56,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 612,
+        "sentences": 57,
+        "paragraphs": 31,
+        "characters": 2879,
+        "syllables": 933,
+        "complexWords": 62,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why it shows up as gradual slowness",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The two ways it usually happens",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "Fixing the dependency side",
+            "line": 67
+          },
+          {
+            "depth": 2,
+            "text": "Confirm the diagnosis before you fix it",
+            "line": 77
+          },
+          {
+            "depth": 2,
+            "text": "One thing that is not the bug",
+            "line": 97
+          },
+          {
+            "depth": 2,
+            "text": "Extracting it",
+            "line": 101
+          }
+        ],
+        "codeBlocks": 5,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r4-T5.md",
+      "variant": "P",
+      "replicate": "r4",
+      "task": "T5",
+      "composite": 84,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 40,
+        "active-voice": 92.6,
+        "clarity": 86.1,
+        "directness": 55.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 746,
+        "sentences": 69,
+        "paragraphs": 42,
+        "characters": 3563,
+        "syllables": 1139,
+        "complexWords": 96,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the child still re-renders",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What it takes to actually skip the child",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "The other half that breaks it silently",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 59
+          },
+          {
+            "depth": 2,
+            "text": "When it is genuinely worth it",
+            "line": 69
+          },
+          {
+            "depth": 2,
+            "text": "Cheaper things to try first",
+            "line": 80
+          },
+          {
+            "depth": 2,
+            "text": "The right order of operations",
+            "line": 97
+          },
+          {
+            "depth": 2,
+            "text": "Worth mentioning",
+            "line": 105
+          },
+          {
+            "depth": 2,
+            "text": "Summary for the teammate",
+            "line": 109
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 10
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r4-T6.md",
+      "variant": "P",
+      "replicate": "r4",
+      "task": "T6",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 61.5,
+        "active-voice": 92.7,
+        "clarity": 71.9,
+        "directness": 50.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 88.5,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 767,
+        "sentences": 70,
+        "paragraphs": 43,
+        "characters": 3502,
+        "syllables": 1139,
+        "complexWords": 70,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure, concretely",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why the cache is not to blame",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "The sort that is safe",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "The sort that is not",
+            "line": 45
+          },
+          {
+            "depth": 2,
+            "text": "If you must cache per-user responses",
+            "line": 52
+          },
+          {
+            "depth": 2,
+            "text": "Invalidation, the second problem",
+            "line": 62
+          },
+          {
+            "depth": 2,
+            "text": "What to actually do",
+            "line": 72
+          },
+          {
+            "depth": 2,
+            "text": "The version worth proposing back",
+            "line": 82
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 16
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r5-T1.md",
+      "variant": "P",
+      "replicate": "r5",
+      "task": "T1",
+      "composite": 87,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 60.7,
+        "active-voice": 100,
+        "clarity": 73.3,
+        "directness": 63.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 495,
+        "sentences": 48,
+        "paragraphs": 19,
+        "characters": 2334,
+        "syllables": 771,
+        "complexWords": 71,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is actually happening",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Find the duplicate",
+            "line": 25
+          },
+          {
+            "depth": 2,
+            "text": "Fix it, in this order",
+            "line": 33
+          },
+          {
+            "depth": 2,
+            "text": "The part worth keeping",
+            "line": 49
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r5-T2.md",
+      "variant": "P",
+      "replicate": "r5",
+      "task": "T2",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 63.4,
+        "active-voice": 100,
+        "clarity": 90.2,
+        "directness": 43.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 555,
+        "sentences": 48,
+        "paragraphs": 22,
+        "characters": 2524,
+        "syllables": 839,
+        "complexWords": 51,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The part that surprises people",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "What to do",
+            "line": 39
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 51
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r5-T3.md",
+      "variant": "P",
+      "replicate": "r5",
+      "task": "T3",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 57.8,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 63.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 547,
+        "sentences": 46,
+        "paragraphs": 17,
+        "characters": 2527,
+        "syllables": 833,
+        "complexWords": 63,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure in detail",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "Getting it right",
+            "line": 44
+          },
+          {
+            "depth": 2,
+            "text": "The general lesson",
+            "line": 56
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r5-T4.md",
+      "variant": "P",
+      "replicate": "r5",
+      "task": "T4",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 64.1,
+        "active-voice": 100,
+        "clarity": 78.1,
+        "directness": 57.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 429,
+        "sentences": 36,
+        "paragraphs": 25,
+        "characters": 1992,
+        "syllables": 624,
+        "complexWords": 24,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the effect re-runs",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The fix: return a cleanup function",
+            "line": 25
+          },
+          {
+            "depth": 2,
+            "text": "Fix the deps that caused it",
+            "line": 56
+          },
+          {
+            "depth": 2,
+            "text": "Confirm it is really this",
+            "line": 83
+          },
+          {
+            "depth": 2,
+            "text": "Two leaks of the same shape",
+            "line": 89
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r5-T5.md",
+      "variant": "P",
+      "replicate": "r5",
+      "task": "T5",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 52.8,
+        "active-voice": 100,
+        "clarity": 74.9,
+        "directness": 49,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 537,
+        "sentences": 50,
+        "paragraphs": 25,
+        "characters": 2594,
+        "syllables": 829,
+        "complexWords": 65,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why a stable function alone does nothing",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why it often still fails after adding memo",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "Why \"every function\" is the wrong scope",
+            "line": 46
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 54
+          },
+          {
+            "depth": 2,
+            "text": "The short version for your teammate",
+            "line": 68
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "P-r5-T6.md",
+      "variant": "P",
+      "replicate": "r5",
+      "task": "T6",
+      "composite": 83,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 53.8,
+        "active-voice": 100,
+        "clarity": 69.9,
+        "directness": 53.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 99.8,
+        "terminology-consistency": 73.6,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 558,
+        "sentences": 50,
+        "paragraphs": 22,
+        "characters": 2616,
+        "syllables": 860,
+        "complexWords": 57,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure to picture",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The split that matters",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "What bites you even in the public bucket",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "How to roll it out safely",
+            "line": 65
+          },
+          {
+            "depth": 2,
+            "text": "The answer for your teammate",
+            "line": 71
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r1-T1.md",
+      "variant": "R",
+      "replicate": "r1",
+      "task": "T1",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 86.5,
+        "active-voice": 89.5,
+        "clarity": 74.1,
+        "directness": 76.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 514,
+        "sentences": 50,
+        "paragraphs": 18,
+        "characters": 2302,
+        "syllables": 752,
+        "complexWords": 53,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the build broke",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "How to see which one you have",
+            "line": 25
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 37
+          },
+          {
+            "depth": 2,
+            "text": "Preventing the next one",
+            "line": 62
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r1-T2.md",
+      "variant": "R",
+      "replicate": "r1",
+      "task": "T2",
+      "composite": 94,
+      "dimensions": {
+        "grade-band": 98.5,
+        "sentence-simplicity": 80,
+        "active-voice": 100,
+        "clarity": 91.5,
+        "directness": 84.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 99.6,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 642,
+        "sentences": 64,
+        "paragraphs": 23,
+        "characters": 2871,
+        "syllables": 946,
+        "complexWords": 44,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What an index is",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What each write now costs",
+            "line": 21
+          },
+          {
+            "depth": 2,
+            "text": "Why the slowdown runs worse than you expect",
+            "line": 33
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 60
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r1-T3.md",
+      "variant": "R",
+      "replicate": "r1",
+      "task": "T3",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 69,
+        "active-voice": 92.2,
+        "clarity": 92.2,
+        "directness": 94.7,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 713,
+        "sentences": 72,
+        "paragraphs": 21,
+        "characters": 3305,
+        "syllables": 1091,
+        "complexWords": 74,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What went wrong",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How to implement it",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "Two checks to run next",
+            "line": 47
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r1-T4.md",
+      "variant": "R",
+      "replicate": "r1",
+      "task": "T4",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 62.8,
+        "active-voice": 100,
+        "clarity": 90,
+        "directness": 87.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 541,
+        "sentences": 51,
+        "paragraphs": 21,
+        "characters": 2549,
+        "syllables": 835,
+        "complexWords": 60,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The two shapes this takes",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why the dependency array is the trigger",
+            "line": 40
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 51
+          },
+          {
+            "depth": 2,
+            "text": "Confirming it before you change anything",
+            "line": 78
+          },
+          {
+            "depth": 2,
+            "text": "The general rule",
+            "line": 93
+          }
+        ],
+        "codeBlocks": 5,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r1-T5.md",
+      "variant": "R",
+      "replicate": "r1",
+      "task": "T5",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 53.6,
+        "active-voice": 100,
+        "clarity": 84.4,
+        "directness": 73,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 648,
+        "sentences": 63,
+        "paragraphs": 28,
+        "characters": 3084,
+        "syllables": 1002,
+        "complexWords": 76,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why a stable function is not enough",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The second thing that breaks it",
+            "line": 31
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 43
+          },
+          {
+            "depth": 2,
+            "text": "When it does earn its place",
+            "line": 51
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 60
+          },
+          {
+            "depth": 2,
+            "text": "Summary",
+            "line": 72
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r1-T6.md",
+      "variant": "R",
+      "replicate": "r1",
+      "task": "T6",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 75.4,
+        "active-voice": 92.5,
+        "clarity": 86,
+        "directness": 67.1,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 88,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 735,
+        "sentences": 76,
+        "paragraphs": 28,
+        "characters": 3348,
+        "syllables": 1084,
+        "complexWords": 74,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure that matters",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why GET is not the right test",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "What else breaks",
+            "line": 37
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 47
+          },
+          {
+            "depth": 2,
+            "text": "The recommendation",
+            "line": 65
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r2-T1.md",
+      "variant": "R",
+      "replicate": "r2",
+      "task": "T1",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 77.5,
+        "active-voice": 100,
+        "clarity": 75.4,
+        "directness": 87.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 552,
+        "sentences": 61,
+        "paragraphs": 26,
+        "characters": 2501,
+        "syllables": 813,
+        "complexWords": 59,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "How to see it",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "Preventing the next one",
+            "line": 62
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r2-T2.md",
+      "variant": "R",
+      "replicate": "r2",
+      "task": "T2",
+      "composite": 96,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 100,
+        "active-voice": 100,
+        "clarity": 85.5,
+        "directness": 78,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 99.6,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 87.6,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 709,
+        "sentences": 69,
+        "paragraphs": 27,
+        "characters": 3125,
+        "syllables": 1018,
+        "complexWords": 51,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why a write costs more now",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The part that surprises people",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How to reason about it",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "What to do about yours",
+            "line": 49
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 11
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r2-T3.md",
+      "variant": "R",
+      "replicate": "r2",
+      "task": "T3",
+      "composite": 93,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 60.7,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 100,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 741,
+        "sentences": 66,
+        "paragraphs": 32,
+        "characters": 3353,
+        "syllables": 1107,
+        "complexWords": 65,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The core problem",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "The idempotency key",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "Details that matter",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "The other half: reconciliation",
+            "line": 71
+          },
+          {
+            "depth": 2,
+            "text": "What to do now",
+            "line": 75
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 7
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r2-T4.md",
+      "variant": "R",
+      "replicate": "r2",
+      "task": "T4",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 75.8,
+        "active-voice": 100,
+        "clarity": 80.7,
+        "directness": 86.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 502,
+        "sentences": 55,
+        "paragraphs": 25,
+        "characters": 2390,
+        "syllables": 755,
+        "complexWords": 43,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the page degrades over time",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The three causes",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 47
+          },
+          {
+            "depth": 2,
+            "text": "Stabilizing the dependencies",
+            "line": 80
+          },
+          {
+            "depth": 2,
+            "text": "Two more items to check",
+            "line": 98
+          },
+          {
+            "depth": 2,
+            "text": "How to confirm it",
+            "line": 104
+          }
+        ],
+        "codeBlocks": 5,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r2-T5.md",
+      "variant": "R",
+      "replicate": "r2",
+      "task": "T5",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 55.5,
+        "active-voice": 100,
+        "clarity": 85.3,
+        "directness": 77.8,
+        "concision": 92.1,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 699,
+        "sentences": 72,
+        "paragraphs": 35,
+        "characters": 3270,
+        "syllables": 1062,
+        "complexWords": 85,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What useCallback does",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The other half breaks",
+            "line": 31
+          },
+          {
+            "depth": 2,
+            "text": "Dependencies leak",
+            "line": 48
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 59
+          },
+          {
+            "depth": 2,
+            "text": "When it earns its place",
+            "line": 69
+          },
+          {
+            "depth": 2,
+            "text": "First moves that work better",
+            "line": 79
+          },
+          {
+            "depth": 2,
+            "text": "And measure",
+            "line": 87
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 9
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r2-T6.md",
+      "variant": "R",
+      "replicate": "r2",
+      "task": "T6",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 64.3,
+        "active-voice": 100,
+        "clarity": 85.7,
+        "directness": 81.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 720,
+        "sentences": 68,
+        "paragraphs": 24,
+        "characters": 3306,
+        "syllables": 1063,
+        "complexWords": 63,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why GET is not the right test",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The three-way split",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "What bites even on public data",
+            "line": 43
+          },
+          {
+            "depth": 2,
+            "text": "Whether it will even be fast",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "A safer default to propose",
+            "line": 61
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r3-T1.md",
+      "variant": "R",
+      "replicate": "r3",
+      "task": "T1",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 70.8,
+        "active-voice": 100,
+        "clarity": 90.7,
+        "directness": 82.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 583,
+        "sentences": 53,
+        "paragraphs": 21,
+        "characters": 2648,
+        "syllables": 862,
+        "complexWords": 72,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "How to see which one you have",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "What not to do",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "Preventing the next one",
+            "line": 63
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r3-T2.md",
+      "variant": "R",
+      "replicate": "r3",
+      "task": "T2",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 68.3,
+        "active-voice": 100,
+        "clarity": 85.2,
+        "directness": 100,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 690,
+        "sentences": 62,
+        "paragraphs": 27,
+        "characters": 2984,
+        "syllables": 987,
+        "complexWords": 53,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The part that is more than \"more writes\"",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "Whether the trade is worth it",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "What to do now",
+            "line": 46
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 62
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 8
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r3-T3.md",
+      "variant": "R",
+      "replicate": "r3",
+      "task": "T3",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 65.2,
+        "active-voice": 86.2,
+        "clarity": 100,
+        "directness": 94.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 751,
+        "sentences": 71,
+        "paragraphs": 28,
+        "characters": 3484,
+        "syllables": 1118,
+        "complexWords": 67,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "How the duplicate happened",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency does about it",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "The rules that make it work",
+            "line": 46
+          },
+          {
+            "depth": 2,
+            "text": "What you have to fix on your side",
+            "line": 58
+          },
+          {
+            "depth": 2,
+            "text": "Cleaning up the ones you already made",
+            "line": 66
+          },
+          {
+            "depth": 2,
+            "text": "The short version",
+            "line": 70
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r3-T4.md",
+      "variant": "R",
+      "replicate": "r3",
+      "task": "T4",
+      "composite": 94,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 76.6,
+        "active-voice": 100,
+        "clarity": 89.7,
+        "directness": 100,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 525,
+        "sentences": 54,
+        "paragraphs": 24,
+        "characters": 2550,
+        "syllables": 822,
+        "complexWords": 46,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The shape of the bug",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 32
+          },
+          {
+            "depth": 2,
+            "text": "If the slowdown continues after that",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "How to confirm it before you ship",
+            "line": 82
+          },
+          {
+            "depth": 2,
+            "text": "The rule underneath",
+            "line": 88
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r3-T5.md",
+      "variant": "R",
+      "replicate": "r3",
+      "task": "T5",
+      "composite": 86,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 47.6,
+        "active-voice": 90.7,
+        "clarity": 82.9,
+        "directness": 78.4,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 582,
+        "sentences": 54,
+        "paragraphs": 26,
+        "characters": 2746,
+        "syllables": 894,
+        "complexWords": 81,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why it does nothing",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why it costs you",
+            "line": 36
+          },
+          {
+            "depth": 2,
+            "text": "Why it breaks even when the memo is there",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "When it is worth it",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 65
+          },
+          {
+            "depth": 2,
+            "text": "One more thing worth knowing",
+            "line": 71
+          },
+          {
+            "depth": 2,
+            "text": "The summary to give them",
+            "line": 75
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r3-T6.md",
+      "variant": "R",
+      "replicate": "r3",
+      "task": "T6",
+      "composite": 88,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 58.2,
+        "active-voice": 100,
+        "clarity": 78.8,
+        "directness": 89.3,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 668,
+        "sentences": 62,
+        "paragraphs": 30,
+        "characters": 3030,
+        "syllables": 994,
+        "complexWords": 68,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The problem in one sentence",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why \"GET is safe to cache\" is half a rule",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 35
+          },
+          {
+            "depth": 2,
+            "text": "The other failures",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "The counter-proposal",
+            "line": 67
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r4-T1.md",
+      "variant": "R",
+      "replicate": "r4",
+      "task": "T1",
+      "composite": 97,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 87.7,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 82.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 571,
+        "sentences": 55,
+        "paragraphs": 24,
+        "characters": 2560,
+        "syllables": 821,
+        "complexWords": 47,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "How to find it",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it",
+            "line": 39
+          },
+          {
+            "depth": 2,
+            "text": "In a monorepo",
+            "line": 56
+          },
+          {
+            "depth": 2,
+            "text": "What to tell the other team",
+            "line": 62
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 2
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r4-T2.md",
+      "variant": "R",
+      "replicate": "r4",
+      "task": "T2",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 98,
+        "sentence-simplicity": 62.7,
+        "active-voice": 100,
+        "clarity": 84.9,
+        "directness": 67.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 673,
+        "sentences": 71,
+        "paragraphs": 24,
+        "characters": 2934,
+        "syllables": 984,
+        "complexWords": 62,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The part that surprises people",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "Write amplification, and the log",
+            "line": 37
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 41
+          },
+          {
+            "depth": 2,
+            "text": "The honest summary",
+            "line": 53
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r4-T3.md",
+      "variant": "R",
+      "replicate": "r4",
+      "task": "T3",
+      "composite": 95,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 82,
+        "active-voice": 100,
+        "clarity": 92.4,
+        "directness": 85.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 728,
+        "sentences": 69,
+        "paragraphs": 29,
+        "characters": 3251,
+        "syllables": 1065,
+        "complexWords": 65,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What happened",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why this is unavoidable without help",
+            "line": 25
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 31
+          },
+          {
+            "depth": 2,
+            "text": "How it works in practice",
+            "line": 37
+          },
+          {
+            "depth": 2,
+            "text": "The details that decide whether it works",
+            "line": 57
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 69
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r4-T4.md",
+      "variant": "R",
+      "replicate": "r4",
+      "task": "T4",
+      "composite": 96,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 79.5,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 94,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 622,
+        "sentences": 64,
+        "paragraphs": 31,
+        "characters": 2926,
+        "syllables": 943,
+        "complexWords": 57,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why this shows up as gradual slowness",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The two ways it happens",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "The fix",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "Fixing the dependency side",
+            "line": 67
+          },
+          {
+            "depth": 2,
+            "text": "Confirming the diagnosis before you fix it",
+            "line": 77
+          },
+          {
+            "depth": 2,
+            "text": "One thing that is not the bug",
+            "line": 97
+          },
+          {
+            "depth": 2,
+            "text": "Extracting it",
+            "line": 101
+          }
+        ],
+        "codeBlocks": 5,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r4-T5.md",
+      "variant": "R",
+      "replicate": "r4",
+      "task": "T5",
+      "composite": 85,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 43.5,
+        "active-voice": 92.5,
+        "clarity": 80.4,
+        "directness": 75.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 740,
+        "sentences": 77,
+        "paragraphs": 42,
+        "characters": 3577,
+        "syllables": 1133,
+        "complexWords": 98,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the child still re-renders",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What it takes to skip the child",
+            "line": 27
+          },
+          {
+            "depth": 2,
+            "text": "The other half that breaks it silently",
+            "line": 42
+          },
+          {
+            "depth": 2,
+            "text": "What it costs",
+            "line": 59
+          },
+          {
+            "depth": 2,
+            "text": "When it is genuinely worth it",
+            "line": 69
+          },
+          {
+            "depth": 2,
+            "text": "Cheaper things to try first",
+            "line": 80
+          },
+          {
+            "depth": 2,
+            "text": "The right order of operations",
+            "line": 97
+          },
+          {
+            "depth": 2,
+            "text": "Worth mentioning",
+            "line": 105
+          },
+          {
+            "depth": 2,
+            "text": "Summary for the teammate",
+            "line": 109
+          }
+        ],
+        "codeBlocks": 3,
+        "links": 0,
+        "listItems": 10
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r4-T6.md",
+      "variant": "R",
+      "replicate": "r4",
+      "task": "T6",
+      "composite": 89,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 61,
+        "active-voice": 100,
+        "clarity": 80.6,
+        "directness": 94.9,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 88.2,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 750,
+        "sentences": 74,
+        "paragraphs": 43,
+        "characters": 3474,
+        "syllables": 1128,
+        "complexWords": 68,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure, concretely",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why the cache is not to blame",
+            "line": 23
+          },
+          {
+            "depth": 2,
+            "text": "What is safe to cache",
+            "line": 34
+          },
+          {
+            "depth": 2,
+            "text": "What is not",
+            "line": 45
+          },
+          {
+            "depth": 2,
+            "text": "If you must cache per-user responses",
+            "line": 52
+          },
+          {
+            "depth": 2,
+            "text": "Invalidation, the second problem",
+            "line": 62
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 72
+          },
+          {
+            "depth": 2,
+            "text": "The version worth proposing back",
+            "line": 82
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 16
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r5-T1.md",
+      "variant": "R",
+      "replicate": "r5",
+      "task": "T1",
+      "composite": 91,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 63,
+        "active-voice": 100,
+        "clarity": 90.1,
+        "directness": 87.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 545,
+        "sentences": 57,
+        "paragraphs": 19,
+        "characters": 2522,
+        "syllables": 828,
+        "complexWords": 69,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "What is happening",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "How to find the duplicate",
+            "line": 25
+          },
+          {
+            "depth": 2,
+            "text": "How to fix it, in the order to try",
+            "line": 33
+          },
+          {
+            "depth": 2,
+            "text": "The part worth internalizing",
+            "line": 49
+          }
+        ],
+        "codeBlocks": 1,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r5-T2.md",
+      "variant": "R",
+      "replicate": "r5",
+      "task": "T2",
+      "composite": 95,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 100,
+        "active-voice": 100,
+        "clarity": 83.7,
+        "directness": 75.5,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 86,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 615,
+        "sentences": 59,
+        "paragraphs": 22,
+        "characters": 2747,
+        "syllables": 899,
+        "complexWords": 50,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the write got slower",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The part that surprises people",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "What to do about it",
+            "line": 39
+          },
+          {
+            "depth": 2,
+            "text": "The rule to carry forward",
+            "line": 51
+          }
+        ],
+        "codeBlocks": 0,
+        "links": 0,
+        "listItems": 3
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r5-T3.md",
+      "variant": "R",
+      "replicate": "r5",
+      "task": "T3",
+      "composite": 94,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 70.8,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 93.6,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 581,
+        "sentences": 57,
+        "paragraphs": 17,
+        "characters": 2625,
+        "syllables": 861,
+        "complexWords": 61,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure in detail",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "What idempotency means here",
+            "line": 30
+          },
+          {
+            "depth": 2,
+            "text": "Getting it right",
+            "line": 44
+          },
+          {
+            "depth": 2,
+            "text": "The general lesson",
+            "line": 56
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r5-T4.md",
+      "variant": "R",
+      "replicate": "r5",
+      "task": "T4",
+      "composite": 94,
+      "dimensions": {
+        "grade-band": 89.5,
+        "sentence-simplicity": 85.6,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 74.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 475,
+        "sentences": 48,
+        "paragraphs": 25,
+        "characters": 2194,
+        "syllables": 693,
+        "complexWords": 28,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the effect re-runs",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The fix: return a cleanup function",
+            "line": 25
+          },
+          {
+            "depth": 2,
+            "text": "Fixing the deps that caused it",
+            "line": 56
+          },
+          {
+            "depth": 2,
+            "text": "Confirming the diagnosis",
+            "line": 83
+          },
+          {
+            "depth": 2,
+            "text": "Two related leaks in the same shape",
+            "line": 89
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 4
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r5-T5.md",
+      "variant": "R",
+      "replicate": "r5",
+      "task": "T5",
+      "composite": 92,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 63.4,
+        "active-voice": 100,
+        "clarity": 100,
+        "directness": 82.2,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 100,
+        "terminology-consistency": 100,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 554,
+        "sentences": 53,
+        "paragraphs": 25,
+        "characters": 2645,
+        "syllables": 845,
+        "complexWords": 67,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "Why the stable function alone does nothing",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "Why it fails even after you add memo",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "Why \"every function\" is the wrong scope",
+            "line": 46
+          },
+          {
+            "depth": 2,
+            "text": "What to do instead",
+            "line": 54
+          },
+          {
+            "depth": 2,
+            "text": "The short version to give your teammate",
+            "line": 68
+          }
+        ],
+        "codeBlocks": 2,
+        "links": 0,
+        "listItems": 6
+      },
+      "reviewerFinding": null
+    },
+    {
+      "file": "R-r5-T6.md",
+      "variant": "R",
+      "replicate": "r5",
+      "task": "T6",
+      "composite": 90,
+      "dimensions": {
+        "grade-band": 100,
+        "sentence-simplicity": 70.7,
+        "active-voice": 100,
+        "clarity": 82.8,
+        "directness": 82.8,
+        "concision": 100,
+        "sentence-variety": 100,
+        "heading-hierarchy": null,
+        "section-length": null,
+        "paragraph-length": 100,
+        "document-balance": null,
+        "lexical-diversity": 99.7,
+        "terminology-consistency": 74.3,
+        "acronym-definition": null,
+        "spelling-consistency": 100
+      },
+      "stats": {
+        "words": 579,
+        "sentences": 58,
+        "paragraphs": 22,
+        "characters": 2677,
+        "syllables": 874,
+        "complexWords": 54,
+        "headings": [
+          {
+            "depth": 2,
+            "text": "The failure mode to picture",
+            "line": 15
+          },
+          {
+            "depth": 2,
+            "text": "The split that matters",
+            "line": 29
+          },
+          {
+            "depth": 2,
+            "text": "What bites you even in the \"public\" bucket",
+            "line": 55
+          },
+          {
+            "depth": 2,
+            "text": "How to roll it out safely",
+            "line": 65
+          },
+          {
+            "depth": 2,
+            "text": "The answer to give your teammate",
+            "line": 71
+          }
+        ],
+        "codeBlocks": 4,
+        "links": 0,
+        "listItems": 0
+      },
+      "reviewerFinding": null
+    }
+  ]
+}

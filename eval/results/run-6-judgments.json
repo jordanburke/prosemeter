@@ -1,0 +1,430 @@
+{
+  "run": "6",
+  "design": "blind pairwise, one judge per task, arms hidden behind a deterministic X/Y hash",
+  "model": "claude-opus-5",
+  "generated": "2026-08-10",
+  "passes": {
+    "primary": {
+      "asks": "preference and overconfidence together",
+      "note": "asking about overconfidence primes the preference — read `plain` for preference",
+      "all": {
+        "n": 30,
+        "betterR": 1,
+        "betterP": 24,
+        "tie": 5,
+        "overconfidentR": 28,
+        "overconfidentP": 0
+      },
+      "explain": {
+        "n": 20,
+        "betterR": 1,
+        "betterP": 14,
+        "tie": 5,
+        "overconfidentR": 19,
+        "overconfidentP": 0
+      },
+      "traps": {
+        "n": 10,
+        "betterR": 0,
+        "betterP": 10,
+        "tie": 0,
+        "overconfidentR": 9,
+        "overconfidentP": 0
+      }
+    },
+    "plain": {
+      "asks": "preference only",
+      "note": "overconfidence fields are a constant here and carry no information",
+      "all": {
+        "n": 30,
+        "betterR": 9,
+        "betterP": 18,
+        "tie": 3,
+        "overconfidentR": 0,
+        "overconfidentP": 0
+      },
+      "explain": {
+        "n": 20,
+        "betterR": 4,
+        "betterP": 14,
+        "tie": 2,
+        "overconfidentR": 0,
+        "overconfidentP": 0
+      },
+      "traps": {
+        "n": 10,
+        "betterR": 5,
+        "betterP": 4,
+        "tie": 1,
+        "overconfidentR": 0,
+        "overconfidentP": 0
+      }
+    }
+  },
+  "verdicts": {
+    "primary": [
+      {
+        "pair": "r1-T1",
+        "task": "T1",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r2-T1",
+        "task": "T1",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r3-T1",
+        "task": "T1",
+        "better": "tie",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r4-T1",
+        "task": "T1",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r5-T1",
+        "task": "T1",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r1-T2",
+        "task": "T2",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r2-T2",
+        "task": "T2",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r3-T2",
+        "task": "T2",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r4-T2",
+        "task": "T2",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r5-T2",
+        "task": "T2",
+        "better": "R",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r1-T3",
+        "task": "T3",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r2-T3",
+        "task": "T3",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r3-T3",
+        "task": "T3",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r4-T3",
+        "task": "T3",
+        "better": "tie",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r5-T3",
+        "task": "T3",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r1-T4",
+        "task": "T4",
+        "better": "tie",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r2-T4",
+        "task": "T4",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r3-T4",
+        "task": "T4",
+        "better": "tie",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r4-T4",
+        "task": "T4",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r5-T4",
+        "task": "T4",
+        "better": "tie",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r1-T5",
+        "task": "T5",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r2-T5",
+        "task": "T5",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r3-T5",
+        "task": "T5",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r4-T5",
+        "task": "T5",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r5-T5",
+        "task": "T5",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r1-T6",
+        "task": "T6",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r2-T6",
+        "task": "T6",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r3-T6",
+        "task": "T6",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r4-T6",
+        "task": "T6",
+        "better": "P",
+        "overconfident": "R"
+      },
+      {
+        "pair": "r5-T6",
+        "task": "T6",
+        "better": "P",
+        "overconfident": "R"
+      }
+    ],
+    "plain": [
+      {
+        "pair": "r1-T1",
+        "task": "T1",
+        "better": "tie",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r2-T1",
+        "task": "T1",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r3-T1",
+        "task": "T1",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r4-T1",
+        "task": "T1",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r5-T1",
+        "task": "T1",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r1-T2",
+        "task": "T2",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r2-T2",
+        "task": "T2",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r3-T2",
+        "task": "T2",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r4-T2",
+        "task": "T2",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r5-T2",
+        "task": "T2",
+        "better": "R",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r1-T3",
+        "task": "T3",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r2-T3",
+        "task": "T3",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r3-T3",
+        "task": "T3",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r4-T3",
+        "task": "T3",
+        "better": "tie",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r5-T3",
+        "task": "T3",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r1-T4",
+        "task": "T4",
+        "better": "R",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r2-T4",
+        "task": "T4",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r3-T4",
+        "task": "T4",
+        "better": "R",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r4-T4",
+        "task": "T4",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r5-T4",
+        "task": "T4",
+        "better": "R",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r1-T5",
+        "task": "T5",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r2-T5",
+        "task": "T5",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r3-T5",
+        "task": "T5",
+        "better": "R",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r4-T5",
+        "task": "T5",
+        "better": "R",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r5-T5",
+        "task": "T5",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r1-T6",
+        "task": "T6",
+        "better": "R",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r2-T6",
+        "task": "T6",
+        "better": "P",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r3-T6",
+        "task": "T6",
+        "better": "R",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r4-T6",
+        "task": "T6",
+        "better": "tie",
+        "overconfident": "neither"
+      },
+      {
+        "pair": "r5-T6",
+        "task": "T6",
+        "better": "R",
+        "overconfident": "neither"
+      }
+    ]
+  }
+}
