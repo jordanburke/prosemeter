@@ -212,6 +212,14 @@ node eval/revise-prompts.mjs               # 60 prompts + the pre-registration
 node eval/paired.mjs eval/corpus/run-6
 ```
 
+## Run 7 is specced but not run
+
+`LIB_SPEC_preference-corpus_2026-08-10.md` specs the follow-on: build a preference corpus and use it
+to ask, for the first time, whether any shipped dimension predicts which of two drafts a reader
+prefers. Phase 1 measures the judge-agreement ceiling and stops the whole programme if it is below
+65% — without that ceiling, every prediction rate is uninterpretable, which is the flaw in run 6's
+"37%".
+
 ## Accuracy has a separate trigger
 
 Accuracy is not instruction-driven, so it does not belong in the instruction loop. Check it when
