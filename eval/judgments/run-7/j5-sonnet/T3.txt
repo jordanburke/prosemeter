@@ -1,0 +1,5 @@
+pair 1: better=tie | overconfident=neither | why=X and Y are near-identical in content, structure, and actionable detail, differing only in incidental wording.
+pair 2: better=tie | overconfident=neither | why=X and Y cover the same failure modes, the same idempotency-key mechanism, and the same next steps, with only cosmetic phrasing differences.
+pair 3: better=tie | overconfident=neither | why=X and Y give the same diagnosis, the same implementation rules, and the same reconciliation advice, differing only in word choice.
+pair 4: better=tie | overconfident=neither | why=X and Y walk through the identical failure explanation, idempotency-key protocol, and caveats, with no substantive difference in clarity or completeness.
+pair 5: better=tie | overconfident=neither | why=X and Y use the same diagram, the same explanation of idempotency, and the same practical rules, varying only in minor wording.

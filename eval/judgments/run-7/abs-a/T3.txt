@@ -1,0 +1,10 @@
+answer 1: score=8 | why=Diagnosis, mechanism, and cleanup are all excellent, but it states as fact that a 503 means the server processed nothing and invents an "eighty percent of the time" statistic the reader cannot check.
+answer 2: score=9 | why=Leads with the exact confusion that caused the bug, explains the key clearly, and is the rare answer that also covers the reader's own database and how to reconcile the duplicates already made.
+answer 3: score=8 | why=The server-side claim-the-key-in-one-transaction recipe is the clearest of any answer, but it never tells the engineer what to do about the duplicate charges already on real cards.
+answer 4: score=8 | why=Tight, well-sequenced, and the ASCII trace makes the lost response obvious, though it stops at prevention and skips reconciliation and the engineer's own database writes.
+answer 5: score=9 | why=The three-case breakdown maps each case to what the key does about it, and it covers concurrency, the reader's own API, and reconciliation without padding.
+answer 6: score=9 | why=Same strengths as the clearest answers plus the crucial point that the provider's key protects the provider's ledger and not your database, with concrete cleanup steps.
+answer 7: score=8 | why=Crisp and correct with a good diagram and generalization, but it leaves out how to find and refund the duplicate charges that prompted the question.
+answer 8: score=8 | why=Strong throughout and honest about reconciliation as a backstop, yet it still asserts that connection-refused and 503 guarantee the server processed nothing, which is not reliably true.
+answer 9: score=9 | why=Covers the ambiguity, the key, concurrency via a unique constraint, your own service, and reconciliation, each in a section that answers one question and does not repeat another.
+answer 10: score=8 | why=Excellent on why better retries cannot help and on the transactional server implementation, but it never addresses the duplicates already charged or the reader's own records.

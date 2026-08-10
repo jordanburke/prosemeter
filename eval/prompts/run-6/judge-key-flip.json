@@ -1,217 +1,217 @@
 {
   "run": "6",
-  "blinding": "FNV-1a of pair key",
-  "flipped": false,
+  "blinding": "FNV-1a of pair key, inverted",
+  "flipped": true,
   "key": [
     {
       "pair": "r1-T1",
       "replicate": "r1",
       "task": "T1",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r1-T2",
       "replicate": "r1",
       "task": "T2",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r1-T3",
       "replicate": "r1",
       "task": "T3",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r1-T4",
       "replicate": "r1",
       "task": "T4",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r1-T5",
       "replicate": "r1",
       "task": "T5",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r1-T6",
       "replicate": "r1",
       "task": "T6",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r2-T1",
       "replicate": "r2",
       "task": "T1",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r2-T2",
       "replicate": "r2",
       "task": "T2",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r2-T3",
       "replicate": "r2",
       "task": "T3",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r2-T4",
       "replicate": "r2",
       "task": "T4",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r2-T5",
       "replicate": "r2",
       "task": "T5",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r2-T6",
       "replicate": "r2",
       "task": "T6",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r3-T1",
       "replicate": "r3",
       "task": "T1",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r3-T2",
       "replicate": "r3",
       "task": "T2",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r3-T3",
       "replicate": "r3",
       "task": "T3",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r3-T4",
       "replicate": "r3",
       "task": "T4",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r3-T5",
       "replicate": "r3",
       "task": "T5",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r3-T6",
       "replicate": "r3",
       "task": "T6",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r4-T1",
       "replicate": "r4",
       "task": "T1",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r4-T2",
       "replicate": "r4",
       "task": "T2",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r4-T3",
       "replicate": "r4",
       "task": "T3",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r4-T4",
       "replicate": "r4",
       "task": "T4",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r4-T5",
       "replicate": "r4",
       "task": "T5",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r4-T6",
       "replicate": "r4",
       "task": "T6",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r5-T1",
       "replicate": "r5",
       "task": "T1",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r5-T2",
       "replicate": "r5",
       "task": "T2",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r5-T3",
       "replicate": "r5",
       "task": "T3",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r5-T4",
       "replicate": "r5",
       "task": "T4",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     },
     {
       "pair": "r5-T5",
       "replicate": "r5",
       "task": "T5",
-      "X": "P",
-      "Y": "R"
+      "X": "R",
+      "Y": "P"
     },
     {
       "pair": "r5-T6",
       "replicate": "r5",
       "task": "T6",
-      "X": "R",
-      "Y": "P"
+      "X": "P",
+      "Y": "R"
     }
   ]
 }

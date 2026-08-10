@@ -1,0 +1,10 @@
+answer 1: score=7 | why=Correct and complete but bloated across nine sections, with a vague "Worth mentioning" heading and an imprecise claim that the React Compiler ships as of React 19.
+answer 2: score=9 | why=Leads with the verdict, explains the memo/useCallback pairing, names the unstable-prop trap, and closes with a line the reader can hand to the teammate — nothing to reread.
+answer 3: score=9 | why=Adds the genuinely useful point that unstable dependencies make a useCallback only look stable, and separates the correctness case (effect deps) from the performance one.
+answer 4: score=8 | why=Solid and well-structured, but overstates twice — a memoized component taking children "never" bails out, and effect deps are "the one reason" useCallback is necessary.
+answer 5: score=9 | why=Tight, correctly conditions the rule on both memo and expense, and its "what to do instead" section is ordered from measurement to structure to compiler.
+answer 6: score=7 | why=Thorough but the longest of the set with repeated sections, and it asserts the React Compiler ships as of React 19, which the reader may act on without checking.
+answer 7: score=9 | why=Frames the mechanism as two links in a chain, then gives four concrete cases where useCallback earns its place, including the context and effect-dependency cases most answers underplay.
+answer 8: score=8 | why=Same strong structure as its neighbour but claims the compiler makes hand-written useCallback "obsolete in most files", a stronger statement than the reader should carry away.
+answer 9: score=9 | why=Opens with "No.", shows the failure in runnable code, and names the sneakiest case — a useCallback whose own dependency is unstable, which looks optimized so nobody rechecks it.
+answer 10: score=8 | why=Clear and concrete, but says the hook trades a cheap allocation for a "costlier" one "a few hundred times a render", overstating an overhead it elsewhere calls small.

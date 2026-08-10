@@ -1,0 +1,10 @@
+answer 1: score=9 | why=Names the mechanism, separates linear from nonlinear cost, and ends with a concrete checklist the junior can run today, with only the loose "one index doubles the structures" phrasing to trip over.
+answer 2: score=8 | why=Correct and well-structured, but it hands a junior `EXPLAIN (ANALYZE, BUFFERS) INSERT ...` without warning that ANALYZE actually executes the insert.
+answer 3: score=8 | why=Same solid explanation, weakened by the same unwarned executing-EXPLAIN snippet plus invented precision ("five times", "a factor of hundreds").
+answer 4: score=9 | why=Clear mechanism, the memory-cliff framing genuinely explains a disproportionate slowdown, and the UUIDv7/ULID fix is the actionable detail most answers omit.
+answer 5: score=8 | why=Reads well and covers the ground, but softens the specifics ("some engines optimize that case", "most databases report") into things the reader must go look up.
+answer 6: score=10 | why=Complete and correctly ordered — linear cost, nonlinear cost, the Postgres HOT-update trap that explains the surprising case, the read/write-ratio framing, then a numbered diagnostic with nothing left dangling.
+answer 7: score=9 | why=Builds from what an index is to what each statement now costs, and is the rare answer that contrasts partial against covering indexes so the reader knows which lever to pull.
+answer 8: score=9 | why=Tight, accurate, and every section earns its place, though "binary-search the index" glosses the B-tree descent it just described.
+answer 9: score=9 | why=Strong mechanism plus correctly hedged WAL full-page-image detail, and the closing "you placed a bet, go check whether it is paying" leaves the reader with a next action.
+answer 10: score=8 | why=Thorough and mostly excellent, but the fabricated "three to five times slower" figure and the mixed insert/UPDATE/delete capitalisation both make the reader stop.

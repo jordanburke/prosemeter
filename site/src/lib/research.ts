@@ -222,3 +222,49 @@ export const revisionLoop = (): RevisionLoop | null => {
     },
   }
 }
+
+/**
+ * Run 7 phase 1 — how much independent judges agreed, and why they did not agree more.
+ *
+ * Read from `run-7-agreement.json`, which is a rater summary rather than a scored run and so is
+ * filtered out of `runs()` by the `answers` check above.
+ */
+export type JudgeAgreement = {
+  readonly raters: number
+  readonly pairs: number
+  readonly meanPairwiseRaw: number
+  readonly fleissKappa: number
+  /** P's win rate when the blind arm was printed first, and when it was printed second. */
+  readonly whenShownFirst: number
+  readonly whenShownSecond: number
+  /** Verdicts surviving both presentation orders, summed across the three same-order raters. */
+  readonly consistentBlindWins: number
+  readonly consistentGuidedWins: number
+  readonly consistentTotal: number
+}
+
+export const judgeAgreement = (): JudgeAgreement | null => {
+  const path = resolve(DIR, "run-7-agreement.json")
+  if (!existsSync(path)) return null
+  const j = JSON.parse(readFileSync(path, "utf8")) as {
+    pairs: number
+    raters: ReadonlyArray<unknown>
+    ceiling: { meanPairwiseRaw: number; fleissKappa: number; raters: ReadonlyArray<string> }
+    positionDependence: Record<string, { shownFirst: { pct: number }; shownSecond: { pct: number } }>
+    orderConsistent: Record<string, { P: number; R: number }>
+  }
+  const same = j.ceiling.raters
+  const avg = (xs: ReadonlyArray<number>) => xs.reduce((a, b) => a + b, 0) / xs.length
+  const oc = Object.entries(j.orderConsistent)
+  return {
+    raters: j.raters.length,
+    pairs: j.pairs,
+    meanPairwiseRaw: j.ceiling.meanPairwiseRaw,
+    fleissKappa: j.ceiling.fleissKappa,
+    whenShownFirst: avg(same.map((id) => j.positionDependence[id].shownFirst.pct)),
+    whenShownSecond: avg(same.map((id) => j.positionDependence[id].shownSecond.pct)),
+    consistentBlindWins: oc.reduce((n, [, o]) => n + o.P, 0),
+    consistentGuidedWins: oc.reduce((n, [, o]) => n + o.R, 0),
+    consistentTotal: oc.reduce((n, [, o]) => n + o.P + o.R, 0),
+  }
+}

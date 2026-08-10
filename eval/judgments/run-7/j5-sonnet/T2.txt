@@ -1,0 +1,5 @@
+pair 1: better=tie | overconfident=neither | why=X and Y explain the same mechanisms (page splits, WAL, HOT updates, redundant/partial indexes) with only cosmetic wording differences, so neither lands better than the other.
+pair 2: better=tie | overconfident=neither | why=Both answers walk through the same random-I/O, page-split, WAL, and HOT-update reasoning with the same actionable checklist, differing only in phrasing.
+pair 3: better=tie | overconfident=neither | why=X and Y give an identical causal chain (page splits, random I/O, locking, WAL) and the same decision checklist, so the explanations are equally actionable.
+pair 4: better=tie | overconfident=neither | why=The two answers cover the same mechanisms and the same five action items in the same order, with no substantive difference in what the reader would understand or do.
+pair 5: better=tie | overconfident=neither | why=Both answers use the identical structure and the same UUID-vs-sequential-key explanation, differing only in word choice, so they serve the reader equally well.

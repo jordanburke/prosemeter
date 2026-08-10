@@ -1,0 +1,10 @@
+answer 1: score=8 | why=Correct, vivid, and actionable, but it spends heavily on Vary while omitting cached errors and query-string fragmentation, and the reader waits through six sections for the recommendation.
+answer 2: score=9 | why=Leads with the verdict, names the real distinction, and adds the failure modes most people miss — query keys, cached 500s, auth-dependent redirects — closing with a concrete counter-proposal.
+answer 3: score=9 | why=The alice/bob trace makes the leak instantly legible and the three-bucket split maps directly onto header values, with only a slightly thin treatment of whether the speedup materializes.
+answer 4: score=10 | why=It answers both halves of the question — safety and whether it will actually be fast — and the authorization-vs-authentication point catches a leak the other framings miss.
+answer 5: score=10 | why=Same complete coverage of leak, segmentation, invalidation, and hit-rate reality, written tightly enough that nothing needs rereading.
+answer 6: score=9 | why=Uniquely tells the reader to check what headers their endpoints already send before doing anything, and the authorization-drift case is well chosen, though the bucket section repeats the Cache-Control primer above it.
+answer 7: score=8 | why=Concrete and correct with a good closing script for the teammate, but it never mentions cached errors or query-string explosion and takes a long path to the recommendation.
+answer 8: score=9 | why=Clear buckets with working header examples and named CDN behavior, letting the reader verify claims against their own provider; the freshness/read-after-write angle is missing.
+answer 9: score=9 | why=Strong on the two failures readers underestimate — authorization drift and read-after-write staleness — with a verification step the reader can run in five minutes.
+answer 10: score=9 | why=Sharp lead, correct on the public/private/no-store split, and the CI test on `/api` routes turns the advice into something that stays true as the code grows.

@@ -1,5 +1,11 @@
 # Run 7 — build the measuring stick before building the metric
 
+> **AMENDED 2026-08-10, after phase 1 ran.** The kill criterion fired: three judges agreed 64% raw,
+> Fleiss' kappa 0.302. Phase 2 does **not** start as written below. The cause was diagnosed and is
+> fixable — judges pick whichever answer they read first, 92–100% of the time when the blind arm led
+> against 43–69% when it did not — so the amendments in "What phase 1 changed" at the bottom are
+> binding on any restart. See `LIB_RPT_judge-agreement_2026-08-10.md`.
+
 **Every dimension prosemeter ships was added because it seemed like it should matter. None has ever
 been asked whether a reader prefers the writing it rewards.** Run 6 asked, on 27 decided pairs, and
 the answer was no: the composite picked the preferred draft 10 times out of 27, against 50% for a
@@ -67,6 +73,11 @@ result *stratified by which answer was longer*, or the corpus is a length benchm
 preference label.
 
 ### Kill criterion, stated now
+
+**Ambiguity found when it fired, and fixed here:** the sentence below said "below 65%
+chance-corrected", but 65% and a kappa are not on the same scale. It should read: stop if raw mean
+pairwise agreement is below 65% **or** Fleiss' kappa is below 0.60. Phase 1 returned 64% and 0.302
+and fires on both.
 
 **If mean pairwise judge agreement is below 65%, run 7 stops after phase 1** and the finding is
 written up as "preference between two competent drafts is not a stable enough target for a
@@ -216,3 +227,89 @@ agreement coefficient.
 3. Every rate in phase 3 is printed beside its tie count and its share of the ceiling.
 4. The site's research page computes any figure it quotes from `eval/preference/`, per the standing
    rule that no number on those pages is typed by hand.
+
+
+---
+
+## What phase 1 changed
+
+Phase 1 ran on 2026-08-10 and stopped the run. These amendments bind any restart.
+
+### 1. Every pair is judged in both presentation orders, by the same rater
+
+Not optional, and it doubles the judging cost. Phase 1 measured a 30-to-50 point swing in the same
+rater's verdict driven by nothing but which answer was printed first. A corpus built without this
+would be roughly half position artifacts.
+
+Keep only verdicts that name the same **arm** in both orders. Phase 1's own numbers: about half the
+pairs survive, and on those the signal is close to unanimous — 45 to 2 across three raters, against
+a raw 18–9 before filtering.
+
+### 2. The discard rate is a headline, not a footnote
+
+Half the pairs failing the consistency filter is a fact about the pairs. Pairs nobody can rank the
+same way twice may be the honest answer to "which is better", and burying that number would
+misrepresent the corpus size.
+
+### 3. The target is re-scoped
+
+"Which draft does a reader prefer" is not a stable quantity at kappa 0.30. **"Which draft does a
+reader prefer, among pairs with a decidable difference"** is, and it is a narrower and more honest
+thing for a metric to be asked to predict. Any phase 3 rate is reported over the surviving subset,
+with the discard rate beside it, and never as a rate over all pairs.
+
+### 4. Two flipped raters, not one
+
+Phase 1 measured order-consistency against a single flipped rater, so that rater's own noise entered
+every consistency count. Two would let the filter be majority-based.
+
+### 5. The cross-tier check needs rethinking, not repeating
+
+Sonnet returned a reasoned tie on all 30 pairs. That is a finding about effect size — whatever
+separates these drafts is small enough for a capable reader to miss entirely — but it means a
+cross-tier *agreement* number cannot be computed at all. A restart should either use pairs with
+wider quality gaps or drop the cross-tier arm.
+
+### 6. Still unvalidated against a human
+
+No human has read any pair in run 6 or run 7. Position bias is a known failure mode of model judges.
+Before spending 72 agent runs on phase 2, the cheapest useful thing is a handful of pairs read by a
+person — if human and model verdicts diverge, the whole approach needs rethinking rather than
+rescaling.
+
+
+---
+
+## What phase 1b changed (2026-08-10)
+
+Two cheap mitigations for the position bias were tested on the same 30 pairs, 24 agent runs. See
+`LIB_RPT_judge-mitigations_2026-08-10.md`.
+
+**Reason-first is dropped.** Requiring the judge to compare in prose before naming a winner moved
+order-consistency from a 69% baseline to 70%, inside the 63–73% spread three raters of the identical
+prompt already produced. No effect. Do not carry it forward on "it can't hurt" grounds.
+
+**Absolute scoring joins as a second, independent vote.** Scoring each answer alone removes position
+bias by construction. It compresses badly — four-fifths of ratings are an 8 or a 9, and it abstains
+on two thirds of pairs — but of the ten verdicts it gave on the strictest label set, ten agreed and
+none contradicted. That is an absence of counterexamples rather than demonstrated accuracy: the gold
+set is 12 pairs all favouring the same arm, so it cannot detect a scorer with that same lean.
+
+### The labelling rule, replacing the one above
+
+A pair is labelled only when **both methods agree**: pairwise-in-both-orders, and absolute scoring.
+Everything else is unlabelled and stays in the corpus as such.
+
+### Phase 2 needs re-costing, not restarting
+
+At roughly a third of pairs surviving both filters, **120 labelled pairs needs something closer to
+350 pairs judged**, at two orders plus two absolute raters each. That is several times the ~72 agent
+runs phase 2 was scoped at. Re-cost before committing.
+
+### The gate that now precedes everything
+
+**A human reads ten pairs.** Nothing in runs 6, 7 or 7b has been checked against a person; every
+mitigation here was measured by one model against another model's verdicts. If a human disagrees
+with the order-consistent gold, no amount of further model judging would have revealed it, and the
+programme needs rethinking rather than rescaling. This is the cheapest step remaining and it now
+blocks phase 2.

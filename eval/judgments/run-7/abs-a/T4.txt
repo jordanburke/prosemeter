@@ -1,0 +1,10 @@
+answer 1: score=10 | why=Diagnosis first, a correct causal account of why the slowdown accelerates, a fix whose three changes are each explained, ranked follow-ups, a one-minute verification, and the general rule — nothing important missing and nothing to reread.
+answer 2: score=9 | why=Complete and correct, and it insists on confirming before fixing, but the extracted-hook section restates the fix a third time and lengthens the read past what the question needed.
+answer 3: score=9 | why=Cleanly separates three distinct mechanisms including the shared-singleton case that survives unmount, though `socket.listenerCount` is asserted as if it existed on every client library.
+answer 4: score=8 | why=Correct and usable, but it spends the second section on dependency theory before the reader has seen the fix, and leans on `Object.is` without saying what it means.
+answer 5: score=9 | why=Tight, correctly ordered, and honest about what the lint rule cannot catch; the closing hook section is still one more pass over material already covered.
+answer 6: score=9 | why=Same clear three-cause split with the `off("message")` footgun called out, slightly weakened by presenting `listenerCount` as a check that will just work.
+answer 7: score=9 | why=Uniquely names the silent failure where cleanup passes a fresh arrow literal to `off`, and frames cleanup and re-run frequency as two independent questions, which is the right mental model.
+answer 8: score=9 | why=Accurate and well-sequenced with a real verification step, but the "if it is still slow" list arrives as four unranked possibilities after promising an order.
+answer 9: score=9 | why=Correct and unusually precise about reference identity, though the heading claims the dependency array *is* the trigger when the body only shows it usually is.
+answer 10: score=8 | why=Right answer with good coverage of sibling leaks, but it compresses the dependency explanation into assumed knowledge and puts the diagnosis of why the effect re-runs ahead of what to actually change.

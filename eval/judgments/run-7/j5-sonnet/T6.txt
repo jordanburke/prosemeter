@@ -1,0 +1,5 @@
+pair 1: better=tie | overconfident=neither | why=Both give the same risk, the same public/private/no-store distinction, and the same three-bucket recommendation with only wording differences.
+pair 2: better=tie | overconfident=neither | why=Both cover the same failure mode, three-way endpoint split, and safe-default proposal with only cosmetic rewording (Y has a trivial lowercase "gets" typo in its closing line, which does not affect understanding).
+pair 3: better=tie | overconfident=neither | why=Both identify the same GET-vs-shared-cache mismatch, offer the same classification and counter-proposal, and differ only in sentence phrasing.
+pair 4: better=tie | overconfident=neither | why=Both walk through the identical Alice/Bob failure, the same safe/unsafe endpoint lists, and the same rollout checklist with no substantive difference.
+pair 5: better=tie | overconfident=neither | why=Both use the same diagram, the same three-bucket cache policy with identical code blocks, and the same rollout advice, differing only in wording.

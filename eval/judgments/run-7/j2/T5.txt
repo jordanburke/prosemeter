@@ -1,0 +1,5 @@
+pair 1: better=X | overconfident=neither | why=The two are near-identical, but X keeps the structural fixes as bolded labels so the "what to do instead" list scans as four distinct moves rather than four plain paragraphs.
+pair 2: better=tie | overconfident=neither | why=Both give the same correct two-part mechanism, the same inline-prop trap, the same stale-dep warning and the same profile-first advice, with no difference a reader could act on differently.
+pair 3: better=tie | overconfident=neither | why=Wording differs slightly but the explanation, the code examples and the closing rule are the same, so neither lands better.
+pair 4: better=X | overconfident=neither | why=X singles out the effect-dependency case as "the strongest reason" and marks it a correctness fix, which tells the reader which of the four cases to actually check first; Y blurs that into a grouped aside.
+pair 5: better=tie | overconfident=neither | why=Identical structure, identical mechanism, identical advice; the small phrasing changes do not change what the reader understands or does.

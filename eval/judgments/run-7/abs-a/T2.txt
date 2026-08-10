@@ -1,0 +1,10 @@
+answer 1: score=9 | why=Opens with the resolution, walks the mechanism from B-tree maintenance to random I/O and page splits, and ends with a concrete drop-the-unused-index checklist the junior can run today.
+answer 2: score=8 | why=Clear and complete, but it hands a junior `EXPLAIN (ANALYZE, BUFFERS) INSERT ...` without warning that ANALYZE actually performs the insert, so the prescribed diagnostic step writes data.
+answer 3: score=8 | why=Same strong mechanism-then-remedy shape, but it carries the same unflagged `EXPLAIN ANALYZE INSERT` trap and states factors of "hundreds" and "five times" more confidently than the varying cases warrant.
+answer 4: score=9 | why=Explains the cliff — the moment the index stops fitting in RAM — which is the single best answer to "why so much slower than expected," and pairs it with the UUIDv7 fix.
+answer 5: score=8 | why=Well-built but it softens the specifics into "some engines optimize that case directly," leaving the reader with an unnamed mechanism they would have to go look up.
+answer 6: score=10 | why=Separates the linear cost everyone expects from the nonlinear ones you actually feel, names the lost-HOT-update case that most often explains a mysterious write regression, and closes with a numbered diagnosis the reader can execute in order.
+answer 7: score=9 | why=Defines the index before spending it, covers page splits, WAL, contention, and non-HOT updates, and offers partial versus covering indexes as a middle path instead of only drop-or-keep.
+answer 8: score=9 | why=A tight version of the same complete argument, with a runnable `pg_stat_user_indexes` query and a narrow-rather-than-remove option, and nothing the reader has to reread.
+answer 9: score=9 | why=Correct, well-sequenced, and honest about variance — the "5% or 50% depending on the column" framing tells the reader why their number is theirs and not a benchmark's.
+answer 10: score=8 | why=Strong content undercut by an unsupported "three to five times slower" figure and bullet labels that flip between lowercase and uppercase in the same list, which snags the reader.

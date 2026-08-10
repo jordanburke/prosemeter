@@ -1,0 +1,361 @@
+{
+  "run": "7",
+  "phase": 1,
+  "pairs": 30,
+  "raters": [
+    {
+      "id": "j1",
+      "model": "opus",
+      "order": "normal",
+      "verdicts": {
+        "r1-T1": "tie",
+        "r1-T2": "P",
+        "r1-T3": "P",
+        "r1-T4": "R",
+        "r1-T5": "P",
+        "r1-T6": "R",
+        "r2-T1": "P",
+        "r2-T2": "P",
+        "r2-T3": "P",
+        "r2-T4": "P",
+        "r2-T5": "P",
+        "r2-T6": "P",
+        "r3-T1": "P",
+        "r3-T2": "P",
+        "r3-T3": "P",
+        "r3-T4": "R",
+        "r3-T5": "R",
+        "r3-T6": "R",
+        "r4-T1": "P",
+        "r4-T2": "P",
+        "r4-T3": "tie",
+        "r4-T4": "P",
+        "r4-T5": "R",
+        "r4-T6": "tie",
+        "r5-T1": "P",
+        "r5-T2": "R",
+        "r5-T3": "P",
+        "r5-T4": "R",
+        "r5-T5": "P",
+        "r5-T6": "R"
+      },
+      "picksLonger": {
+        "hit": 10,
+        "n": 27,
+        "pct": 37.03703703703704
+      },
+      "picksXSlot": {
+        "x": 20,
+        "n": 27,
+        "pct": 74.07407407407408
+      },
+      "agreesWithMajority": 83.33333333333333
+    },
+    {
+      "id": "j2",
+      "model": "opus",
+      "order": "normal",
+      "verdicts": {
+        "r1-T1": "P",
+        "r1-T2": "R",
+        "r1-T3": "P",
+        "r1-T4": "P",
+        "r1-T5": "P",
+        "r1-T6": "R",
+        "r2-T1": "P",
+        "r2-T2": "P",
+        "r2-T3": "P",
+        "r2-T4": "P",
+        "r2-T5": "tie",
+        "r2-T6": "P",
+        "r3-T1": "P",
+        "r3-T2": "P",
+        "r3-T3": "P",
+        "r3-T4": "tie",
+        "r3-T5": "tie",
+        "r3-T6": "P",
+        "r4-T1": "P",
+        "r4-T2": "P",
+        "r4-T3": "tie",
+        "r4-T4": "P",
+        "r4-T5": "R",
+        "r4-T6": "P",
+        "r5-T1": "P",
+        "r5-T2": "R",
+        "r5-T3": "P",
+        "r5-T4": "R",
+        "r5-T5": "tie",
+        "r5-T6": "P"
+      },
+      "picksLonger": {
+        "hit": 7,
+        "n": 25,
+        "pct": 28
+      },
+      "picksXSlot": {
+        "x": 18,
+        "n": 25,
+        "pct": 72
+      },
+      "agreesWithMajority": 76.66666666666667
+    },
+    {
+      "id": "j3",
+      "model": "opus",
+      "order": "normal",
+      "verdicts": {
+        "r1-T1": "tie",
+        "r1-T2": "P",
+        "r1-T3": "P",
+        "r1-T4": "tie",
+        "r1-T5": "P",
+        "r1-T6": "R",
+        "r2-T1": "P",
+        "r2-T2": "P",
+        "r2-T3": "P",
+        "r2-T4": "tie",
+        "r2-T5": "P",
+        "r2-T6": "P",
+        "r3-T1": "P",
+        "r3-T2": "P",
+        "r3-T3": "P",
+        "r3-T4": "P",
+        "r3-T5": "P",
+        "r3-T6": "R",
+        "r4-T1": "P",
+        "r4-T2": "tie",
+        "r4-T3": "P",
+        "r4-T4": "P",
+        "r4-T5": "P",
+        "r4-T6": "P",
+        "r5-T1": "P",
+        "r5-T2": "R",
+        "r5-T3": "P",
+        "r5-T4": "R",
+        "r5-T5": "P",
+        "r5-T6": "tie"
+      },
+      "picksLonger": {
+        "hit": 9,
+        "n": 25,
+        "pct": 36
+      },
+      "picksXSlot": {
+        "x": 16,
+        "n": 25,
+        "pct": 64
+      },
+      "agreesWithMajority": 80
+    },
+    {
+      "id": "j4",
+      "model": "opus",
+      "order": "flipped",
+      "verdicts": {
+        "r1-T1": "R",
+        "r1-T2": "R",
+        "r1-T3": "P",
+        "r1-T4": "P",
+        "r1-T5": "P",
+        "r1-T6": "tie",
+        "r2-T1": "P",
+        "r2-T2": "P",
+        "r2-T3": "P",
+        "r2-T4": "R",
+        "r2-T5": "P",
+        "r2-T6": "P",
+        "r3-T1": "P",
+        "r3-T2": "P",
+        "r3-T3": "tie",
+        "r3-T4": "P",
+        "r3-T5": "P",
+        "r3-T6": "P",
+        "r4-T1": "P",
+        "r4-T2": "P",
+        "r4-T3": "P",
+        "r4-T4": "P",
+        "r4-T5": "tie",
+        "r4-T6": "R",
+        "r5-T1": "P",
+        "r5-T2": "P",
+        "r5-T3": "P",
+        "r5-T4": "P",
+        "r5-T5": "R",
+        "r5-T6": "R"
+      },
+      "picksLonger": {
+        "hit": 9,
+        "n": 27,
+        "pct": 33.333333333333336
+      },
+      "picksXSlot": {
+        "x": 15,
+        "n": 27,
+        "pct": 55.55555555555556
+      },
+      "agreesWithMajority": 46.666666666666664
+    },
+    {
+      "id": "j5",
+      "model": "sonnet",
+      "order": "normal",
+      "verdicts": {
+        "r1-T1": "tie",
+        "r1-T2": "tie",
+        "r1-T3": "tie",
+        "r1-T4": "tie",
+        "r1-T5": "tie",
+        "r1-T6": "tie",
+        "r2-T1": "tie",
+        "r2-T2": "tie",
+        "r2-T3": "tie",
+        "r2-T4": "tie",
+        "r2-T5": "tie",
+        "r2-T6": "tie",
+        "r3-T1": "tie",
+        "r3-T2": "tie",
+        "r3-T3": "tie",
+        "r3-T4": "tie",
+        "r3-T5": "tie",
+        "r3-T6": "tie",
+        "r4-T1": "tie",
+        "r4-T2": "tie",
+        "r4-T3": "tie",
+        "r4-T4": "tie",
+        "r4-T5": "tie",
+        "r4-T6": "tie",
+        "r5-T1": "tie",
+        "r5-T2": "tie",
+        "r5-T3": "tie",
+        "r5-T4": "tie",
+        "r5-T5": "tie",
+        "r5-T6": "tie"
+      },
+      "picksLonger": {
+        "hit": 0,
+        "n": 0,
+        "pct": null
+      },
+      "picksXSlot": {
+        "x": 0,
+        "n": 0,
+        "pct": null
+      },
+      "agreesWithMajority": 20
+    }
+  ],
+  "ceiling": {
+    "raters": [
+      "j1",
+      "j2",
+      "j3"
+    ],
+    "meanPairwiseRaw": 64.44444444444444,
+    "fleissKappa": 0.30198739699466776
+  },
+  "positionDependence": {
+    "j1": {
+      "shownFirst": {
+        "won": 12,
+        "n": 13,
+        "pct": 92.3076923076923
+      },
+      "shownSecond": {
+        "won": 6,
+        "n": 14,
+        "pct": 42.857142857142854
+      }
+    },
+    "j2": {
+      "shownFirst": {
+        "won": 13,
+        "n": 13,
+        "pct": 100
+      },
+      "shownSecond": {
+        "won": 7,
+        "n": 12,
+        "pct": 58.333333333333336
+      }
+    },
+    "j3": {
+      "shownFirst": {
+        "won": 12,
+        "n": 12,
+        "pct": 100
+      },
+      "shownSecond": {
+        "won": 9,
+        "n": 13,
+        "pct": 69.23076923076923
+      }
+    },
+    "j4": {
+      "shownFirst": {
+        "won": 11,
+        "n": 13,
+        "pct": 84.61538461538461
+      },
+      "shownSecond": {
+        "won": 10,
+        "n": 14,
+        "pct": 71.42857142857143
+      }
+    }
+  },
+  "orderConsistent": {
+    "j1": {
+      "consistent": 15,
+      "reversed": 9,
+      "involvedTie": 6,
+      "P": 14,
+      "R": 1
+    },
+    "j2": {
+      "consistent": 16,
+      "reversed": 6,
+      "involvedTie": 8,
+      "P": 15,
+      "R": 1
+    },
+    "j3": {
+      "consistent": 16,
+      "reversed": 6,
+      "involvedTie": 8,
+      "P": 16,
+      "R": 0
+    }
+  },
+  "majority": {
+    "r1-T1": "tie",
+    "r1-T2": "P",
+    "r1-T3": "P",
+    "r1-T4": "tie",
+    "r1-T5": "P",
+    "r1-T6": "R",
+    "r2-T1": "P",
+    "r2-T2": "P",
+    "r2-T3": "P",
+    "r2-T4": "P",
+    "r2-T5": "P",
+    "r2-T6": "P",
+    "r3-T1": "P",
+    "r3-T2": "P",
+    "r3-T3": "P",
+    "r3-T4": "tie",
+    "r3-T5": "tie",
+    "r3-T6": "R",
+    "r4-T1": "P",
+    "r4-T2": "P",
+    "r4-T3": "tie",
+    "r4-T4": "P",
+    "r4-T5": "R",
+    "r4-T6": "P",
+    "r5-T1": "P",
+    "r5-T2": "R",
+    "r5-T3": "P",
+    "r5-T4": "R",
+    "r5-T5": "P",
+    "r5-T6": "tie"
+  }
+}

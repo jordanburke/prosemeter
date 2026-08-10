@@ -1,0 +1,10 @@
+answer 1: score=9 | why=Leads with the verdict, makes the leak concrete with Alice and Bob, and ends with a testable rollout, though the Vary discussion runs longer than the reader needs.
+answer 2: score=10 | why=States the risk immediately, separates "GET is safe" from "shared-cacheable" cleanly, and closes with a counter-proposal plus a CI guard the reader can act on today.
+answer 3: score=9 | why=The three-bucket split with a header line per bucket is the clearest organizing device here, and only the Vary subsection asks the reader to hold two ideas at once.
+answer 4: score=8 | why=Correct and unusually complete, including the "measure before you cache" point, but eight sections before the short version means the lede is diluted by the time the reader reaches the recommendation.
+answer 5: score=9 | why=Same full coverage as the longest answers with tighter sentences, and the "will it even be fast" section is the one thing most answers omit.
+answer 6: score=9 | why=Adds authorization drift and the crucial "check what your endpoints send today" step, though the middle sections repeat the cache-key point twice.
+answer 7: score=9 | why=Concrete, correctly scoped, and the three verification checks at the end turn advice into a task list, with only the Vary aside slowing the reader.
+answer 8: score=9 | why=Clean bucket structure with a worked trace of the leak, and it names which CDNs refuse auth'd responses by default, which saves the reader a lookup.
+answer 9: score=10 | why=Every section answers one question, the authorization-drift and read-after-write points are ones the others miss, and the recommendation includes how to verify it worked.
+answer 10: score=10 | why=Shortest path from the question to a usable policy, with the personalized-but-expensive middle case handled honestly instead of hand-waved.

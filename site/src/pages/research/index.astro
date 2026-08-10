@@ -8,7 +8,7 @@
 import { getCollection } from "astro:content"
 
 import Base from "../../layouts/Base.astro"
-import { corpusTotals, revisionLoop, run, variantRows } from "../../lib/research"
+import { corpusTotals, judgeAgreement, revisionLoop, run, variantRows } from "../../lib/research"
 
 const studies = (await getCollection("research")).sort((a, b) => a.data.order - b.data.order)
 const totals = corpusTotals()
@@ -34,6 +34,9 @@ const pct1 = (n: number) => n.toFixed(1)
 
 // Run 6 — the revision loop, measured against itself.
 const loop = revisionLoop()
+
+// Run 7 phase 1 — whether the readers run 6 leaned on agree with each other.
+const judges = judgeAgreement()
 ---
 
 <Base
@@ -147,6 +150,28 @@ const loop = revisionLoop()
       </p>
       <a href={`/research/${byId("instruction-register")!.data.slug}`}>{byId("instruction-register")!.data.title} →</a>
     </div>
+
+    {
+      judges && (
+        <div class="result">
+          <h3>Model judges read position before they read prose</h3>
+          <p>
+            Three independent judges over the same {judges.pairs} pairs agreed with each other {
+              Math.round(judges.meanPairwiseRaw)
+            }% of the time, a Fleiss' kappa of {judges.fleissKappa.toFixed(2)}. The cause was
+            presentation order: a judge shown the winning answer <em>first</em> picked it {
+              Math.round(judges.whenShownFirst)
+            }% of the time, and {Math.round(judges.whenShownSecond)}% when it came second.
+          </p>
+          <p>
+            Judge every pair both ways and keep only the verdicts that survive, and the picture
+            sharpens rather than fading — {judges.consistentBlindWins} of {judges.consistentTotal}{" "}
+            surviving verdicts go the same way. <strong>Half the disagreement was the layout.</strong>
+          </p>
+          <a href={`/research/${byId("judge-agreement")!.data.slug}`}>{byId("judge-agreement")!.data.title} →</a>
+        </div>
+      )
+    }
 
     <div class="result">
       <h3>A metric that works can be an artifact of your task set</h3>

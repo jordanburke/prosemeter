@@ -1,0 +1,175 @@
+{
+  "run": "7",
+  "phase": "1b",
+  "pairs": 30,
+  "reasonFirst": {
+    "baselineMeanConsistencyPct": 69.31818181818183,
+    "decidedBoth": 23,
+    "consistent": 16,
+    "reversed": 7,
+    "pct": 69.56521739130434,
+    "P": 15,
+    "R": 1,
+    "ties": 7
+  },
+  "baselineConsistency": [
+    {
+      "decidedBoth": 24,
+      "consistent": 15,
+      "reversed": 9,
+      "pct": 62.5,
+      "P": 14,
+      "R": 1,
+      "ties": 6
+    },
+    {
+      "decidedBoth": 22,
+      "consistent": 16,
+      "reversed": 6,
+      "pct": 72.72727272727273,
+      "P": 15,
+      "R": 1,
+      "ties": 8
+    },
+    {
+      "decidedBoth": 22,
+      "consistent": 16,
+      "reversed": 6,
+      "pct": 72.72727272727273,
+      "P": 16,
+      "R": 0,
+      "ties": 8
+    }
+  ],
+  "absolute": {
+    "raterA": {
+      "n": 60,
+      "min": 6,
+      "max": 10,
+      "mean": 8.566666666666666,
+      "sd": 0.7824463062870336,
+      "distinct": 5,
+      "hist": {
+        "6": 1,
+        "7": 3,
+        "8": 22,
+        "9": 29,
+        "10": 5
+      }
+    },
+    "raterB": {
+      "n": 60,
+      "min": 7,
+      "max": 10,
+      "mean": 8.633333333333333,
+      "sd": 0.7738791177495932,
+      "distinct": 4,
+      "hist": {
+        "7": 5,
+        "8": 18,
+        "9": 31,
+        "10": 6
+      }
+    },
+    "identicalScores": 36,
+    "derivedVerdictAgreement": 21,
+    "derived": {
+      "A": {
+        "r1-T1": "tie",
+        "r1-T2": "tie",
+        "r1-T3": "tie",
+        "r1-T4": "tie",
+        "r1-T5": "P",
+        "r1-T6": "R",
+        "r2-T1": "P",
+        "r2-T2": "P",
+        "r2-T3": "tie",
+        "r2-T4": "tie",
+        "r2-T5": "P",
+        "r2-T6": "P",
+        "r3-T1": "tie",
+        "r3-T2": "tie",
+        "r3-T3": "tie",
+        "r3-T4": "R",
+        "r3-T5": "tie",
+        "r3-T6": "tie",
+        "r4-T1": "P",
+        "r4-T2": "tie",
+        "r4-T3": "tie",
+        "r4-T4": "tie",
+        "r4-T5": "tie",
+        "r4-T6": "tie",
+        "r5-T1": "P",
+        "r5-T2": "R",
+        "r5-T3": "tie",
+        "r5-T4": "tie",
+        "r5-T5": "tie",
+        "r5-T6": "tie"
+      },
+      "B": {
+        "r1-T1": "P",
+        "r1-T2": "tie",
+        "r1-T3": "tie",
+        "r1-T4": "tie",
+        "r1-T5": "P",
+        "r1-T6": "tie",
+        "r2-T1": "tie",
+        "r2-T2": "P",
+        "r2-T3": "P",
+        "r2-T4": "tie",
+        "r2-T5": "P",
+        "r2-T6": "tie",
+        "r3-T1": "tie",
+        "r3-T2": "tie",
+        "r3-T3": "P",
+        "r3-T4": "tie",
+        "r3-T5": "P",
+        "r3-T6": "tie",
+        "r4-T1": "tie",
+        "r4-T2": "tie",
+        "r4-T3": "tie",
+        "r4-T4": "tie",
+        "r4-T5": "tie",
+        "r4-T6": "tie",
+        "r5-T1": "P",
+        "r5-T2": "R",
+        "r5-T3": "tie",
+        "r5-T4": "tie",
+        "r5-T5": "tie",
+        "r5-T6": "tie"
+      }
+    },
+    "againstGold": {
+      "A": {
+        "decided": 6,
+        "hit": 6,
+        "abstained": 6
+      },
+      "B": {
+        "decided": 4,
+        "hit": 4,
+        "abstained": 8
+      }
+    }
+  },
+  "gold": {
+    "pairs": [
+      "r1-T3",
+      "r1-T5",
+      "r2-T1",
+      "r2-T2",
+      "r2-T3",
+      "r2-T6",
+      "r3-T1",
+      "r3-T2",
+      "r4-T1",
+      "r4-T4",
+      "r5-T1",
+      "r5-T3"
+    ],
+    "composition": {
+      "P": 12,
+      "R": 0
+    }
+  }
+}

@@ -1,0 +1,5 @@
+pair 1: better=tie | overconfident=neither | why=X and Y give identical diagnosis, code fixes, and confirmation steps, differing only in sentence phrasing with no change in clarity or completeness.
+pair 2: better=tie | overconfident=neither | why=Both cover the same three causes, the same fix code, the same ref-based stabilization, and the same unbounded-state and StrictMode caveats, with only cosmetic wording differences.
+pair 3: better=tie | overconfident=neither | why=Both identify the missing cleanup and missing dependency array, give the same fix and the same follow-up checklist, and read equally clearly.
+pair 4: better=tie | overconfident=neither | why=Both explain the gradual-slowdown mechanism, the two causes, the same fix and extracted hook, and the same StrictMode caveat with no meaningful difference in content or clarity.
+pair 5: better=tie | overconfident=neither | why=Both explain why the effect re-runs, give the same cleanup fix and ref pattern, and list the same related-leak checklist, differing only in surface wording.
