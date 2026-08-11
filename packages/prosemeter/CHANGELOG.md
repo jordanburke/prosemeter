@@ -1,5 +1,17 @@
 # prosemeter
 
+## 0.4.4
+
+### Patch Changes
+
+- Updated dependencies [c3cbf77]
+- Updated dependencies [57a214a]
+  - @prosemeter/vocabulary@0.4.4
+  - @prosemeter/style@0.4.4
+  - @prosemeter/core@0.4.4
+  - @prosemeter/readability@0.4.4
+  - @prosemeter/structure@0.4.4
+
 ## 0.4.3
 
 ### Patch Changes
