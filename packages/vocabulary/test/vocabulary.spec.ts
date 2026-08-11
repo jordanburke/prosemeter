@@ -52,6 +52,31 @@ describe("terminology-consistency", () => {
     expect(result.findings.some((f) => f.excerpt === "Github")).toBe(true)
   })
 
+  /**
+   * Regression: ALL-CAPS is not brand casing.
+   *
+   * `hasInternalCapital` was `/[A-Z]/.test(word.slice(1))`, which is true for every ALL-CAPS word,
+   * so the rule flagged `INSERT` against `insert`. Over 604 corpus documents this was *every*
+   * sampled finding, and it dropped the rule from 147 findings to 2 once fixed — both of them the
+   * GitHub fixture it was built for.
+   */
+  it("does not flag an ALL-CAPS keyword against its lowercase homograph", () => {
+    const result = run(
+      terminologyConsistencyProvider,
+      "# T\n\nThe INSERT runs first in the statement. Then you insert the row into the table.\n",
+    )
+    expect(result.findings).toHaveLength(0)
+  })
+
+  /** The same bug wearing a plural: `UPDATEs` is mixed-case unless the `s` comes off first. */
+  it("does not flag a pluralised ALL-CAPS keyword", () => {
+    const result = run(
+      terminologyConsistencyProvider,
+      "# T\n\nBatched UPDATEs land quickly here. The updates then replicate to every follower.\n",
+    )
+    expect(result.findings).toHaveLength(0)
+  })
+
   it("applies a configured term map", () => {
     const result = run(
       terminologyConsistencyProvider,
@@ -76,6 +101,30 @@ describe("acronym-definition", () => {
     )
     expect(result.findings).toHaveLength(0)
     expect(result.score).toBe(1)
+  })
+
+  /**
+   * Regression: an ALL-CAPS English word is not an acronym.
+   *
+   * `/^[A-Z]{2,}s?$/` cannot tell an initialism from a keyword, so SQL verbs, HTTP methods and log
+   * levels were reported as undefined acronyms — `GET` 77 times across the corpus, `INSERT` 24,
+   * `DELETE` 22. None of them has an expansion to write.
+   */
+  it("ignores keywords, HTTP verbs and log levels", () => {
+    const result = run(
+      acronymDefinitionProvider,
+      "# T\n\nSend a GET first, then INSERT the row and DELETE the stale one. The log says FATAL.\n",
+    )
+    expect(result.findings).toHaveLength(0)
+  })
+
+  /** The counterpart: genuine acronyms with expansions must still be caught. */
+  it("still flags real acronyms a reader would have to look up", () => {
+    const result = run(
+      acronymDefinitionProvider,
+      "# T\n\nThe WAL grows while the ORM keeps every connection open for the whole request.\n",
+    )
+    expect(result.findings.map((f) => f.excerpt).sort()).toEqual(["ORM", "WAL"])
   })
 
   it("ignores allowlisted acronyms like API and JSON", () => {

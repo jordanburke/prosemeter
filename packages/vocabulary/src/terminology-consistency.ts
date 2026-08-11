@@ -16,8 +16,31 @@ import { collectWords, wordLoc, type WordToken } from "./words"
 const RULE = "terminology-consistency"
 const K = 0.1
 
-/** An internal (non-first-letter) capital marks a brand / camelCase term whose casing is meaningful. */
-const hasInternalCapital = (word: string): boolean => /[A-Z]/.test(word.slice(1))
+/**
+ * Does this form carry casing that means something — a brand or camelCase term like `GitHub`?
+ *
+ * An internal capital alone is not enough, and assuming it was produced this rule's worst false
+ * positives. `/[A-Z]/.test("INSERT".slice(1))` is true, so every ALL-CAPS word qualified as
+ * "brand-like", and the rule then flagged the SQL keyword `INSERT` against the ordinary verb
+ * `insert`. Measured across 604 corpus documents, every sampled finding was of exactly this shape:
+ * INSERT/insert, DELETE/delete, UPDATE/Update.
+ *
+ * ALL-CAPS is a different signal from mixed case. It marks an acronym, a keyword, or emphasis —
+ * none of which is an inconsistent spelling of the lowercase word beside it. So a form qualifies
+ * only when it has an internal capital *and* is not entirely uppercase.
+ *
+ * `GitHub` still qualifies, so `GitHub` vs `Github` is still caught. `API` vs `api` is no longer
+ * flagged, which is the deliberate cost: it is occasionally a real inconsistency, and it is far
+ * more often a keyword sitting next to a common word.
+ */
+const stripPlural = (word: string): string => (word.length > 2 && word.endsWith("s") ? word.slice(0, -1) : word)
+
+const hasMeaningfulCase = (word: string): boolean => {
+  // The plural `s` is stripped first, or `UPDATEs` and `GETs` read as mixed case and survive the
+  // all-caps test — which is exactly what they did on the first pass at this fix.
+  const stem = stripPlural(word)
+  return /[A-Z]/.test(stem.slice(1)) && stem !== stem.toUpperCase()
+}
 
 const caseVariantFindings = (words: ReadonlyArray<WordToken>, severity: Severity): ReadonlyArray<Finding> => {
   const groups = new Map<string, Map<string, Array<WordToken>>>()
@@ -34,9 +57,10 @@ const caseVariantFindings = (words: ReadonlyArray<WordToken>, severity: Severity
   const findings: Array<Finding> = []
   for (const forms of groups.values()) {
     if (forms.size < 2) continue
-    // Only flag concepts where some variant has an internal capital (a brand like "GitHub"), so
-    // sentence-initial capitalization ("the" vs "The") is never mistaken for an inconsistency.
-    if (![...forms.keys()].some(hasInternalCapital)) continue
+    // Only flag concepts where some variant carries meaningful casing (a brand like "GitHub"), so
+    // sentence-initial capitalization ("the" vs "The") is never mistaken for an inconsistency, and
+    // neither is an ALL-CAPS keyword beside its lowercase homograph.
+    if (![...forms.keys()].some(hasMeaningfulCase)) continue
     const canonical = [...forms.entries()].sort((a, b) => b[1].length - a[1].length)[0]?.[0]
     if (canonical === undefined) continue
     for (const [form, tokens] of forms) {
