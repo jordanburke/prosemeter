@@ -62,7 +62,7 @@
   "prettier": "ts-builds/prettier",
   "dependencies": {
     "prosemeter": "workspace:^",
-    "somamcp": "^1.1.1",
+    "somamcp": "^1.1.2",
     "zod": "^4.4.3"
   },
   "devDependencies": {
