@@ -1,0 +1,87 @@
+{
+  "run": "7",
+  "phase": "1c",
+  "blinding": "FNV-1a, alternate basis",
+  "key": [
+    {
+      "n": 1,
+      "pair": "r4-T4",
+      "task": "T4",
+      "A": "P",
+      "B": "R",
+      "class": "gold"
+    },
+    {
+      "n": 2,
+      "pair": "r3-T2",
+      "task": "T2",
+      "A": "P",
+      "B": "R",
+      "class": "gold"
+    },
+    {
+      "n": 3,
+      "pair": "r1-T1",
+      "task": "T1",
+      "A": "R",
+      "B": "P",
+      "class": "reversed"
+    },
+    {
+      "n": 4,
+      "pair": "r1-T5",
+      "task": "T5",
+      "A": "P",
+      "B": "R",
+      "class": "gold"
+    },
+    {
+      "n": 5,
+      "pair": "r3-T4",
+      "task": "T4",
+      "A": "R",
+      "B": "P",
+      "class": "reversed"
+    },
+    {
+      "n": 6,
+      "pair": "r2-T6",
+      "task": "T6",
+      "A": "R",
+      "B": "P",
+      "class": "gold"
+    },
+    {
+      "n": 7,
+      "pair": "r5-T3",
+      "task": "T3",
+      "A": "P",
+      "B": "R",
+      "class": "gold"
+    },
+    {
+      "n": 8,
+      "pair": "r5-T2",
+      "task": "T2",
+      "A": "P",
+      "B": "R",
+      "class": "reversed"
+    },
+    {
+      "n": 9,
+      "pair": "r3-T5",
+      "task": "T5",
+      "A": "R",
+      "B": "P",
+      "class": "reversed"
+    },
+    {
+      "n": 10,
+      "pair": "r3-T1",
+      "task": "T1",
+      "A": "R",
+      "B": "P",
+      "class": "gold"
+    }
+  ]
+}
