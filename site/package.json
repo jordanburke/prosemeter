@@ -24,7 +24,7 @@
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.9.3",
-    "wrangler": "^4.119.0"
+    "wrangler": "^4.123.0"
   },
   "prettier": {
     "semi": false,
