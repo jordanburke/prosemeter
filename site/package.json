@@ -18,13 +18,13 @@
     "prosemeter": "workspace:*"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.10",
     "@playwright/test": "^1.62.1",
-    "astro": "^7.2.0",
-    "prettier": "^3.6.2",
+    "astro": "^7.2.9",
+    "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.9.3",
-    "wrangler": "^4.119.0"
+    "wrangler": "^4.127.1"
   },
   "prettier": {
     "semi": false,

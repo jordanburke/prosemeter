@@ -56,7 +56,7 @@
   ],
   "prettier": "ts-builds/prettier",
   "dependencies": {
-    "functype": "^1.8.0",
+    "functype": "^1.9.0",
     "mdast-util-to-nlcst": "^7.0.1",
     "mdast-util-to-string": "^4.0.0",
     "nlcst-to-string": "^4.0.0",
@@ -72,10 +72,10 @@
   "devDependencies": {
     "@types/mdast": "^4.0.4",
     "@types/nlcst": "^2.0.3",
-    "@types/node": "^26.1.2",
-    "ts-builds": "^3.2.3",
+    "@types/node": "^26.4.0",
+    "ts-builds": "^3.4.1",
     "tsdown": "^0.22.14",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   },
   "publishConfig": {
     "access": "public",

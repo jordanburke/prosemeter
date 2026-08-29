@@ -8,6 +8,9 @@ packages/*/dist
 site/dist
 .turbo
 .prosemeter
+# ts-builds scratch (lint-report.json). Anchored like the two above: only packages/ runs ts-builds,
+# the site deliberately does not.
+packages/*/.ts-builds
 
 # Logs
 logs

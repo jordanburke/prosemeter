@@ -71,13 +71,13 @@
     "@prosemeter/structure": "workspace:^",
     "@prosemeter/style": "workspace:^",
     "@prosemeter/vocabulary": "workspace:^",
-    "functype": "^1.8.0"
+    "functype": "^1.9.0"
   },
   "devDependencies": {
-    "@types/node": "^26.1.2",
-    "ts-builds": "^3.2.3",
+    "@types/node": "^26.4.0",
+    "ts-builds": "^3.4.1",
     "tsdown": "^0.22.14",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   },
   "publishConfig": {
     "access": "public",

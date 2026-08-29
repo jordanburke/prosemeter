@@ -15,8 +15,8 @@ It is a pnpm + Turborepo monorepo of seven packages, all released together on on
 | `@prosemeter/core` | engine — parsing, dimension model, scoring math, profiles |
 | `@prosemeter/readability` | grade-band, sentence-simplicity |
 | `@prosemeter/structure` | heading hierarchy, section/paragraph length, document balance |
-| `@prosemeter/style` | active voice, clarity, directness, concision |
-| `@prosemeter/vocabulary` | lexical diversity, terminology and spelling consistency |
+| `@prosemeter/style` | active voice, clarity, directness, concision, sentence variety |
+| `@prosemeter/vocabulary` | lexical diversity, terminology and spelling consistency, acronym definition |
 | `prosemeter` | batteries-included entry point + the `prosemeter` CLI |
 | `@prosemeter/mcp` | MCP server over the same engine |
 
@@ -42,7 +42,30 @@ Scoped to one package:
 ```bash
 pnpm --filter @prosemeter/style test
 pnpm --filter @prosemeter/style test -- test/style.spec.ts
+pnpm --filter @prosemeter/style test:watch
 pnpm --filter prosemeter build
+```
+
+The site is not covered by a root `pnpm test`; its checks live behind its own `validate`:
+
+```bash
+pnpm site:dev                              # astro dev
+pnpm site:build
+pnpm --filter prosemeter-site validate     # browser-safety + band-variant asserts, astro check, build, Playwright
+pnpm --filter prosemeter-site test:layout  # build + Playwright only
+```
+
+The eval harness runs off the *built* bundle, so build first:
+
+```bash
+pnpm build && node eval/score.mjs          # score everything in out/
+pnpm build && node eval/compare.mjs <dir> [variant]   # gate a run against eval/baseline.json
+```
+
+The CLI, once built, is the fastest way to try a scoring change by hand:
+
+```bash
+node packages/prosemeter/dist/cli/index.js score draft.md --profile readme --json
 ```
 
 ## Architecture
@@ -76,13 +99,18 @@ a suggested threshold, and `dimensionOptions` passed through to the dimension.
 ### Style dimensions and ignore lists
 
 The `retext-*` plugins under `@prosemeter/style` flag ordinary technical vocabulary out of the box.
-Three dimensions therefore ship curated ignore lists — `CLARITY_IGNORE_DEFAULT`,
-`HEDGE_IGNORE_DEFAULT` — resolved through `packages/style/src/ignore-options.ts`. A caller can extend
-them with `ignore`, or replace them with `useDefaultIgnore: false`.
+Two dimensions therefore ship curated ignore lists — `clarity` via `CLARITY_IGNORE_DEFAULT` and
+`directness` via `HEDGE_IGNORE_DEFAULT` — both resolved through
+`packages/style/src/ignore-options.ts`. A caller can extend them with `ignore`, or replace them
+with `useDefaultIgnore: false`.
 
 These are not cosmetic. Before `CLARITY_IGNORE_DEFAULT`, `clarity` was a topic detector: it flagged
 `effect`, `request`, `render`, `function`, and `component` as wordy, giving a corpus mean of 54.1 and
 a 165:1 ratio on writing-about-writing. Adding one is a real behavior change — measure it.
+
+`cliches.ts` is the exception to "style rules come from retext plugins": it is an in-house word
+list, because the community plugin is unmaintained. It exports `CLICHES` and `findCliches` but
+registers no dimension, so it does not appear in `styleProviders` or in any profile's weights.
 
 ### Build system
 
@@ -190,3 +218,25 @@ which is why they are known to work.
 
 `scripts/assert-band-variants.mjs` covers the one failure a browser cannot see: a class name that
 resolves to nothing renders fine, it just does nothing.
+
+**Running the layout suite from inside a coding agent needs one env var.** Astro detects an AI agent
+and runs `astro preview` as a detached background process. Verified in 7.2.9, where
+`cli/preview/index.js` gates it on `!process.env.ASTRO_PREVIEW_BACKGROUND && isRunByAgent()` and
+detection goes through `am-i-vibing`, which reads `CLAUDECODE`, `AI_AGENT`, and friends. Which
+release introduced this is unchecked, so treat the version as "at least 7.2.9", not as a boundary.
+
+Playwright's `webServer` needs a foreground process, so it aborts with `Process from
+config.webServer exited early` before a single test runs, and leaves an orphan on port 4325 that
+makes the *next* run fail differently, with "already running". Neither message names the cause.
+
+```bash
+ASTRO_PREVIEW_BACKGROUND=0 pnpm validate    # only needed inside an agent session
+```
+
+A human terminal and CI set no such variable, so both run foreground and neither needs this. The
+`reuseExistingServer: false` guard in `playwright.config.ts` does not help: the config never gets far
+enough to apply it. If an orphan is already holding the port, `astro preview stop` clears it.
+
+The other way this suite fails without naming its cause: a Playwright bump changes the required
+Chromium build, and every test dies at `browserType.launch`. Run `npx playwright install chromium`
+after updating dependencies.
