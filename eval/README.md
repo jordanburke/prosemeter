@@ -176,19 +176,29 @@ spend agents re-deriving them:
 - Trap tasks must come from observed failures. Tasks picked by reasoning about which qualifiers
   *ought* to be load-bearing passed 5/5 for every variant and discriminated nothing.
 - Never tell the generating agent it is being scored.
-- **The band score carries almost none of the readability signal the grade underneath it carries.**
-  Against 4,721 human-rated CLEAR excerpts, the median-of-five grade correlates −0.527 with human
-  ease and the `grade-band` score built from it correlates 0.072. Cause: 40.8% of the corpus scores
-  exactly 1.0, and those excerpts span nearly the whole human difficulty range. The band is the
-  right shape for "in range for this audience" and the wrong thing to correlate — but it is what the
-  API returns, and the median grade is not exported at all.
-- **The composite is ordered only at the bottom.** By composite decile against human ease, the
-  first three deciles climb and deciles 3–10 are flat within a tenth. It separates bad prose from
-  everything else and does not rank the rest. The README's "floor, not a quality oracle" framing is
-  now measured rather than asserted.
-- **`sentence-simplicity` is the dimension that tracks human readers**, at 0.485 against
-  `lexical-diversity`'s 0.017. That is a second, unrelated reason to lean on it — the first was its
+- **`grade-band` pools its five formulas the wrong way.** Against 4,724 human-rated CLEAR
+  excerpts, the median it uses scores −0.528 while prosemeter's own SMOG alone scores −0.575, and
+  Gunning Fog −0.536. Coleman-Liau (−0.479) and ARI (−0.497) drag the median down. The median is
+  not a free robustness win; it costs about 0.05 against a component already computed on every call.
+- **Do not read the near-zero correlation of a band score as failure.** `grade-band` scores 0.070
+  against human ease, which is close to a tautology: the band is bidirectional, so its two
+  directions cancel against a monotone target. Split by side it behaves as designed — below band
+  −0.246, above band +0.266, group means perfectly ordered. What is wrong is narrower and
+  survives the correction: 40.7% of documents score exactly 1.0 while spanning nearly the whole
+  human difficulty range, so the composite inherits no ordering from the dimension for two fifths
+  of documents, and the median grade underneath it is not exported at all.
+- **The composite has no ordering above its bottom fifth.** Pooled over composite deciles 3–10,
+  r = −0.008 on 3,780 documents. Deciles 1–2 climb steeply — that is the floor, and it works.
+  Deciles 3–6 are significantly *anti*-ordered (disjoint 95% CIs), so "flat" understates it. The
+  README's "floor, not a quality oracle" framing is now measured rather than asserted.
+- **`sentence-simplicity` is the dimension that tracks human readers**, at 0.486 against
+  `lexical-diversity`'s 0.014. That is a second, unrelated reason to lean on it — the first was its
   stable variance ratio across task sets.
+- **prosemeter reads about half a grade harder than the reference implementation**, and the cause is
+  an even split between sentence segmentation (+0.285 grades) and syllable counting (+0.279).
+  Diagnosing it from example texts alone points only at segmentation, because the >2-grade tail is
+  sentence-length dominated while the mean offset is not. Bands are tuned in grade units, so fix
+  both before retuning any band.
 - **Do not validate readability against Vale.** Vale's readability check computes grade level from
   the same five formulas `grade-band` uses, so agreement measures implementation, not correctness.
   Validate against a corpus with human labels. See
