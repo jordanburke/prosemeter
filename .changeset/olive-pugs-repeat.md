@@ -1,5 +1,6 @@
 ---
 "@prosemeter/core": patch
+"@prosemeter/mcp": patch
 ---
 
 Update runtime dependencies: `functype` 1.8.0 to 1.9.0 across `core`,

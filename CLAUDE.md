@@ -219,9 +219,13 @@ which is why they are known to work.
 `scripts/assert-band-variants.mjs` covers the one failure a browser cannot see: a class name that
 resolves to nothing renders fine, it just does nothing.
 
-**Running the layout suite from inside a coding agent needs one env var.** Astro 7.2 detects an AI
-agent — `CLAUDECODE`, `AI_AGENT`, and friends — and runs `astro preview` as a detached background
-process. Playwright's `webServer` needs a foreground process, so it aborts with `Process from
+**Running the layout suite from inside a coding agent needs one env var.** Astro detects an AI agent
+and runs `astro preview` as a detached background process. Verified in 7.2.9, where
+`cli/preview/index.js` gates it on `!process.env.ASTRO_PREVIEW_BACKGROUND && isRunByAgent()` and
+detection goes through `am-i-vibing`, which reads `CLAUDECODE`, `AI_AGENT`, and friends. Which
+release introduced this is unchecked, so treat the version as "at least 7.2.9", not as a boundary.
+
+Playwright's `webServer` needs a foreground process, so it aborts with `Process from
 config.webServer exited early` before a single test runs, and leaves an orphan on port 4325 that
 makes the *next* run fail differently, with "already running". Neither message names the cause.
 
