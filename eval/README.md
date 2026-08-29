@@ -176,6 +176,23 @@ spend agents re-deriving them:
 - Trap tasks must come from observed failures. Tasks picked by reasoning about which qualifiers
   *ought* to be load-bearing passed 5/5 for every variant and discriminated nothing.
 - Never tell the generating agent it is being scored.
+- **The band score carries almost none of the readability signal the grade underneath it carries.**
+  Against 4,721 human-rated CLEAR excerpts, the median-of-five grade correlates −0.527 with human
+  ease and the `grade-band` score built from it correlates 0.072. Cause: 40.8% of the corpus scores
+  exactly 1.0, and those excerpts span nearly the whole human difficulty range. The band is the
+  right shape for "in range for this audience" and the wrong thing to correlate — but it is what the
+  API returns, and the median grade is not exported at all.
+- **The composite is ordered only at the bottom.** By composite decile against human ease, the
+  first three deciles climb and deciles 3–10 are flat within a tenth. It separates bad prose from
+  everything else and does not rank the rest. The README's "floor, not a quality oracle" framing is
+  now measured rather than asserted.
+- **`sentence-simplicity` is the dimension that tracks human readers**, at 0.485 against
+  `lexical-diversity`'s 0.017. That is a second, unrelated reason to lean on it — the first was its
+  stable variance ratio across task sets.
+- **Do not validate readability against Vale.** Vale's readability check computes grade level from
+  the same five formulas `grade-band` uses, so agreement measures implementation, not correctness.
+  Validate against a corpus with human labels. See
+  `LIB_RPT_clear-corpus-validation_2026-08-29.md`.
 
 ## Run 6 measures the revision loop, and needs a different design
 
