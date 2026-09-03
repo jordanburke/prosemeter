@@ -80,10 +80,10 @@ export const gradeBandProvider: DimensionProvider = {
 
       return {
         id: "grade-band",
-        score: band(g.median, bLo, bHi, KB),
+        score: band(g.pooledGrade, bLo, bHi, KB),
         weight: settings.weight,
         detail:
-          `median grade ${fmt(g.median)} vs band ${bandLabel} ` +
+          `pooled grade ${fmt(g.pooledGrade)} vs band ${bandLabel} ` +
           `(FK ${fmt(g.fleschKincaid)}, Fog ${fmt(g.gunningFog)}, SMOG ${fmt(g.smog)}, ` +
           `CL ${fmt(g.colemanLiau)}, ARI ${fmt(g.ari)}); Flesch Reading Ease ${fmt(g.readingEase)}`,
         findings: [],

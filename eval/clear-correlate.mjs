@@ -29,7 +29,7 @@ if (path === undefined) {
  * workaround, and it should be deleted once the median is exported properly.
  */
 const DETAIL =
-  /median grade ([-\d.]+) vs band [^(]*\(FK ([-\d.]+), Fog ([-\d.]+), SMOG ([-\d.]+), CL ([-\d.]+), ARI ([-\d.]+)\); Flesch Reading Ease ([-\d.]+)/
+  /pooled grade ([-\d.]+) vs band [^(]*\(FK ([-\d.]+), Fog ([-\d.]+), SMOG ([-\d.]+), CL ([-\d.]+), ARI ([-\d.]+)\); Flesch Reading Ease ([-\d.]+)/
 
 const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length
 

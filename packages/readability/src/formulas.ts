@@ -28,15 +28,21 @@ export type GradeBreakdown = {
   readonly smog: number
   readonly colemanLiau: number
   readonly ari: number
-  /** Median of the five grade formulas — the single number the band strategy scores. */
-  readonly median: number
+  /**
+   * The pooled grade the band strategy scores: the mean of SMOG, Gunning Fog and Flesch-Kincaid.
+   *
+   * Was the median of all five. Measured against 4,724 human-rated CLEAR excerpts, that median
+   * correlated -0.528 with human ease while this mean reaches -0.560, because Coleman-Liau (-0.479)
+   * and ARI (-0.497) are the weak two and a median lets them pull the result down.
+   *
+   * SMOG alone is stronger still (-0.575) and cannot be used on its own: its constant floors it at
+   * about 3.1, so it cannot register how extreme telegraphic prose is, and `choppy-simplistic.md`
+   * scored exactly at the chat threshold rather than below it. Flesch-Kincaid and Fog restore the
+   * low-end sensitivity that guard rail needs. See LIB_RPT_clear-corpus-validation_2026-08-29.md.
+   */
+  readonly pooledGrade: number
   /** Flesch Reading Ease (0–100, higher = easier) — reported as info, not scored. */
   readonly readingEase: number
-}
-
-const median5 = (values: ReadonlyArray<number>): number => {
-  const sorted = [...values].sort((a, b) => a - b)
-  return sorted[Math.floor(sorted.length / 2)] ?? 0
 }
 
 export const gradeBreakdown = (c: Counts): GradeBreakdown => {
@@ -51,7 +57,7 @@ export const gradeBreakdown = (c: Counts): GradeBreakdown => {
     smog,
     colemanLiau: cl,
     ari: ar,
-    median: median5([fk, fog, smog, cl, ar]),
+    pooledGrade: (smog + fog + fk) / 3,
     readingEase: flesch({ sentence: c.sentence, word: c.word, syllable: c.syllable }),
   }
 }
