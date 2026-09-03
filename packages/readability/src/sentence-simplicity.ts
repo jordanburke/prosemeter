@@ -58,7 +58,7 @@ const locOf = (sentence: Sentence): Finding["loc"] => {
   })
 }
 
-// Median of the same five grade formulas used at the document level, over a single sentence.
+// The same pooled grade used at the document level, over a single sentence.
 const sentenceGrade = (c: SentenceCounts): number =>
   gradeBreakdown({
     sentence: 1,
@@ -66,7 +66,7 @@ const sentenceGrade = (c: SentenceCounts): number =>
     syllable: c.syllables,
     complexWords: c.complexWords,
     characters: c.characters,
-  }).median
+  }).pooledGrade
 
 export const sentenceSimplicityProvider: DimensionProvider = {
   id: "sentence-simplicity",

@@ -176,10 +176,15 @@ spend agents re-deriving them:
 - Trap tasks must come from observed failures. Tasks picked by reasoning about which qualifiers
   *ought* to be load-bearing passed 5/5 for every variant and discriminated nothing.
 - Never tell the generating agent it is being scored.
-- **`grade-band` pools its five formulas the wrong way.** Against 4,724 human-rated CLEAR
-  excerpts, the median it uses scores −0.528 while prosemeter's own SMOG alone scores −0.575, and
-  Gunning Fog −0.536. Coleman-Liau (−0.479) and ARI (−0.497) drag the median down. The median is
-  not a free robustness win; it costs about 0.05 against a component already computed on every call.
+- **Pool grade formulas by mean over the strong ones, not by median over all five.** Against 4,724
+  human-rated CLEAR excerpts the median scored −0.528; the mean of SMOG, Gunning Fog and
+  Flesch-Kincaid reaches −0.560, because Coleman-Liau (−0.479) and ARI (−0.497) are the weakest two
+  and a median lets them pull the result down. Williams' t = −14.09 on the dependent correlations, so
+  the gain is not sampling noise. **Shipped in 0.5.0**; `eval/clear-sweep.mjs` re-runs the comparison.
+- **SMOG is the strongest single estimator (−0.575) and cannot be used alone.** Its constant floors
+  it near grade 3.1, so it cannot express how extreme telegraphic prose is — on SMOG alone
+  `choppy-simplistic.md` scored exactly at the `chat` threshold instead of below it. A better
+  correlation is not automatically a better dimension; check the adversarial fixtures.
 - **Do not read the near-zero correlation of a band score as failure.** `grade-band` scores 0.070
   against human ease, which is close to a tautology: the band is bidirectional, so its two
   directions cancel against a monotone target. Split by side it behaves as designed — below band

@@ -78,7 +78,7 @@ export type DimensionResult = {
   readonly score: number
   /** Effective weight after profile overrides and renormalization. */
   readonly weight: number
-  /** Human-readable detail, e.g. "median grade 14.2 vs band 8–12". */
+  /** Human-readable detail, e.g. "pooled grade 14.2 vs band 8–12". */
   readonly detail: string
   readonly findings: ReadonlyArray<Finding>
   /** Present when the dimension could not run; its weight redistributes to the others. */

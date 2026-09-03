@@ -182,8 +182,11 @@ systematic offset shifts what falls inside every band in every profile.
 
 ## What this changes
 
-- **Score `grade-band` from SMOG, or from a weighted pool, rather than the plain median.** Measured
-  here, the median costs about 0.05 of correlation against a component already being computed.
+- **Score `grade-band` from a pool of the strong formulas rather than the plain median.**
+  **Done — 0.5.0** pools SMOG, Gunning Fog and Flesch-Kincaid, reaching −0.560. `clear-sweep.mjs`
+  swept eight candidates; SMOG alone was strongest at −0.575 and failed the telegraphic-prose
+  fixture, because its constant floors it near grade 3.1. Every profile's band edges are unchanged:
+  the pooled distribution shifts 0.05 grades corpus-wide.
 - **Export the median grade** (or whichever statistic replaces it). It is the only continuous
   readability signal the engine produces and no public API returns it.
 - **Stop treating the composite as ordered above the bottom fifth.** The floor framing in the
