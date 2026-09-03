@@ -17,6 +17,23 @@ import { pct } from "../lib/view"
 const allProfiles = profiles()
 const thresholds = Object.fromEntries(allProfiles.map((p) => [p.name, p.thresholdDefault]))
 
+/**
+ * The reading grade, out of `grade-band`'s detail string, because no API returns it.
+ *
+ * **Throws rather than returning undefined.** The engine renamed this from "median grade" to
+ * "pooled grade" in 0.5.0 and the old pattern kept matching nothing: the build stayed green, the
+ * layout suite passed — it asserts layout, not values — and the homepage shipped the sentence
+ * "reads at grade  against a floor of 7". A silent miss here is worse than a failed build, so this
+ * fails the build and names the fixture.
+ */
+const gradeFromDetail = (detail: string, id: string): string => {
+  const m = /(?:pooled|median) grade (-?[\d.]+)/.exec(detail)
+  if (m?.[1] === undefined) {
+    throw new Error(`no grade in grade-band detail for ${id}: ${JSON.stringify(detail)}`)
+  }
+  return m[1]
+}
+
 const measure = (id: string) => {
   const f = fixtures.find((x) => x.id === id)!
   return score(f.text, { profile: f.profile, format: f.format, target: `${id}.md` }).fold(
@@ -27,7 +44,7 @@ const measure = (id: string) => {
         score: json.score,
         threshold: thresholds[f.profile] ?? 70,
         dim: (d: string) => pct(json.dimensions.find((x) => x.id === d)?.score ?? 0),
-        grade: /median grade (-?[\d.]+)/.exec(json.dimensions.find((x) => x.id === "grade-band")?.detail ?? "")?.[1],
+        grade: gradeFromDetail(json.dimensions.find((x) => x.id === "grade-band")?.detail ?? "", id),
         dimensionCount: json.dimensions.length,
       }
     },
