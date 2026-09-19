@@ -19,12 +19,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@playwright/test": "^1.62.1",
-    "astro": "^7.2.10",
-    "prettier": "^3.9.6",
+    "@playwright/test": "^1.63.0",
+    "astro": "^7.3.3",
+    "prettier": "^3.9.8",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.9.3",
-    "wrangler": "^4.128.0"
+    "wrangler": "^4.135.0"
   },
   "prettier": {
     "semi": false,

@@ -9,6 +9,12 @@
  * The body is assembled as a string rather than as JSX. Inside a `<pre>`, a multi-line `.map()`
  * confuses Astro's parser, and whitespace in a terminal is load-bearing — a string keeps both
  * problems away.
+ *
+ * `esc` escapes with `replaceAll` and string arguments for the same family of reason. Written as
+ * the regex literals `/</g` and `/>/g`, it builds fine and fails `astro check`: the checker reads
+ * the `<` inside the literal as a tag, never finds the closing `---`, and reports 33 errors that
+ * all point at the template rather than at line 47. `astro build` passes throughout, so CI is the
+ * only thing that catches it. Observed on astro 7.3.3; 7.3.2 passed CI on the regex form.
  */
 import { score, toScoreResultJSON } from "prosemeter"
 
@@ -44,7 +50,7 @@ const trim = (s: string, max: number) => {
   return head.length <= max ? head : head.slice(0, max - 1).trimEnd() + "…"
 }
 
-const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+const esc = (s: string) => s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
 const dim = (s: string) => `<span class="c-dim">${esc(s)}</span>`
 
 const target = `${f.id}.md`
