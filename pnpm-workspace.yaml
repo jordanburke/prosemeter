@@ -15,8 +15,9 @@ publicHoistPattern:
 
 # Allow our freshly-published toolchain past the global minimumReleaseAge cooldown
 minimumReleaseAgeExclude:
-  - ts-builds@3.0.1
-  - functype@1.6.2
+  - "*functype*"
+  - ts-builds
+  - somamcp
   - miniflare@5.20260801.0-alpha
   - wrangler@4.119.0
 
