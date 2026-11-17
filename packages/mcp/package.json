@@ -69,7 +69,7 @@
     "@types/node": "^26.6.1",
     "ts-builds": "^3.4.1",
     "tsdown": "^0.22.14",
-    "vitest": "^4.1.11"
+    "vitest": "^5.0.1"
   },
   "publishConfig": {
     "access": "public",
